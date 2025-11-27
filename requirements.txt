@@ -1,0 +1,7 @@
+gpiozero
+opencv-python
+python-vlc
+vosk
+pyaudio
+requests
+numpy

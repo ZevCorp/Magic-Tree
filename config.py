@@ -1,0 +1,28 @@
+import os
+
+# Hardware Configuration
+DOOR_SENSOR_PIN = 17  # GPIO Pin for the door sensor
+
+# API Configuration
+WHISPERFLOW_API_KEY = "YOUR_WHISPERFLOW_API_KEY"
+WHISPERFLOW_API_URL = "https://api.whisperflow.io/transcribe" # Verify this URL
+
+# File Paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+RECORDINGS_DIR = os.path.join(BASE_DIR, "recordings")
+MODEL_DIR = os.path.join(BASE_DIR, "model")
+
+INTRO_VIDEO_PATH = os.path.join(ASSETS_DIR, "intro.mp4")
+ASK_PHONE_VIDEO_PATH = os.path.join(ASSETS_DIR, "ask_phone.mp4")
+
+# Audio Configuration
+SAMPLE_RATE = 16000
+CHANNELS = 1
+CHUNK_SIZE = 8000
+VOSK_MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-es-0.42") # Example model name
+
+# Ensure directories exist
+os.makedirs(ASSETS_DIR, exist_ok=True)
+os.makedirs(RECORDINGS_DIR, exist_ok=True)
+os.makedirs(MODEL_DIR, exist_ok=True)
