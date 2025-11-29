@@ -98,13 +98,43 @@ def main():
             logging.info("=" * 50)
             logging.info("STEP 6: Processing phone number...")
             logging.info("=" * 50)
-            transcription = audio.transcribe_with_whisperflow(phone_audio_path)
-            phone_number = audio.extract_phone_number(transcription)
+            transcription = audio.transcribe_with_openai(phone_audio_path)
+            phone_number = audio.extract_phone_number_with_assistant(transcription)
 
             if phone_number:
                 logging.info(f"Identified Phone Number: {phone_number}")
-                # 7. Send Message
+                
+                # Display the number and wait for "Confirmar"
+                logging.info("Waiting for user confirmation ('confirmar')...")
+                confirm_event = threading.Event()
+                
+                # Start listening for "confirmar"
+                confirm_thread = threading.Thread(target=audio.listen_for_keyword, args=(confirm_event, "confirmar"))
+                confirm_thread.start()
+                
+                # Show UI (blocks until confirm_event is set)
+                media.display_verification_ui(phone_number, confirm_event)
+                
+                # Ensure thread joins
+                confirm_event.set()
+                confirm_thread.join(timeout=1)
+
+                # 7. Send Message & Save Metadata
                 messaging.send_welcome_message(phone_number)
+                
+                # Save Metadata JSON
+                metadata = {
+                    "video_path": user_video_path,
+                    "phone_number": phone_number,
+                    "timestamp": timestamp,
+                    "phone_audio_path": phone_audio_path
+                }
+                json_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.json")
+                import json
+                with open(json_path, 'w') as f:
+                    json.dump(metadata, f, indent=4)
+                logging.info(f"Metadata saved to {json_path}")
+
             else:
                 logging.warning("Could not identify phone number.")
 
