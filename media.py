@@ -41,11 +41,15 @@ class MediaManager:
 
     def record_user(self, output_path, stop_event):
         logging.info(f"Starting recording to {output_path}")
+        logging.info("Opening camera...")
         self.camera = cv2.VideoCapture(0)
+        
         if not self.camera.isOpened():
             logging.error("Could not open camera")
             return
 
+        logging.info("Camera opened successfully!")
+        
         # Define codec and create VideoWriter object
         # XVID is usually safe, or H264 if available
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
@@ -54,22 +58,32 @@ class MediaManager:
         fps = 20.0 # Adjust based on camera
         out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
+        logging.info(f"Camera resolution: {width}x{height} @ {fps}fps")
+        logging.info("Creating fullscreen window...")
+        
         cv2.namedWindow("Recording", cv2.WND_PROP_FULLSCREEN)
         cv2.setWindowProperty("Recording", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
+        logging.info("Recording started! Waiting for 'Feliz Navidad' or 'q' key...")
+        frame_count = 0
+        
         while not stop_event.is_set():
             ret, frame = self.camera.read()
             if ret:
                 out.write(frame)
                 cv2.imshow('Recording', frame)
+                frame_count += 1
                 
                 # Check for 'q' key as manual fallback
                 if cv2.waitKey(1) & 0xFF == ord('q'):
+                    logging.info("'q' key pressed, stopping recording")
                     break
             else:
+                logging.warning("Failed to read frame from camera")
                 break
 
-        logging.info("Stopping recording...")
+        logging.info(f"Stopping recording... ({frame_count} frames captured)")
         self.camera.release()
         out.release()
         cv2.destroyAllWindows()
+        logging.info("Camera released and window closed")

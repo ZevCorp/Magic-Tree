@@ -29,9 +29,17 @@ def main():
             logging.info("Door opened! Starting experience.")
 
             # 2. Play Intro Video (Santa)
+            logging.info("=" * 50)
+            logging.info("STEP 2: Playing intro video...")
+            logging.info("=" * 50)
             media.play_video(INTRO_VIDEO_PATH)
 
             # 3. Record User + Wait for "Feliz Navidad"
+            logging.info("=" * 50)
+            logging.info("STEP 3: Starting camera recording...")
+            logging.info("Say 'Feliz Navidad' to stop recording")
+            logging.info("=" * 50)
+            
             timestamp = int(time.time())
             user_video_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.avi")
             

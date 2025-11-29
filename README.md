@@ -32,10 +32,22 @@ Este proyecto implementa una experiencia interactiva donde un Árbol Encantado (
 
 ## Ejecución
 
+### Modo Completo (con sensor de puerta)
 ```bash
 source venv/bin/activate
 python main.py
 ```
+Este es el modo de producción. Requiere el sensor de puerta conectado al GPIO 17.
+
+### Modo de Prueba (sin sensor de puerta)
+```bash
+source venv/bin/activate
+python test_mode.py
+```
+Este modo ejecuta la **experiencia completa** (cámara, audio, videos) pero sin el sensor de puerta. 
+Presiona Enter para iniciar la experiencia en lugar de abrir la puerta.
+
+**Perfecto para probar el sistema sin hardware GPIO.**
 
 ## Configuración
 Puedes ajustar los pines GPIO y otras configuraciones en `config.py`.

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Script de prueba para el Árbol Encantado
-Ejecuta el sistema en modo MOCK sin necesidad de hardware
+Ejecuta el sistema completo pero sin el sensor de puerta (modo MOCK para hardware)
+La cámara, audio y todo lo demás funciona normalmente.
 """
 
 import logging
@@ -18,71 +19,108 @@ from messaging import MessagingService
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
-    logging.info("=== MODO DE PRUEBA - Árbol Encantado ===")
-    logging.info("Este modo simula el hardware para pruebas")
+    logging.info("=" * 60)
+    logging.info("MODO DE PRUEBA - Árbol Encantado")
+    logging.info("Experiencia completa SIN sensor de puerta")
+    logging.info("=" * 60)
     
-    # Initialize Components in MOCK MODE
-    hardware = HardwareManager(mock_mode=True)  # Force mock mode
-    media = MediaManager()
-    audio = AudioManager()
+    # Initialize Components - Force mock mode ONLY for hardware
+    hardware = HardwareManager(mock_mode=True)  # No door sensor
+    media = MediaManager()  # Real camera
+    audio = AudioManager()  # Real audio
     messaging = MessagingService()
 
-    logging.info("Sistema listo. Iniciando prueba...")
+    logging.info("Sistema listo.")
+    logging.info("\nEn este modo:")
+    logging.info("✓ La cámara se activará normalmente")
+    logging.info("✓ El audio y detección de voz funcionan")
+    logging.info("✓ Los videos se reproducen")
+    logging.info("✗ El sensor de puerta está deshabilitado (presiona Enter)")
+    logging.info("")
 
-    try:
-        # 1. Simulate Door Open
-        logging.info("\n[1/6] Esperando apertura de puerta...")
-        hardware.wait_for_door_open()
-        
-        # 2. Play Intro Video (or simulate if file doesn't exist)
-        logging.info("\n[2/6] Reproduciendo video de introducción...")
-        if os.path.exists(INTRO_VIDEO_PATH):
-            media.play_video(INTRO_VIDEO_PATH)
-        else:
-            logging.warning(f"Video no encontrado: {INTRO_VIDEO_PATH}")
-            logging.info("Simulando reproducción de video (3 segundos)...")
-            time.sleep(3)
+    while True:
+        try:
+            # 1. Wait for Door Open (MOCK - press Enter)
+            hardware.wait_for_door_open()
+            logging.info("Iniciando experiencia...")
 
-        # 3. Record User + Wait for "Feliz Navidad"
-        logging.info("\n[3/6] Grabando usuario...")
-        logging.info("En modo real, di 'Feliz Navidad' para terminar")
-        logging.info("En modo prueba, esperaremos 5 segundos")
-        
-        timestamp = int(time.time())
-        user_video_path = os.path.join(RECORDINGS_DIR, f"test_user_video_{timestamp}.avi")
-        
-        # Simulate recording for 5 seconds instead of waiting for keyword
-        time.sleep(5)
-        logging.info("Grabación simulada completada")
+            # 2. Play Intro Video (Santa)
+            logging.info("=" * 50)
+            logging.info("STEP 2: Playing intro video...")
+            logging.info("=" * 50)
+            if os.path.exists(INTRO_VIDEO_PATH):
+                media.play_video(INTRO_VIDEO_PATH)
+            else:
+                logging.warning(f"Video no encontrado: {INTRO_VIDEO_PATH}")
+                logging.info("Simulando reproducción (3 segundos)...")
+                time.sleep(3)
 
-        # 4. Ask for Phone Number
-        logging.info("\n[4/6] Solicitando número de teléfono...")
-        if os.path.exists(ASK_PHONE_VIDEO_PATH):
-            media.play_video(ASK_PHONE_VIDEO_PATH)
-        else:
-            logging.warning(f"Video no encontrado: {ASK_PHONE_VIDEO_PATH}")
-            logging.info("Simulando video de solicitud (3 segundos)...")
-            time.sleep(3)
+            # 3. Record User + Wait for "Feliz Navidad"
+            logging.info("=" * 50)
+            logging.info("STEP 3: Starting camera recording...")
+            logging.info("Say 'Feliz Navidad' to stop recording")
+            logging.info("=" * 50)
+            
+            timestamp = int(time.time())
+            user_video_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.avi")
+            
+            stop_event = threading.Event()
+            # Start listening for keyword in background
+            listener_thread = threading.Thread(target=audio.listen_for_keyword, args=(stop_event,))
+            listener_thread.start()
+            
+            # Start recording (blocks until stop_event is set)
+            media.record_user(user_video_path, stop_event)
+            
+            # Ensure listener thread stops if recording ended manually
+            stop_event.set()
+            listener_thread.join(timeout=1)
 
-        # 5. Get Phone Number (simulated)
-        logging.info("\n[5/6] Capturando número de teléfono...")
-        logging.info("En modo real, el usuario diría su número")
-        
-        # Simulate phone number
-        phone_number = "3001234567"
-        logging.info(f"Número simulado: {phone_number}")
+            # 4. Ask for Phone Number
+            logging.info("=" * 50)
+            logging.info("STEP 4: Asking for phone number...")
+            logging.info("=" * 50)
+            if os.path.exists(ASK_PHONE_VIDEO_PATH):
+                media.play_video(ASK_PHONE_VIDEO_PATH)
+            else:
+                logging.warning(f"Video no encontrado: {ASK_PHONE_VIDEO_PATH}")
+                logging.info("Simulando video (3 segundos)...")
+                time.sleep(3)
 
-        # 6. Send Message
-        logging.info("\n[6/6] Enviando mensaje de bienvenida...")
-        messaging.send_welcome_message(phone_number)
+            # 5. Record Audio for Phone Number
+            logging.info("=" * 50)
+            logging.info("STEP 5: Recording phone number...")
+            logging.info("=" * 50)
+            phone_audio_path = os.path.join(RECORDINGS_DIR, f"phone_audio_{timestamp}.wav")
+            audio.record_audio(phone_audio_path, duration=8)
 
-        logging.info("\n=== PRUEBA COMPLETADA EXITOSAMENTE ===")
-        logging.info("El sistema está funcionando correctamente en modo simulación")
+            # 6. Identify Phone Number
+            logging.info("=" * 50)
+            logging.info("STEP 6: Processing phone number...")
+            logging.info("=" * 50)
+            transcription = audio.transcribe_with_whisperflow(phone_audio_path)
+            phone_number = audio.extract_phone_number(transcription)
 
-    except KeyboardInterrupt:
-        logging.info("\nPrueba interrumpida por el usuario")
-    except Exception as e:
-        logging.error(f"Error durante la prueba: {e}", exc_info=True)
+            if phone_number:
+                logging.info(f"Identified Phone Number: {phone_number}")
+                # 7. Send Message
+                messaging.send_welcome_message(phone_number)
+            else:
+                logging.warning("Could not identify phone number.")
+
+            logging.info("\n" + "=" * 60)
+            logging.info("EXPERIENCIA COMPLETADA")
+            logging.info("=" * 60)
+            logging.info("Presiona Ctrl+C para salir o Enter para repetir...")
+            
+        except KeyboardInterrupt:
+            logging.info("\nDeteniendo sistema...")
+            break
+        except Exception as e:
+            logging.error(f"Error inesperado: {e}", exc_info=True)
+            logging.info("Esperando 5 segundos antes de reintentar...")
+            time.sleep(5)
 
 if __name__ == "__main__":
     main()
+
