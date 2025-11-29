@@ -87,3 +87,44 @@ class MediaManager:
         out.release()
         cv2.destroyAllWindows()
         logging.info("Camera released and window closed")
+
+    def display_verification_ui(self, number, stop_event):
+        logging.info(f"Displaying verification UI for: {number}")
+        
+        # Create a black image
+        import numpy as np
+        
+        # Define font and text properties
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        
+        cv2.namedWindow("Verification", cv2.WND_PROP_FULLSCREEN)
+        cv2.setWindowProperty("Verification", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+        
+        while not stop_event.is_set():
+            img = np.zeros((1080, 1920, 3), dtype=np.uint8) # Refresh image
+            
+            # 1. Draw Phone Number
+            font_scale_num = 5
+            thickness_num = 10
+            text_size_num = cv2.getTextSize(number, font, font_scale_num, thickness_num)[0]
+            text_x_num = (img.shape[1] - text_size_num[0]) // 2
+            text_y_num = (img.shape[0] // 2) 
+            cv2.putText(img, number, (text_x_num, text_y_num), font, font_scale_num, (255, 255, 255), thickness_num)
+            
+            # 2. Draw Instruction
+            instruction = "Di 'Confirmar' para continuar"
+            font_scale_inst = 2
+            thickness_inst = 4
+            text_size_inst = cv2.getTextSize(instruction, font, font_scale_inst, thickness_inst)[0]
+            text_x_inst = (img.shape[1] - text_size_inst[0]) // 2
+            text_y_inst = text_y_num + 150 # Below the number
+            cv2.putText(img, instruction, (text_x_inst, text_y_inst), font, font_scale_inst, (200, 200, 200), thickness_inst)
+
+            cv2.imshow("Verification", img)
+            
+            if cv2.waitKey(100) & 0xFF == ord('q'):
+                logging.info("Manual override: q pressed")
+                stop_event.set()
+        
+        cv2.destroyWindow("Verification")
+        logging.info("Verification UI closed.")

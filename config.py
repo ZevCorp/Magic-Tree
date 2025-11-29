@@ -4,8 +4,7 @@ import os
 DOOR_SENSOR_PIN = 17  # GPIO Pin for the door sensor
 
 # API Configuration
-WHISPERFLOW_API_KEY = "YOUR_WHISPERFLOW_API_KEY"
-WHISPERFLOW_API_URL = "https://api.whisperflow.io/transcribe" # Verify this URL
+OPENAI_API_KEY = "YOUR_OPENAI_API_KEY" # Replace with your actual API key
 
 # File Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

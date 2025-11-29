@@ -7,6 +7,7 @@ import requests
 import os
 import re
 import time
+import openai
 from config import *
 
 try:
@@ -80,37 +81,47 @@ class AudioManager:
         wf.close()
         logging.info("Audio recording complete.")
 
-    def transcribe_with_whisperflow(self, audio_path):
-        logging.info("Sending audio to Whisperflow...")
+    def transcribe_with_openai(self, audio_path):
+        logging.info("Transcribing audio with OpenAI Whisper...")
         if not os.path.exists(audio_path):
             logging.error("Audio file not found.")
             return ""
 
-        headers = {"Authorization": f"Bearer {WHISPERFLOW_API_KEY}"}
-        # Note: Adjust the request based on actual Whisperflow API docs.
-        # Assuming standard multipart/form-data upload.
         try:
-            with open(audio_path, 'rb') as f:
-                files = {'file': f}
-                response = requests.post(WHISPERFLOW_API_URL, headers=headers, files=files)
-            
-            if response.status_code == 200:
-                data = response.json()
-                text = data.get("text", "")
-                logging.info(f"Transcription received: {text}")
-                return text
-            else:
-                logging.error(f"Whisperflow API Error: {response.status_code} - {response.text}")
-                return ""
+            client = openai.OpenAI(api_key=OPENAI_API_KEY)
+            with open(audio_path, "rb") as audio_file:
+                transcription = client.audio.transcriptions.create(
+                    model="whisper-1", 
+                    file=audio_file
+                )
+            text = transcription.text
+            logging.info(f"Transcription received: {text}")
+            return text
         except Exception as e:
-            logging.error(f"Exception calling Whisperflow: {e}")
+            logging.error(f"Error transcribing with OpenAI: {e}")
             return ""
 
-    def extract_phone_number(self, text):
-        # Simple regex for phone numbers (adjust for locale)
-        # Looks for sequences of digits
-        phone_pattern = re.compile(r'\b\d{7,15}\b') 
-        match = phone_pattern.search(text.replace(" ", "").replace("-", ""))
-        if match:
-            return match.group(0)
-        return None
+    def extract_phone_number_with_assistant(self, text):
+        logging.info(f"Extracting phone number from text: {text}")
+        try:
+            client = openai.OpenAI(api_key=OPENAI_API_KEY)
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant that extracts phone numbers from text. The user might correct themselves (e.g., '555 123 no wait 124'). You must output ONLY the final, corrected phone number as a sequence of digits. If no phone number is found, output nothing."},
+                    {"role": "user", "content": f"Extract the phone number from this text: \"{text}\""}
+                ]
+            )
+            phone_number = response.choices[0].message.content.strip()
+            # Remove any non-digit characters just in case
+            phone_number = re.sub(r'\D', '', phone_number)
+            
+            if phone_number:
+                logging.info(f"Extracted Phone Number: {phone_number}")
+                return phone_number
+            else:
+                logging.warning("No phone number found by assistant.")
+                return None
+        except Exception as e:
+            logging.error(f"Error extracting phone number with assistant: {e}")
+            return None
