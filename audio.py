@@ -125,3 +125,44 @@ class AudioManager:
         except Exception as e:
             logging.error(f"Error extracting phone number with assistant: {e}")
             return None
+
+    def stream_audio_chunks(self, stop_event, chunk_duration=5):
+        """
+        Generator that yields paths to temporary WAV files containing audio chunks.
+        Records continuously until stop_event is set.
+        """
+        logging.info("Starting continuous audio streaming...")
+        stream = self.p.open(format=pyaudio.paInt16, channels=CHANNELS,
+                             rate=SAMPLE_RATE, input=True,
+                             frames_per_buffer=CHUNK_SIZE)
+        
+        chunk_frames = int(SAMPLE_RATE / CHUNK_SIZE * chunk_duration)
+        
+        try:
+            while not stop_event.is_set():
+                frames = []
+                for _ in range(chunk_frames):
+                    if stop_event.is_set():
+                        break
+                    data = stream.read(CHUNK_SIZE, exception_on_overflow=False)
+                    frames.append(data)
+                
+                if frames:
+                    timestamp = int(time.time())
+                    chunk_path = os.path.join(RECORDINGS_DIR, f"chunk_{timestamp}.wav")
+                    
+                    wf = wave.open(chunk_path, 'wb')
+                    wf.setnchannels(CHANNELS)
+                    wf.setsampwidth(self.p.get_sample_size(pyaudio.paInt16))
+                    wf.setframerate(SAMPLE_RATE)
+                    wf.writeframes(b''.join(frames))
+                    wf.close()
+                    
+                    yield chunk_path
+                    
+        except Exception as e:
+            logging.error(f"Error in audio streaming: {e}")
+        finally:
+            stream.stop_stream()
+            stream.close()
+            logging.info("Audio streaming stopped.")

@@ -58,39 +58,71 @@ def main():
             # 4. Ask for Phone Number
             media.play_video(ASK_PHONE_VIDEO_PATH)
 
-            # 5. Record Audio for Phone Number
-            phone_audio_path = os.path.join(RECORDINGS_DIR, f"phone_audio_{timestamp}.wav")
-            audio.record_audio(phone_audio_path, duration=8) # Give them 8 seconds
-
-            # 6. Identify Phone Number
-            logging.info("Processing phone number...")
-            transcription = audio.transcribe_with_openai(phone_audio_path)
-            phone_number = audio.extract_phone_number_with_assistant(transcription)
-
-                # Display the number and wait for "Confirmar"
-                logging.info("Waiting for user confirmation ('confirmar')...")
-                confirm_event = threading.Event()
+            # 5. Record & Process Phone Number Continuously
+            logging.info("=" * 50)
+            logging.info("STEP 5: Starting continuous phone dictation...")
+            logging.info("=" * 50)
+            
+            # Start UI Thread immediately
+            phone_display = media.PhoneDisplay()
+            phone_display.start()
+            
+            full_transcript = ""
+            final_phone_number = None
+            audio_stop_event = threading.Event()
+            
+            # Process audio chunks
+            for chunk_path in audio.stream_audio_chunks(audio_stop_event, chunk_duration=5):
+                logging.info(f"Processing chunk: {chunk_path}")
+                chunk_text = audio.transcribe_with_openai(chunk_path)
                 
-                # Start listening for "confirmar"
+                if chunk_text:
+                    full_transcript += " " + chunk_text
+                    logging.info(f"Full Transcript so far: {full_transcript}")
+                    
+                    # Extract number from accumulated text
+                    extracted_number = audio.extract_phone_number_with_assistant(full_transcript)
+                    
+                    if extracted_number:
+                        phone_display.update_number(extracted_number)
+                        
+                        # Check if we have enough digits (e.g., 10)
+                        if len(extracted_number) >= 10:
+                            logging.info(f"Found valid number: {extracted_number}")
+                            final_phone_number = extracted_number
+                            audio_stop_event.set() # Stop recording loop
+                            break
+                
+                # Cleanup chunk file
+                try:
+                    os.remove(chunk_path)
+                except:
+                    pass
+
+            if final_phone_number:
+                # 6. Verification
+                logging.info("Waiting for user confirmation ('confirmar')...")
+                phone_display.set_status("Di 'Confirmar' para continuar")
+                
+                confirm_event = threading.Event()
                 confirm_thread = threading.Thread(target=audio.listen_for_keyword, args=(confirm_event, "confirmar"))
                 confirm_thread.start()
                 
-                # Show UI (blocks until confirm_event is set)
-                media.display_verification_ui(phone_number, confirm_event)
+                # Wait for confirmation
+                confirm_event.wait()
+                confirm_thread.join()
                 
-                # Ensure thread joins
-                confirm_event.set()
-                confirm_thread.join(timeout=1)
+                phone_display.stop()
                 
                 # 7. Send Message & Save Metadata
-                messaging.send_welcome_message(phone_number)
+                messaging.send_welcome_message(final_phone_number)
                 
                 # Save Metadata JSON
                 metadata = {
                     "video_path": user_video_path,
-                    "phone_number": phone_number,
+                    "phone_number": final_phone_number,
                     "timestamp": timestamp,
-                    "phone_audio_path": phone_audio_path
+                    "full_transcript": full_transcript
                 }
                 json_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.json")
                 import json
@@ -99,6 +131,8 @@ def main():
                 logging.info(f"Metadata saved to {json_path}")
 
             else:
+                logging.warning("Could not identify phone number (timeout or manual stop).")
+                phone_display.stop()
                 logging.warning("Could not identify phone number.")
 
             logging.info("Experience finished. Resetting...")
