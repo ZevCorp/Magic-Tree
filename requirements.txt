@@ -6,3 +6,4 @@ pyaudio
 requests
 numpy
 openai
+pygame

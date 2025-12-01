@@ -23,7 +23,9 @@ sudo apt-get install -y \
     libopenjp2-7 \
     libtiff5 \
     wget \
-    unzip
+    unzip \
+    nodejs \
+    npm
 
 # Create virtual environment if it doesn't exist
 if [ ! -d "venv" ]; then
@@ -79,6 +81,16 @@ if [ ! -d "model/vosk-model-small-es-0.42" ]; then
     cd ..
 else
     echo "Vosk Model already exists."
+fi
+
+# Install Node.js dependencies for Messaging
+echo "Installing Node.js dependencies for Messaging..."
+if [ -d "messaging" ]; then
+    cd messaging
+    npm install
+    cd ..
+else
+    echo "Warning: 'messaging' directory not found!"
 fi
 
 echo ""
