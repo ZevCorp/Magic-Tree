@@ -2,6 +2,7 @@ import cv2
 import time
 import logging
 import os
+import threading
 try:
     import vlc
     VLC_AVAILABLE = True
