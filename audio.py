@@ -27,6 +27,36 @@ class AudioManager:
                 self.vosk_model = Model(VOSK_MODEL_PATH)
             else:
                 logging.warning(f"Vosk model not found at {VOSK_MODEL_PATH}")
+        
+        # Initialize Pygame for music
+        try:
+            import pygame
+            pygame.mixer.init()
+            self.pygame_available = True
+        except ImportError:
+            logging.warning("pygame not found. Background music will be disabled.")
+            self.pygame_available = False
+
+    def play_background_music(self):
+        if self.pygame_available and os.path.exists(BACKGROUND_MUSIC_PATH):
+            try:
+                logging.info(f"Playing background music: {BACKGROUND_MUSIC_PATH}")
+                import pygame
+                pygame.mixer.music.load(BACKGROUND_MUSIC_PATH)
+                pygame.mixer.music.play(-1) # Loop indefinitely
+            except Exception as e:
+                logging.error(f"Error playing background music: {e}")
+        else:
+            logging.warning("Cannot play background music (pygame missing or file not found).")
+
+    def stop_background_music(self):
+        if self.pygame_available:
+            try:
+                import pygame
+                pygame.mixer.music.fadeout(1000)
+                logging.info("Background music stopped.")
+            except Exception as e:
+                logging.error(f"Error stopping background music: {e}")
 
     def listen_for_keyword(self, stop_event, keyword="feliz navidad"):
         """

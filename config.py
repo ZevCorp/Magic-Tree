@@ -4,6 +4,12 @@ import os
 DOOR_SENSOR_PIN = 17  # GPIO Pin for the door sensor
 
 # API Configuration
+import os
+
+# Hardware Configuration
+DOOR_SENSOR_PIN = 17  # GPIO Pin for the door sensor
+
+# API Configuration
 OPENAI_API_KEY = "YOUR_OPENAI_API_KEY" # Replace with your actual API key
 
 # File Paths
@@ -14,6 +20,8 @@ MODEL_DIR = os.path.join(BASE_DIR, "model")
 
 INTRO_VIDEO_PATH = os.path.join(ASSETS_DIR, "intro.mp4")
 ASK_PHONE_VIDEO_PATH = os.path.join(ASSETS_DIR, "ask_phone.mp4")
+CHRISTMAS_BG_PATH = os.path.join(ASSETS_DIR, "christmas_bg.png")
+BACKGROUND_MUSIC_PATH = os.path.join(ASSETS_DIR, "background_music.mp3")
 
 # Audio Configuration
 SAMPLE_RATE = 16000

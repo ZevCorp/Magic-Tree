@@ -63,6 +63,9 @@ def main():
             logging.info("STEP 5: Starting continuous phone dictation...")
             logging.info("=" * 50)
             
+            # Start Background Music
+            audio.play_background_music()
+            
             # Start UI Thread immediately
             phone_display = media.PhoneDisplay()
             phone_display.start()
@@ -113,6 +116,7 @@ def main():
                 confirm_thread.join()
                 
                 phone_display.stop()
+                audio.stop_background_music()
                 
                 # 7. Send Message & Save Metadata
                 messaging.send_welcome_message(final_phone_number)
@@ -133,6 +137,7 @@ def main():
             else:
                 logging.warning("Could not identify phone number (timeout or manual stop).")
                 phone_display.stop()
+                audio.stop_background_music()
                 logging.warning("Could not identify phone number.")
 
             logging.info("Experience finished. Resetting...")

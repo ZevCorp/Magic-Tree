@@ -103,13 +103,23 @@ class PhoneDisplay(threading.Thread):
         
     def run(self):
         import numpy as np
+        from config import CHRISTMAS_BG_PATH
+        
         cv2.namedWindow(self.window_name, cv2.WND_PROP_FULLSCREEN)
         cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
         
+        # Load Background
+        if os.path.exists(CHRISTMAS_BG_PATH):
+            bg_img = cv2.imread(CHRISTMAS_BG_PATH)
+            bg_img = cv2.resize(bg_img, (1920, 1080))
+        else:
+            logging.warning(f"Christmas background not found at {CHRISTMAS_BG_PATH}, using black.")
+            bg_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
+
         font = cv2.FONT_HERSHEY_SIMPLEX
         
         while self.running:
-            img = np.zeros((1080, 1920, 3), dtype=np.uint8)
+            img = bg_img.copy()
             
             with self.lock:
                 current_number = self.number
@@ -130,7 +140,7 @@ class PhoneDisplay(threading.Thread):
             text_size_inst = cv2.getTextSize(current_status, font, font_scale_inst, thickness_inst)[0]
             text_x_inst = (img.shape[1] - text_size_inst[0]) // 2
             text_y_inst = (img.shape[0] // 2) + 150
-            cv2.putText(img, current_status, (text_x_inst, text_y_inst), font, font_scale_inst, (200, 200, 200), thickness_inst)
+            cv2.putText(img, current_status, (text_x_inst, text_y_inst), font, font_scale_inst, (220, 220, 220), thickness_inst)
 
             cv2.imshow(self.window_name, img)
             
