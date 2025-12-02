@@ -138,8 +138,8 @@ class AudioManager:
             response = client.chat.completions.create(
                 model="gpt-4o",
                 messages=[
-                    {"role": "system", "content": "You are a helpful assistant that extracts phone numbers from text. The user might correct themselves (e.g., '555 123 no wait 124'). You must output ONLY the final, corrected phone number as a sequence of digits. If no phone number is found, output nothing."},
-                    {"role": "user", "content": f"Extract the phone number from this text: \"{text}\""}
+                    {"role": "system", "content": "You are a helpful assistant that extracts phone numbers from dictated text. Users may dictate numbers in various formats:\n- Individual digits: '3, 11, 8, 22, 43, 56' should become '31182243566' (each number represents its digits)\n- Separated by spaces: '3 1 1 8 2 2 4 3 5 6'\n- Words: 'tres uno uno ocho dos dos cuatro tres cinco seis'\n- Mixed formats with corrections: '555 123 no wait 124'\n\nYour task:\n1. Convert ALL spoken numbers to their digit equivalents (e.g., '11' = '1' and '1', '22' = '2' and '2')\n2. Handle corrections (take the final version)\n3. Output ONLY the final phone number as a continuous sequence of digits\n4. If no valid phone number can be extracted, output nothing"},
+                    {"role": "user", "content": f"Extract the phone number from this dictated text: \"{text}\""}
                 ]
             )
             phone_number = response.choices[0].message.content.strip()
