@@ -103,52 +103,64 @@ class PhoneDisplay(threading.Thread):
         self.window_name = "Phone Verification"
         
     def run(self):
-        import numpy as np
-        from config import CHRISTMAS_BG_PATH
-        
-        cv2.namedWindow(self.window_name, cv2.WND_PROP_FULLSCREEN)
-        cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-        
-        # Load Background
-        if os.path.exists(CHRISTMAS_BG_PATH):
-            bg_img = cv2.imread(CHRISTMAS_BG_PATH)
-            bg_img = cv2.resize(bg_img, (1920, 1080))
-        else:
-            logging.warning(f"Christmas background not found at {CHRISTMAS_BG_PATH}, using black.")
-            bg_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
+        try:
+            logging.info("PhoneDisplay thread started")
+            import numpy as np
+            from config import CHRISTMAS_BG_PATH
+            
+            logging.info(f"Creating window: {self.window_name}")
+            cv2.namedWindow(self.window_name, cv2.WND_PROP_FULLSCREEN)
+            cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+            logging.info("Window created and set to fullscreen")
+            
+            # Load Background
+            if os.path.exists(CHRISTMAS_BG_PATH):
+                logging.info(f"Loading Christmas background from {CHRISTMAS_BG_PATH}")
+                bg_img = cv2.imread(CHRISTMAS_BG_PATH)
+                bg_img = cv2.resize(bg_img, (1920, 1080))
+                logging.info("Background loaded successfully")
+            else:
+                logging.warning(f"Christmas background not found at {CHRISTMAS_BG_PATH}, using black.")
+                bg_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
 
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        
-        while self.running:
-            img = bg_img.copy()
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            logging.info("Starting PhoneDisplay render loop")
             
-            with self.lock:
-                current_number = self.number
-                current_status = self.status
-            
-            # 1. Draw Phone Number
-            if current_number:
-                font_scale_num = 5
-                thickness_num = 10
-                text_size_num = cv2.getTextSize(current_number, font, font_scale_num, thickness_num)[0]
-                text_x_num = (img.shape[1] - text_size_num[0]) // 2
-                text_y_num = (img.shape[0] // 2)
-                cv2.putText(img, current_number, (text_x_num, text_y_num), font, font_scale_num, (255, 255, 255), thickness_num)
-            
-            # 2. Draw Status/Instruction
-            font_scale_inst = 2
-            thickness_inst = 4
-            text_size_inst = cv2.getTextSize(current_status, font, font_scale_inst, thickness_inst)[0]
-            text_x_inst = (img.shape[1] - text_size_inst[0]) // 2
-            text_y_inst = (img.shape[0] // 2) + 150
-            cv2.putText(img, current_status, (text_x_inst, text_y_inst), font, font_scale_inst, (220, 220, 220), thickness_inst)
-
-            cv2.imshow(self.window_name, img)
-            
-            if cv2.waitKey(100) & 0xFF == ord('q'):
-                self.running = False
+            while self.running:
+                img = bg_img.copy()
                 
-        cv2.destroyWindow(self.window_name)
+                with self.lock:
+                    current_number = self.number
+                    current_status = self.status
+                
+                # 1. Draw Phone Number
+                if current_number:
+                    font_scale_num = 5
+                    thickness_num = 10
+                    text_size_num = cv2.getTextSize(current_number, font, font_scale_num, thickness_num)[0]
+                    text_x_num = (img.shape[1] - text_size_num[0]) // 2
+                    text_y_num = (img.shape[0] // 2)
+                    cv2.putText(img, current_number, (text_x_num, text_y_num), font, font_scale_num, (255, 255, 255), thickness_num)
+                
+                # 2. Draw Status/Instruction
+                font_scale_inst = 2
+                thickness_inst = 4
+                text_size_inst = cv2.getTextSize(current_status, font, font_scale_inst, thickness_inst)[0]
+                text_x_inst = (img.shape[1] - text_size_inst[0]) // 2
+                text_y_inst = (img.shape[0] // 2) + 150
+                cv2.putText(img, current_status, (text_x_inst, text_y_inst), font, font_scale_inst, (220, 220, 220), thickness_inst)
+
+                cv2.imshow(self.window_name, img)
+                
+                if cv2.waitKey(100) & 0xFF == ord('q'):
+                    self.running = False
+            
+            logging.info("PhoneDisplay loop ended, destroying window")
+            cv2.destroyWindow(self.window_name)
+            logging.info("PhoneDisplay thread finished")
+            
+        except Exception as e:
+            logging.error(f"Error in PhoneDisplay thread: {e}", exc_info=True)
 
     def update_number(self, number):
         with self.lock:
