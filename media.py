@@ -113,22 +113,47 @@ class PhoneDisplay(threading.Thread):
             import numpy as np
             from config import CHRISTMAS_BG_PATH
             
+            # Create window with a more robust approach for Wayland/X11 compatibility
             logging.info(f"Creating window: {self.window_name}")
-            cv2.namedWindow(self.window_name, cv2.WND_PROP_FULLSCREEN)
-            cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-            logging.info("Window created and set to fullscreen")
             
-            # Load Background
+            # First create a normal window
+            cv2.namedWindow(self.window_name, cv2.WINDOW_NORMAL)
+            logging.info("Normal window created")
+            
+            # Load Background first (before setting fullscreen)
             if os.path.exists(CHRISTMAS_BG_PATH):
                 logging.info(f"Loading Christmas background from {CHRISTMAS_BG_PATH}")
                 bg_img = cv2.imread(CHRISTMAS_BG_PATH)
-                bg_img = cv2.resize(bg_img, (1920, 1080))
-                logging.info("Background loaded successfully")
+                if bg_img is None:
+                    logging.error("Failed to load background image, using black")
+                    bg_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
+                else:
+                    bg_img = cv2.resize(bg_img, (1920, 1080))
+                    logging.info("Background loaded successfully")
             else:
                 logging.warning(f"Christmas background not found at {CHRISTMAS_BG_PATH}, using black.")
                 bg_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
 
             font = cv2.FONT_HERSHEY_SIMPLEX
+            
+            # Show initial frame before going fullscreen
+            initial_img = bg_img.copy()
+            text = "Escuchando..."
+            text_size = cv2.getTextSize(text, font, 2, 4)[0]
+            text_x = (initial_img.shape[1] - text_size[0]) // 2
+            text_y = (initial_img.shape[0] // 2)
+            cv2.putText(initial_img, text, (text_x, text_y), font, 2, (220, 220, 220), 4)
+            cv2.imshow(self.window_name, initial_img)
+            cv2.waitKey(1)
+            logging.info("Initial frame displayed")
+            
+            # Now try to set fullscreen
+            try:
+                cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+                logging.info("Window set to fullscreen")
+            except Exception as e:
+                logging.warning(f"Could not set fullscreen: {e}, continuing with normal window")
+            
             logging.info("Starting PhoneDisplay render loop")
             
             while self.running:
