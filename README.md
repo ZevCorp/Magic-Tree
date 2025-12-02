@@ -1,53 +1,77 @@
-# Experiencia del Árbol Encantado (Raspberry Pi 5)
+# 🎄 Árbol Encantado - Magic Tree
 
-Este proyecto implementa una experiencia interactiva donde un Árbol Encantado (Papá Noel) interactúa con el usuario.
+Experiencia interactiva navideña con detección de voz y captura de video.
 
-## Funcionalidad
-1.  **Detección de Puerta**: Inicia cuando se abre la puerta (Sensor Magnético).
-2.  **Intro**: Reproduce un video de bienvenida.
-3.  **Grabación**: Graba al usuario hasta que dice "Feliz Navidad".
-4.  **Teléfono**: Pide el número de teléfono del usuario.
-5.  **Procesamiento**: Transcribe el número usando Whisperflow API.
-6.  **Mensaje**: Envía un saludo (simulado/log).
+## 🚀 Inicio Rápido
 
-## Requisitos de Hardware
--   Raspberry Pi 5
--   Cámara (USB o CSI)
--   Sensor de puerta (Reed Switch) conectado al GPIO 17 y GND.
--   Altavoces
--   Pantalla
+### En Raspberry Pi (Recomendado)
 
-## Instalación
+Para evitar problemas con Wayland, usa los scripts wrapper que fuerzan X11:
 
-1.  Clona o copia este repositorio en la Raspberry Pi.
-2.  Ejecuta el script de instalación:
-    ```bash
-    chmod +x setup.sh
-    ./setup.sh
-    ```
-3.  **Importante**: Coloca tus archivos de video en la carpeta `assets/`:
-    -   `intro.mp4`: Video de Papá Noel hablando.
-    -   `ask_phone.mp4`: Video pidiendo el teléfono.
-4.  Edita `config.py` y añade tu **API Key de Whisperflow**.
-
-## Ejecución
-
-### Modo Completo (con sensor de puerta)
 ```bash
+# Modo de prueba (sin sensor de puerta)
+chmod +x run_test.sh
+./run_test.sh
+
+# Modo completo (con sensor de puerta)
+chmod +x run_main.sh
+./run_main.sh
+```
+
+### Ejecución Directa (Puede tener problemas en Wayland)
+
+```bash
+# Activar entorno virtual
 source venv/bin/activate
+
+# Modo de prueba
+python test_mode.py
+
+# Modo completo
 python main.py
 ```
-Este es el modo de producción. Requiere el sensor de puerta conectado al GPIO 17.
 
-### Modo de Prueba (sin sensor de puerta)
-```bash
-source venv/bin/activate
-python test_mode.py
-```
-Este modo ejecuta la **experiencia completa** (cámara, audio, videos) pero sin el sensor de puerta. 
-Presiona Enter para iniciar la experiencia en lugar de abrir la puerta.
+## 🔧 Solución de Problemas
 
-**Perfecto para probar el sistema sin hardware GPIO.**
+### Error: "xdg_wm_base error 4: wrong configure serial"
 
-## Configuración
-Puedes ajustar los pines GPIO y otras configuraciones en `config.py`.
+Este error ocurre cuando el sistema usa Wayland. **Solución**: Usa los scripts `run_test.sh` o `run_main.sh` que fuerzan X11.
+
+### La ventana de feedback no aparece
+
+1. Verifica que los scripts tengan permisos de ejecución: `chmod +x run_*.sh`
+2. Usa los scripts wrapper en lugar de ejecutar Python directamente
+3. Revisa los logs para ver dónde se bloquea
+
+### La música de fondo no suena
+
+Instala pygame: `pip install pygame`
+
+## 📁 Estructura del Proyecto
+
+- `main.py` - Programa principal con sensor de puerta
+- `test_mode.py` - Modo de prueba sin sensor
+- `run_main.sh` - Wrapper X11 para main.py
+- `run_test.sh` - Wrapper X11 para test_mode.py
+- `audio.py` - Gestión de audio y reconocimiento de voz
+- `media.py` - Gestión de video y cámara
+- `hardware.py` - Control del sensor de puerta
+- `messaging.py` - Envío de mensajes WhatsApp
+- `config.py` - Configuración del sistema
+
+## 🎯 Flujo de la Experiencia
+
+1. **Espera** - El sistema espera que se abra la puerta (o Enter en modo test)
+2. **Video Intro** - Reproducción del video de Santa
+3. **Grabación** - Graba al usuario hasta que diga "Feliz Navidad"
+4. **Solicitud de Teléfono** - Video pidiendo el número de teléfono
+5. **Captura de Teléfono** - Pantalla con fondo navideño que muestra el número dictado
+6. **Confirmación** - Usuario dice "Confirmar"
+7. **Envío** - Se envía mensaje de WhatsApp con el video
+
+## 📝 Notas Técnicas
+
+- **Sistema de Ventanas**: Los scripts wrapper fuerzan X11 para evitar conflictos con Wayland
+- **Detección de Voz**: Usa Vosk para palabras clave y OpenAI Whisper para transcripción
+- **Extracción de Números**: GPT-4o interpreta números dictados en varios formatos
+- **Display**: OpenCV para UI de feedback, VLC para reproducción de videos
