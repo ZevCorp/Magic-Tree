@@ -86,6 +86,9 @@ def main():
                 logging.warning(f"Video no encontrado: {ASK_PHONE_VIDEO_PATH}")
                 logging.info("Simulando video (3 segundos)...")
                 time.sleep(3)
+            
+            # Give VLC time to release the display
+            time.sleep(0.5)
 
             # 5. Record & Process Phone Number Continuously
             logging.info("=" * 50)

@@ -35,7 +35,12 @@ class MediaManager:
                     logging.error("VLC Error")
                     break
                 time.sleep(0.1)
-            self.player.stop() # Ensure it's stopped/closed
+            
+            # Properly release fullscreen and stop
+            self.player.set_fullscreen(False)
+            self.player.stop()
+            time.sleep(0.1)  # Give window system time to clean up
+            logging.info("Video playback finished")
         else:
             logging.info("Mock playing video (3 seconds)...")
             time.sleep(3)

@@ -57,6 +57,9 @@ def main():
 
             # 4. Ask for Phone Number
             media.play_video(ASK_PHONE_VIDEO_PATH)
+            
+            # Give VLC time to release the display
+            time.sleep(0.5)
 
             # 5. Record & Process Phone Number Continuously
             logging.info("=" * 50)
