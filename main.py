@@ -67,7 +67,8 @@ def main():
             audio.play_background_music()
             
             # Start UI Thread immediately
-            phone_display = media.PhoneDisplay()
+            from media import PhoneDisplay
+            phone_display = PhoneDisplay()
             phone_display.start()
             
             full_transcript = ""

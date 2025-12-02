@@ -93,7 +93,8 @@ def main():
             logging.info("=" * 50)
             
             # Start UI Thread immediately
-            phone_display = media.PhoneDisplay()
+            from media import PhoneDisplay
+            phone_display = PhoneDisplay()
             phone_display.start()
             
             full_transcript = ""
