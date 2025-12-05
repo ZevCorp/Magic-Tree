@@ -128,9 +128,8 @@ class MediaManager:
         # Deprecated: Use PhoneDisplay class instead
         pass
 
-class PhoneDisplay(threading.Thread):
+class PhoneDisplay:
     def __init__(self):
-        super().__init__()
         self.number = ""
         self.status = "Escuchando..."
         self.running = True
@@ -139,7 +138,7 @@ class PhoneDisplay(threading.Thread):
         
     def run(self):
         try:
-            logging.info("PhoneDisplay thread started")
+            logging.info("PhoneDisplay started on main thread")
             import numpy as np
             from config import CHRISTMAS_BG_PATH
             
@@ -217,10 +216,10 @@ class PhoneDisplay(threading.Thread):
             
             logging.info("PhoneDisplay loop ended, destroying window")
             cv2.destroyWindow(self.window_name)
-            logging.info("PhoneDisplay thread finished")
+            logging.info("PhoneDisplay finished")
             
         except Exception as e:
-            logging.error(f"Error in PhoneDisplay thread: {e}", exc_info=True)
+            logging.error(f"Error in PhoneDisplay: {e}", exc_info=True)
 
     def update_number(self, number):
         with self.lock:
@@ -232,4 +231,3 @@ class PhoneDisplay(threading.Thread):
 
     def stop(self):
         self.running = False
-        self.join()

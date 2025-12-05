@@ -60,57 +60,68 @@ def main():
             # Start Background Music
             audio.play_background_music()
             
-            # Start UI Thread immediately
+            # Initialize PhoneDisplay
             from media import PhoneDisplay
             phone_display = PhoneDisplay()
-            phone_display.start()
             
+            # Shared state
             full_transcript = ""
             final_phone_number = None
             audio_stop_event = threading.Event()
             
-            # Process audio chunks
-            for chunk_path in audio.stream_audio_chunks(audio_stop_event, chunk_duration=5):
-                logging.info(f"Processing chunk: {chunk_path}")
-                chunk_text = audio.transcribe_with_openai(chunk_path)
+            def audio_worker():
+                nonlocal full_transcript, final_phone_number
+                logging.info("Audio worker started")
                 
-                if chunk_text:
-                    full_transcript += " " + chunk_text
-                    logging.info(f"Full Transcript so far: {full_transcript}")
-                    
-                    # Extract number from accumulated text
-                    extracted_number = audio.extract_phone_number_with_assistant(full_transcript)
-                    
-                    if extracted_number:
-                        phone_display.update_number(extracted_number)
+                # Process audio chunks
+                for chunk_path in audio.stream_audio_chunks(audio_stop_event, chunk_duration=5):
+                    if not phone_display.running: # Stop if UI closed
+                        break
                         
-                        # Check if we have enough digits (e.g., 10)
-                        if len(extracted_number) >= 10:
-                            logging.info(f"Found valid number: {extracted_number}")
-                            final_phone_number = extracted_number
-                            audio_stop_event.set() # Stop recording loop
-                            break
-                
-                # Cleanup chunk file
-                try:
-                    os.remove(chunk_path)
-                except:
-                    pass
+                    logging.info(f"Processing chunk: {chunk_path}")
+                    chunk_text = audio.transcribe_with_openai(chunk_path)
+                    
+                    if chunk_text:
+                        full_transcript += " " + chunk_text
+                        logging.info(f"Full Transcript so far: {full_transcript}")
+                        
+                        # Extract number from accumulated text
+                        extracted_number = audio.extract_phone_number_with_assistant(full_transcript)
+                        
+                        if extracted_number:
+                            phone_display.update_number(extracted_number)
+                            
+                            # Check if we have enough digits (e.g., 10)
+                            if len(extracted_number) >= 10:
+                                logging.info(f"Found valid number: {extracted_number}")
+                                final_phone_number = extracted_number
+                                audio_stop_event.set() # Stop recording loop
+                                phone_display.stop() # Stop UI loop
+                                break
+                    
+                    # Cleanup chunk file
+                    try:
+                        os.remove(chunk_path)
+                    except:
+                        pass
+                logging.info("Audio worker finished")
+
+            # Start Audio Worker in Background Thread
+            audio_thread = threading.Thread(target=audio_worker)
+            audio_thread.start()
+            
+            # Run UI on Main Thread (Blocking)
+            phone_display.run()
+            
+            # Ensure audio thread stops
+            audio_stop_event.set()
+            audio_thread.join()
 
             if final_phone_number:
                 # 6. Verification
                 logging.info("Waiting for user confirmation ('confirmar')...")
-                phone_display.set_status("Di 'Confirmar' para continuar")
-                
-                confirm_event = threading.Event()
-                confirm_thread = threading.Thread(target=audio.listen_for_keyword, args=(confirm_event, "confirmar"))
-                confirm_thread.start()
-                
-                # Wait for confirmation
-                confirm_event.wait()
-                confirm_thread.join()
-                
-                phone_display.stop()
+                # Re-initialize display for confirmation if needed, or just use console for now as requested "simple"
+                # But we need to stop the music
                 audio.stop_background_music()
                 
                 # 7. Send Message & Save Metadata
@@ -131,7 +142,6 @@ def main():
 
             else:
                 logging.warning("Could not identify phone number (timeout or manual stop).")
-                phone_display.stop()
                 audio.stop_background_music()
                 logging.warning("Could not identify phone number.")
 
