@@ -177,12 +177,13 @@ class PhoneDisplay:
             cv2.waitKey(1)
             logging.info("Initial frame displayed")
             
-            # Now try to set fullscreen
+            # Now try to set fullscreen and topmost
             try:
                 cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                logging.info("Window set to fullscreen")
+                cv2.setWindowProperty(self.window_name, cv2.WND_PROP_TOPMOST, 1)
+                logging.info("Window set to fullscreen and topmost")
             except Exception as e:
-                logging.warning(f"Could not set fullscreen: {e}, continuing with normal window")
+                logging.warning(f"Could not set window properties: {e}")
             
             logging.info("Starting PhoneDisplay render loop")
             
@@ -212,7 +213,13 @@ class PhoneDisplay:
 
                 cv2.imshow(self.window_name, img)
                 
-                key = cv2.waitKey(100) & 0xFF
+                # Force focus periodically (hacky but might help on some WMs)
+                # cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
+                key = cv2.waitKey(50) & 0xFF
+                if key != 255: # 255 is what waitKey returns when no key is pressed on some systems
+                    logging.info(f"Key pressed: {key}")
+                    
                 if key == ord('q'):
                     self.running = False
                 elif key == 13: # Enter
