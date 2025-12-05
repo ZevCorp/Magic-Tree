@@ -133,6 +133,7 @@ class PhoneDisplay:
         self.number = ""
         self.status = "Escuchando..."
         self.running = True
+        self.confirmed = False
         self.lock = threading.Lock()
         self.window_name = "Phone Verification"
         
@@ -211,8 +212,19 @@ class PhoneDisplay:
 
                 cv2.imshow(self.window_name, img)
                 
-                if cv2.waitKey(100) & 0xFF == ord('q'):
+                key = cv2.waitKey(100) & 0xFF
+                if key == ord('q'):
                     self.running = False
+                elif key == 13: # Enter
+                    logging.info("Enter pressed, confirming number")
+                    self.confirmed = True
+                    self.running = False
+                elif key == 8: # Backspace
+                    with self.lock:
+                        self.number = self.number[:-1]
+                elif 48 <= key <= 57: # 0-9
+                    with self.lock:
+                        self.number += chr(key)
             
             logging.info("PhoneDisplay loop ended, destroying window")
             cv2.destroyWindow(self.window_name)

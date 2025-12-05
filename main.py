@@ -117,11 +117,30 @@ def main():
             audio_stop_event.set()
             audio_thread.join()
 
+            # Check if confirmed via keyboard
+            if phone_display.confirmed:
+                logging.info(f"Number confirmed via keyboard: {phone_display.number}")
+                final_phone_number = phone_display.number
+
             if final_phone_number:
                 # 6. Verification
-                logging.info("Waiting for user confirmation ('confirmar')...")
-                # Re-initialize display for confirmation if needed, or just use console for now as requested "simple"
-                # But we need to stop the music
+                if not phone_display.confirmed:
+                    logging.info("Waiting for user confirmation ('confirmar')...")
+                    # Re-initialize display for confirmation if needed, or just use console for now as requested "simple"
+                    # But we need to stop the music
+                    
+                    # NOTE: Since we closed the UI, we can't show "Di Confirmar" on screen easily without reopening.
+                    # For now, we rely on voice command blind, or we could restart UI.
+                    # Given "simple" requirement and previous context, we'll just wait for voice.
+                    
+                    confirm_event = threading.Event()
+                    confirm_thread = threading.Thread(target=audio.listen_for_keyword, args=(confirm_event, "confirmar"))
+                    confirm_thread.start()
+                    
+                    # Wait for confirmation
+                    confirm_event.wait()
+                    confirm_thread.join()
+                
                 audio.stop_background_music()
                 
                 # 7. Send Message & Save Metadata
