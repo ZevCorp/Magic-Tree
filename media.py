@@ -214,7 +214,8 @@ class PhoneDisplay:
                 cv2.imshow(self.window_name, img)
                 
                 # Force focus periodically (hacky but might help on some WMs)
-                # cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+                if int(time.time()) % 2 == 0: # Every 2 seconds roughly
+                     cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
                 key = cv2.waitKey(50) & 0xFF
                 if key != 255: # 255 is what waitKey returns when no key is pressed on some systems
