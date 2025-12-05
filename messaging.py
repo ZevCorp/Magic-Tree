@@ -19,10 +19,14 @@ class MessagingService:
                 ["node", script_path, phone_number],
                 capture_output=True,
                 text=True,
-                check=True
+                check=True,
+                timeout=60
             )
             logging.info(f"Node.js output: {result.stdout}")
             return True
         except subprocess.CalledProcessError as e:
             logging.error(f"Error sending message: {e.stderr}")
+            return False
+        except subprocess.TimeoutExpired:
+            logging.error("Error: Messaging service timed out after 60 seconds.")
             return False

@@ -27,9 +27,25 @@ if (process.platform === 'linux' && foundPath) {
     puppeteerConfig.executablePath = foundPath;
 }
 
+// Add robust args for environment
+puppeteerConfig.args = [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process',
+    '--disable-gpu'
+];
+
 const client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: puppeteerConfig
+    puppeteer: puppeteerConfig,
+    webVersionCache: {
+        type: 'remote',
+        remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html',
+    }
 });
 
 const args = process.argv.slice(2);
