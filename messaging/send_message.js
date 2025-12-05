@@ -7,10 +7,24 @@ let puppeteerConfig = {
 };
 
 // Check for system Chromium (common on Raspberry Pi)
-const systemChromiumPath = '/usr/bin/chromium-browser';
-if (process.platform === 'linux' && fs.existsSync(systemChromiumPath)) {
-    console.log(`Using system Chromium at ${systemChromiumPath}`);
-    puppeteerConfig.executablePath = systemChromiumPath;
+const possiblePaths = [
+    '/usr/bin/chromium',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/google-chrome-stable',
+    '/snap/bin/chromium'
+];
+
+let foundPath = null;
+for (const path of possiblePaths) {
+    if (fs.existsSync(path)) {
+        foundPath = path;
+        break;
+    }
+}
+
+if (process.platform === 'linux' && foundPath) {
+    console.log(`Using system Chromium at ${foundPath}`);
+    puppeteerConfig.executablePath = foundPath;
 }
 
 const client = new Client({
