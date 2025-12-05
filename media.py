@@ -45,7 +45,7 @@ class MediaManager:
             logging.info("Mock playing video (3 seconds)...")
             time.sleep(3)
 
-    def record_user(self, output_path, stop_event):
+    def record_user(self, output_path, stop_event=None):
         logging.info(f"Starting recording to {output_path}")
         logging.info("Opening camera...")
         self.camera = cv2.VideoCapture(0)
@@ -70,12 +70,42 @@ class MediaManager:
         cv2.namedWindow("Recording", cv2.WND_PROP_FULLSCREEN)
         cv2.setWindowProperty("Recording", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
-        logging.info("Recording started! Waiting for 'Feliz Navidad' or 'q' key...")
+        logging.info("Recording started! 30 seconds countdown...")
         frame_count = 0
         
-        while not stop_event.is_set():
+        start_time = time.time()
+        duration = 30
+        
+        while True:
+            # Check if external stop was requested (optional now)
+            if stop_event and stop_event.is_set():
+                break
+
+            elapsed = time.time() - start_time
+            remaining = max(0, duration - int(elapsed))
+            
+            if remaining == 0:
+                logging.info("Timer finished!")
+                break
+
             ret, frame = self.camera.read()
             if ret:
+                # Add countdown timer to frame
+                # Bottom right corner
+                text = str(remaining)
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                font_scale = 4
+                thickness = 8
+                color = (255, 255, 255) # White
+                
+                text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
+                text_x = width - text_size[0] - 50
+                text_y = height - 50
+                
+                # Draw text with outline for better visibility
+                cv2.putText(frame, text, (text_x, text_y), font, font_scale, (0, 0, 0), thickness + 4)
+                cv2.putText(frame, text, (text_x, text_y), font, font_scale, color, thickness)
+
                 out.write(frame)
                 cv2.imshow('Recording', frame)
                 frame_count += 1

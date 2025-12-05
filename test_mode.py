@@ -55,26 +55,17 @@ def main():
                 logging.info("Simulando reproducción (3 segundos)...")
                 time.sleep(3)
 
-            # 3. Record User + Wait for "Feliz Navidad"
+            # 3. Record User (30 seconds fixed)
             logging.info("=" * 50)
-            logging.info("STEP 3: Starting camera recording...")
-            logging.info("Say 'Feliz Navidad' to stop recording")
+            logging.info("STEP 3: Starting camera recording (30s)...")
+            logging.info("Recording will stop automatically after 30 seconds.")
             logging.info("=" * 50)
             
             timestamp = int(time.time())
             user_video_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.avi")
             
-            stop_event = threading.Event()
-            # Start listening for keyword in background
-            listener_thread = threading.Thread(target=audio.listen_for_keyword, args=(stop_event,))
-            listener_thread.start()
-            
-            # Start recording (blocks until stop_event is set)
-            media.record_user(user_video_path, stop_event)
-            
-            # Ensure listener thread stops if recording ended manually
-            stop_event.set()
-            listener_thread.join(timeout=1)
+            # Start recording (blocks for 30 seconds)
+            media.record_user(user_video_path)
 
             # 4. Ask for Phone Number
             logging.info("=" * 50)
