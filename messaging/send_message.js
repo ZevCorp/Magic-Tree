@@ -1,11 +1,21 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const fs = require('fs');
+
+let puppeteerConfig = {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+};
+
+// Check for system Chromium (common on Raspberry Pi)
+const systemChromiumPath = '/usr/bin/chromium-browser';
+if (process.platform === 'linux' && fs.existsSync(systemChromiumPath)) {
+    console.log(`Using system Chromium at ${systemChromiumPath}`);
+    puppeteerConfig.executablePath = systemChromiumPath;
+}
 
 const client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: {
-        args: ['--no-sandbox']
-    }
+    puppeteer: puppeteerConfig
 });
 
 const args = process.argv.slice(2);
