@@ -3,3 +3,4 @@ __pycache__/
 node_modules/
 recordings/
 assets/background_music.mp3
+.wwebjs_auth/
