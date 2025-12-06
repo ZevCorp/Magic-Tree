@@ -62,17 +62,19 @@ client.on('ready', async () => {
     console.log('Client is ready!');
 
     // Wait a bit for the interface to stabilize
-    console.log('Waiting 10 seconds for WhatsApp Web to stabilize...');
-    await new Promise(resolve => setTimeout(resolve, 10000));
+    console.log('Waiting 5 seconds for stabilization...');
+    await new Promise(resolve => setTimeout(resolve, 5000));
 
     if (phoneNumber) {
         // Format number: remove non-digits, ensure suffix
         let chatId = phoneNumber.replace(/\D/g, '') + "@c.us";
+        console.log(`Initial Chat ID: ${chatId}`);
 
         try {
             // Attempt to resolve the correct ID (handles LIDs and format issues)
             let numberDetails = null;
             try {
+                console.log('Resolving number ID...');
                 numberDetails = await client.getNumberId(chatId);
             } catch (e) {
                 console.warn('getNumberId failed (likely invalid format or WWebJS error), trying direct send...', e.message);
