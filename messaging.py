@@ -18,9 +18,10 @@ class MessagingService:
         if phone_number.startswith("01") and len(phone_number) > 10:
             phone_number = phone_number[2:]
             
-        # Ensure phone number has country code (assuming Mexico +52 for now if missing)
+        # Ensure phone number has country code
         if len(phone_number) == 10:
-            phone_number = "521" + phone_number
+            from config import PHONE_COUNTRY_CODE
+            phone_number = PHONE_COUNTRY_CODE + phone_number
             
         logging.info(f"Formatted phone number for WhatsApp: {phone_number}")
             

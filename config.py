@@ -29,6 +29,9 @@ CHANNELS = 1
 CHUNK_SIZE = 8000
 VOSK_MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-es-0.42") # Example model name
 
+# Messaging Configuration
+PHONE_COUNTRY_CODE = "57" # Colombia
+
 # Ensure directories exist
 os.makedirs(ASSETS_DIR, exist_ok=True)
 os.makedirs(RECORDINGS_DIR, exist_ok=True)
