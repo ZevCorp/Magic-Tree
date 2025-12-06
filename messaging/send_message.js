@@ -93,8 +93,30 @@ client.on('ready', async () => {
             const finalId = numberDetails ? numberDetails._serialized : chatId;
 
             console.log(`Attempting to send to: ${finalId}`);
-            await client.sendMessage(finalId, message);
-            console.log(`Message sent to ${finalId}`);
+            const sentMsg = await client.sendMessage(finalId, message);
+            console.log(`Message sent to ${finalId}. Waiting for server acknowledgement...`);
+
+            // Wait for ACK to ensure delivery to server
+            const ackPromise = new Promise((resolve, reject) => {
+                const timeout = setTimeout(() => {
+                    console.warn('Timeout waiting for ACK, but message request was sent.');
+                    resolve(); // Resolve anyway to not block forever, but log warning
+                }, 30000);
+
+                client.on('message_ack', (msg, ack) => {
+                    if (msg.id._serialized === sentMsg.id._serialized) {
+                        console.log(`ACK received: ${ack}`);
+                        if (ack >= 1) {
+                            clearTimeout(timeout);
+                            console.log('Message successfully reached WhatsApp server.');
+                            resolve();
+                        }
+                    }
+                });
+            });
+
+            await ackPromise;
+            console.log('Exiting...');
             process.exit(0);
 
         } catch (err) {

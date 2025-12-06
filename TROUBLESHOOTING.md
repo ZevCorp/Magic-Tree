@@ -79,3 +79,15 @@ El sistema ahora intenta corregir automáticamente el formato (probando con y si
 Si el error persiste:
 1. Verifica que el número sea válido y tenga WhatsApp.
 2. Intenta borrar la sesión (`rm -rf .wwebjs_auth`) y volver a vincular.
+
+### Probar WhatsApp Directamente
+Si los mensajes dicen "enviado" pero no llegan, usa el script de prueba dedicado que muestra más detalles y espera confirmación del servidor:
+
+```bash
+node messaging/test_whatsapp.js <NUMERO_TELEFONO>
+```
+Ejemplo:
+```bash
+node messaging/test_whatsapp.js 573114660192
+```
+Este script te dirá si el número existe (`RESOLVED`) y si el servidor recibió el mensaje (`ACK 1`).
