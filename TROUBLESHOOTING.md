@@ -53,3 +53,29 @@ Para verificar que todo está instalado correctamente:
 ```bash
 python -c "import cv2, vlc, vosk, pyaudio, gpiozero; print('Todo OK')"
 ```
+
+### Error de Puppeteer / Chrome (SingletonLock)
+Si ves un error como `Failed to create .../SingletonLock: File exists`, significa que una sesión anterior de Chrome quedó abierta.
+
+**Solución:**
+1. Detén los procesos de Chrome:
+   ```bash
+   pkill -f chromium
+   ```
+2. Elimina el archivo de bloqueo:
+   ```bash
+   rm -rf .wwebjs_auth/session/SingletonLock
+   ```
+3. Si el problema persiste, borra toda la carpeta de sesión (requerirá escanear QR de nuevo):
+   ```bash
+   rm -rf .wwebjs_auth
+   ```
+
+### Error: "No LID for user" o "Evaluation failed"
+Este error ocurre cuando el número de teléfono no tiene el formato correcto para WhatsApp o no está registrado.
+
+**Solución:**
+El sistema ahora intenta corregir automáticamente el formato (probando con y sin el código de país '1' para México).
+Si el error persiste:
+1. Verifica que el número sea válido y tenga WhatsApp.
+2. Intenta borrar la sesión (`rm -rf .wwebjs_auth`) y volver a vincular.

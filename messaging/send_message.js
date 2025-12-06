@@ -66,9 +66,25 @@ client.on('ready', async () => {
         let chatId = phoneNumber.replace(/\D/g, '') + "@c.us";
 
         try {
-            await client.sendMessage(chatId, message);
-            console.log(`Message sent to ${chatId}`);
-            process.exit(0);
+            // Attempt to resolve the correct ID (handles LIDs and format issues)
+            let numberDetails = await client.getNumberId(chatId);
+
+            // Fallback for Mexico: if 521 fails, try 52
+            if (!numberDetails && chatId.startsWith('521')) {
+                const altId = chatId.replace('521', '52');
+                console.log(`Retrying with alternative ID: ${altId}`);
+                numberDetails = await client.getNumberId(altId);
+            }
+
+            if (numberDetails) {
+                const serializedId = numberDetails._serialized;
+                await client.sendMessage(serializedId, message);
+                console.log(`Message sent to ${serializedId}`);
+                process.exit(0);
+            } else {
+                console.error(`Number ${chatId} is not registered on WhatsApp`);
+                process.exit(1);
+            }
         } catch (err) {
             console.error('Failed to send message:', err);
             process.exit(1);
@@ -86,4 +102,13 @@ client.on('auth_failure', msg => {
     process.exit(1);
 });
 
-client.initialize();
+client.initialize().catch(err => {
+    console.error('Initialization failed:', err.message);
+    if (err.message.includes('SingletonLock') || err.message.includes('File exists')) {
+        console.error('\nPOSSIBLE FIX: A previous Chrome session is still locked.');
+        console.error('Try running the following commands to clear the lock:');
+        console.error('  pkill -f chromium');
+        console.error('  rm -rf .wwebjs_auth/session/SingletonLock');
+    }
+    process.exit(1);
+});
