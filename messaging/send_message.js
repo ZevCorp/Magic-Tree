@@ -62,7 +62,8 @@ client.on('ready', async () => {
     console.log('Client is ready!');
 
     // Wait a bit for the interface to stabilize
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    console.log('Waiting 10 seconds for WhatsApp Web to stabilize...');
+    await new Promise(resolve => setTimeout(resolve, 10000));
 
     if (phoneNumber) {
         // Format number: remove non-digits, ensure suffix
