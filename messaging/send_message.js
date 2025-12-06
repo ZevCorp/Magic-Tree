@@ -61,30 +61,41 @@ client.on('qr', (qr) => {
 client.on('ready', async () => {
     console.log('Client is ready!');
 
+    // Wait a bit for the interface to stabilize
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
     if (phoneNumber) {
         // Format number: remove non-digits, ensure suffix
         let chatId = phoneNumber.replace(/\D/g, '') + "@c.us";
 
         try {
             // Attempt to resolve the correct ID (handles LIDs and format issues)
-            let numberDetails = await client.getNumberId(chatId);
+            let numberDetails = null;
+            try {
+                numberDetails = await client.getNumberId(chatId);
+            } catch (e) {
+                console.warn('getNumberId failed (likely invalid format or WWebJS error), trying direct send...', e.message);
+            }
 
             // Fallback for Mexico: if 521 fails, try 52
             if (!numberDetails && chatId.startsWith('521')) {
                 const altId = chatId.replace('521', '52');
                 console.log(`Retrying with alternative ID: ${altId}`);
-                numberDetails = await client.getNumberId(altId);
+                try {
+                    numberDetails = await client.getNumberId(altId);
+                } catch (e) {
+                    console.warn('Alternative getNumberId failed:', e.message);
+                }
             }
 
-            if (numberDetails) {
-                const serializedId = numberDetails._serialized;
-                await client.sendMessage(serializedId, message);
-                console.log(`Message sent to ${serializedId}`);
-                process.exit(0);
-            } else {
-                console.error(`Number ${chatId} is not registered on WhatsApp`);
-                process.exit(1);
-            }
+            // If resolution worked, use the serialized ID. If not, fallback to original chatId.
+            const finalId = numberDetails ? numberDetails._serialized : chatId;
+
+            console.log(`Attempting to send to: ${finalId}`);
+            await client.sendMessage(finalId, message);
+            console.log(`Message sent to ${finalId}`);
+            process.exit(0);
+
         } catch (err) {
             console.error('Failed to send message:', err);
             process.exit(1);
