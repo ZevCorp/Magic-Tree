@@ -44,11 +44,30 @@ class PhoneInputSystem:
         self.digit_map = {
             "cero": "0", "uno": "1", "una": "1", "dos": "2", "tres": "3",
             "cuatro": "4", "cinco": "5", "seis": "6", "siete": "7",
-            "ocho": "8", "nueve": "9"
+            "ocho": "8", "nueve": "9",
+            # 10-19
+            "diez": "10", "once": "11", "doce": "12", "trece": "13", "catorce": "14", 
+            "quince": "15", "dieciseis": "16", "diecisiete": "17", "dieciocho": "18", "diecinueve": "19",
+            # 20-29
+            "veinte": "20", "veintiuno": "21", "veintidos": "22", "veintitres": "23", "veinticuatro": "24",
+            "veinticinco": "25", "veintiseis": "26", "veintisiete": "27", "veintiocho": "28", "veintinueve": "29",
+            # Tens (Simple mapping, might cause issues with 'y' e.g. thirty-one -> 301)
+            "treinta": "30", "cuarenta": "40", "cincuenta": "50", "sesenta": "60",
+            "setenta": "70", "ochenta": "80", "noventa": "90", "cien": "100"
         }
         
-        self.correction_words = ["no", "borrar", "corregir", "atrás", "mal"]
-        self.confirmation_words = ["sí", "confirmar", "ok", "listo", "correcto", "ya"]
+        self.correction_words = ["no", "borrar", "corregir", "atras", "mal"]
+        self.confirmation_words = ["si", "confirmar", "ok", "listo", "correcto", "ya"]
+
+    def normalize_text(self, text):
+        # Simple accent removal
+        replacements = (
+            ("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
+            ("ñ", "n"), ("ü", "u")
+        )
+        for a, b in replacements:
+            text = text.replace(a, b)
+        return text
 
     def _load_sounds(self):
         sounds = {}
@@ -113,20 +132,24 @@ class PhoneInputSystem:
         p.terminate()
 
     def process_text(self, text):
-        print(f"Heard: {text}")
+        text = self.normalize_text(text)
+        print(f"Heard (norm): {text}")
         words = text.split()
         
         for word in words:
             # Check for digits
             if word in self.digit_map:
-                digit = self.digit_map[word]
-                if len(self.phone_number) < 10:
-                    self.phone_number.append(digit)
-                    print(f"Number: {''.join(self.phone_number)}")
-                    self.play_sound(digit)
-                    
-                    if len(self.phone_number) == 10:
-                        self.handle_completion()
+                digits = self.digit_map[word] # e.g. "22"
+                
+                for digit in digits:
+                    if len(self.phone_number) < 10:
+                        self.phone_number.append(digit)
+                        print(f"Number: {''.join(self.phone_number)}")
+                        self.play_sound(digit)
+                        
+                        if len(self.phone_number) == 10:
+                            self.handle_completion()
+                            return # Stop processing this chunk to avoid over-filling immediately
             
             # Check for correction
             elif word in self.correction_words:
