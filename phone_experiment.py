@@ -19,6 +19,7 @@ AUDIO_ASSETS_PATH = os.path.join(BASE_DIR, "assets", "audio")
 SAMPLE_RATE = 16000
 CHUNK_SIZE = 4000
 
+class PhoneInputSystem:
     def __init__(self):
         self.running = True
         self.phone_number = []
@@ -74,6 +75,16 @@ CHUNK_SIZE = 4000
         
         self.correction_words = ["no", "borrar", "corregir", "atras", "mal"]
         self.confirmation_words = ["si", "confirmar", "ok", "listo", "correcto", "ya"]
+
+    def normalize_text(self, text):
+        # Simple accent removal
+        replacements = (
+            ("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
+            ("ñ", "n"), ("ü", "u")
+        )
+        for a, b in replacements:
+            text = text.replace(a, b)
+        return text
 
     def _load_basic_sounds(self):
         # Load only essential SFX
