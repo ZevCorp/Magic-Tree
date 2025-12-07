@@ -7,6 +7,8 @@ import time
 import pyaudio
 import pygame
 from vosk import Model, KaldiRecognizer
+from openai import OpenAI
+from tts_manager import TTSManager
 
 # Configuration
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -17,16 +19,21 @@ AUDIO_ASSETS_PATH = os.path.join(BASE_DIR, "assets", "audio")
 SAMPLE_RATE = 16000
 CHUNK_SIZE = 4000
 
-class PhoneInputSystem:
     def __init__(self):
         self.running = True
         self.phone_number = []
         self.confirmed = False
+        self.verifying = False
         
         # Initialize Pygame Mixer for low latency audio
         pygame.mixer.init()
-        self.sounds = self._load_sounds()
-        
+        # self.sounds = self._load_sounds() # Removed in favor of TTS
+        self.sounds = {} # Keep empty or load specific if needed
+        # We might want to load "intro", "que", "borrado", "confirmar" if we use play_sound for them
+        # For now, let's assume play_sound handles missing sounds gracefully (it prints error)
+        # We should probably load the basic sounds if they exist
+        self._load_basic_sounds()
+
         # Initialize Vosk
         if not os.path.exists(MODEL_PATH):
             print(f"Model not found at {MODEL_PATH}. Please run setup_experiment.py first.")
@@ -39,6 +46,15 @@ class PhoneInputSystem:
         
         # Audio Queue
         self.audio_queue = queue.Queue()
+        
+        # Initialize TTS
+        api_key = os.environ.get("OPENAI_API_KEY")
+        self.tts = TTSManager(api_key=api_key)
+        if api_key:
+            self.openai_client = OpenAI(api_key=api_key)
+        else:
+            print("Warning: No OpenAI API Key found. Confirmation will be limited.")
+            self.openai_client = None
         
         # Word mapping
         self.digit_map = {
@@ -59,34 +75,20 @@ class PhoneInputSystem:
         self.correction_words = ["no", "borrar", "corregir", "atras", "mal"]
         self.confirmation_words = ["si", "confirmar", "ok", "listo", "correcto", "ya"]
 
-    def normalize_text(self, text):
-        # Simple accent removal
-        replacements = (
-            ("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
-            ("ñ", "n"), ("ü", "u")
-        )
-        for a, b in replacements:
-            text = text.replace(a, b)
-        return text
-
-    def _load_sounds(self):
-        sounds = {}
-        files = os.listdir(AUDIO_ASSETS_PATH)
-        for f in files:
-            if f.endswith(".mp3"):
-                name = os.path.splitext(f)[0]
-                path = os.path.join(AUDIO_ASSETS_PATH, f)
+    def _load_basic_sounds(self):
+        # Load only essential SFX
+        for name in ["intro", "borrado", "que", "confirmar"]:
+            path = os.path.join(AUDIO_ASSETS_PATH, f"{name}.mp3")
+            if os.path.exists(path):
                 try:
-                    sounds[name] = pygame.mixer.Sound(path)
-                except Exception as e:
-                    print(f"Error loading sound {f}: {e}")
-        return sounds
+                    self.sounds[name] = pygame.mixer.Sound(path)
+                except:
+                    pass
 
     def play_sound(self, name):
         if name in self.sounds:
             self.sounds[name].play()
-        else:
-            print(f"Sound '{name}' not found.")
+        # else: ignore or print
 
     def audio_callback(self, in_data, frame_count, time_info, status):
         self.audio_queue.put(in_data)
@@ -115,11 +117,6 @@ class PhoneInputSystem:
                     if text:
                         self.process_text(text)
                 else:
-                    # Partial results for faster feedback?
-                    partial = json.loads(self.recognizer.PartialResult())
-                    # We could use partial results but Vosk partials can be unstable.
-                    # For digits, full result is usually fast enough if we speak clearly.
-                    # Let's stick to full result for stability first, or check partial if needed.
                     pass
                     
             except queue.Empty:
@@ -130,39 +127,39 @@ class PhoneInputSystem:
         stream.stop_stream()
         stream.close()
         p.terminate()
+        self.tts.stop()
 
     def process_text(self, text):
         text = self.normalize_text(text)
         print(f"Heard (norm): {text}")
         words = text.split()
         
+        current_chunk_words = []
+        
         for word in words:
             # Check for digits
             if word in self.digit_map:
-                digits = self.digit_map[word] # e.g. "22"
+                digits = self.digit_map[word]
                 
+                added_any = False
                 for digit in digits:
                     if len(self.phone_number) < 10:
                         self.phone_number.append(digit)
-                        print(f"Number: {''.join(self.phone_number)}")
-                        self.play_sound(digit)
-                        
-                        if len(self.phone_number) == 10:
-                            self.handle_completion()
-                            return # Stop processing this chunk to avoid over-filling immediately
-            
+                        added_any = True
+                
+                if added_any:
+                    current_chunk_words.append(word)
+                    print(f"Number: {''.join(self.phone_number)}")
+
             # Check for correction
             elif word in self.correction_words:
                 if self.phone_number:
                     removed = self.phone_number.pop()
                     print(f"Removed {removed}. Number: {''.join(self.phone_number)}")
                     self.play_sound("borrado")
-                    # Optionally say the previous number to confirm where we are
-                    if self.phone_number:
-                        last = self.phone_number[-1]
-                        # self.play_sound(last) # Maybe too chatty?
+                    self.verifying = False # Reset verification if we correct
                 else:
-                    self.play_sound("que") # "What?" or "Empty"
+                    self.play_sound("que")
 
             # Check for confirmation (only if full)
             elif word in self.confirmation_words:
@@ -173,16 +170,41 @@ class PhoneInputSystem:
                     self.running = False
                     return
 
+        # Speak the chunk of numbers found
+        if current_chunk_words:
+            phrase = " ".join(current_chunk_words)
+            self.tts.speak(phrase)
+
+        # Check completion
+        if len(self.phone_number) == 10 and not self.confirmed:
+            if not self.verifying:
+                self.handle_completion()
+
     def handle_completion(self):
-        print("10 digits reached. Verifying...")
-        time.sleep(0.5)
-        # Read full number
-        for digit in self.phone_number:
-            self.play_sound(digit)
-            time.sleep(0.6) # Pause between digits
+        self.verifying = True
+        full_number = "".join(self.phone_number)
+        print(f"10 digits reached: {full_number}. Verifying...")
         
+        # Use GPT-4o-mini for confirmation
+        if self.openai_client:
+            try:
+                response = self.openai_client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[
+                        {"role": "system", "content": "You are a helpful assistant confirming a phone number. Speak naturally in Spanish. Keep it brief. Example: 'Entendido, el número es 311... ¿Es correcto?'"},
+                        {"role": "user", "content": f"The user just dictated the phone number {full_number}. Ask them to confirm if it is correct."}
+                    ]
+                )
+                confirmation_text = response.choices[0].message.content
+                self.tts.speak(confirmation_text)
+            except Exception as e:
+                print(f"OpenAI Error: {e}")
+                self.tts.speak(f"El número es {full_number}. ¿Es correcto?")
+        else:
+            self.tts.speak(f"El número es {full_number}. ¿Es correcto?")
+            
         print("Waiting for confirmation...")
-        # We continue loop to wait for 'confirmar' or 'no'
+
 
 if __name__ == "__main__":
     system = PhoneInputSystem()
