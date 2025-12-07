@@ -7,3 +7,5 @@ requests
 numpy
 openai
 pygame
+faster-whisper
+pyttsx3

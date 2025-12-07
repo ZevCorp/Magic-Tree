@@ -17,6 +17,94 @@ except ImportError:
     VOSK_AVAILABLE = False
     logging.warning("Vosk not found. Voice commands will be mocked.")
 
+try:
+    from faster_whisper import WhisperModel
+    FASTER_WHISPER_AVAILABLE = True
+except ImportError:
+    FASTER_WHISPER_AVAILABLE = False
+    logging.warning("faster-whisper not found. Local transcription will be disabled.")
+
+try:
+    import pyttsx3
+    TTS_AVAILABLE = True
+except ImportError:
+    TTS_AVAILABLE = False
+    logging.warning("pyttsx3 not found. Text-to-speech will be disabled.")
+
+def extract_digits_from_text(text):
+    """
+    Extracts digits from text, converting Spanish number words to digits.
+    """
+    if not text:
+        return ""
+        
+    text = text.lower()
+    
+    # Map Spanish number words to digits
+    number_map = {
+        "cero": "0", "uno": "1", "una": "1", "dos": "2", "tres": "3", "cuatro": "4",
+        "cinco": "5", "seis": "6", "siete": "7", "ocho": "8", "nueve": "9",
+        "diez": "10", "once": "11", "doce": "12", "trece": "13", "catorce": "14", "quince": "15"
+    }
+    
+    # Replace words with digits
+    for word, digit in number_map.items():
+        text = text.replace(word, digit)
+        
+    # Extract all digits
+    digits = re.findall(r'\d', text)
+    return "".join(digits)
+
+class LocalSpeechEngine:
+    def __init__(self, model_size="tiny", device="cpu", compute_type="int8"):
+        self.model = None
+        if FASTER_WHISPER_AVAILABLE:
+            try:
+                logging.info(f"Loading faster-whisper model: {model_size} on {device}...")
+                self.model = WhisperModel(model_size, device=device, compute_type=compute_type)
+                logging.info("faster-whisper model loaded.")
+            except Exception as e:
+                logging.error(f"Error loading faster-whisper: {e}")
+
+    def transcribe(self, audio_path):
+        if not self.model:
+            logging.warning("Local speech engine not available.")
+            return ""
+            
+        try:
+            segments, info = self.model.transcribe(audio_path, beam_size=5, language="es")
+            text = " ".join([segment.text for segment in segments])
+            logging.info(f"Local transcription: {text}")
+            return text
+        except Exception as e:
+            logging.error(f"Error in local transcription: {e}")
+            return ""
+
+class TextToSpeech:
+    def __init__(self):
+        self.engine = None
+        if TTS_AVAILABLE:
+            try:
+                self.engine = pyttsx3.init()
+                # Configure voice (try to find Spanish)
+                voices = self.engine.getProperty('voices')
+                for voice in voices:
+                    if "spanish" in voice.name.lower() or "es" in voice.id.lower():
+                        self.engine.setProperty('voice', voice.id)
+                        break
+                self.engine.setProperty('rate', 150) # Speed
+            except Exception as e:
+                logging.error(f"Error initializing TTS: {e}")
+
+    def speak(self, text):
+        if self.engine:
+            try:
+                logging.info(f"Speaking: {text}")
+                self.engine.say(text)
+                self.engine.runAndWait()
+            except Exception as e:
+                logging.error(f"Error in TTS speak: {e}")
+
 class AudioManager:
     def __init__(self):
         self.p = pyaudio.PyAudio()
@@ -28,6 +116,12 @@ class AudioManager:
             else:
                 logging.warning(f"Vosk model not found at {VOSK_MODEL_PATH}")
         
+        # Initialize Local Speech Engine
+        self.local_speech = LocalSpeechEngine()
+        
+        # Initialize TTS
+        self.tts = TextToSpeech()
+
         # Initialize Pygame for music
         try:
             import pygame
