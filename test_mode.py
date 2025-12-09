@@ -96,6 +96,11 @@ def main():
             logging.info("=" * 50)
             
             
+            # 5. Record & Process Phone Number Continuously (NEW SYSTEM)
+            logging.info("=" * 50)
+            logging.info("STEP 5: Starting continuous phone dictation (Vosk)...")
+            logging.info("=" * 50)
+            
             # Start Background Music
             audio.play_background_music()
             
@@ -103,77 +108,44 @@ def main():
             from media import PhoneDisplay
             phone_display = PhoneDisplay()
             
-            # Shared state
-            full_transcript = ""
-            final_phone_number = None
-            audio_stop_event = threading.Event()
+            # Initialize PhoneInputSystem
+            from phone_manager import PhoneInputSystem
             
+            final_phone_number = None
+
+            # Definition of callback to update UI from Audio Thread
+            def update_ui_callback(number_text, status_text=None):
+                if phone_display.running:
+                    phone_display.update_number(number_text)
+                    if status_text:
+                        phone_display.set_status(status_text)
+            
+            phone_system = PhoneInputSystem(callback_fn=update_ui_callback)
+
             def audio_worker():
-                nonlocal full_transcript, final_phone_number
-                logging.info("Audio worker started")
+                nonlocal final_phone_number
+                logging.info("Audio worker started (Vosk)")
+                # This blocks until confirmed or stopped
+                final_phone_number = phone_system.start_processing()
+                logging.info(f"Audio worker finished. Result: {final_phone_number}")
                 
-                # Process audio chunks
-                for chunk_path in audio.stream_audio_chunks(audio_stop_event, chunk_duration=5):
-                    if not phone_display.running: # Stop if UI closed
-                        break
+                # Close UI when done
+                phone_display.confirmed = True # To signal main thread if it was waiting
+                phone_display.stop()
 
-                    logging.info(f"Processing chunk: {chunk_path}")
-                    chunk_text = audio.transcribe_with_openai(chunk_path)
-                    
-                    if chunk_text:
-                        full_transcript += " " + chunk_text
-                        logging.info(f"Full Transcript so far: {full_transcript}")
-                        
-                        # Extract number from accumulated text
-                        extracted_number = audio.extract_phone_number_with_assistant(full_transcript)
-                        
-                        if extracted_number:
-                            phone_display.update_number(extracted_number)
-                            
-                            # Check if we have enough digits (e.g., 10)
-                            if len(extracted_number) >= 10:
-                                logging.info(f"Found valid number: {extracted_number}")
-                                final_phone_number = extracted_number
-                                audio_stop_event.set() # Stop recording loop
-                                phone_display.stop() # Stop UI loop
-                                break
-                    
-                    # Cleanup chunk file
-                    try:
-                        os.remove(chunk_path)
-                    except:
-                        pass
-                logging.info("Audio worker finished")
-
-            # Start Audio Worker in Background Thread
+            # Start Audio Worker
             audio_thread = threading.Thread(target=audio_worker)
             audio_thread.start()
             
             # Run UI on Main Thread (Blocking)
             phone_display.run()
             
-            # Ensure audio thread stops
-            audio_stop_event.set()
+            # Stop system if UI closed manually
+            phone_system.stop()
             audio_thread.join()
 
-            # Check if confirmed via keyboard
-            if phone_display.confirmed:
-                logging.info(f"Number confirmed via keyboard: {phone_display.number}")
-                final_phone_number = phone_display.number
-
             if final_phone_number:
-                # 6. Verification
-                if not phone_display.confirmed:
-                    logging.info("Waiting for user confirmation ('confirmar')...")
-                    
-                    confirm_event = threading.Event()
-                    confirm_thread = threading.Thread(target=audio.listen_for_keyword, args=(confirm_event, "confirmar"))
-                    confirm_thread.start()
-                    
-                    # Wait for confirmation
-                    confirm_event.wait()
-                    confirm_thread.join()
-                
+                logging.info(f"Number captured and confirmed: {final_phone_number}")
                 audio.stop_background_music()
                 
                 # 7. Send Message & Save Metadata
@@ -184,13 +156,13 @@ def main():
                     "video_path": user_video_path,
                     "phone_number": final_phone_number,
                     "timestamp": timestamp,
-                    "full_transcript": full_transcript
+                    "full_transcript": "Vosk Dictation" 
                 }
                 json_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.json")
                 import json
                 with open(json_path, 'w') as f:
                     json.dump(metadata, f, indent=4)
-                logging.info(f"Metadata saved to {json_path}")
+                logging.info(f"Metadata saved to {json_path}") # Verification logic is now inside PhoneInputSystem (Step 6 merged into 5)
 
             else:
                 logging.warning("Could not identify phone number (timeout or manual stop).")
