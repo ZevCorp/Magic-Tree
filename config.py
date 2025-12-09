@@ -19,6 +19,7 @@ RECORDINGS_DIR = os.path.join(BASE_DIR, "recordings")
 MODEL_DIR = os.path.join(BASE_DIR, "model")
 
 INTRO_VIDEO_PATH = os.path.join(ASSETS_DIR, "intro.mp4")
+INTRO_VIDEO_2_PATH = os.path.join(ASSETS_DIR, "intro_2.mp4")
 ASK_PHONE_VIDEO_PATH = os.path.join(ASSETS_DIR, "ask_phone.mp4")
 CHRISTMAS_BG_PATH = os.path.join(ASSETS_DIR, "christmas_bg.png")
 BACKGROUND_MUSIC_PATH = os.path.join(ASSETS_DIR, "background_music.mp3")

@@ -50,6 +50,15 @@ def main():
             logging.info("=" * 50)
             if os.path.exists(INTRO_VIDEO_PATH):
                 media.play_video(INTRO_VIDEO_PATH)
+                
+                # 2.1 Play Second Intro Video
+                logging.info("Playing second intro video...")
+                if os.path.exists(INTRO_VIDEO_2_PATH):
+                    media.play_video(INTRO_VIDEO_2_PATH)
+                else:
+                    logging.warning(f"Video no encontrado: {INTRO_VIDEO_2_PATH}")
+                    logging.info("Simulando reproducción 2 (3 segundos)...")
+                    time.sleep(3)
             else:
                 logging.warning(f"Video no encontrado: {INTRO_VIDEO_PATH}")
                 logging.info("Simulando reproducción (3 segundos)...")

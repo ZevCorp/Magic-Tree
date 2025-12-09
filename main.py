@@ -33,6 +33,10 @@ def main():
             logging.info("STEP 2: Playing intro video...")
             logging.info("=" * 50)
             media.play_video(INTRO_VIDEO_PATH)
+            
+            # 2.1 Play Second Intro Video
+            logging.info("Playing second intro video...")
+            media.play_video(INTRO_VIDEO_2_PATH)
 
             # 3. Record User (30 seconds fixed)
             logging.info("=" * 50)

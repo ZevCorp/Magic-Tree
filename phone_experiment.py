@@ -18,9 +18,24 @@ AUDIO_ASSETS_PATH = os.path.join(BASE_DIR, "assets", "audio")
 # Audio Config
 SAMPLE_RATE = 16000
 CHUNK_SIZE = 4000
+DEVICE_INDEX = None  # Set this to the index of your microphone (e.g., 0, 1, 2)
+
+def list_audio_devices():
+    p = pyaudio.PyAudio()
+    info = p.get_host_api_info_by_index(0)
+    numdevices = info.get('deviceCount')
+    
+    print("\n--- Available Audio Input Devices ---")
+    for i in range(0, numdevices):
+        if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
+            name = p.get_device_info_by_host_api_device_index(0, i).get('name')
+            print(f"Device ID {i}: {name}")
+    print("-------------------------------------\n")
+    p.terminate()
 
 class PhoneInputSystem:
     def __init__(self):
+        list_audio_devices()
         self.running = True
         self.phone_number = []
         self.confirmed = False
@@ -111,6 +126,7 @@ class PhoneInputSystem:
                         channels=1,
                         rate=SAMPLE_RATE,
                         input=True,
+                        input_device_index=DEVICE_INDEX,
                         frames_per_buffer=CHUNK_SIZE,
                         stream_callback=self.audio_callback)
         
