@@ -38,6 +38,16 @@ class MediaManager:
         except Exception as e:
             logging.warning(f"Failed to show black screen: {e}")
 
+    def check_for_enter(self, timeout_ms=50):
+        """Checks for Enter key press on the persistent window."""
+        try:
+            key = cv2.waitKey(timeout_ms) & 0xFF
+            if key == 13: # Enter
+                return True
+        except:
+            pass
+        return False
+
     def play_video(self, video_path):
         if not os.path.exists(video_path):
             logging.error(f"Video file not found: {video_path}")

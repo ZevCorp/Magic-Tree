@@ -40,8 +40,36 @@ def main():
 
     while True:
         try:
-            # 1. Wait for Door Open (MOCK - press Enter)
-            hardware.wait_for_door_open()
+            # 1. Wait for Start (Door, Enter, or Voice)
+            logging.info("Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...")
+            activation_event = threading.Event()
+            
+            # Start Voice Listener
+            def voice_listener():
+               audio.listen_for_keyword(activation_event, "feliz navidad")
+            
+            # Daemon thread so it dies if main dies
+            voice_thread = threading.Thread(target=voice_listener, daemon=True)
+            voice_thread.start()
+            
+            while not activation_event.is_set():
+                # Check hardware (mock allows enter too, but we prioritize non-blocking)
+                try:
+                    if hardware.is_door_open():
+                         logging.info("Door Open Detected!")
+                         activation_event.set()
+                except:
+                    pass
+                
+                # Check CV2 Enter
+                if media.check_for_enter():
+                    logging.info("Enter key detected on Window!")
+                    activation_event.set()
+                
+                # Sleep to prevent CPU hog
+                time.sleep(0.05)
+            
+            activation_event.set() # Ensure set in case loop exited otherwise
             logging.info("Iniciando experiencia...")
 
             # 2. Play Intro Video (Santa)

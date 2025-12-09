@@ -44,40 +44,40 @@ class AudioManager:
                              rate=self.rate,
                              input=True,
                              frames_per_buffer=self.chunk)
-                             
-        while not stop_event.is_set():
-            logging.debug("Recording chunk...")
-            frames = []
-            
-            # Record for chunk_duration
-            for _ in range(0, int(self.rate / self.chunk * chunk_duration)):
-                if stop_event.is_set():
-                    break
-                try:
-                    data = stream.read(self.chunk, exception_on_overflow=False)
-                    frames.append(data)
-                except Exception as e:
-                    logging.error(f"Error reading audio stream: {e}")
-                    
-            if not frames:
-                continue
+        try:                     
+            while not stop_event.is_set():
+                logging.debug("Recording chunk...")
+                frames = []
                 
-            # Save to temporary file
-            timestamp = int(time.time() * 1000)
-            filename = os.path.join(RECORDINGS_DIR, f"chunk_{timestamp}.wav")
-            
-            wf = wave.open(filename, 'wb')
-            wf.setnchannels(self.channels)
-            wf.setsampwidth(self.p.get_sample_size(self.format))
-            wf.setframerate(self.rate)
-            wf.writeframes(b''.join(frames))
-            wf.close()
-            
-            yield filename
-            
-        logging.info("Stopping audio stream...")
-        stream.stop_stream()
-        stream.close()
+                # Record for chunk_duration
+                for _ in range(0, int(self.rate / self.chunk * chunk_duration)):
+                    if stop_event.is_set():
+                        break
+                    try:
+                        data = stream.read(self.chunk, exception_on_overflow=False)
+                        frames.append(data)
+                    except Exception as e:
+                        logging.error(f"Error reading audio stream: {e}")
+                        
+                if not frames:
+                    continue
+                    
+                # Save to temporary file
+                timestamp = int(time.time() * 1000)
+                filename = os.path.join(RECORDINGS_DIR, f"chunk_{timestamp}.wav")
+                
+                wf = wave.open(filename, 'wb')
+                wf.setnchannels(self.channels)
+                wf.setsampwidth(self.p.get_sample_size(self.format))
+                wf.setframerate(self.rate)
+                wf.writeframes(b''.join(frames))
+                wf.close()
+                
+                yield filename
+        finally: 
+            logging.info("Stopping audio stream...")
+            stream.stop_stream()
+            stream.close()
 
     def transcribe_with_openai(self, audio_path):
         """

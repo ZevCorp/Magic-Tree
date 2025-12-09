@@ -24,9 +24,29 @@ def main():
 
     while True:
         try:
-            # 1. Wait for Door Open
-            hardware.wait_for_door_open()
-            logging.info("Door opened! Starting experience.")
+            # 1. Wait for Start (Door, Enter, or Voice Trigger)
+            logging.info("Waiting for activation (Door, Enter, or 'Feliz Navidad')...")
+            activation_event = threading.Event()
+            
+            # Start Voice Listener
+            def voice_listener():
+               audio.listen_for_keyword(activation_event, "feliz navidad")
+            
+            voice_thread = threading.Thread(target=voice_listener, daemon=True)
+            voice_thread.start()
+            
+            while not activation_event.is_set():
+                if hardware.is_door_open():
+                     logging.info("Door opened! Starting experience.")
+                     activation_event.set()
+                
+                if media.check_for_enter():
+                    logging.info("Enter key detected!")
+                    activation_event.set()
+                
+                time.sleep(0.05)
+            
+            activation_event.set() # Signal audio thread to stop if it hasn't yet
 
             # 2. Play Intro Video (Santa)
             logging.info("=" * 50)
