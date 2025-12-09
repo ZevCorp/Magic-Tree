@@ -173,6 +173,14 @@ def main():
             logging.info("=" * 60)
             logging.info("Presiona Ctrl+C para salir o Enter para repetir...")
             
+            media.show_black_screen()
+            # input("Presiona Enter para reiniciar ciclo...") # Optional, but maybe good for test mode?
+            # User loop logic usually relies on just looping. existing had no input wait.
+            # But seeing the desktop is bad.
+            # I'll just leave it looping or wait for key if simpler. 
+            # The original code just looped.
+            time.sleep(2)
+
         except KeyboardInterrupt:
             logging.info("\nDeteniendo sistema...")
             break
@@ -180,6 +188,9 @@ def main():
             logging.error(f"Error inesperado: {e}", exc_info=True)
             logging.info("Esperando 5 segundos antes de reintentar...")
             time.sleep(5)
+
+    if 'media' in locals():
+        media.cleanup()
 
 if __name__ == "__main__":
     main()

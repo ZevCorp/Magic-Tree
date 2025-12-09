@@ -169,6 +169,7 @@ def main():
                 logging.warning("Could not identify phone number.")
 
             logging.info("Experience finished. Resetting...")
+            media.show_black_screen()
             time.sleep(2) # Buffer before restarting
 
         except KeyboardInterrupt:
@@ -177,6 +178,9 @@ def main():
         except Exception as e:
             logging.error(f"Unexpected error: {e}")
             time.sleep(5) # Wait before retrying
+
+    if 'media' in locals():
+        media.cleanup()
 
 if __name__ == "__main__":
     main()

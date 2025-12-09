@@ -3,6 +3,7 @@ import time
 import logging
 import os
 import threading
+import numpy as np
 try:
     import vlc
     VLC_AVAILABLE = True
@@ -10,11 +11,32 @@ except ImportError:
     VLC_AVAILABLE = False
     logging.warning("python-vlc not found. Video playback will be mocked.")
 
+WINDOW_NAME = "EnchantedTree"
+
 class MediaManager:
     def __init__(self):
         self.vlc_instance = vlc.Instance('--fullscreen', '--no-video-title-show', '--mouse-hide-timeout=0') if VLC_AVAILABLE else None
         self.player = self.vlc_instance.media_player_new() if self.vlc_instance else None
         self.camera = None
+        
+        # Initialize Persistent Window
+        try:
+            logging.info(f"Initializing persistent window: {WINDOW_NAME}")
+            cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
+            cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+            # Show black screen initially
+            self.show_black_screen()
+        except Exception as e:
+            logging.warning(f"Could not initialize persistent window: {e}")
+
+    def show_black_screen(self):
+        """Helper to show a black screen on the persistent window."""
+        try:
+            black_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
+            cv2.imshow(WINDOW_NAME, black_img)
+            cv2.waitKey(1)
+        except Exception as e:
+            logging.warning(f"Failed to show black screen: {e}")
 
     def play_video(self, video_path):
         if not os.path.exists(video_path):
@@ -23,6 +45,9 @@ class MediaManager:
 
         logging.info(f"Playing video: {video_path}")
         if self.player:
+            # Ensure background is valid before launching VLC on top
+            self.show_black_screen()
+            
             media = self.vlc_instance.media_new(video_path)
             self.player.set_media(media)
             self.player.set_fullscreen(True)
@@ -39,7 +64,11 @@ class MediaManager:
             # Properly release fullscreen and stop
             self.player.set_fullscreen(False)
             self.player.stop()
-            time.sleep(0.1)  # Give window system time to clean up
+            
+            # Immediately show black screen again to prevent desktop flash
+            self.show_black_screen()
+             # Give window system time to clean up
+            time.sleep(0.1) 
             logging.info("Video playback finished")
         else:
             logging.info("Mock playing video (3 seconds)...")
@@ -72,10 +101,8 @@ class MediaManager:
         out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
         logging.info(f"Camera resolution: {width}x{height} @ {fps}fps")
-        logging.info("Creating fullscreen window...")
-        
-        cv2.namedWindow("Recording", cv2.WND_PROP_FULLSCREEN)
-        cv2.setWindowProperty("Recording", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+        # Ensure window properties
+        cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
         logging.info("Recording started! 30 seconds countdown...")
         frame_count = 0
@@ -114,7 +141,9 @@ class MediaManager:
                 cv2.putText(frame, text, (text_x, text_y), font, font_scale, color, thickness)
 
                 out.write(frame)
-                cv2.imshow('Recording', frame)
+                
+                # Show in the persistent window
+                cv2.imshow(WINDOW_NAME, frame)
                 frame_count += 1
                 
                 # Check for 'q' key as manual fallback
@@ -128,13 +157,20 @@ class MediaManager:
         logging.info(f"Stopping recording... ({frame_count} frames captured)")
         self.camera.release()
         out.release()
-        cv2.destroyAllWindows()
-        # Flush events to prevent Wayland errors
-        for _ in range(5):
-            cv2.waitKey(1)
-            time.sleep(0.05)
         
-        logging.info("Camera released and window closed")
+        # Do NOT destroy window, just show black
+        self.show_black_screen()
+        
+        logging.info("Camera released, returned to black screen")
+
+    def cleanup(self):
+        """Call this only when shutting down the app"""
+        try:
+            cv2.destroyAllWindows()
+            if self.vlc_instance:
+                self.vlc_instance.release()
+        except:
+            pass
 
     def display_verification_ui(self, number, stop_event):
         # Deprecated: Use PhoneDisplay class instead
@@ -147,55 +183,29 @@ class PhoneDisplay:
         self.running = True
         self.confirmed = False
         self.lock = threading.Lock()
-        self.window_name = "Phone Verification"
+        self.window_name = WINDOW_NAME # Use the shared window
         
     def run(self):
         try:
             logging.info("PhoneDisplay started on main thread")
-            import numpy as np
             from config import CHRISTMAS_BG_PATH
             
-            # Create window with a more robust approach for Wayland/X11 compatibility
-            logging.info(f"Creating window: {self.window_name}")
-            
-            # First create a normal window
-            cv2.namedWindow(self.window_name, cv2.WINDOW_NORMAL)
-            logging.info("Normal window created")
-            
-            # Load Background first (before setting fullscreen)
+            # Load Background
+            bg_img = None
             if os.path.exists(CHRISTMAS_BG_PATH):
                 logging.info(f"Loading Christmas background from {CHRISTMAS_BG_PATH}")
-                bg_img = cv2.imread(CHRISTMAS_BG_PATH)
-                if bg_img is None:
-                    logging.error("Failed to load background image, using black")
-                    bg_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
-                else:
-                    bg_img = cv2.resize(bg_img, (1920, 1080))
-                    logging.info("Background loaded successfully")
-            else:
-                logging.warning(f"Christmas background not found at {CHRISTMAS_BG_PATH}, using black.")
+                bg_img_raw = cv2.imread(CHRISTMAS_BG_PATH)
+                if bg_img_raw is not None:
+                     bg_img = cv2.resize(bg_img_raw, (1920, 1080))
+            
+            if bg_img is None:        
+                logging.warning("Background not found or failed to load, using black")
                 bg_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
 
             font = cv2.FONT_HERSHEY_SIMPLEX
             
-            # Show initial frame before going fullscreen
-            initial_img = bg_img.copy()
-            text = "Escuchando..."
-            text_size = cv2.getTextSize(text, font, 2, 4)[0]
-            text_x = (initial_img.shape[1] - text_size[0]) // 2
-            text_y = (initial_img.shape[0] // 2)
-            cv2.putText(initial_img, text, (text_x, text_y), font, 2, (220, 220, 220), 4)
-            cv2.imshow(self.window_name, initial_img)
-            cv2.waitKey(1)
-            logging.info("Initial frame displayed")
-            
-            # Now try to set fullscreen and topmost
-            try:
-                cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-                cv2.setWindowProperty(self.window_name, cv2.WND_PROP_TOPMOST, 1)
-                logging.info("Window set to fullscreen and topmost")
-            except Exception as e:
-                logging.warning(f"Could not set window properties: {e}")
+            # Ensure window properties (just in case)
+            cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
             
             logging.info("Starting PhoneDisplay render loop")
             
@@ -235,12 +245,12 @@ class PhoneDisplay:
 
                 cv2.imshow(self.window_name, img)
                 
-                # Force focus periodically (hacky but might help on some WMs)
-                if int(time.time()) % 2 == 0: # Every 2 seconds roughly
+                # Make sure it stays fullscreen (sometimes OS tries to shrink it)
+                if int(time.time()) % 5 == 0:
                      cv2.setWindowProperty(self.window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
                 key = cv2.waitKey(50) & 0xFF
-                if key != 255: # 255 is what waitKey returns when no key is pressed on some systems
+                if key != 255: 
                     logging.info(f"Key pressed: {key}")
                     
                 if key == ord('q'):
@@ -256,9 +266,12 @@ class PhoneDisplay:
                     with self.lock:
                         self.number += chr(key)
             
-            logging.info("PhoneDisplay loop ended, destroying window")
-            cv2.destroyWindow(self.window_name)
-            logging.info("PhoneDisplay finished")
+            logging.info("PhoneDisplay loop ended")
+            # Do NOT destroy window.
+            # Just clear it to black
+            black_img = np.zeros((1080, 1920, 3), dtype=np.uint8)
+            cv2.imshow(self.window_name, black_img)
+            cv2.waitKey(1)
             
         except Exception as e:
             logging.error(f"Error in PhoneDisplay: {e}", exc_info=True)
