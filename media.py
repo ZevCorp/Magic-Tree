@@ -129,6 +129,11 @@ class MediaManager:
         self.camera.release()
         out.release()
         cv2.destroyAllWindows()
+        # Flush events to prevent Wayland errors
+        for _ in range(5):
+            cv2.waitKey(1)
+            time.sleep(0.05)
+        
         logging.info("Camera released and window closed")
 
     def display_verification_ui(self, number, stop_event):

@@ -87,8 +87,8 @@ def main():
                 logging.info("Simulando video (3 segundos)...")
                 time.sleep(3)
             
-            # Give VLC time to release the display
-            time.sleep(0.5)
+            # Give system time to cleanup windows
+            time.sleep(2.0)
 
             # 5. Record & Process Phone Number Continuously
             logging.info("=" * 50)
