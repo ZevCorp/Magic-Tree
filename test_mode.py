@@ -190,24 +190,40 @@ def main():
                 import json
                 with open(json_path, 'w') as f:
                     json.dump(metadata, f, indent=4)
-                logging.info(f"Metadata saved to {json_path}") # Verification logic is now inside PhoneInputSystem (Step 6 merged into 5)
+                logging.info(f"Metadata saved to {json_path}") 
+
+                # 8. Goodbye Video
+                logging.info("STEP 8: Playing goodbye video...")
+                if os.path.exists(GOODBYE_VIDEO_PATH):
+                    media.play_video(GOODBYE_VIDEO_PATH)
+                else:
+                    logging.info("Goodbye video not found, skipping.")
 
             else:
                 logging.warning("Could not identify phone number (timeout or manual stop).")
                 audio.stop_background_music()
 
+            # Check for Exit Request
+            if media.check_for_exit():
+                logging.info("Exit requested via ESC key.")
+                break
+
             logging.info("\n" + "=" * 60)
             logging.info("EXPERIENCIA COMPLETADA")
             logging.info("=" * 60)
-            logging.info("Presiona Ctrl+C para salir o Enter para repetir...")
+            logging.info("Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...")
             
             media.show_black_screen()
-            # input("Presiona Enter para reiniciar ciclo...") # Optional, but maybe good for test mode?
-            # User loop logic usually relies on just looping. existing had no input wait.
-            # But seeing the desktop is bad.
-            # I'll just leave it looping or wait for key if simpler. 
-            # The original code just looped.
-            time.sleep(2)
+            
+            # Wait loop with exit check
+            wait_start = time.time()
+            while time.time() - wait_start < 2:
+                if media.check_for_exit():
+                     break
+                time.sleep(0.1)
+
+            if media.check_for_exit():
+                break
 
         except KeyboardInterrupt:
             logging.info("\nDeteniendo sistema...")

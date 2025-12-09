@@ -182,15 +182,34 @@ def main():
                 with open(json_path, 'w') as f:
                     json.dump(metadata, f, indent=4)
                 logging.info(f"Metadata saved to {json_path}")
+                
+                # 8. Goodbye Video
+                logging.info("STEP 8: Playing goodbye video...")
+                if os.path.exists(GOODBYE_VIDEO_PATH):
+                    media.play_video(GOODBYE_VIDEO_PATH)
 
             else:
                 logging.warning("Could not identify phone number (timeout or manual stop).")
                 audio.stop_background_music()
                 logging.warning("Could not identify phone number.")
 
+            # Check for Exit Request
+            if media.check_for_exit():
+                logging.info("Exit requested via ESC key.")
+                break
+
             logging.info("Experience finished. Resetting...")
             media.show_black_screen()
-            time.sleep(2) # Buffer before restarting
+            
+             # Wait loop with exit check
+            wait_start = time.time()
+            while time.time() - wait_start < 2:
+                if media.check_for_exit():
+                     break
+                time.sleep(0.1)
+
+            if media.check_for_exit():
+                break
 
         except KeyboardInterrupt:
             logging.info("Stopping system...")

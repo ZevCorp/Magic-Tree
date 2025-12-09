@@ -48,6 +48,16 @@ class MediaManager:
             pass
         return False
 
+    def check_for_exit(self, timeout_ms=10):
+        """Checks for ESC key press to exit the experience."""
+        try:
+            key = cv2.waitKey(timeout_ms) & 0xFF
+            if key == 27: # ESC
+                return True
+        except:
+            pass
+        return False
+
     def play_video(self, video_path):
         if not os.path.exists(video_path):
             logging.error(f"Video file not found: {video_path}")

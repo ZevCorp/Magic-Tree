@@ -24,5 +24,25 @@ if [ -d "venv" ]; then
     source venv/bin/activate
 fi
 
+# Run the WhatsApp Bot in background
+echo "Starting WhatsApp Bot..."
+# Ensure OPENAI_API_KEY is exported if set in config.py (or we hope it's global)
+# We assume the user has the key in env or we rely on the bot.js fallback/warning
+(
+    cd messaging || exit
+    # Run in loop to auto-restart if crashes
+    while true; do
+        node bot.js
+        echo "Bot crashed or stopped. Restarting in 5s..."
+        sleep 5
+    done
+) &
+BOT_PID=$!
+
 # Run the main program
+echo "Starting Main Application..."
 python main.py
+
+# Cleanup
+echo "Main app exited. Stopping bot..."
+kill $BOT_PID

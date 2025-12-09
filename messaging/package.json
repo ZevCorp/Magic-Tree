@@ -4,7 +4,8 @@
     "description": "WhatsApp integration for Enchanted Tree",
     "main": "send_message.js",
     "dependencies": {
-        "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#main",
-        "qrcode-terminal": "^0.12.0"
+        "openai": "^6.10.0",
+        "qrcode-terminal": "^0.12.0",
+        "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#main"
     }
 }
