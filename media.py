@@ -48,14 +48,21 @@ class MediaManager:
     def record_user(self, output_path, stop_event=None):
         logging.info(f"Starting recording to {output_path}")
         logging.info("Opening camera...")
-        self.camera = cv2.VideoCapture(0)
+        self.camera = None
+        # Try multiple indices to find the camera
+        for index in range(4):
+            logging.info(f"Attempting camera index {index}...")
+            cap = cv2.VideoCapture(index)
+            if cap.isOpened():
+                self.camera = cap
+                logging.info(f"Camera opened successfully on index {index}!")
+                break
+            cap.release()
         
-        if not self.camera.isOpened():
-            logging.error("Could not open camera")
+        if self.camera is None or not self.camera.isOpened():
+            logging.error("Could not open camera on any index (0-3)")
             return
 
-        logging.info("Camera opened successfully!")
-        
         # Define codec and create VideoWriter object
         # XVID is usually safe, or H264 if available
         fourcc = cv2.VideoWriter_fourcc(*'XVID')

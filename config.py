@@ -10,7 +10,7 @@ import os
 DOOR_SENSOR_PIN = 17  # GPIO Pin for the door sensor
 
 # API Configuration
-OPENAI_API_KEY = "YOUR_OPENAI_API_KEY" # Replace with your actual API key
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "YOUR_OPENAI_API_KEY") # Replace with your actual API key
 
 # File Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
