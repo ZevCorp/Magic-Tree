@@ -15,7 +15,8 @@ WINDOW_NAME = "EnchantedTree"
 
 class MediaManager:
     def __init__(self):
-        self.vlc_instance = vlc.Instance('--fullscreen', '--no-video-title-show', '--mouse-hide-timeout=0') if VLC_AVAILABLE else None
+        # Add '--avcodec-hw=none' to disable hardware acceleration which causes segfaults if v4l2m2m state is bad
+        self.vlc_instance = vlc.Instance('--fullscreen', '--no-video-title-show', '--mouse-hide-timeout=0', '--avcodec-hw=none') if VLC_AVAILABLE else None
         self.player = self.vlc_instance.media_player_new() if self.vlc_instance else None
         self.camera = None
         
