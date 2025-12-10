@@ -142,13 +142,19 @@ class MediaManager:
             if cap.isOpened():
                 self.camera = cap
                 logging.info(f"Camera opened successfully on index {index}!")
+                # Attempt to set MJPEG first (crucial for high FPS at high res on USB)
+                self.camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
+                
                 # Attempt to set 1080p resolution
                 self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
                 self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+                self.camera.set(cv2.CAP_PROP_FPS, 30)
+                
                 # Verify what we actually got
                 actual_w = self.camera.get(cv2.CAP_PROP_FRAME_WIDTH)
                 actual_h = self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT)
-                logging.info(f"Requested 1920x1080, got {actual_w}x{actual_h}")
+                actual_fps = self.camera.get(cv2.CAP_PROP_FPS)
+                logging.info(f"Requested 1920x1080 @ 30fps MJPEG. Got: {actual_w}x{actual_h} @ {actual_fps}fps")
                 break
             cap.release()
         
@@ -161,7 +167,7 @@ class MediaManager:
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
         width = int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH))
         height = int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        fps = 20.0 # Adjust based on camera
+        fps = 30.0 # Target 30 FPS
         out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
         logging.info(f"Camera resolution: {width}x{height} @ {fps}fps")
