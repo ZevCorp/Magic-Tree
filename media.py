@@ -162,6 +162,29 @@ class MediaManager:
                 self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
                 self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
                 self.camera.set(cv2.CAP_PROP_FPS, 30)
+
+                # --- CAMERA ADJUSTMENTS FOR HIGH CONTRAST / BURNOUT ---
+                try:
+                    logging.info("Applying production camera settings to prevent burnout...")
+                    # 1. Turn off Auto Exposure (0.25 is often mapped to Manual/1 in v4l2)
+                    self.camera.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
+                    
+                    # 2. Lower Brightness significantly (Target: "Muy brusco, baje bastante")
+                    # Assuming 0-255 range. 30 is quite dark.
+                    self.camera.set(cv2.CAP_PROP_BRIGHTNESS, 30)
+                    
+                    # 3. Lower Gain (ISO) to minimum to reduce light sensitivity
+                    self.camera.set(cv2.CAP_PROP_GAIN, 0)
+                    
+                    # 4. Adjust Contrast (Lowering it helps with high dynamic range scenes sometimes)
+                    self.camera.set(cv2.CAP_PROP_CONTRAST, 20)
+                    
+                    # 5. Fixed Exposure (Optional, hardware dependent)
+                    # self.camera.set(cv2.CAP_PROP_EXPOSURE, -6) 
+                    
+                    logging.info("Camera settings applied: Brightness=30, Gain=0, Contrast=20")
+                except Exception as e:
+                    logging.warning(f"Failed to set custom camera properties: {e}")
                 
                 # Verify what we actually got
                 actual_w = self.camera.get(cv2.CAP_PROP_FRAME_WIDTH)
