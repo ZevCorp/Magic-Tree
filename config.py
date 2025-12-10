@@ -1,16 +1,27 @@
 import os
+import logging
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    logging.warning("python-dotenv not installed, skipping .env load")
 
 # Hardware Configuration
 DOOR_SENSOR_PIN = 17  # GPIO Pin for the door sensor
 
 # API Configuration
-import os
+# Attempt to get the key from environment. If not found, use a placeholder or None.
+# NOTE: The OpenAI client will raise an error if initialized with a None key, 
+# so we default to the placeholder if not found, but we should probably warn the user.
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-# Hardware Configuration
-DOOR_SENSOR_PIN = 17  # GPIO Pin for the door sensor
+if not OPENAI_API_KEY:
+    # If not in env, check if we want to fallback to the literal string "YOUR_OPENAI_API_KEY"
+    # But usually that causes auth errors. Let's return None and handle it in audio.py
+    # or just let it be None.
+    # However, to preserve previous behavior:
+    OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
 
-# API Configuration
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "YOUR_OPENAI_API_KEY") # Replace with your actual API key
 
 # File Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

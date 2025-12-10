@@ -27,7 +27,20 @@ class AudioManager:
         self.channels = CHANNELS
         self.rate = SAMPLE_RATE
         self.p = pyaudio.PyAudio()
-        self.client = OpenAI(api_key=OPENAI_API_KEY)
+        
+        # Initialize OpenAI Client safely
+        if not OPENAI_API_KEY or OPENAI_API_KEY == "YOUR_OPENAI_API_KEY":
+            logging.critical("OPENAI_API_KEY is missing or default! Voice features will not work.")
+            print("\n!!!! ATTENTION !!!!")
+            print("Please set your OPENAI_API_KEY in .env file or environment.")
+            print("!!!! ATTENTION !!!!\n")
+            self.client = None
+        else:
+            try:
+                self.client = OpenAI(api_key=OPENAI_API_KEY)
+            except Exception as e:
+                logging.error(f"Failed to initialize OpenAI client: {e}")
+                self.client = None
         
     def stream_audio_chunks(self, stop_event, chunk_duration=5):
         """
@@ -86,6 +99,10 @@ class AudioManager:
         if not os.path.exists(audio_path):
             logging.warning(f"Audio file not found: {audio_path}")
             return None
+
+        if not self.client:
+            logging.error("OpenAI client not initialized. Cannot transcribe.")
+            return None
             
         try:
             with open(audio_path, "rb") as audio_file:
@@ -105,6 +122,9 @@ class AudioManager:
         Returns the number as a string of digits if found, or None.
         """
         if not text or len(text.strip()) < 5:
+            return None
+
+        if not self.client:
             return None
             
         try:

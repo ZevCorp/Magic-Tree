@@ -24,6 +24,14 @@ if [ -d "venv" ]; then
     source venv/bin/activate
 fi
 
+# Load .env variables if file exists
+if [ -f ".env" ]; then
+    echo "Loading environment variables from .env..."
+    set -o allexport
+    source .env
+    set +o allexport
+fi
+
 # Run the WhatsApp Bot in background
 echo "Starting WhatsApp Bot..."
 # Ensure OPENAI_API_KEY is exported if set in config.py (or we hope it's global)

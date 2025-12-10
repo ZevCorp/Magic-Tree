@@ -24,5 +24,13 @@ if [ -d "venv" ]; then
     source venv/bin/activate
 fi
 
+# Load .env variables if file exists
+if [ -f ".env" ]; then
+    echo "Loading environment variables from .env..."
+    set -o allexport
+    source .env
+    set +o allexport
+fi
+
 # Run the test mode
 python test_mode.py

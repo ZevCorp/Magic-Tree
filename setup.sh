@@ -67,6 +67,15 @@ pip install requests
 echo "  - Installing numpy..."
 pip install numpy
 
+echo "  - Installing openai..."
+pip install openai
+
+echo "  - Installing python-dotenv..."
+pip install python-dotenv
+
+echo "  - Installing pygame..."
+pip install pygame
+
 # Create directories
 echo "Creating project directories..."
 mkdir -p assets recordings model
