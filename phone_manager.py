@@ -2,6 +2,60 @@ import os
 import sys
 import json
 import queue
+import threading
+import time
+import logging
+import pyaudio
+import pygame
+from vosk import Model, KaldiRecognizer
+from config import *
+
+# Audio Config
+SAMPLE_RATE = 16000
+CHUNK_SIZE = 4000
+DEVICE_INDEX = None  # Auto-detect default
+
+class PhoneInputSystem:
+    def __init__(self, callback_fn=None):
+        """
+        Initialize the PhoneInputSystem.
+        :param callback_fn: A function that takes (number_string, status_string) to update external UI.
+        """
+        self.callback_fn = callback_fn
+        self.running = True
+        self.phone_number = []
+        self.confirmed = False
+        self.verifying = False
+        
+        # Initialize Pygame Mixer for SFX
+        try:
+            pygame.mixer.init()
+        except Exception as e:
+            logging.warning(f"Pygame mixer init failed: {e}")
+
+        self.sounds = {} 
+        self._load_basic_sounds()
+
+        # Initialize Vosk
+        if not os.path.exists(VOSK_MODEL_PATH):
+            logging.error(f"Vosk Model not found at {VOSK_MODEL_PATH}")
+        else:
+            logging.info(f"Loading Vosk model from {VOSK_MODEL_PATH}...")
+            self.model = Model(VOSK_MODEL_PATH)
+            self.recognizer = KaldiRecognizer(self.model, SAMPLE_RATE)
+            logging.info("Vosk model loaded.")
+        
+        # Audio Queue
+        self.audio_queue = queue.Queue()
+        
+        # TTS explicitly disabled as per user request
+        self.tts = None 
+        
+        # Word mapping
+        self.digit_map = {
+            "cero": "0", "uno": "1", "una": "1", "dos": "2", "tres": "3",
+            "cuatro": "4", "cinco": "5", "seis": "6", "siete": "7",
+            "ocho": "8", "nueve": "9",
             # 10-19
             "diez": "10", "once": "11", "doce": "12", "trece": "13", "catorce": "14", 
             "quince": "15", "dieciseis": "16", "diecisiete": "17", "dieciocho": "18", "diecinueve": "19",
@@ -136,11 +190,10 @@ import queue
                     self.running = False
                     return
 
-        # Speak digits found
-        if current_chunk_words:
-            phrase = " ".join(current_chunk_words)
-            if self.tts:
-                self.tts.speak(phrase)
+        # Speak digits found - DISABLE TTS as requested
+        # if current_chunk_words and self.tts:
+        #     phrase = " ".join(current_chunk_words)
+        #     self.tts.speak(phrase)
 
         # Check completion
         if len(self.phone_number) == 10 and not self.confirmed and not self.verifying:
@@ -160,3 +213,4 @@ import queue
 
     def stop(self):
         self.running = False
+
