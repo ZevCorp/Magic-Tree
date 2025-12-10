@@ -142,6 +142,13 @@ class MediaManager:
             if cap.isOpened():
                 self.camera = cap
                 logging.info(f"Camera opened successfully on index {index}!")
+                # Attempt to set 1080p resolution
+                self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+                self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+                # Verify what we actually got
+                actual_w = self.camera.get(cv2.CAP_PROP_FRAME_WIDTH)
+                actual_h = self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT)
+                logging.info(f"Requested 1920x1080, got {actual_w}x{actual_h}")
                 break
             cap.release()
         

@@ -107,6 +107,30 @@ def main():
             activation_event.set() # Ensure set in case loop exited otherwise
             logging.info("Iniciando experiencia...")
 
+            # --- PRE-INITIALIZATION START ---
+            logging.info("Pre-initializing phone system components...")
+            # Initialize Phone Components EARLY to avoid lag later
+            # Initialize PhoneDisplay
+            from media import PhoneDisplay
+            phone_display = PhoneDisplay()
+            
+            # Initialize PhoneInputSystem
+            # Note: This might take a moment to load Vosk
+            from phone_manager import PhoneInputSystem
+            
+            final_phone_number = None
+
+            # Definition of callback to update UI from Audio Thread
+            def update_ui_callback(number_text, status_text=None):
+                if phone_display.running:
+                    phone_display.update_number(number_text)
+                    if status_text:
+                        phone_display.set_status(status_text)
+            
+            phone_system = PhoneInputSystem(callback_fn=update_ui_callback)
+            logging.info("Phone system pre-initialized.")
+            # --- PRE-INITIALIZATION END ---
+
             # 2. Play Intro Video (Santa)
             logging.info("=" * 50)
             logging.info("STEP 2: Playing intro video...")
@@ -149,8 +173,11 @@ def main():
                 logging.info("Simulando video (3 segundos)...")
                 time.sleep(3)
             
-            # Give system time to cleanup windows
-            time.sleep(2.0)
+                logging.info("Simulando video (3 segundos)...")
+                time.sleep(3)
+            
+            # Reduce sleep to strictly necessary
+            time.sleep(0.5)
 
             # 5. Record & Process Phone Number Continuously
             logging.info("=" * 50)
@@ -166,23 +193,7 @@ def main():
             # Start Background Music
             audio.play_background_music()
             
-            # Initialize PhoneDisplay
-            from media import PhoneDisplay
-            phone_display = PhoneDisplay()
-            
-            # Initialize PhoneInputSystem
-            from phone_manager import PhoneInputSystem
-            
-            final_phone_number = None
-
-            # Definition of callback to update UI from Audio Thread
-            def update_ui_callback(number_text, status_text=None):
-                if phone_display.running:
-                    phone_display.update_number(number_text)
-                    if status_text:
-                        phone_display.set_status(status_text)
-            
-            phone_system = PhoneInputSystem(callback_fn=update_ui_callback)
+            # Phone components already initialized above!
 
             def audio_worker():
                 nonlocal final_phone_number
