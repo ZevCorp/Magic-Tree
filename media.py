@@ -16,7 +16,17 @@ WINDOW_NAME = "EnchantedTree"
 class MediaManager:
     def __init__(self):
         # Add '--avcodec-hw=none' to disable hardware acceleration which causes segfaults if v4l2m2m state is bad
-        self.vlc_instance = vlc.Instance('--fullscreen', '--no-video-title-show', '--mouse-hide-timeout=0', '--avcodec-hw=none') if VLC_AVAILABLE else None
+        # Aggressively disable v4l2m2m hardware decoding which is crashing the RPi5
+        # We explicitly skip the v4l2 codec plugin
+        self.vlc_instance = vlc.Instance(
+            '--fullscreen', 
+            '--no-video-title-show', 
+            '--mouse-hide-timeout=0', 
+            '--codec=avcodec,all',      # Prefer ffmpeg/avcodec
+            '--avcodec-hw=none',        # Disable hardware decoding in avcodec
+            '--no-xlib',                # Thread safety
+            '--vout=xcb_x11'            # Force X11 output (since we are on X11 backend)
+        ) if VLC_AVAILABLE else None
         self.player = self.vlc_instance.media_player_new() if self.vlc_instance else None
         self.camera = None
         
