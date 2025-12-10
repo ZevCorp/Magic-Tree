@@ -58,9 +58,12 @@ class MediaManager:
             pass
         return False
 
-    def play_video(self, video_path):
+    def play_video(self, video_path, check_interrupt=None):
         if not os.path.exists(video_path):
-            logging.error(f"Video file not found: {video_path}")
+            # logging.error(f"Video file not found: {video_path}") 
+            # Silent fail or just log warning? User said "omit it" for intro 2. 
+            # We will just return, but let's log debug instead of error to reduce noise if intentional.
+            logging.info(f"Video not found (skipping): {video_path}")
             return
 
         logging.info(f"Playing video: {video_path}")
@@ -73,12 +76,23 @@ class MediaManager:
             self.player.set_fullscreen(True)
             self.player.play()
             
-            # Wait for video to finish
-            time.sleep(1) # Give it time to start
-            while self.player.get_state() != vlc.State.Ended:
-                if self.player.get_state() == vlc.State.Error:
+            # Wait for video to slightly start to avoid immediate "Ended" state
+            time.sleep(0.5) 
+            
+            while True:
+                state = self.player.get_state()
+                if state == vlc.State.Ended:
+                    break
+                if state == vlc.State.Error:
                     logging.error("VLC Error")
                     break
+                
+                # Check interruption
+                if check_interrupt and check_interrupt():
+                    logging.info("Video playback interrupted.")
+                    self.player.stop()
+                    break
+                
                 time.sleep(0.1)
             
             # Properly release fullscreen and stop
@@ -92,7 +106,30 @@ class MediaManager:
             logging.info("Video playback finished")
         else:
             logging.info("Mock playing video (3 seconds)...")
-            time.sleep(3)
+            start = time.time()
+            while time.time() - start < 3:
+                if check_interrupt and check_interrupt():
+                     logging.info("Mock video interrupted")
+                     return
+                time.sleep(0.1)
+
+    def show_image(self, image_path):
+        """Displays a static image on the persistent window."""
+        if not os.path.exists(image_path):
+            logging.warning(f"Image not found: {image_path}")
+            return
+            
+        try:
+            img = cv2.imread(image_path)
+            if img is not None:
+                # Resize to fullscreen if needed (assuming 1920x1080)
+                img = cv2.resize(img, (1920, 1080))
+                cv2.imshow(WINDOW_NAME, img)
+                cv2.waitKey(1)
+            else:
+                 logging.warning("Failed to load image")
+        except Exception as e:
+            logging.error(f"Error showing image: {e}")
 
     def record_user(self, output_path, stop_event=None):
         logging.info(f"Starting recording to {output_path}")

@@ -11,6 +11,12 @@ import pygame
 from openai import OpenAI
 
 from config import *
+try:
+    from vosk import Model, KaldiRecognizer
+    VOSK_AVAILABLE = True
+except ImportError:
+    logging.warning("Vosk not found. Voice recognition will be disabled.")
+    VOSK_AVAILABLE = False
 
 # Initialize Pygame Mixer for background music
 try:
@@ -40,7 +46,21 @@ class AudioManager:
                 self.client = OpenAI(api_key=OPENAI_API_KEY)
             except Exception as e:
                 logging.error(f"Failed to initialize OpenAI client: {e}")
+                logging.error(f"Failed to initialize OpenAI client: {e}")
                 self.client = None
+
+        # Initialize Vosk Model
+        self.vosk_model = None
+        if VOSK_AVAILABLE:
+            if os.path.exists(VOSK_MODEL_PATH):
+                try:
+                    logging.info(f"Loading Vosk model from {VOSK_MODEL_PATH}...")
+                    self.vosk_model = Model(VOSK_MODEL_PATH)
+                    logging.info("Vosk model loaded successfully.")
+                except Exception as e:
+                    logging.error(f"Failed to load Vosk model: {e}")
+            else:
+                logging.warning(f"Vosk model path valid not found: {VOSK_MODEL_PATH}")
         
     def stream_audio_chunks(self, stop_event, chunk_duration=5):
         """
@@ -182,37 +202,57 @@ class AudioManager:
             except Exception as e:
                 logging.error(f"Error stopping music: {e}")
 
-    def listen_for_keyword(self, confirm_event, keyword="confirmar"):
+    def listen_for_keyword(self, stop_event, keyword="confirmar"):
         """
-        Listens exclusively for a keyword to trigger the event.
-        Uses OpenAI for transcription for simplicity/consistency.
+        Listens locally using Vosk for a keyword to trigger the event.
         """
-        logging.info(f"Listening for keyword: {keyword}")
-        
-        # We reuse the streaming logic but with local stop event
-        local_stop = threading.Event()
-        
-        # We need to process chunks until keyword is found or global flow stops?
-        # Actually this runs in a thread. We should check if confirm_event is set elsewhere too?
-        # No, this sets the confirm_event.
-        
-        for chunk_path in self.stream_audio_chunks(local_stop, chunk_duration=3):
-            if confirm_event.is_set():
-                break
+        if not self.vosk_model:
+            logging.warning("Vosk model not loaded, cannot listen for keyword.")
+            return
 
-            text = self.transcribe_with_openai(chunk_path)
-            if text:
-                logging.info(f"Keyword listener heard: {text}")
-                if keyword.lower() in text.lower():
-                    logging.info(f"Keyword '{keyword}' detected!")
-                    confirm_event.set()
-                    local_stop.set()
+        logging.info(f"Listening for keyword '{keyword}' (Local Vosk)...")
+        
+        try:
+            rec = KaldiRecognizer(self.vosk_model, self.rate)
+            
+            stream = self.p.open(format=self.format,
+                                 channels=self.channels,
+                                 rate=self.rate,
+                                 input=True,
+                                 frames_per_buffer=4000) # Vosk likes larger chunks usually or small is fine
+            
+            # Use a slightly smaller chunk for reading to be responsive to stop_event
+            read_chunk = 4000
+            
+            while not stop_event.is_set():
+                try:
+                    data = stream.read(read_chunk, exception_on_overflow=False)
+                    if len(data) == 0:
+                        break
+                        
+                    if rec.AcceptWaveform(data):
+                        result = json.loads(rec.Result())
+                        text = result.get("text", "")
+                        if text:
+                            # logging.info(f"Vosk Heard: {text}")
+                            if keyword.lower() in text.lower():
+                                logging.info(f"Keyword '{keyword}' detected!")
+                                stop_event.set()
+                                break
+                    else:
+                        # Partial result (optional to check, but usually we wait for full)
+                        pass
+                        
+                except Exception as e:
+                    logging.error(f"Error in keyword listener: {e}")
                     break
             
-            try:
-                os.remove(chunk_path)
-            except:
-                pass
+            stream.stop_stream()
+            stream.close()
+            logging.info("Keyword listener stopped.")
+            
+        except Exception as e:
+            logging.error(f"Failed to start Vosk stream: {e}")
                 
     def __del__(self):
         if self.p:

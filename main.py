@@ -35,16 +35,49 @@ def main():
             voice_thread = threading.Thread(target=voice_listener, daemon=True)
             voice_thread.start()
             
-            while not activation_event.is_set():
+            # Helper to check all triggers
+            def check_active():
+                if activation_event.is_set(): return True
                 if hardware.is_door_open():
-                     logging.info("Door opened! Starting experience.")
-                     activation_event.set()
-                
+                    logging.info("Door opened! Starting experience.")
+                    activation_event.set()
+                    return True
                 if media.check_for_enter():
                     logging.info("Enter key detected!")
                     activation_event.set()
+                    return True
+                return False
+
+            # Standby Loop
+            logging.info("Entering Standby Mode (Video/Image Loop)...")
+            audio.stop_background_music() # Ensure no music during standby
+
+            while not activation_event.is_set():
+                # 1. Play Standby Video
+                if os.path.exists(STANDBY_VIDEO_PATH):
+                     media.play_video(STANDBY_VIDEO_PATH, check_interrupt=check_active)
                 
-                time.sleep(0.05)
+                if check_active(): break
+
+                # 2. Show Standby Image
+                if os.path.exists(STANDBY_IMAGE_PATH):
+                    media.show_image(STANDBY_IMAGE_PATH)
+                else:
+                    media.show_black_screen()
+
+                # 3. Wait for 8 minutes (or trigger)
+                # We check triggers frequently
+                wait_start = time.time()
+                VIDEO_INTERVAL = 8 * 60 # 8 minutes
+                
+                logging.info(f"Standby: Showing image, waiting {VIDEO_INTERVAL}s...")
+                
+                while time.time() - wait_start < VIDEO_INTERVAL:
+                    if check_active(): 
+                        break
+                    time.sleep(0.05)
+                
+                if check_active(): break
             
             activation_event.set() # Signal audio thread to stop if it hasn't yet
 
@@ -56,6 +89,7 @@ def main():
             
             # 2.1 Play Second Intro Video
             logging.info("Playing second intro video...")
+            # play_video now silently skips if not found, fulfilling the request to optimize/omit
             media.play_video(INTRO_VIDEO_2_PATH)
 
             # 3. Record User (30 seconds fixed)

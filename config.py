@@ -35,6 +35,8 @@ ASK_PHONE_VIDEO_PATH = os.path.join(ASSETS_DIR, "ask_phone.mp4")
 GOODBYE_VIDEO_PATH = os.path.join(ASSETS_DIR, "goodbye.mp4")
 CHRISTMAS_BG_PATH = os.path.join(ASSETS_DIR, "christmas_bg.png")
 BACKGROUND_MUSIC_PATH = os.path.join(ASSETS_DIR, "background_music.mp3")
+STANDBY_VIDEO_PATH = os.path.join(ASSETS_DIR, "standby.mp4")
+STANDBY_IMAGE_PATH = os.path.join(ASSETS_DIR, "standby.png")
 
 # Audio Configuration
 SAMPLE_RATE = 16000
