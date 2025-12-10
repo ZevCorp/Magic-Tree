@@ -46,8 +46,19 @@ SERVER_PID=$!
 cd ..
 
 echo "Messaging Server PID: $SERVER_PID"
-echo "Waiting 5 seconds for server to initialize..."
-sleep 5
+echo "Waiting 10 seconds for server to initialize..."
+sleep 10
+
+# Check if server processes is still running
+if ! ps -p $SERVER_PID > /dev/null; then
+    echo "ERROR: Messaging Server died immediately!"
+    echo "--- Server Log (Last 20 lines) ---"
+    tail -n 20 messaging_server.log
+    echo "----------------------------------"
+    echo "Please check messaging_server.log for details."
+    exit 1
+fi
+
 
 # Function to cleanup background process on exit
 cleanup() {
