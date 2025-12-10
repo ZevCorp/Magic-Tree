@@ -16,14 +16,8 @@ WINDOW_NAME = "EnchantedTree"
 class MediaManager:
     def __init__(self):
         # Add '--avcodec-hw=none' to disable hardware acceleration which causes segfaults if v4l2m2m state is bad
-        # Reverting aggressive flags. The 'xcb_x11' vout forcing failed.
-        # We will use minimal flags + avcodec-hw=none to fix the original crash without breaking X11 window.
-        self.vlc_instance = vlc.Instance(
-            '--fullscreen', 
-            '--no-video-title-show', 
-            '--mouse-hide-timeout=0',
-            '--avcodec-hw=none' # Disable hardware decoding softy
-        ) if VLC_AVAILABLE else None
+        # Reverting to default settings. The hardware crash will be handled by disabling the system plugin via script.
+        self.vlc_instance = vlc.Instance('--fullscreen', '--no-video-title-show', '--mouse-hide-timeout=0') if VLC_AVAILABLE else None
         self.player = self.vlc_instance.media_player_new() if self.vlc_instance else None
         self.camera = None
         
