@@ -90,19 +90,20 @@ def main():
                      # We can't just block forever here.
                      pass
 
-                # 3. Wait for 8 minutes (or trigger)
-                # We check triggers frequently
-                wait_start = time.time()
+                # 3. Wait for 8 minutes (or trigger OR face detection)
                 VIDEO_INTERVAL = 8 * 60 # 8 minutes
                 
-                logging.info(f"Standby: Showing image, waiting {VIDEO_INTERVAL}s...")
+                logging.info(f"Standby: Showing image, monitoring for {VIDEO_INTERVAL}s (Trigger/Face)...")
+
+                result = media.monitor_standby(VIDEO_INTERVAL, check_active)
                 
-                while time.time() - wait_start < VIDEO_INTERVAL:
-                    if check_active(): 
-                        break
-                    time.sleep(0.05)
-                
-                if check_active(): break
+                if result == 'INTERRUPT':
+                    logging.info("Standby interrupted by user action!")
+                    break
+                elif result == 'FACE':
+                    logging.info("Face detected in standby! Playing video...")
+                    continue
+                # If result == 'TIMEOUT', loop restarts -> Plays Video
             
             activation_event.set() # Ensure set in case loop exited otherwise
             logging.info("Iniciando experiencia...")

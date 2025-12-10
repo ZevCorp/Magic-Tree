@@ -242,6 +242,96 @@ class MediaManager:
         except:
             pass
 
+    def get_camera(self):
+        """Helper to find and open a working camera"""
+        for index in range(4):
+            cap = cv2.VideoCapture(index)
+            if cap.isOpened():
+                # Apply settings
+                cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
+                return cap
+            cap.release()
+        return None
+
+    def monitor_standby(self, duration, check_interrupt):
+        """
+        Monitors for face detection for 'duration' seconds.
+        Returns:
+           'INTERRUPT': if check_interrupt() becomes True (Start Exp)
+           'FACE': if face detected (Play Video)
+           'TIMEOUT': if duration ends (Play Video)
+        """
+        logging.info(f"Monitoring standby for {duration} seconds (Face Detection Active)...")
+        
+        # Load Haar Cascade
+        try:
+            face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+            if face_cascade.empty():
+                logging.warning("Failed to load Haar Cascade. Face detection disabled.")
+                face_cascade = None
+        except Exception as e:
+            logging.warning(f"Error loading Haar Cascade: {e}")
+            face_cascade = None
+
+        cap = self.get_camera()
+        if not cap and face_cascade:
+             logging.warning("Could not open camera for standby monitoring.")
+        
+        start_time = time.time()
+        face_frames = 0
+        REQUIRED_FACE_FRAMES = 2 # Low threshold for responsiveness, but check consistency
+        
+        while time.time() - start_time < duration:
+            # 1. Check Interrupts
+            if check_interrupt and check_interrupt():
+                if cap: cap.release()
+                return 'INTERRUPT'
+            
+            # 2. Check Exit (ESC)
+            if self.check_for_exit():
+                if cap: cap.release()
+                pass # check_active should catch exit if main loop handles it, or we treat as interrupt?
+                # Actually check_active usually checks events. 
+                # check_for_exit returns true if ESC pressed. 
+                # We should probably return INTERRUPT so main loop can handle exit.
+                return 'INTERRUPT' 
+
+            # 3. Face Detection
+            if cap and face_cascade:
+                ret, frame = cap.read()
+                if ret:
+                    # Resize for speed?
+                    small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5) 
+                    gray = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)
+                    
+                    faces = face_cascade.detectMultiScale(
+                        gray,
+                        scaleFactor=1.3,
+                        minNeighbors=5,
+                        minSize=(30, 30)
+                    )
+                    
+                    if len(faces) > 0:
+                        face_frames += 1
+                        # logging.debug(f"Face detected! Count: {face_frames}")
+                    else:
+                        face_frames = 0
+                    
+                    if face_frames >= REQUIRED_FACE_FRAMES:
+                        logging.info("Face detected! Triggering Standby Video.")
+                        cap.release()
+                        return 'FACE'
+            
+            # 4. Wait/Sleep
+            # We call waitKey to keep window processed (even if we are showing static image)
+            # check_for_exit called waitKey(10), so we are good.
+            # But let's sleep a bit more to save CPU if no camera
+            if not cap:
+                time.sleep(0.1)
+                
+        if cap: cap.release()
+        return 'TIMEOUT'
+
     def display_verification_ui(self, number, stop_event):
         # Deprecated: Use PhoneDisplay class instead
         pass
