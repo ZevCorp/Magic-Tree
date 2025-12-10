@@ -2,68 +2,6 @@ import os
 import sys
 import json
 import queue
-import threading
-import time
-import logging
-import pyaudio
-import pygame
-from vosk import Model, KaldiRecognizer
-from openai import OpenAI
-from tts_manager import TTSManager
-from config import *
-
-# Audio Config
-SAMPLE_RATE = 16000
-CHUNK_SIZE = 4000
-DEVICE_INDEX = None  # Auto-detect default
-
-class PhoneInputSystem:
-    def __init__(self, callback_fn=None):
-        """
-        Initialize the PhoneInputSystem.
-        :param callback_fn: A function that takes (number_string, status_string) to update external UI.
-        """
-        self.callback_fn = callback_fn
-        self.running = True
-        self.phone_number = []
-        self.confirmed = False
-        self.verifying = False
-        
-        # Initialize Pygame Mixer for SFX
-        try:
-            pygame.mixer.init()
-        except Exception as e:
-            logging.warning(f"Pygame mixer init failed: {e}")
-
-        self.sounds = {} 
-        self._load_basic_sounds()
-
-        # Initialize Vosk
-        if not os.path.exists(VOSK_MODEL_PATH):
-            logging.error(f"Vosk Model not found at {VOSK_MODEL_PATH}")
-            # Fallback or exit? For now, we log error.
-        else:
-            logging.info(f"Loading Vosk model from {VOSK_MODEL_PATH}...")
-            self.model = Model(VOSK_MODEL_PATH)
-            self.recognizer = KaldiRecognizer(self.model, SAMPLE_RATE)
-            logging.info("Vosk model loaded.")
-        
-        # Audio Queue
-        self.audio_queue = queue.Queue()
-        
-        # Initialize TTS
-        self.tts = TTSManager(api_key=OPENAI_API_KEY)
-        if OPENAI_API_KEY and OPENAI_API_KEY != "YOUR_OPENAI_API_KEY":
-            self.openai_client = OpenAI(api_key=OPENAI_API_KEY)
-        else:
-            logging.warning("No valid OpenAI API Key found. Confirmation will be limited.")
-            self.openai_client = None
-        
-        # Word mapping
-        self.digit_map = {
-            "cero": "0", "uno": "1", "una": "1", "dos": "2", "tres": "3",
-            "cuatro": "4", "cinco": "5", "seis": "6", "siete": "7",
-            "ocho": "8", "nueve": "9",
             # 10-19
             "diez": "10", "once": "11", "doce": "12", "trece": "13", "catorce": "14", 
             "quince": "15", "dieciseis": "16", "diecisiete": "17", "dieciocho": "18", "diecinueve": "19",
@@ -152,7 +90,8 @@ class PhoneInputSystem:
         stream.stop_stream()
         stream.close()
         p.terminate()
-        self.tts.stop()
+        if self.tts:
+            self.tts.stop()
         return "".join(self.phone_number) if self.confirmed else None
 
     def process_text(self, text):
@@ -200,7 +139,8 @@ class PhoneInputSystem:
         # Speak digits found
         if current_chunk_words:
             phrase = " ".join(current_chunk_words)
-            self.tts.speak(phrase)
+            if self.tts:
+                self.tts.speak(phrase)
 
         # Check completion
         if len(self.phone_number) == 10 and not self.confirmed and not self.verifying:
@@ -211,33 +151,7 @@ class PhoneInputSystem:
         full_number = "".join(self.phone_number)
         logging.info(f"10 digits reached: {full_number}. Verifying...")
         self.update_ui("Confirmar?")
-        
-        # Use GPT-4o-mini for confirmation
-        if self.openai_client:
-            try:
-                # We spawn a thread to not block the audio loop? 
-                # Actually TTS is threaded, but API call is blocking.
-                # Let's do it in a thread briefly or just accept the block (latency might be issue)
-                threading.Thread(target=self._generate_confirm_speech, args=(full_number,)).start()
-            except Exception as e:
-                logging.error(f"OpenAI Error: {e}")
-                self.tts.speak(f"El número es {full_number}. ¿Es correcto?")
-        else:
-            self.tts.speak(f"El número es {full_number}. ¿Es correcto?")
-            
-    def _generate_confirm_speech(self, full_number):
-        try:
-             response = self.openai_client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant confirming a phone number. Speak naturally in Spanish. Keep it brief. Example: 'Entendido, el número es 311... ¿Es correcto?'"},
-                    {"role": "user", "content": f"The user just dictated the phone number {full_number}. Ask them to confirm if it is correct."}
-                ]
-            )
-             confirmation_text = response.choices[0].message.content
-             self.tts.speak(confirmation_text)
-        except:
-             self.tts.speak(f"El número es {full_number}. ¿Es correcto?")
+        pass
 
     def update_ui(self, status=None):
         if self.callback_fn:
