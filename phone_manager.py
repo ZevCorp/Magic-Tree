@@ -68,6 +68,7 @@ class PhoneInputSystem:
         }
         
         self.correction_words = ["no", "borrar", "corregir", "atras", "mal"]
+        self.clear_all_phrase = "borrar todo"
         self.confirmation_words = ["si", "confirmar", "ok", "listo", "correcto", "ya"]
 
     def normalize_text(self, text):
@@ -181,8 +182,24 @@ class PhoneInputSystem:
                 else:
                     self.play_sound("que")
 
-            # Check for confirmation
-            elif word in self.confirmation_words:
+        # Check for 'Borrar Todo' (phrase check in full text)
+        if self.clear_all_phrase in text:
+            logging.info("Command: 'Borrar todo' detected")
+            if self.phone_number:
+                self.phone_number = []
+                self.play_sound("borrado") # Play sound as feedback
+                self.verifying = False
+                self.update_ui("Numero borrado")
+            return # Skip other checks
+            
+        # Re-iterate for Confirmation to be outside loop of single words if needed, 
+        # but current structure iterates words. 'Borrar todo' needs phrase check.
+        # We put 'Borrar todo' check outside the word loop or check inside if 'todo' follows 'borrar'?
+        # Simplifying: check phrase in raw text.
+
+        for word in words:
+             # Check for confirmation
+            if word in self.confirmation_words:
                 if len(self.phone_number) == 10:
                     self.confirmed = True
                     self.play_sound("confirmar")

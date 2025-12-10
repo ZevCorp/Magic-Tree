@@ -403,6 +403,16 @@ class PhoneDisplay:
                     text_y_focus = (img.shape[0]) - 50
                     cv2.putText(img, focus_text, (text_x_focus, text_y_focus), font, font_scale_focus, (100, 255, 100), thickness_focus)
 
+                # 4. Instructions (Bottom Fixed)
+                # "Di 'Borrar' para corregir | Di 'Confirmar' para terminar | Di 'Borrar Todo' para reiniciar"
+                instr_text = "Di 'Borrar' para corregir  |  Di 'Confirmar' para finalizar  |  Di 'Borrar Todo' para reiniciar"
+                font_scale_i = 1.0
+                thickness_i = 2
+                text_size_i = cv2.getTextSize(instr_text, font, font_scale_i, thickness_i)[0]
+                text_x_i = (img.shape[1] - text_size_i[0]) // 2
+                text_y_i = (img.shape[0]) - 120
+                cv2.putText(img, instr_text, (text_x_i, text_y_i), font, font_scale_i, (200, 200, 200), thickness_i)
+
                 cv2.imshow(self.window_name, img)
                 
                 # Make sure it stays fullscreen (sometimes OS tries to shrink it)
