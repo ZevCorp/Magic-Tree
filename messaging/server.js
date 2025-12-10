@@ -49,7 +49,11 @@ if (process.platform === 'linux') {
 
 const client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: puppeteerConfig
+    puppeteer: puppeteerConfig,
+    webVersionCache: {
+        type: 'remote',
+        remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html',
+    }
 });
 
 // --- WhatsApp Events ---
