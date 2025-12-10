@@ -393,15 +393,9 @@ class PhoneDisplay:
                 text_y_inst = (img.shape[0] // 2) + 150
                 cv2.putText(img, current_status, (text_x_inst, text_y_inst), font, font_scale_inst, (220, 220, 220), thickness_inst)
 
-                # 3. Focus Instruction (Blinking)
-                if int(time.time() * 2) % 2 == 0:
-                    focus_text = "[ CLICK AQUI PARA ESCRIBIR ]"
-                    font_scale_focus = 1.0
-                    thickness_focus = 2
-                    text_size_focus = cv2.getTextSize(focus_text, font, font_scale_focus, thickness_focus)[0]
-                    text_x_focus = (img.shape[1] - text_size_focus[0]) // 2
-                    text_y_focus = (img.shape[0]) - 50
-                    cv2.putText(img, focus_text, (text_x_focus, text_y_focus), font, font_scale_focus, (100, 255, 100), thickness_focus)
+                # 3. Focus Instruction (Blinking) - REMOVED AS REQUESTED
+                # if int(time.time() * 2) % 2 == 0:
+                #    pass
 
                 # 4. Instructions (Bottom Fixed)
                 # "Di 'Borrar' para corregir | Di 'Confirmar' para terminar | Di 'Borrar Todo' para reiniciar"
