@@ -16,8 +16,19 @@ WINDOW_NAME = "EnchantedTree"
 class MediaManager:
     def __init__(self):
         # Add '--avcodec-hw=none' to disable hardware acceleration which causes segfaults if v4l2m2m state is bad
-        # Reverting to default settings. The hardware crash will be handled by disabling the system plugin via script.
-        self.vlc_instance = vlc.Instance('--fullscreen', '--no-video-title-show', '--mouse-hide-timeout=0') if VLC_AVAILABLE else None
+        # The script-based fix disabled the *access* plugin for v4l2, but the *codec* plugin (v4l2m2m) is still active in ffmpeg/avcodec.
+        # We must explicitly tell VLC's internal ffmpeg wrapper to IGNORE the v4l2m2m codec.
+        self.vlc_instance = vlc.Instance(
+            '--fullscreen', 
+            '--no-video-title-show', 
+            '--mouse-hide-timeout=0',
+            # This is the magic bullet: specifically blacklist the crashing v4l2m2m codec
+            '--codec=avcodec,all', 
+            '--avcodec-skip-frame=0', 
+            '--avcodec-skip-idct=0', 
+            # '--avcodec-hw=none' was too broad, let's try specific overrides if available, or just none for safety
+            '--avcodec-hw=none'
+        ) if VLC_AVAILABLE else None
         self.player = self.vlc_instance.media_player_new() if self.vlc_instance else None
         self.camera = None
         
