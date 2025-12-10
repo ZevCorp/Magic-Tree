@@ -44,20 +44,15 @@ def main():
             logging.info("Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...")
             activation_event = threading.Event()
             
-            # Start Voice Listener
-            def voice_listener():
-               audio.listen_for_keyword(activation_event, "feliz navidad")
-            
-            # Daemon thread so it dies if main dies
-            voice_thread = threading.Thread(target=voice_listener, daemon=True)
-            voice_thread.start()
-            
-            while not activation_event.is_set():
+            # Helper to check all triggers
+            def check_active():
+                if activation_event.is_set(): return True
                 # Check hardware (mock allows enter too, but we prioritize non-blocking)
                 try:
                     if hardware.is_door_open():
                          logging.info("Door Open Detected!")
                          activation_event.set()
+                         return True
                 except:
                     pass
                 
@@ -65,9 +60,49 @@ def main():
                 if media.check_for_enter():
                     logging.info("Enter key detected on Window!")
                     activation_event.set()
+                    return True
+                return False
+
+            # Standby Loop
+            logging.info("Entering Standby Mode (Video/Image Loop)...")
+            audio.stop_background_music() # Ensure no music during standby
+            
+            # Start Voice Listener
+            def voice_listener():
+               audio.listen_for_keyword(activation_event, "feliz navidad")
+            
+            # Daemon thread so it dies if main dies
+            voice_thread = threading.Thread(target=voice_listener, daemon=True)
+            voice_thread.start()
+
+            while not activation_event.is_set():
+                # 1. Play Standby Video
+                if os.path.exists(STANDBY_VIDEO_PATH):
+                     media.play_video(STANDBY_VIDEO_PATH, check_interrupt=check_active)
                 
-                # Sleep to prevent CPU hog
-                time.sleep(0.05)
+                if check_active(): break
+
+                # 2. Show Standby Image
+                if os.path.exists(STANDBY_IMAGE_PATH):
+                    media.show_image(STANDBY_IMAGE_PATH)
+                else:
+                     # Fallback to black screen if no image, but try to be responsive
+                     # We can't just block forever here.
+                     pass
+
+                # 3. Wait for 8 minutes (or trigger)
+                # We check triggers frequently
+                wait_start = time.time()
+                VIDEO_INTERVAL = 8 * 60 # 8 minutes
+                
+                logging.info(f"Standby: Showing image, waiting {VIDEO_INTERVAL}s...")
+                
+                while time.time() - wait_start < VIDEO_INTERVAL:
+                    if check_active(): 
+                        break
+                    time.sleep(0.05)
+                
+                if check_active(): break
             
             activation_event.set() # Ensure set in case loop exited otherwise
             logging.info("Iniciando experiencia...")
@@ -81,12 +116,11 @@ def main():
                 
                 # 2.1 Play Second Intro Video
                 logging.info("Playing second intro video...")
+                # Optimized: silently skip if missing, no delay
                 if os.path.exists(INTRO_VIDEO_2_PATH):
                     media.play_video(INTRO_VIDEO_2_PATH)
                 else:
-                    logging.warning(f"Video no encontrado: {INTRO_VIDEO_2_PATH}")
-                    logging.info("Simulando reproducción 2 (3 segundos)...")
-                    time.sleep(3)
+                    logging.info(f"Video no encontrado (skipping): {INTRO_VIDEO_2_PATH}")
             else:
                 logging.warning(f"Video no encontrado: {INTRO_VIDEO_PATH}")
                 logging.info("Simulando reproducción (3 segundos)...")
