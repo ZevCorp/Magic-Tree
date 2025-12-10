@@ -36,10 +36,8 @@ fi
 # --- START MESSAGING SERVER ---
 echo "--- Initializing Messaging Server ---"
 cd messaging
-if [ ! -d "node_modules" ]; then
     echo "Installing Node.js dependencies..."
     npm install
-fi
 echo "Starting WhatsApp Server (Background)..."
 node server.js > ../messaging_server.log 2>&1 &
 SERVER_PID=$!
