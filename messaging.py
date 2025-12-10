@@ -1,43 +1,48 @@
 import logging
+import requests
+import json
 
 class MessagingService:
     def send_welcome_message(self, phone_number):
-        import subprocess
-        import os
+        logging.info(f"Preparing to send welcome message to {phone_number} via Local Server...")
         
-        logging.info(f"Sending welcome message to {phone_number}...")
-        
-        script_path = os.path.join(os.path.dirname(__file__), "messaging", "send_message.js")
-        
-        # Ensure phone number has country code (assuming Mexico +52 for now if missing)
-        # This is a basic check, can be improved
         # Clean number
         phone_number = ''.join(filter(str.isdigit, phone_number))
         
-        # Handle Mexico '01' prefix (obsolete but common in dictation)
+        # Handle Mexico '01' prefix
         if phone_number.startswith("01") and len(phone_number) > 10:
             phone_number = phone_number[2:]
             
-        # Ensure phone number has country code
+        # Ensure phone number has country code (Default Colombia 57 if length is 10)
+        # Assuming usually 10 digits for local (3xx xxx xxxx)
         if len(phone_number) == 10:
             from config import PHONE_COUNTRY_CODE
             phone_number = PHONE_COUNTRY_CODE + phone_number
             
-        logging.info(f"Formatted phone number for WhatsApp: {phone_number}")
+        logging.info(f"Target Phone Number: {phone_number}")
             
         try:
-            result = subprocess.run(
-                ["node", script_path, phone_number],
-                capture_output=True,
-                text=True,
-                check=True,
-                timeout=60
+            # Send request to local Node.js server
+            payload = {"phoneNumber": phone_number}
+            headers = {'Content-type': 'application/json'}
+            
+            response = requests.post(
+                "http://localhost:3000/send-welcome", 
+                data=json.dumps(payload), 
+                headers=headers,
+                timeout=5 # Fast timeout, don't block UI
             )
-            logging.info(f"Node.js output: {result.stdout}")
-            return True
-        except subprocess.CalledProcessError as e:
-            logging.error(f"Error sending message: {e.stderr}")
+            
+            if response.status_code == 200:
+                logging.info(f"Success! Server responded: {response.json()}")
+                return True
+            else:
+                logging.error(f"Server Error {response.status_code}: {response.text}")
+                return False
+                
+        except requests.exceptions.ConnectionError:
+            logging.error("Could not connect to Messaging Server at http://localhost:3000. Is 'node messaging/server.js' running?")
             return False
-        except subprocess.TimeoutExpired:
-            logging.error("Error: Messaging service timed out after 60 seconds.")
+        except Exception as e:
+            logging.error(f"Error sending message request: {e}")
             return False
