@@ -48,7 +48,7 @@ if (process.platform === 'linux') {
 }
 
 const client = new Client({
-    authStrategy: new LocalAuth(),
+    authStrategy: new LocalAuth({ clientId: 'encantado_v2' }),
     puppeteer: puppeteerConfig,
     webVersionCache: {
         type: 'remote',
