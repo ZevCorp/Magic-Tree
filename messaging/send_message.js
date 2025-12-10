@@ -46,7 +46,8 @@ const client = new Client({
 });
 
 const args = process.argv.slice(2);
-const phoneNumber = args[0]; // Format: 5215512345678 (Country code + number)
+const authMode = args.includes('--auth');
+const phoneNumber = args.find(arg => arg !== '--auth'); // Get first argument that isn't --auth
 const message = "¡Hola! Aquí tienes tu video del Árbol Encantado. ¡Feliz Navidad!";
 
 if (process.argv.includes('--auth')) {
@@ -126,10 +127,12 @@ client.on('ready', async () => {
             process.exit(1);
         }
     } else {
-        if (!process.argv.includes('--auth')) {
+        if (authMode) {
+            console.log('Authentication successful. Session saved.');
+        } else {
             console.log('No phone number provided. Use --auth to just authenticate.');
-            process.exit(0);
         }
+        process.exit(0);
     }
 });
 
