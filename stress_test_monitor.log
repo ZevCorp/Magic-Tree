@@ -1,0 +1,7 @@
+2025-12-12 15:44:07,377 - [MONITOR] - ============================================================
+2025-12-12 15:44:07,378 - [MONITOR] - CHAOS MONKEY / STRESS TEST MONITOR STARTED
+2025-12-12 15:44:07,383 - [MONITOR] - Target: stress_test_wrapper.py
+2025-12-12 15:44:07,384 - [MONITOR] - Timeout Threshold: 300 seconds
+2025-12-12 15:44:07,385 - [MONITOR] - ============================================================
+2025-12-12 15:44:07,385 - [MONITOR] - Starting execution #1...
+2025-12-12 15:44:27,840 - [MONITOR] - Monitor stopped by user.
