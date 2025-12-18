@@ -159,32 +159,12 @@ class MediaManager:
                 self.camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
                 
                 # Attempt to set 1080p resolution
+                # Attempt to set 1080p resolution
                 self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
                 self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
                 self.camera.set(cv2.CAP_PROP_FPS, 30)
 
-                # --- CAMERA ADJUSTMENTS FOR HIGH CONTRAST / BURNOUT ---
-                try:
-                    logging.info("Applying production camera settings to prevent burnout...")
-                    # 1. Turn off Auto Exposure (0.25 is often mapped to Manual/1 in v4l2)
-                    self.camera.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
-                    
-                    # 2. Lower Brightness significantly (Target: "Muy brusco, baje bastante")
-                    # Assuming 0-255 range. 30 is quite dark.
-                    self.camera.set(cv2.CAP_PROP_BRIGHTNESS, 30)
-                    
-                    # 3. Lower Gain (ISO) to minimum to reduce light sensitivity
-                    self.camera.set(cv2.CAP_PROP_GAIN, 0)
-                    
-                    # 4. Adjust Contrast (Lowering it helps with high dynamic range scenes sometimes)
-                    self.camera.set(cv2.CAP_PROP_CONTRAST, 20)
-                    
-                    # 5. Fixed Exposure (Optional, hardware dependent)
-                    # self.camera.set(cv2.CAP_PROP_EXPOSURE, -6) 
-                    
-                    logging.info("Camera settings applied: Brightness=30, Gain=0, Contrast=20")
-                except Exception as e:
-                    logging.warning(f"Failed to set custom camera properties: {e}")
+                # --- CAMERA ADJUSTMENTS REMOVED (NATURAL LOOK) ---
                 
                 # Verify what we actually got
                 actual_w = self.camera.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -202,18 +182,14 @@ class MediaManager:
         # XVID is usually safe, or H264 if available
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
         
-        # Original Input Dimensions
-        cap_width = int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH))
-        cap_height = int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        
-        # Output Dimensions (Swapped for Vertical as requested)
-        out_width = cap_height
-        out_height = cap_width
+        # Natural Input Dimensions (No Swap)
+        width = int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH))
+        height = int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
         
         fps = 30.0 # Target 30 FPS
-        out = cv2.VideoWriter(output_path, fourcc, fps, (out_width, out_height))
+        out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
-        logging.info(f"Recording Vertical Video: {out_width}x{out_height} @ {fps}fps")
+        logging.info(f"Recording Video: {width}x{height} @ {fps}fps")
         # Ensure window properties
         cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
@@ -237,12 +213,11 @@ class MediaManager:
 
             ret, frame = self.camera.read()
             if ret:
-                # Rotate Frame 90 Degrees Clockwise for Vertical Recording
-                # (Since physical camera is rotated)
-                frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+                # Rotate Frame 180 Degrees as requested
+                frame = cv2.rotate(frame, cv2.ROTATE_180)
 
                 # Add countdown timer to frame
-                # Bottom right corner (using new vertical dimensions)
+                # Bottom right corner 
                 text = str(remaining)
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 font_scale = 4
@@ -250,8 +225,8 @@ class MediaManager:
                 color = (255, 255, 255) # White
                 
                 text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
-                text_x = out_width - text_size[0] - 50
-                text_y = out_height - 50
+                text_x = width - text_size[0] - 50
+                text_y = height - 50
                 
                 # Draw text with outline for better visibility
                 cv2.putText(frame, text, (text_x, text_y), font, font_scale, (0, 0, 0), thickness + 4)
@@ -347,8 +322,8 @@ class MediaManager:
             if cap and face_cascade:
                 ret, frame = cap.read()
                 if ret:
-                    # PROACTIVE FIX: Rotate frame for face detection since camera is rotated
-                    frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+                    # PROACTIVE FIX: Rotate frame for face detection matching recording settings
+                    frame = cv2.rotate(frame, cv2.ROTATE_180)
 
                     # Resize for speed?
                     small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5) 
