@@ -213,8 +213,8 @@ class MediaManager:
 
             ret, frame = self.camera.read()
             if ret:
-                # Rotate Frame 180 Degrees as requested
-                frame = cv2.rotate(frame, cv2.ROTATE_180)
+                # Rotate Frame 90 Degrees as requested
+                frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
 
                 # Add countdown timer to frame
                 # Bottom right corner 
@@ -323,7 +323,7 @@ class MediaManager:
                 ret, frame = cap.read()
                 if ret:
                     # PROACTIVE FIX: Rotate frame for face detection matching recording settings
-                    frame = cv2.rotate(frame, cv2.ROTATE_180)
+                    frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
 
                     # Resize for speed?
                     small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5) 
