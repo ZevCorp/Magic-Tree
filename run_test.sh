@@ -67,4 +67,15 @@ trap cleanup EXIT
 # -----------------------------
 
 # Run the test mode
-python test_mode.py
+# Create logs directory
+mkdir -p logs
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+LOG_FILE="logs/run_test_$TIMESTAMP.txt"
+echo "Logging execution to: $LOG_FILE"
+echo "--- Run Started at $TIMESTAMP ---" > "$LOG_FILE"
+
+# Run the test mode
+# -u forces unbuffered binary stdout and stderr (so logs are written immediately)
+# 2>&1 redirects stderr to stdout so we capture errors too
+# tee -a appends to the log file while showing output on screen
+python -u test_mode.py 2>&1 | tee -a "$LOG_FILE"

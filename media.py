@@ -201,12 +201,19 @@ class MediaManager:
         # Define codec and create VideoWriter object
         # XVID is usually safe, or H264 if available
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        width = int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH))
-        height = int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        
+        # Original Input Dimensions
+        cap_width = int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH))
+        cap_height = int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        
+        # Output Dimensions (Swapped for Vertical as requested)
+        out_width = cap_height
+        out_height = cap_width
+        
         fps = 30.0 # Target 30 FPS
-        out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
+        out = cv2.VideoWriter(output_path, fourcc, fps, (out_width, out_height))
 
-        logging.info(f"Camera resolution: {width}x{height} @ {fps}fps")
+        logging.info(f"Recording Vertical Video: {out_width}x{out_height} @ {fps}fps")
         # Ensure window properties
         cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
@@ -230,8 +237,12 @@ class MediaManager:
 
             ret, frame = self.camera.read()
             if ret:
+                # Rotate Frame 90 Degrees Clockwise for Vertical Recording
+                # (Since physical camera is rotated)
+                frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+
                 # Add countdown timer to frame
-                # Bottom right corner
+                # Bottom right corner (using new vertical dimensions)
                 text = str(remaining)
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 font_scale = 4
@@ -239,8 +250,8 @@ class MediaManager:
                 color = (255, 255, 255) # White
                 
                 text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
-                text_x = width - text_size[0] - 50
-                text_y = height - 50
+                text_x = out_width - text_size[0] - 50
+                text_y = out_height - 50
                 
                 # Draw text with outline for better visibility
                 cv2.putText(frame, text, (text_x, text_y), font, font_scale, (0, 0, 0), thickness + 4)
@@ -336,6 +347,9 @@ class MediaManager:
             if cap and face_cascade:
                 ret, frame = cap.read()
                 if ret:
+                    # PROACTIVE FIX: Rotate frame for face detection since camera is rotated
+                    frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+
                     # Resize for speed?
                     small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5) 
                     gray = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)
