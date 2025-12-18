@@ -212,30 +212,58 @@ class MediaManager:
                 break
 
             ret, frame = self.camera.read()
-            if ret:
-                # Rotate Frame 90 Degrees as requested
+                # Rotate Frame 90 Degrees
                 frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
 
-                # Add countdown timer to frame
-                # Bottom right corner 
+                # --- 1. WRITE TO FILE (Raw Vertical Video) ---
+                # We save the full resolution vertical video
+                
+                # Add timer to the raw frame (adjusted for vertical layout)
+                # Frame is now Height x Width (e.g. 1920x1080 -> 1080x1920)
+                f_h, f_w = frame.shape[:2]
+                
                 text = str(remaining)
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 font_scale = 4
                 thickness = 8
-                color = (255, 255, 255) # White
+                color = (255, 255, 255)
                 
                 text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
-                text_x = width - text_size[0] - 50
-                text_y = height - 50
+                text_x = f_w - text_size[0] - 50
+                text_y = f_h - 50
                 
-                # Draw text with outline for better visibility
                 cv2.putText(frame, text, (text_x, text_y), font, font_scale, (0, 0, 0), thickness + 4)
                 cv2.putText(frame, text, (text_x, text_y), font, font_scale, color, thickness)
-
-                out.write(frame)
                 
-                # Show in the persistent window
-                cv2.imshow(WINDOW_NAME, frame)
+                out.write(frame)
+
+                # --- 2. PREPARE FOR DISPLAY (Pillarbox/Letterbox) ---
+                # Screen is 1920x1080 (Landscape)
+                # Image is Vertical (e.g. 1080x1920)
+                # We need to scale image to fit Height 1080.
+                
+                screen_w = 1920
+                screen_h = 1080
+                
+                # Scale factor to fit height
+                scale = screen_h / f_h
+                new_w = int(f_w * scale)
+                new_h = int(f_h * scale) # Should be 1080
+                
+                resized_frame = cv2.resize(frame, (new_w, new_h))
+                
+                # Create Black Background
+                display_img = np.zeros((screen_h, screen_w, 3), dtype=np.uint8)
+                
+                # Center offset
+                x_offset = (screen_w - new_w) // 2
+                
+                # Copy into center
+                # Ensure bounds
+                if x_offset >= 0:
+                     display_img[:, x_offset:x_offset+new_w] = resized_frame
+                
+                cv2.imshow(WINDOW_NAME, display_img)
                 frame_count += 1
                 
                 # Check for 'q' key as manual fallback
