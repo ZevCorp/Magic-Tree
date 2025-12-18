@@ -212,6 +212,7 @@ class MediaManager:
                 break
 
             ret, frame = self.camera.read()
+            if ret:
                 # Rotate Frame 90 Degrees
                 frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
 
