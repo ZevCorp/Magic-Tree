@@ -326,7 +326,7 @@ class MediaManager:
         
         start_time = time.time()
         face_frames = 0
-        REQUIRED_FACE_FRAMES = 2 # Low threshold for responsiveness, but check consistency
+        REQUIRED_FACE_FRAMES = 30 # Increased to prevent "instant" loops. Requires ~1s of sustained face detection.
         
         while time.time() - start_time < duration:
             # 1. Check Interrupts

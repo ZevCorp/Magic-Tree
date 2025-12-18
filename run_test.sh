@@ -36,8 +36,10 @@ fi
 # --- START MESSAGING SERVER ---
 echo "--- Initializing Messaging Server ---"
 cd messaging
-    echo "Installing Node.js dependencies..."
+echo "Installing Node.js dependencies..."
     npm install
+echo "Freeing port 3000 if in use..."
+fuser -k 3000/tcp || true
 echo "Starting WhatsApp Server (Background)..."
 node server.js > ../messaging_server.log 2>&1 &
 SERVER_PID=$!
