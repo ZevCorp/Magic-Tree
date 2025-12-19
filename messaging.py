@@ -3,7 +3,7 @@ import requests
 import json
 
 class MessagingService:
-    def send_welcome_message(self, phone_number):
+    def send_welcome_message(self, phone_number, video_path=None):
         logging.info(f"Preparing to send welcome message to {phone_number} via Local Server...")
         
         # Clean number
@@ -23,7 +23,7 @@ class MessagingService:
             
         try:
             # Send request to local Node.js server
-            payload = {"phoneNumber": phone_number}
+            payload = {"phoneNumber": phone_number, "videoPath": video_path}
             headers = {'Content-type': 'application/json'}
             
             response = requests.post(

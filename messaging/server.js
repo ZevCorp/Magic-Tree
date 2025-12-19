@@ -1,5 +1,5 @@
 const express = require('express');
-const { Client, LocalAuth } = require('whatsapp-web.js');
+const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 const OpenAI = require('openai');
 const QRCode = require('qrcode');
 const qrcode = require('qrcode-terminal');
@@ -132,7 +132,7 @@ client.on('message', async msg => {
 
 // Endpoint to send the welcome message
 app.post('/send-welcome', async (req, res) => {
-    const { phoneNumber } = req.body;
+    const { phoneNumber, videoPath } = req.body;
 
     if (!isClientReady) {
         console.warn("API Request blocked: Client not ready yet.");
@@ -143,7 +143,7 @@ app.post('/send-welcome', async (req, res) => {
         return res.status(400).json({ success: false, error: "phoneNumber is required" });
     }
 
-    console.log(`API Request: Send welcome to ${phoneNumber}`);
+    console.log(`API Request: Send welcome to ${phoneNumber} with video: ${videoPath}`);
 
     try {
         // Standardize format to ID
@@ -165,9 +165,22 @@ app.post('/send-welcome', async (req, res) => {
 
         const messageText = "¡Hola! Aquí tienes tu video del Árbol Encantado. ¡Feliz Navidad!";
 
-        // Send
-        const sentMsg = await client.sendMessage(finalId, messageText);
-        console.log(`Welcome message sent to ${finalId}. Waiting for server acknowledgement...`);
+        let sentMsg;
+        if (videoPath && require('fs').existsSync(videoPath)) {
+            try {
+                const media = MessageMedia.fromFilePath(videoPath);
+                sentMsg = await client.sendMessage(finalId, media, { caption: messageText });
+                console.log(`Video message sent to ${finalId}`);
+            } catch (mediaErr) {
+                console.error("Error attaching media, sending text only:", mediaErr);
+                sentMsg = await client.sendMessage(finalId, messageText + "\n(No pudimos adjuntar el video, lo sentimos)");
+            }
+        } else {
+            if (videoPath) console.warn(`Video path not found: ${videoPath}`);
+            sentMsg = await client.sendMessage(finalId, messageText);
+        }
+
+        console.log(`Welcome message processing for ${finalId}. Waiting for server acknowledgement...`);
 
         // Wait for ACK to ensure delivery to server
         await new Promise((resolve) => {

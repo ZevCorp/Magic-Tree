@@ -223,7 +223,7 @@ def main():
                 audio.stop_background_music()
                 
                 # 7. Send Message & Save Metadata
-                messaging.send_welcome_message(final_phone_number)
+                messaging.send_welcome_message(final_phone_number, user_video_path)
                 
                 # Save Metadata JSON
                 metadata = {
