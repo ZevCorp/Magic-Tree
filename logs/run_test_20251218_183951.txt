@@ -1,0 +1,7 @@
+--- Run Started at 20251218_183951 ---
+Traceback (most recent call last):
+  File "/home/magicctree/Desktop/Magic-Tree/test_mode.py", line 14, in <module>
+    from media import MediaManager
+  File "/home/magicctree/Desktop/Magic-Tree/media.py", line 216
+    frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+IndentationError: unexpected indent

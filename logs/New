@@ -1,0 +1,51 @@
+magicctree@magictree:~/Desktop/Magic-Tree $ source venv/bin/activate
+(venv) magicctree@magictree:~/Desktop/Magic-Tree $ ./run_test.sh
+Starting Magic Tree Test Mode with X11 backend...
+Environment configured:
+  GDK_BACKEND=x11
+  QT_QPA_PLATFORM=xcb
+  SDL_VIDEODRIVER=x11
+
+Loading environment variables from .env...
+--- Initializing Messaging Server ---
+Installing Node.js dependencies...
+
+up to date, audited 215 packages in 2s
+
+25 packages are looking for funding
+  run `npm fund` for details
+
+5 high severity vulnerabilities
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+Starting WhatsApp Server (Background)...
+Messaging Server PID: 4262
+Waiting 10 seconds for server to initialize...
+ERROR: Messaging Server died immediately!
+--- Server Log (Last 20 lines) ---
+    at Server.listen (node:net:1953:7)
+    at Function.listen (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/magicctree/Desktop/Magic-Tree/messaging/server.js:159:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1844:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+
+Node.js v18.20.8
+----------------------------------
+Please check messaging_server.log for details.
+(venv) magicctree@magictree:~/Desktop/Magic-Tree $ 

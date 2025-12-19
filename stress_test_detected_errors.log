@@ -1,0 +1,8 @@
+[2025-12-12 16:19:59.995016] OUTPUT ERROR: [00007ffee8018a80] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[2025-12-12 16:20:08.498943] CRASH: Process exited with code -11
+[2025-12-12 16:20:14.590820] OUTPUT ERROR: [00007ffed8024ed0] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[2025-12-12 16:20:23.501360] CRASH: Process exited with code -11
+[2025-12-12 16:20:29.603592] OUTPUT ERROR: [00007ffef8012940] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[2025-12-12 16:20:38.504911] CRASH: Process exited with code -11
+[2025-12-12 16:21:40.710896] OUTPUT ERROR: [00007ffed400fdf0] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[2025-12-12 16:21:49.593588] CRASH: Process exited with code -11

@@ -1,0 +1,863 @@
+--- Run Started at 20251219_171959 ---
+/home/magicctree/Desktop/Magic-Tree/venv/lib/python3.13/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.5)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+2025-12-19 17:20:00,956 - INFO - ============================================================
+2025-12-19 17:20:00,957 - INFO - MODO DE PRUEBA - Árbol Encantado
+2025-12-19 17:20:00,958 - INFO - Experiencia completa SIN sensor de puerta
+2025-12-19 17:20:00,958 - INFO - ============================================================
+2025-12-19 17:20:00,958 - INFO - Running in MOCK MODE - GPIO disabled
+2025-12-19 17:20:01,016 - INFO - Initializing persistent window: EnchantedTree
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.front.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_a52.c:1036:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=6,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 CARD 0}
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_direct.c:1257:(snd1_pcm_direct_initialize_slave) requested or auto-format is not available
+ALSA lib pcm_dmix.c:1012:(snd_pcm_dmix_open) unable to initialize slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+2025-12-19 17:20:01,463 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-19 17:20:01,859 - INFO - Vosk model loaded successfully.
+2025-12-19 17:20:01,859 - INFO - Sistema listo.
+2025-12-19 17:20:01,859 - INFO - 
+En este modo:
+2025-12-19 17:20:01,859 - INFO - ✓ La cámara se activará normalmente
+2025-12-19 17:20:01,859 - INFO - ✓ El audio y detección de voz funcionan
+2025-12-19 17:20:01,859 - INFO - ✓ Los videos se reproducen
+2025-12-19 17:20:01,859 - INFO - ✗ El sensor de puerta está deshabilitado (presiona Enter)
+2025-12-19 17:20:01,859 - INFO - 
+2025-12-19 17:20:01,860 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-19 17:20:01,860 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-19 17:20:01,860 - INFO - Background music stopped.
+2025-12-19 17:20:01,860 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-19 17:20:01,860 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[h264_v4l2m2m @ 0x7ffed0062ac0] Could not find a valid device
+[h264_v4l2m2m @ 0x7ffed0062ac0] can't configure decoder
+[00007ffed0060a10] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[00007ffeb40f42c0] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffea80093c0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 17:20:10,205 - INFO - Video playback finished
+2025-12-19 17:20:10,313 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-19 17:20:10,314 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-19 17:20:14,115 - INFO - Keyword 'feliz navidad' detected!
+2025-12-19 17:20:14,125 - INFO - Keyword listener stopped.
+2025-12-19 17:20:14,432 - INFO - Standby interrupted by user action!
+2025-12-19 17:20:14,432 - INFO - Iniciando experiencia...
+2025-12-19 17:20:14,432 - INFO - Pre-initializing phone system components...
+2025-12-19 17:20:14,466 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-19 17:20:15,051 - INFO - Vosk model loaded.
+2025-12-19 17:20:15,052 - INFO - Phone system pre-initialized.
+2025-12-19 17:20:15,052 - INFO - ==================================================
+2025-12-19 17:20:15,052 - INFO - STEP 2: Playing intro video...
+2025-12-19 17:20:15,052 - INFO - ==================================================
+2025-12-19 17:20:15,052 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffe9c1072a0] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffeb00093c0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 17:20:30,371 - INFO - Video playback finished
+2025-12-19 17:20:30,371 - INFO - Playing second intro video...
+2025-12-19 17:20:30,373 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-19 17:20:30,373 - INFO - ==================================================
+2025-12-19 17:20:30,373 - INFO - STEP 3: Starting camera recording (30s)...
+2025-12-19 17:20:30,373 - INFO - Recording will stop automatically after 30 seconds.
+2025-12-19 17:20:30,373 - INFO - ==================================================
+2025-12-19 17:20:30,373 - INFO - Starting recording to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766182830.avi
+2025-12-19 17:20:30,373 - INFO - Opening camera...
+2025-12-19 17:20:30,373 - INFO - Attempting camera index 0...
+2025-12-19 17:20:30,492 - INFO - Camera opened successfully on index 0!
+2025-12-19 17:20:30,503 - INFO - Requested 1920x1080 @ 30fps MJPEG. Got: 1920.0x1080.0 @ 30.0fps
+2025-12-19 17:20:30,505 - INFO - Recording Video: 1920x1080 @ 30.0fps
+2025-12-19 17:20:30,506 - INFO - Recording started! 30 seconds countdown...
+[ WARN:0@31.335] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.375] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.415] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.454] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.493] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.531] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.568] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.609] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.653] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.690] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.729] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.766] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.805] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.846] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.883] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.921] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@31.966] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.003] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.048] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.096] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.141] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.191] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.238] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.277] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.316] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.354] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.392] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.432] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.470] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.509] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.548] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.585] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.636] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.676] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.712] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.749] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.787] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.826] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.865] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.903] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.940] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@32.978] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.016] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.053] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.090] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.129] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.166] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.202] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.244] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.290] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.341] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.388] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.425] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.463] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.505] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.542] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.579] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.623] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.666] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.703] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.744] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.781] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.820] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.858] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.896] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.933] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@33.971] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.010] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.048] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.087] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.125] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.162] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.202] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.240] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.280] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.318] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.356] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.398] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.451] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.499] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.550] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.599] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.653] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.693] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.732] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.772] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.814] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.855] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.893] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.934] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@34.973] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.012] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.053] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.092] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.131] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.172] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.213] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.254] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.293] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.332] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.373] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.412] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.452] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.494] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.535] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.596] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.690] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.768] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.839] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.913] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@35.959] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.047] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.101] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.144] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.189] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.232] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.273] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.317] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.358] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.399] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.443] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.491] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.541] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.583] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.632] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.679] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.720] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.762] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.814] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.861] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.904] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@36.973] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.037] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.122] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.244] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.339] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.405] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.492] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.566] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.707] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.808] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@37.914] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.000] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.059] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.113] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.165] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.215] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.263] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.313] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.363] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.438] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.531] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.593] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.684] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.736] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.791] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.844] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.926] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@38.982] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.068] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.180] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.246] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.318] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.388] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.432] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.494] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.557] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.621] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.690] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.768] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.837] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.902] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@39.960] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.020] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.079] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.137] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.206] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.285] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.364] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.453] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.539] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.618] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.735] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.798] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.850] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.906] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@40.966] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.024] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.103] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.159] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.232] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.281] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.341] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.405] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.447] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.490] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.551] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.610] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.674] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.736] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.798] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.859] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@41.931] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.005] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.070] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.115] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.183] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.230] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.311] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.392] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.456] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.518] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.580] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.637] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.699] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.767] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.813] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.858] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.901] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.941] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@42.982] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.024] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.063] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.102] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.145] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.186] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.226] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.265] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.307] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.352] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.397] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.440] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.493] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.542] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.592] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.646] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.695] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.740] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.778] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.822] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.867] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.911] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@43.961] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.005] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.044] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.082] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.123] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.177] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.230] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.316] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.376] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.420] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.461] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.500] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.541] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.582] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.628] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.680] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.739] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.797] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.862] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.917] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@44.968] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.018] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.065] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.108] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.150] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.198] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.236] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.278] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.320] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.366] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.405] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.444] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.483] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.523] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.562] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.600] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.639] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.680] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.732] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.770] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.812] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.851] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.889] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.929] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@45.980] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.018] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.056] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.099] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.139] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.181] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.218] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.256] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.294] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.331] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.369] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.409] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.446] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.485] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.522] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.560] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.598] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.638] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.676] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.732] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.771] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.809] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.854] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.893] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.931] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@46.969] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.006] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.043] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.087] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.176] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.220] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.260] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.300] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.343] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.383] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.424] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.466] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.509] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.549] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.592] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.634] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.675] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.728] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.766] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.807] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.847] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.885] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.930] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@47.969] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.007] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.048] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.088] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.127] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.167] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.209] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.255] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.300] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.340] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.381] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.420] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.459] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.499] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.539] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.578] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.617] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.655] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.699] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.747] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.786] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.825] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.867] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.906] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.945] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@48.986] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.024] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.064] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.104] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.144] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.183] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.224] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.264] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.312] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.360] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.404] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.443] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.481] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.519] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.557] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.594] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.632] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.670] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.711] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.754] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.792] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.832] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.870] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.909] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.947] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@49.984] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.023] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.061] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.099] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.139] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.176] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.218] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.257] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.294] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.332] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.372] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.414] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.457] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.508] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.554] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.592] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.634] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.671] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.715] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.760] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.800] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.839] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.878] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.916] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.956] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@50.995] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.035] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.072] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.112] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.151] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.189] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.230] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.271] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.309] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.349] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.388] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.429] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.469] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.507] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.548] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.600] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.649] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.703] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.752] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.789] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.827] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.871] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.909] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.947] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@51.992] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.032] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.071] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.108] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.146] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.184] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.221] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.259] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.296] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.334] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.371] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.410] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.448] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.485] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.524] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.562] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.599] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.638] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.675] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.719] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.773] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.820] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.859] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.897] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.934] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@52.971] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.009] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.046] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.083] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.121] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.158] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.195] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.233] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.270] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.307] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.344] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.381] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.419] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.456] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.495] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.532] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.569] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.609] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.646] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.683] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.726] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.769] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.807] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.853] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.899] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.943] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@53.982] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.020] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.058] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.096] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.134] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.172] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.211] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.248] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.285] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.324] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.361] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.399] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.440] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.477] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.516] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.555] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.592] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.630] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.668] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.708] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.758] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.798] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.838] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.877] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.920] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@54.970] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.017] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.057] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.094] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.134] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.174] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.213] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.251] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.292] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.330] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.370] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.409] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.448] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.487] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.527] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.565] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.604] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.644] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.683] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.726] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.772] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.811] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.851] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.891] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.931] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@55.969] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.011] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.062] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.104] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.148] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.186] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.225] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.264] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.302] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.340] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.380] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.419] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.457] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.497] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.535] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.574] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.613] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.651] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.690] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.733] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.781] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.819] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.863] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.902] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.940] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@56.980] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.018] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.057] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.100] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.168] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.218] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.264] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.305] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.346] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.384] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.423] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.462] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.500] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.538] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.577] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.615] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.654] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.693] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.735] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.779] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.818] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.858] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.897] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.937] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@57.975] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.013] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.053] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.091] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.130] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.170] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.208] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.247] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.288] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.336] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.385] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.435] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.474] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.512] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.552] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.590] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.628] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.668] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.706] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.757] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.796] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.836] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.877] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.916] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.956] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@58.997] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.036] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.075] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.115] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.154] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.192] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.234] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.273] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.313] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.353] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.391] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.431] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.478] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.524] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.571] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.622] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.676] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.720] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.773] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.820] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.864] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.906] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.946] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@59.991] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.032] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.074] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.114] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.155] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.197] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.237] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.289] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.335] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.376] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.416] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.464] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.519] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.576] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.632] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.692] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+[ WARN:0@60.764] global cap_ffmpeg.cpp:198 write FFmpeg: Failed to write frame
+2025-12-19 17:21:00,572 - INFO - Timer finished!
+2025-12-19 17:21:00,572 - INFO - Stopping recording... (648 frames captured)
+2025-12-19 17:21:00,830 - INFO - Camera released, returned to black screen
+2025-12-19 17:21:00,833 - INFO - ==================================================
+2025-12-19 17:21:00,834 - INFO - STEP 4: Asking for phone number...
+2025-12-19 17:21:00,834 - INFO - ==================================================
+2025-12-19 17:21:00,835 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffee81074d0] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffea4008a10] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 17:21:09,321 - INFO - Video playback finished
+2025-12-19 17:21:09,821 - INFO - ==================================================
+2025-12-19 17:21:09,821 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-19 17:21:09,821 - INFO - ==================================================
+2025-12-19 17:21:09,821 - INFO - ==================================================
+2025-12-19 17:21:09,821 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-19 17:21:09,821 - INFO - ==================================================
+2025-12-19 17:21:09,821 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-19 17:21:09,821 - INFO - Audio worker started (Vosk)
+2025-12-19 17:21:09,821 - INFO - PhoneDisplay started on main thread
+2025-12-19 17:21:09,821 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-19 17:21:09,854 - INFO - PhoneInputSystem: Listening...
+2025-12-19 17:21:09,884 - INFO - Starting PhoneDisplay render loop
+2025-12-19 17:21:14,570 - INFO - Heard: por favor ni pepin numero de telefono
+2025-12-19 17:21:17,117 - INFO - Heard: eso si
+2025-12-19 17:21:21,958 - INFO - Heard: tres once
+2025-12-19 17:21:26,055 - INFO - Heard: cuatro seis seis
+2025-12-19 17:21:32,206 - INFO - Heard: cero uno nueve dos
+2025-12-19 17:21:32,206 - INFO - 10 digits reached: 3114660192. Verifying...
+2025-12-19 17:21:35,772 - INFO - Heard: confirmar
+2025-12-19 17:21:35,772 - INFO - CONFIRMED!
+2025-12-19 17:21:36,019 - INFO - Audio worker finished. Result: 3114660192
+2025-12-19 17:21:36,056 - INFO - PhoneDisplay loop ended
+2025-12-19 17:21:36,066 - INFO - Number captured and confirmed: 3114660192
+2025-12-19 17:21:36,066 - INFO - Background music stopped.
+2025-12-19 17:21:36,066 - INFO - Preparing to send welcome message to 3114660192 via Local Server...
+2025-12-19 17:21:36,066 - INFO - Target Phone Number: 573114660192
+2025-12-19 17:21:40,764 - INFO - Success! Server responded: {'success': True, 'message': 'Message sent successfully'}
+2025-12-19 17:21:40,764 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766182830.json
+2025-12-19 17:21:40,764 - INFO - STEP 8: Playing goodbye video...
+2025-12-19 17:21:40,765 - INFO - Goodbye video not found, skipping.
+2025-12-19 17:21:40,776 - INFO - 
+============================================================
+2025-12-19 17:21:40,776 - INFO - EXPERIENCIA COMPLETADA
+2025-12-19 17:21:40,776 - INFO - ============================================================
+2025-12-19 17:21:40,776 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-19 17:21:42,816 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-19 17:21:42,816 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-19 17:21:42,816 - INFO - Background music stopped.
+2025-12-19 17:21:42,816 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-19 17:21:42,816 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffee418a140] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffeb80093c0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 17:21:51,360 - INFO - Video playback finished
+2025-12-19 17:21:51,478 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-19 17:21:51,479 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...

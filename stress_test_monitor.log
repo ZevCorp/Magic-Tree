@@ -5,3 +5,31 @@
 2025-12-12 15:44:07,385 - [MONITOR] - ============================================================
 2025-12-12 15:44:07,385 - [MONITOR] - Starting execution #1...
 2025-12-12 15:44:27,840 - [MONITOR] - Monitor stopped by user.
+2025-12-12 16:19:55,496 - [MONITOR] - ============================================================
+2025-12-12 16:19:55,496 - [MONITOR] - CHAOS MONKEY / STRESS TEST MONITOR STARTED
+2025-12-12 16:19:55,496 - [MONITOR] - Target: stress_test_wrapper.py
+2025-12-12 16:19:55,496 - [MONITOR] - Timeout Threshold: 300 seconds
+2025-12-12 16:19:55,496 - [MONITOR] - ============================================================
+2025-12-12 16:19:55,496 - [MONITOR] - Starting execution #1...
+2025-12-12 16:19:59,994 - [MONITOR] - DETECTED ERROR IN OUTPUT: [00007ffee8018a80] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+2025-12-12 16:20:08,498 - [MONITOR] - Process exited with code -11
+2025-12-12 16:20:08,499 - [MONITOR] - Restarting in 5 seconds... (Total Restarts: 1)
+2025-12-12 16:20:13,499 - [MONITOR] - Starting execution #2...
+2025-12-12 16:20:14,590 - [MONITOR] - DETECTED ERROR IN OUTPUT: [00007ffed8024ed0] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+2025-12-12 16:20:23,501 - [MONITOR] - Process exited with code -11
+2025-12-12 16:20:23,501 - [MONITOR] - Restarting in 5 seconds... (Total Restarts: 2)
+2025-12-12 16:20:28,501 - [MONITOR] - Starting execution #3...
+2025-12-12 16:20:29,603 - [MONITOR] - DETECTED ERROR IN OUTPUT: [00007ffef8012940] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+2025-12-12 16:20:38,504 - [MONITOR] - Process exited with code -11
+2025-12-12 16:20:38,504 - [MONITOR] - Restarting in 5 seconds... (Total Restarts: 3)
+2025-12-12 16:20:39,645 - [MONITOR] - Monitor stopped by user.
+2025-12-12 16:21:39,583 - [MONITOR] - ============================================================
+2025-12-12 16:21:39,583 - [MONITOR] - CHAOS MONKEY / STRESS TEST MONITOR STARTED
+2025-12-12 16:21:39,587 - [MONITOR] - Target: stress_test_wrapper.py
+2025-12-12 16:21:39,587 - [MONITOR] - Timeout Threshold: 300 seconds
+2025-12-12 16:21:39,587 - [MONITOR] - ============================================================
+2025-12-12 16:21:39,587 - [MONITOR] - Starting execution #1...
+2025-12-12 16:21:40,710 - [MONITOR] - DETECTED ERROR IN OUTPUT: [00007ffed400fdf0] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+2025-12-12 16:21:49,593 - [MONITOR] - Process exited with code -11
+2025-12-12 16:21:49,593 - [MONITOR] - Restarting in 5 seconds... (Total Restarts: 1)
+2025-12-12 16:21:53,192 - [MONITOR] - Monitor stopped by user.

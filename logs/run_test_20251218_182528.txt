@@ -1,0 +1,1282 @@
+--- Run Started at 20251218_182528 ---
+/home/magicctree/Desktop/Magic-Tree/venv/lib/python3.13/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.5)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+2025-12-18 18:25:31,794 - INFO - ============================================================
+2025-12-18 18:25:31,797 - INFO - MODO DE PRUEBA - Árbol Encantado
+2025-12-18 18:25:31,803 - INFO - Experiencia completa SIN sensor de puerta
+2025-12-18 18:25:31,803 - INFO - ============================================================
+2025-12-18 18:25:31,803 - INFO - Running in MOCK MODE - GPIO disabled
+2025-12-18 18:25:31,851 - INFO - Initializing persistent window: EnchantedTree
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.front.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_a52.c:1036:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=6,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 CARD 0}
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_direct.c:1257:(snd1_pcm_direct_initialize_slave) requested or auto-format is not available
+ALSA lib pcm_dmix.c:1012:(snd_pcm_dmix_open) unable to initialize slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+2025-12-18 18:25:32,622 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-18 18:25:33,308 - INFO - Vosk model loaded successfully.
+2025-12-18 18:25:33,309 - INFO - Sistema listo.
+2025-12-18 18:25:33,309 - INFO - 
+En este modo:
+2025-12-18 18:25:33,309 - INFO - ✓ La cámara se activará normalmente
+2025-12-18 18:25:33,309 - INFO - ✓ El audio y detección de voz funcionan
+2025-12-18 18:25:33,309 - INFO - ✓ Los videos se reproducen
+2025-12-18 18:25:33,309 - INFO - ✗ El sensor de puerta está deshabilitado (presiona Enter)
+2025-12-18 18:25:33,309 - INFO - 
+2025-12-18 18:25:33,309 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-18 18:25:33,309 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-18 18:25:33,309 - INFO - Background music stopped.
+2025-12-18 18:25:33,309 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-18 18:25:33,309 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[h264_v4l2m2m @ 0x7ffe8805f8f0] Could not find a valid device
+[h264_v4l2m2m @ 0x7ffe8805f8f0] can't configure decoder
+[00007ffe8805d840] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[00007ffe940f4340] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe400061b0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-18 18:25:41,939 - INFO - Video playback finished
+2025-12-18 18:25:42,122 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-18 18:25:42,122 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-18 18:25:50,645 - INFO - Standby interrupted by user action!
+2025-12-18 18:25:50,645 - INFO - Iniciando experiencia...
+2025-12-18 18:25:50,645 - INFO - Pre-initializing phone system components...
+2025-12-18 18:25:50,662 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+2025-12-18 18:25:50,839 - INFO - Keyword listener stopped.
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-18 18:25:51,169 - INFO - Vosk model loaded.
+2025-12-18 18:25:51,170 - INFO - Phone system pre-initialized.
+2025-12-18 18:25:51,170 - INFO - ==================================================
+2025-12-18 18:25:51,170 - INFO - STEP 2: Playing intro video...
+2025-12-18 18:25:51,170 - INFO - ==================================================
+2025-12-18 18:25:51,170 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffe480fdc50] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe440061b0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-18 18:26:06,563 - INFO - Video playback finished
+2025-12-18 18:26:06,563 - INFO - Playing second intro video...
+2025-12-18 18:26:06,563 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-18 18:26:06,563 - INFO - ==================================================
+2025-12-18 18:26:06,563 - INFO - STEP 3: Starting camera recording (30s)...
+2025-12-18 18:26:06,563 - INFO - Recording will stop automatically after 30 seconds.
+2025-12-18 18:26:06,563 - INFO - ==================================================
+2025-12-18 18:26:06,563 - INFO - Starting recording to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766100366.avi
+2025-12-18 18:26:06,563 - INFO - Opening camera...
+2025-12-18 18:26:06,563 - INFO - Attempting camera index 0...
+2025-12-18 18:26:06,685 - INFO - Camera opened successfully on index 0!
+2025-12-18 18:26:06,696 - INFO - Requested 1920x1080 @ 30fps MJPEG. Got: 1920.0x1080.0 @ 30.0fps
+2025-12-18 18:26:06,698 - INFO - Recording Video: 1920x1080 @ 30.0fps
+2025-12-18 18:26:06,698 - INFO - Recording started! 30 seconds countdown...
+2025-12-18 18:26:36,709 - INFO - Timer finished!
+2025-12-18 18:26:36,710 - INFO - Stopping recording... (438 frames captured)
+2025-12-18 18:26:36,933 - INFO - Camera released, returned to black screen
+2025-12-18 18:26:36,935 - INFO - ==================================================
+2025-12-18 18:26:36,935 - INFO - STEP 4: Asking for phone number...
+2025-12-18 18:26:36,936 - INFO - ==================================================
+2025-12-18 18:26:36,936 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe78107090] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe74090340] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-18 18:26:45,407 - INFO - Video playback finished
+2025-12-18 18:26:45,907 - INFO - ==================================================
+2025-12-18 18:26:45,907 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-18 18:26:45,908 - INFO - ==================================================
+2025-12-18 18:26:45,908 - INFO - ==================================================
+2025-12-18 18:26:45,908 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-18 18:26:45,908 - INFO - ==================================================
+2025-12-18 18:26:45,908 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-18 18:26:45,908 - INFO - Audio worker started (Vosk)
+2025-12-18 18:26:45,908 - INFO - PhoneDisplay started on main thread
+2025-12-18 18:26:45,908 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-18 18:26:45,934 - INFO - PhoneInputSystem: Listening...
+2025-12-18 18:26:45,962 - INFO - Starting PhoneDisplay render loop
+2025-12-18 18:26:45,971 - INFO - Key pressed: 32
+2025-12-18 18:26:45,996 - INFO - Key pressed: 32
+2025-12-18 18:26:46,034 - INFO - Key pressed: 32
+2025-12-18 18:26:46,074 - INFO - Key pressed: 32
+2025-12-18 18:26:46,114 - INFO - Key pressed: 32
+2025-12-18 18:26:46,154 - INFO - Key pressed: 32
+2025-12-18 18:26:46,195 - INFO - Key pressed: 32
+2025-12-18 18:26:46,235 - INFO - Key pressed: 32
+2025-12-18 18:26:46,274 - INFO - Key pressed: 32
+2025-12-18 18:26:46,315 - INFO - Key pressed: 32
+2025-12-18 18:26:46,355 - INFO - Key pressed: 32
+2025-12-18 18:26:46,395 - INFO - Key pressed: 32
+2025-12-18 18:26:46,435 - INFO - Key pressed: 32
+2025-12-18 18:26:46,474 - INFO - Key pressed: 32
+2025-12-18 18:26:46,514 - INFO - Key pressed: 32
+2025-12-18 18:26:46,555 - INFO - Key pressed: 32
+2025-12-18 18:26:46,595 - INFO - Key pressed: 32
+2025-12-18 18:26:46,635 - INFO - Key pressed: 32
+2025-12-18 18:26:46,674 - INFO - Key pressed: 32
+2025-12-18 18:26:46,715 - INFO - Key pressed: 32
+2025-12-18 18:26:46,754 - INFO - Key pressed: 32
+2025-12-18 18:26:46,795 - INFO - Key pressed: 32
+2025-12-18 18:26:46,834 - INFO - Key pressed: 32
+2025-12-18 18:26:46,875 - INFO - Key pressed: 32
+2025-12-18 18:26:46,915 - INFO - Key pressed: 32
+2025-12-18 18:26:46,956 - INFO - Key pressed: 32
+2025-12-18 18:26:46,996 - INFO - Key pressed: 32
+2025-12-18 18:26:47,036 - INFO - Key pressed: 32
+2025-12-18 18:26:47,077 - INFO - Key pressed: 32
+2025-12-18 18:26:47,116 - INFO - Key pressed: 32
+2025-12-18 18:26:47,155 - INFO - Key pressed: 32
+2025-12-18 18:26:47,196 - INFO - Key pressed: 32
+2025-12-18 18:26:47,235 - INFO - Key pressed: 32
+2025-12-18 18:26:47,275 - INFO - Key pressed: 32
+2025-12-18 18:26:47,316 - INFO - Key pressed: 32
+2025-12-18 18:26:47,355 - INFO - Key pressed: 32
+2025-12-18 18:26:47,396 - INFO - Key pressed: 32
+2025-12-18 18:26:47,435 - INFO - Key pressed: 32
+2025-12-18 18:26:47,476 - INFO - Key pressed: 32
+2025-12-18 18:26:47,518 - INFO - Key pressed: 32
+2025-12-18 18:26:47,559 - INFO - Key pressed: 32
+2025-12-18 18:26:47,599 - INFO - Key pressed: 32
+2025-12-18 18:26:47,639 - INFO - Key pressed: 32
+2025-12-18 18:26:47,679 - INFO - Key pressed: 32
+2025-12-18 18:26:47,719 - INFO - Key pressed: 32
+2025-12-18 18:26:47,759 - INFO - Key pressed: 32
+2025-12-18 18:26:47,798 - INFO - Key pressed: 32
+2025-12-18 18:26:47,839 - INFO - Key pressed: 32
+2025-12-18 18:26:47,879 - INFO - Key pressed: 32
+2025-12-18 18:26:47,919 - INFO - Key pressed: 32
+2025-12-18 18:26:47,959 - INFO - Key pressed: 32
+2025-12-18 18:26:47,999 - INFO - Key pressed: 32
+2025-12-18 18:26:48,039 - INFO - Key pressed: 32
+2025-12-18 18:26:48,079 - INFO - Key pressed: 32
+2025-12-18 18:26:48,119 - INFO - Key pressed: 32
+2025-12-18 18:26:48,160 - INFO - Key pressed: 32
+2025-12-18 18:26:48,201 - INFO - Key pressed: 32
+2025-12-18 18:26:48,241 - INFO - Key pressed: 32
+2025-12-18 18:26:48,281 - INFO - Key pressed: 32
+2025-12-18 18:26:48,322 - INFO - Key pressed: 32
+2025-12-18 18:26:48,362 - INFO - Key pressed: 32
+2025-12-18 18:26:48,401 - INFO - Key pressed: 32
+2025-12-18 18:26:48,442 - INFO - Key pressed: 32
+2025-12-18 18:26:48,481 - INFO - Key pressed: 32
+2025-12-18 18:26:48,522 - INFO - Key pressed: 32
+2025-12-18 18:26:48,561 - INFO - Key pressed: 32
+2025-12-18 18:26:48,602 - INFO - Key pressed: 32
+2025-12-18 18:26:48,641 - INFO - Key pressed: 32
+2025-12-18 18:26:48,681 - INFO - Key pressed: 32
+2025-12-18 18:26:48,722 - INFO - Key pressed: 32
+2025-12-18 18:26:48,762 - INFO - Key pressed: 32
+2025-12-18 18:26:48,802 - INFO - Key pressed: 32
+2025-12-18 18:26:48,842 - INFO - Key pressed: 32
+2025-12-18 18:26:48,881 - INFO - Key pressed: 32
+2025-12-18 18:26:48,922 - INFO - Key pressed: 32
+2025-12-18 18:26:48,963 - INFO - Key pressed: 32
+2025-12-18 18:26:49,003 - INFO - Key pressed: 32
+2025-12-18 18:26:49,043 - INFO - Key pressed: 32
+2025-12-18 18:26:49,086 - INFO - Key pressed: 32
+2025-12-18 18:26:49,129 - INFO - Key pressed: 32
+2025-12-18 18:26:49,166 - INFO - Key pressed: 32
+2025-12-18 18:26:49,207 - INFO - Key pressed: 32
+2025-12-18 18:26:49,248 - INFO - Key pressed: 32
+2025-12-18 18:26:49,288 - INFO - Key pressed: 32
+2025-12-18 18:26:49,328 - INFO - Key pressed: 32
+2025-12-18 18:26:49,369 - INFO - Key pressed: 32
+2025-12-18 18:26:49,409 - INFO - Key pressed: 32
+2025-12-18 18:26:49,449 - INFO - Key pressed: 32
+2025-12-18 18:26:49,489 - INFO - Key pressed: 32
+2025-12-18 18:26:49,529 - INFO - Key pressed: 32
+2025-12-18 18:26:49,569 - INFO - Key pressed: 32
+2025-12-18 18:26:49,611 - INFO - Key pressed: 32
+2025-12-18 18:26:49,651 - INFO - Key pressed: 32
+2025-12-18 18:26:49,690 - INFO - Key pressed: 32
+2025-12-18 18:26:49,731 - INFO - Key pressed: 32
+2025-12-18 18:26:49,772 - INFO - Key pressed: 32
+2025-12-18 18:26:49,813 - INFO - Key pressed: 32
+2025-12-18 18:26:49,852 - INFO - Key pressed: 32
+2025-12-18 18:26:49,893 - INFO - Key pressed: 32
+2025-12-18 18:26:49,932 - INFO - Key pressed: 32
+2025-12-18 18:26:49,980 - INFO - Key pressed: 32
+2025-12-18 18:26:50,026 - INFO - Key pressed: 32
+2025-12-18 18:26:50,071 - INFO - Key pressed: 32
+2025-12-18 18:26:50,116 - INFO - Key pressed: 32
+2025-12-18 18:26:50,204 - INFO - Key pressed: 32
+2025-12-18 18:26:50,268 - INFO - Key pressed: 32
+2025-12-18 18:26:50,309 - INFO - Key pressed: 32
+2025-12-18 18:26:50,344 - INFO - Key pressed: 32
+2025-12-18 18:26:50,411 - INFO - Key pressed: 32
+2025-12-18 18:26:50,488 - INFO - Key pressed: 32
+2025-12-18 18:26:50,574 - INFO - Key pressed: 32
+2025-12-18 18:26:50,615 - INFO - Key pressed: 32
+2025-12-18 18:26:50,651 - INFO - Heard: por favor dicta tu numero de telefono
+2025-12-18 18:26:50,652 - INFO - Key pressed: 32
+2025-12-18 18:26:50,683 - INFO - Key pressed: 32
+2025-12-18 18:26:50,722 - INFO - Key pressed: 32
+2025-12-18 18:26:50,763 - INFO - Key pressed: 32
+2025-12-18 18:26:50,805 - INFO - Key pressed: 32
+2025-12-18 18:26:50,845 - INFO - Key pressed: 32
+2025-12-18 18:26:50,884 - INFO - Key pressed: 32
+2025-12-18 18:26:50,925 - INFO - Key pressed: 32
+2025-12-18 18:26:50,970 - INFO - Key pressed: 32
+2025-12-18 18:26:51,008 - INFO - Key pressed: 32
+2025-12-18 18:26:51,048 - INFO - Key pressed: 32
+2025-12-18 18:26:51,088 - INFO - Key pressed: 32
+2025-12-18 18:26:51,130 - INFO - Key pressed: 32
+2025-12-18 18:26:51,171 - INFO - Key pressed: 32
+2025-12-18 18:26:51,211 - INFO - Key pressed: 32
+2025-12-18 18:26:51,251 - INFO - Key pressed: 32
+2025-12-18 18:26:51,291 - INFO - Key pressed: 32
+2025-12-18 18:26:51,331 - INFO - Key pressed: 32
+2025-12-18 18:26:51,371 - INFO - Key pressed: 32
+2025-12-18 18:26:51,414 - INFO - Key pressed: 32
+2025-12-18 18:26:51,454 - INFO - Key pressed: 32
+2025-12-18 18:26:51,498 - INFO - Key pressed: 32
+2025-12-18 18:26:51,535 - INFO - Key pressed: 32
+2025-12-18 18:26:51,575 - INFO - Key pressed: 32
+2025-12-18 18:26:51,615 - INFO - Key pressed: 32
+2025-12-18 18:26:51,655 - INFO - Key pressed: 32
+2025-12-18 18:26:51,694 - INFO - Key pressed: 32
+2025-12-18 18:26:51,734 - INFO - Key pressed: 32
+2025-12-18 18:26:51,774 - INFO - Key pressed: 32
+2025-12-18 18:26:51,815 - INFO - Key pressed: 32
+2025-12-18 18:26:51,856 - INFO - Key pressed: 32
+2025-12-18 18:26:51,895 - INFO - Key pressed: 32
+2025-12-18 18:26:51,935 - INFO - Key pressed: 32
+2025-12-18 18:26:51,977 - INFO - Key pressed: 32
+2025-12-18 18:26:52,018 - INFO - Key pressed: 32
+2025-12-18 18:26:52,058 - INFO - Key pressed: 32
+2025-12-18 18:26:52,098 - INFO - Key pressed: 32
+2025-12-18 18:26:52,138 - INFO - Key pressed: 32
+2025-12-18 18:26:52,178 - INFO - Key pressed: 32
+2025-12-18 18:26:52,217 - INFO - Key pressed: 32
+2025-12-18 18:26:52,258 - INFO - Key pressed: 32
+2025-12-18 18:26:52,298 - INFO - Key pressed: 32
+2025-12-18 18:26:52,338 - INFO - Key pressed: 32
+2025-12-18 18:26:52,378 - INFO - Key pressed: 32
+2025-12-18 18:26:52,417 - INFO - Key pressed: 32
+2025-12-18 18:26:52,457 - INFO - Key pressed: 32
+2025-12-18 18:26:52,497 - INFO - Key pressed: 32
+2025-12-18 18:26:52,537 - INFO - Key pressed: 32
+2025-12-18 18:26:52,577 - INFO - Key pressed: 32
+2025-12-18 18:26:52,618 - INFO - Key pressed: 32
+2025-12-18 18:26:52,659 - INFO - Key pressed: 32
+2025-12-18 18:26:52,699 - INFO - Key pressed: 32
+2025-12-18 18:26:52,739 - INFO - Key pressed: 32
+2025-12-18 18:26:52,779 - INFO - Key pressed: 32
+2025-12-18 18:26:52,819 - INFO - Key pressed: 32
+2025-12-18 18:26:52,859 - INFO - Key pressed: 32
+2025-12-18 18:26:52,899 - INFO - Key pressed: 32
+2025-12-18 18:26:52,940 - INFO - Key pressed: 32
+2025-12-18 18:26:52,980 - INFO - Key pressed: 32
+2025-12-18 18:26:53,020 - INFO - Key pressed: 32
+2025-12-18 18:26:53,059 - INFO - Key pressed: 32
+2025-12-18 18:26:53,099 - INFO - Key pressed: 32
+2025-12-18 18:26:53,140 - INFO - Key pressed: 32
+2025-12-18 18:26:53,182 - INFO - Key pressed: 32
+2025-12-18 18:26:53,221 - INFO - Key pressed: 32
+2025-12-18 18:26:53,261 - INFO - Key pressed: 32
+2025-12-18 18:26:53,301 - INFO - Key pressed: 32
+2025-12-18 18:26:53,342 - INFO - Key pressed: 32
+2025-12-18 18:26:53,382 - INFO - Key pressed: 32
+2025-12-18 18:26:53,421 - INFO - Key pressed: 32
+2025-12-18 18:26:53,462 - INFO - Key pressed: 32
+2025-12-18 18:26:53,501 - INFO - Key pressed: 32
+2025-12-18 18:26:53,542 - INFO - Key pressed: 32
+2025-12-18 18:26:53,581 - INFO - Key pressed: 32
+2025-12-18 18:26:53,621 - INFO - Key pressed: 32
+2025-12-18 18:26:53,662 - INFO - Key pressed: 32
+2025-12-18 18:26:53,702 - INFO - Key pressed: 32
+2025-12-18 18:26:53,742 - INFO - Key pressed: 32
+2025-12-18 18:26:53,782 - INFO - Key pressed: 32
+2025-12-18 18:26:53,821 - INFO - Key pressed: 32
+2025-12-18 18:26:53,862 - INFO - Key pressed: 32
+2025-12-18 18:26:53,901 - INFO - Key pressed: 32
+2025-12-18 18:26:53,941 - INFO - Key pressed: 32
+2025-12-18 18:26:53,981 - INFO - Key pressed: 32
+2025-12-18 18:26:54,022 - INFO - Key pressed: 32
+2025-12-18 18:26:54,062 - INFO - Key pressed: 32
+2025-12-18 18:26:54,101 - INFO - Key pressed: 32
+2025-12-18 18:26:54,142 - INFO - Key pressed: 32
+2025-12-18 18:26:54,181 - INFO - Key pressed: 32
+2025-12-18 18:26:54,222 - INFO - Key pressed: 32
+2025-12-18 18:26:54,262 - INFO - Key pressed: 32
+2025-12-18 18:26:54,302 - INFO - Key pressed: 32
+2025-12-18 18:26:54,343 - INFO - Key pressed: 32
+2025-12-18 18:26:54,383 - INFO - Key pressed: 32
+2025-12-18 18:26:54,422 - INFO - Key pressed: 32
+2025-12-18 18:26:54,463 - INFO - Key pressed: 32
+2025-12-18 18:26:54,503 - INFO - Key pressed: 32
+2025-12-18 18:26:54,543 - INFO - Key pressed: 32
+2025-12-18 18:26:54,583 - INFO - Key pressed: 32
+2025-12-18 18:26:54,624 - INFO - Key pressed: 32
+2025-12-18 18:26:54,665 - INFO - Key pressed: 32
+2025-12-18 18:26:54,704 - INFO - Key pressed: 32
+2025-12-18 18:26:54,744 - INFO - Key pressed: 32
+2025-12-18 18:26:54,785 - INFO - Key pressed: 32
+2025-12-18 18:26:54,826 - INFO - Key pressed: 32
+2025-12-18 18:26:54,866 - INFO - Key pressed: 32
+2025-12-18 18:26:54,907 - INFO - Key pressed: 32
+2025-12-18 18:26:54,947 - INFO - Key pressed: 32
+2025-12-18 18:26:54,987 - INFO - Key pressed: 32
+2025-12-18 18:26:55,026 - INFO - Key pressed: 32
+2025-12-18 18:26:55,067 - INFO - Key pressed: 32
+2025-12-18 18:26:55,107 - INFO - Key pressed: 32
+2025-12-18 18:26:55,147 - INFO - Key pressed: 32
+2025-12-18 18:26:55,186 - INFO - Key pressed: 32
+2025-12-18 18:26:55,227 - INFO - Key pressed: 32
+2025-12-18 18:26:55,266 - INFO - Key pressed: 32
+2025-12-18 18:26:55,306 - INFO - Key pressed: 32
+2025-12-18 18:26:55,347 - INFO - Key pressed: 32
+2025-12-18 18:26:55,387 - INFO - Key pressed: 32
+2025-12-18 18:26:55,428 - INFO - Key pressed: 32
+2025-12-18 18:26:55,467 - INFO - Key pressed: 32
+2025-12-18 18:26:55,508 - INFO - Key pressed: 32
+2025-12-18 18:26:55,547 - INFO - Key pressed: 32
+2025-12-18 18:26:55,587 - INFO - Key pressed: 32
+2025-12-18 18:26:55,628 - INFO - Key pressed: 32
+2025-12-18 18:26:55,667 - INFO - Key pressed: 32
+2025-12-18 18:26:55,708 - INFO - Key pressed: 32
+2025-12-18 18:26:55,747 - INFO - Key pressed: 32
+2025-12-18 18:26:55,788 - INFO - Key pressed: 32
+2025-12-18 18:26:55,828 - INFO - Key pressed: 32
+2025-12-18 18:26:55,867 - INFO - Key pressed: 32
+2025-12-18 18:26:55,908 - INFO - Key pressed: 32
+2025-12-18 18:26:55,948 - INFO - Key pressed: 32
+2025-12-18 18:26:55,988 - INFO - Key pressed: 32
+2025-12-18 18:26:56,029 - INFO - Key pressed: 32
+2025-12-18 18:26:56,069 - INFO - Key pressed: 32
+2025-12-18 18:26:56,110 - INFO - Key pressed: 32
+2025-12-18 18:26:56,149 - INFO - Key pressed: 32
+2025-12-18 18:26:56,190 - INFO - Key pressed: 32
+2025-12-18 18:26:56,231 - INFO - Key pressed: 32
+2025-12-18 18:26:56,270 - INFO - Key pressed: 32
+2025-12-18 18:26:56,311 - INFO - Key pressed: 32
+2025-12-18 18:26:56,351 - INFO - Key pressed: 32
+2025-12-18 18:26:56,391 - INFO - Key pressed: 32
+2025-12-18 18:26:56,430 - INFO - Key pressed: 32
+2025-12-18 18:26:56,470 - INFO - Key pressed: 32
+2025-12-18 18:26:56,510 - INFO - Key pressed: 32
+2025-12-18 18:26:56,551 - INFO - Key pressed: 32
+2025-12-18 18:26:56,591 - INFO - Key pressed: 32
+2025-12-18 18:26:56,632 - INFO - Key pressed: 32
+2025-12-18 18:26:56,672 - INFO - Key pressed: 32
+2025-12-18 18:26:56,711 - INFO - Key pressed: 32
+2025-12-18 18:26:56,739 - INFO - Heard: once tres uno uno
+2025-12-18 18:26:56,751 - INFO - Key pressed: 32
+2025-12-18 18:26:56,791 - INFO - Key pressed: 32
+2025-12-18 18:26:56,831 - INFO - Key pressed: 32
+2025-12-18 18:26:56,872 - INFO - Key pressed: 32
+2025-12-18 18:26:56,912 - INFO - Key pressed: 32
+2025-12-18 18:26:56,951 - INFO - Key pressed: 32
+2025-12-18 18:26:56,992 - INFO - Key pressed: 32
+2025-12-18 18:26:57,031 - INFO - Key pressed: 32
+2025-12-18 18:26:57,071 - INFO - Key pressed: 32
+2025-12-18 18:26:57,112 - INFO - Key pressed: 32
+2025-12-18 18:26:57,152 - INFO - Key pressed: 32
+2025-12-18 18:26:57,191 - INFO - Key pressed: 32
+2025-12-18 18:26:57,232 - INFO - Key pressed: 32
+2025-12-18 18:26:57,272 - INFO - Key pressed: 32
+2025-12-18 18:26:57,311 - INFO - Key pressed: 32
+2025-12-18 18:26:57,352 - INFO - Key pressed: 32
+2025-12-18 18:26:57,392 - INFO - Key pressed: 32
+2025-12-18 18:26:57,433 - INFO - Key pressed: 32
+2025-12-18 18:26:57,472 - INFO - Key pressed: 32
+2025-12-18 18:26:57,513 - INFO - Key pressed: 32
+2025-12-18 18:26:57,553 - INFO - Key pressed: 32
+2025-12-18 18:26:57,594 - INFO - Key pressed: 32
+2025-12-18 18:26:57,633 - INFO - Key pressed: 32
+2025-12-18 18:26:57,674 - INFO - Key pressed: 32
+2025-12-18 18:26:57,714 - INFO - Key pressed: 32
+2025-12-18 18:26:57,753 - INFO - Key pressed: 32
+2025-12-18 18:26:57,794 - INFO - Key pressed: 32
+2025-12-18 18:26:57,834 - INFO - Key pressed: 32
+2025-12-18 18:26:57,874 - INFO - Key pressed: 32
+2025-12-18 18:26:57,913 - INFO - Key pressed: 32
+2025-12-18 18:26:57,954 - INFO - Key pressed: 32
+2025-12-18 18:26:57,995 - INFO - Key pressed: 32
+2025-12-18 18:26:58,034 - INFO - Key pressed: 32
+2025-12-18 18:26:58,074 - INFO - Key pressed: 32
+2025-12-18 18:26:58,113 - INFO - Key pressed: 32
+2025-12-18 18:26:58,154 - INFO - Key pressed: 32
+2025-12-18 18:26:58,193 - INFO - Key pressed: 32
+2025-12-18 18:26:58,233 - INFO - Key pressed: 32
+2025-12-18 18:26:58,273 - INFO - Key pressed: 32
+2025-12-18 18:26:58,313 - INFO - Key pressed: 32
+2025-12-18 18:26:58,353 - INFO - Key pressed: 32
+2025-12-18 18:26:58,394 - INFO - Key pressed: 32
+2025-12-18 18:26:58,434 - INFO - Key pressed: 32
+2025-12-18 18:26:58,473 - INFO - Key pressed: 32
+2025-12-18 18:26:58,513 - INFO - Key pressed: 32
+2025-12-18 18:26:58,553 - INFO - Key pressed: 32
+2025-12-18 18:26:58,594 - INFO - Key pressed: 32
+2025-12-18 18:26:58,634 - INFO - Key pressed: 32
+2025-12-18 18:26:58,673 - INFO - Key pressed: 32
+2025-12-18 18:26:58,713 - INFO - Key pressed: 32
+2025-12-18 18:26:58,753 - INFO - Key pressed: 32
+2025-12-18 18:26:58,794 - INFO - Key pressed: 32
+2025-12-18 18:26:58,834 - INFO - Key pressed: 32
+2025-12-18 18:26:58,873 - INFO - Key pressed: 32
+2025-12-18 18:26:58,914 - INFO - Key pressed: 32
+2025-12-18 18:26:58,954 - INFO - Key pressed: 32
+2025-12-18 18:26:58,995 - INFO - Key pressed: 32
+2025-12-18 18:26:59,034 - INFO - Key pressed: 32
+2025-12-18 18:26:59,075 - INFO - Key pressed: 32
+2025-12-18 18:26:59,115 - INFO - Key pressed: 32
+2025-12-18 18:26:59,155 - INFO - Key pressed: 32
+2025-12-18 18:26:59,196 - INFO - Key pressed: 32
+2025-12-18 18:26:59,236 - INFO - Key pressed: 32
+2025-12-18 18:26:59,277 - INFO - Key pressed: 32
+2025-12-18 18:26:59,316 - INFO - Key pressed: 32
+2025-12-18 18:26:59,356 - INFO - Key pressed: 32
+2025-12-18 18:26:59,396 - INFO - Key pressed: 32
+2025-12-18 18:26:59,436 - INFO - Key pressed: 32
+2025-12-18 18:26:59,477 - INFO - Key pressed: 32
+2025-12-18 18:26:59,516 - INFO - Key pressed: 32
+2025-12-18 18:26:59,557 - INFO - Key pressed: 32
+2025-12-18 18:26:59,597 - INFO - Key pressed: 32
+2025-12-18 18:26:59,638 - INFO - Key pressed: 32
+2025-12-18 18:26:59,677 - INFO - Key pressed: 32
+2025-12-18 18:26:59,717 - INFO - Key pressed: 32
+2025-12-18 18:26:59,758 - INFO - Key pressed: 32
+2025-12-18 18:26:59,798 - INFO - Key pressed: 32
+2025-12-18 18:26:59,837 - INFO - Key pressed: 32
+2025-12-18 18:26:59,878 - INFO - Key pressed: 32
+2025-12-18 18:26:59,917 - INFO - Key pressed: 32
+2025-12-18 18:26:59,957 - INFO - Key pressed: 32
+2025-12-18 18:26:59,997 - INFO - Key pressed: 32
+2025-12-18 18:27:00,038 - INFO - Key pressed: 32
+2025-12-18 18:27:00,077 - INFO - Key pressed: 32
+2025-12-18 18:27:00,118 - INFO - Key pressed: 32
+2025-12-18 18:27:00,157 - INFO - Key pressed: 32
+2025-12-18 18:27:00,197 - INFO - Key pressed: 32
+2025-12-18 18:27:00,238 - INFO - Key pressed: 32
+2025-12-18 18:27:00,277 - INFO - Key pressed: 32
+2025-12-18 18:27:00,317 - INFO - Key pressed: 32
+2025-12-18 18:27:00,357 - INFO - Key pressed: 32
+2025-12-18 18:27:00,397 - INFO - Key pressed: 32
+2025-12-18 18:27:00,438 - INFO - Key pressed: 32
+2025-12-18 18:27:00,478 - INFO - Key pressed: 32
+2025-12-18 18:27:00,518 - INFO - Key pressed: 32
+2025-12-18 18:27:00,557 - INFO - Key pressed: 32
+2025-12-18 18:27:00,597 - INFO - Key pressed: 32
+2025-12-18 18:27:00,638 - INFO - Key pressed: 32
+2025-12-18 18:27:00,677 - INFO - Key pressed: 32
+2025-12-18 18:27:00,717 - INFO - Key pressed: 32
+2025-12-18 18:27:00,757 - INFO - Key pressed: 32
+2025-12-18 18:27:00,798 - INFO - Key pressed: 32
+2025-12-18 18:27:00,838 - INFO - Key pressed: 32
+2025-12-18 18:27:00,879 - INFO - Key pressed: 32
+2025-12-18 18:27:00,918 - INFO - Key pressed: 32
+2025-12-18 18:27:00,959 - INFO - Key pressed: 32
+2025-12-18 18:27:00,998 - INFO - Key pressed: 32
+2025-12-18 18:27:01,039 - INFO - Key pressed: 32
+2025-12-18 18:27:01,078 - INFO - Key pressed: 32
+2025-12-18 18:27:01,119 - INFO - Key pressed: 32
+2025-12-18 18:27:01,159 - INFO - Key pressed: 32
+2025-12-18 18:27:01,199 - INFO - Key pressed: 32
+2025-12-18 18:27:01,239 - INFO - Key pressed: 32
+2025-12-18 18:27:01,280 - INFO - Key pressed: 32
+2025-12-18 18:27:01,320 - INFO - Key pressed: 32
+2025-12-18 18:27:01,359 - INFO - Key pressed: 32
+2025-12-18 18:27:01,400 - INFO - Key pressed: 32
+2025-12-18 18:27:01,440 - INFO - Key pressed: 32
+2025-12-18 18:27:01,481 - INFO - Key pressed: 32
+2025-12-18 18:27:01,521 - INFO - Key pressed: 32
+2025-12-18 18:27:01,561 - INFO - Key pressed: 32
+2025-12-18 18:27:01,590 - INFO - Heard: uno uno uno
+2025-12-18 18:27:01,602 - INFO - Key pressed: 32
+2025-12-18 18:27:01,642 - INFO - Key pressed: 32
+2025-12-18 18:27:01,682 - INFO - Key pressed: 32
+2025-12-18 18:27:01,723 - INFO - Key pressed: 32
+2025-12-18 18:27:01,763 - INFO - Key pressed: 32
+2025-12-18 18:27:01,802 - INFO - Key pressed: 32
+2025-12-18 18:27:01,844 - INFO - Key pressed: 32
+2025-12-18 18:27:01,884 - INFO - Key pressed: 32
+2025-12-18 18:27:01,924 - INFO - Key pressed: 32
+2025-12-18 18:27:01,964 - INFO - Key pressed: 32
+2025-12-18 18:27:02,004 - INFO - Key pressed: 32
+2025-12-18 18:27:02,045 - INFO - Key pressed: 32
+2025-12-18 18:27:02,085 - INFO - Key pressed: 32
+2025-12-18 18:27:02,125 - INFO - Key pressed: 32
+2025-12-18 18:27:02,166 - INFO - Key pressed: 32
+2025-12-18 18:27:02,206 - INFO - Key pressed: 32
+2025-12-18 18:27:02,247 - INFO - Key pressed: 32
+2025-12-18 18:27:02,287 - INFO - Key pressed: 32
+2025-12-18 18:27:02,328 - INFO - Key pressed: 32
+2025-12-18 18:27:02,368 - INFO - Key pressed: 32
+2025-12-18 18:27:02,408 - INFO - Key pressed: 32
+2025-12-18 18:27:02,449 - INFO - Key pressed: 32
+2025-12-18 18:27:02,490 - INFO - Key pressed: 32
+2025-12-18 18:27:02,529 - INFO - Key pressed: 32
+2025-12-18 18:27:02,570 - INFO - Key pressed: 32
+2025-12-18 18:27:02,609 - INFO - Key pressed: 32
+2025-12-18 18:27:02,650 - INFO - Key pressed: 32
+2025-12-18 18:27:02,691 - INFO - Key pressed: 32
+2025-12-18 18:27:02,731 - INFO - Key pressed: 32
+2025-12-18 18:27:02,771 - INFO - Key pressed: 32
+2025-12-18 18:27:02,811 - INFO - Key pressed: 32
+2025-12-18 18:27:02,851 - INFO - Key pressed: 32
+2025-12-18 18:27:02,891 - INFO - Key pressed: 32
+2025-12-18 18:27:02,931 - INFO - Key pressed: 32
+2025-12-18 18:27:02,972 - INFO - Key pressed: 32
+2025-12-18 18:27:03,011 - INFO - Key pressed: 32
+2025-12-18 18:27:03,052 - INFO - Key pressed: 32
+2025-12-18 18:27:03,092 - INFO - Key pressed: 32
+2025-12-18 18:27:03,131 - INFO - Key pressed: 32
+2025-12-18 18:27:03,172 - INFO - Key pressed: 32
+2025-12-18 18:27:03,212 - INFO - Key pressed: 32
+2025-12-18 18:27:03,253 - INFO - Key pressed: 32
+2025-12-18 18:27:03,293 - INFO - Key pressed: 32
+2025-12-18 18:27:03,333 - INFO - Key pressed: 32
+2025-12-18 18:27:03,374 - INFO - Key pressed: 32
+2025-12-18 18:27:03,412 - INFO - Key pressed: 32
+2025-12-18 18:27:03,452 - INFO - Key pressed: 32
+2025-12-18 18:27:03,492 - INFO - Key pressed: 32
+2025-12-18 18:27:03,533 - INFO - Key pressed: 32
+2025-12-18 18:27:03,573 - INFO - Key pressed: 32
+2025-12-18 18:27:03,613 - INFO - Key pressed: 32
+2025-12-18 18:27:03,652 - INFO - Key pressed: 32
+2025-12-18 18:27:03,693 - INFO - Key pressed: 32
+2025-12-18 18:27:03,733 - INFO - Key pressed: 32
+2025-12-18 18:27:03,772 - INFO - Key pressed: 32
+2025-12-18 18:27:03,813 - INFO - Key pressed: 32
+2025-12-18 18:27:03,853 - INFO - Key pressed: 32
+2025-12-18 18:27:03,894 - INFO - Key pressed: 32
+2025-12-18 18:27:03,932 - INFO - Key pressed: 32
+2025-12-18 18:27:03,973 - INFO - Key pressed: 32
+2025-12-18 18:27:04,012 - INFO - Key pressed: 32
+2025-12-18 18:27:04,052 - INFO - Key pressed: 32
+2025-12-18 18:27:04,093 - INFO - Key pressed: 32
+2025-12-18 18:27:04,133 - INFO - Key pressed: 32
+2025-12-18 18:27:04,173 - INFO - Key pressed: 32
+2025-12-18 18:27:04,176 - INFO - Heard: uno uno
+2025-12-18 18:27:04,176 - INFO - 10 digits reached: 1131111111. Verifying...
+2025-12-18 18:27:04,213 - INFO - Key pressed: 32
+2025-12-18 18:27:04,252 - INFO - Key pressed: 32
+2025-12-18 18:27:04,293 - INFO - Key pressed: 32
+2025-12-18 18:27:04,332 - INFO - Key pressed: 32
+2025-12-18 18:27:04,372 - INFO - Key pressed: 32
+2025-12-18 18:27:04,413 - INFO - Key pressed: 32
+2025-12-18 18:27:04,452 - INFO - Key pressed: 32
+2025-12-18 18:27:04,493 - INFO - Key pressed: 32
+2025-12-18 18:27:04,532 - INFO - Key pressed: 32
+2025-12-18 18:27:04,573 - INFO - Key pressed: 32
+2025-12-18 18:27:04,613 - INFO - Key pressed: 32
+2025-12-18 18:27:04,653 - INFO - Key pressed: 32
+2025-12-18 18:27:04,694 - INFO - Key pressed: 32
+2025-12-18 18:27:04,734 - INFO - Key pressed: 32
+2025-12-18 18:27:04,775 - INFO - Key pressed: 32
+2025-12-18 18:27:04,815 - INFO - Key pressed: 32
+2025-12-18 18:27:04,854 - INFO - Key pressed: 32
+2025-12-18 18:27:04,895 - INFO - Key pressed: 32
+2025-12-18 18:27:04,934 - INFO - Key pressed: 32
+2025-12-18 18:27:04,975 - INFO - Key pressed: 32
+2025-12-18 18:27:05,015 - INFO - Key pressed: 32
+2025-12-18 18:27:05,055 - INFO - Key pressed: 32
+2025-12-18 18:27:05,094 - INFO - Key pressed: 32
+2025-12-18 18:27:05,135 - INFO - Key pressed: 32
+2025-12-18 18:27:05,175 - INFO - Key pressed: 32
+2025-12-18 18:27:05,214 - INFO - Key pressed: 32
+2025-12-18 18:27:05,255 - INFO - Key pressed: 32
+2025-12-18 18:27:05,295 - INFO - Key pressed: 32
+2025-12-18 18:27:05,335 - INFO - Key pressed: 32
+2025-12-18 18:27:05,375 - INFO - Key pressed: 32
+2025-12-18 18:27:05,416 - INFO - Key pressed: 32
+2025-12-18 18:27:05,456 - INFO - Key pressed: 32
+2025-12-18 18:27:05,496 - INFO - Key pressed: 32
+2025-12-18 18:27:05,535 - INFO - Key pressed: 32
+2025-12-18 18:27:05,575 - INFO - Key pressed: 32
+2025-12-18 18:27:05,616 - INFO - Key pressed: 32
+2025-12-18 18:27:05,657 - INFO - Key pressed: 32
+2025-12-18 18:27:05,696 - INFO - Key pressed: 32
+2025-12-18 18:27:05,737 - INFO - Key pressed: 32
+2025-12-18 18:27:05,777 - INFO - Key pressed: 32
+2025-12-18 18:27:05,817 - INFO - Key pressed: 32
+2025-12-18 18:27:05,856 - INFO - Key pressed: 32
+2025-12-18 18:27:05,897 - INFO - Key pressed: 32
+2025-12-18 18:27:05,937 - INFO - Key pressed: 32
+2025-12-18 18:27:05,977 - INFO - Key pressed: 32
+2025-12-18 18:27:06,016 - INFO - Key pressed: 32
+2025-12-18 18:27:06,056 - INFO - Key pressed: 32
+2025-12-18 18:27:06,096 - INFO - Key pressed: 32
+2025-12-18 18:27:06,137 - INFO - Key pressed: 32
+2025-12-18 18:27:06,179 - INFO - Key pressed: 32
+2025-12-18 18:27:06,218 - INFO - Key pressed: 32
+2025-12-18 18:27:06,259 - INFO - Key pressed: 32
+2025-12-18 18:27:06,298 - INFO - Key pressed: 32
+2025-12-18 18:27:06,339 - INFO - Key pressed: 32
+2025-12-18 18:27:06,378 - INFO - Key pressed: 32
+2025-12-18 18:27:06,419 - INFO - Key pressed: 32
+2025-12-18 18:27:06,458 - INFO - Key pressed: 32
+2025-12-18 18:27:06,498 - INFO - Key pressed: 32
+2025-12-18 18:27:06,538 - INFO - Key pressed: 32
+2025-12-18 18:27:06,579 - INFO - Key pressed: 32
+2025-12-18 18:27:06,619 - INFO - Key pressed: 32
+2025-12-18 18:27:06,658 - INFO - Key pressed: 32
+2025-12-18 18:27:06,699 - INFO - Key pressed: 32
+2025-12-18 18:27:06,738 - INFO - Key pressed: 32
+2025-12-18 18:27:06,778 - INFO - Key pressed: 32
+2025-12-18 18:27:06,819 - INFO - Key pressed: 32
+2025-12-18 18:27:06,859 - INFO - Key pressed: 32
+2025-12-18 18:27:06,898 - INFO - Key pressed: 32
+2025-12-18 18:27:06,938 - INFO - Key pressed: 32
+2025-12-18 18:27:06,979 - INFO - Key pressed: 32
+2025-12-18 18:27:07,019 - INFO - Key pressed: 32
+2025-12-18 18:27:07,059 - INFO - Key pressed: 32
+2025-12-18 18:27:07,098 - INFO - Key pressed: 32
+2025-12-18 18:27:07,138 - INFO - Key pressed: 32
+2025-12-18 18:27:07,179 - INFO - Key pressed: 32
+2025-12-18 18:27:07,218 - INFO - Key pressed: 32
+2025-12-18 18:27:07,259 - INFO - Key pressed: 32
+2025-12-18 18:27:07,299 - INFO - Key pressed: 32
+2025-12-18 18:27:07,342 - INFO - Key pressed: 32
+2025-12-18 18:27:07,380 - INFO - Key pressed: 32
+2025-12-18 18:27:07,421 - INFO - Key pressed: 32
+2025-12-18 18:27:07,461 - INFO - Key pressed: 32
+2025-12-18 18:27:07,501 - INFO - Key pressed: 32
+2025-12-18 18:27:07,504 - INFO - Heard: uno confirmar
+2025-12-18 18:27:07,505 - INFO - CONFIRMED!
+2025-12-18 18:27:07,541 - INFO - Key pressed: 32
+2025-12-18 18:27:07,581 - INFO - Key pressed: 32
+2025-12-18 18:27:07,622 - INFO - Key pressed: 32
+2025-12-18 18:27:07,662 - INFO - Key pressed: 32
+2025-12-18 18:27:07,702 - INFO - Key pressed: 32
+2025-12-18 18:27:07,732 - INFO - Audio worker finished. Result: 1131111111
+2025-12-18 18:27:07,742 - INFO - Key pressed: 32
+2025-12-18 18:27:07,743 - INFO - PhoneDisplay loop ended
+2025-12-18 18:27:07,753 - INFO - Number captured and confirmed: 1131111111
+2025-12-18 18:27:07,753 - INFO - Background music stopped.
+2025-12-18 18:27:07,753 - INFO - Preparing to send welcome message to 1131111111 via Local Server...
+2025-12-18 18:27:07,753 - INFO - Target Phone Number: 571131111111
+2025-12-18 18:27:07,785 - ERROR - Server Error 500: {"success":false,"error":"Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')\n    at pptr://__puppeteer_evaluation_script__:2:38"}
+2025-12-18 18:27:07,785 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766100366.json
+2025-12-18 18:27:07,785 - INFO - STEP 8: Playing goodbye video...
+2025-12-18 18:27:07,785 - INFO - Goodbye video not found, skipping.
+2025-12-18 18:27:07,786 - INFO - 
+============================================================
+2025-12-18 18:27:07,786 - INFO - EXPERIENCIA COMPLETADA
+2025-12-18 18:27:07,786 - INFO - ============================================================
+2025-12-18 18:27:07,786 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-18 18:27:09,815 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-18 18:27:09,815 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-18 18:27:09,815 - INFO - Background music stopped.
+2025-12-18 18:27:09,815 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-18 18:27:09,816 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffe6012cc70] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffebc000ba0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-18 18:27:18,204 - INFO - Video playback finished
+2025-12-18 18:27:18,294 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-18 18:27:18,295 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-18 18:27:23,546 - INFO - Keyword 'feliz navidad' detected!
+2025-12-18 18:27:23,550 - INFO - Keyword listener stopped.
+2025-12-18 18:27:23,847 - INFO - Standby interrupted by user action!
+2025-12-18 18:27:23,847 - INFO - Iniciando experiencia...
+2025-12-18 18:27:23,847 - INFO - Pre-initializing phone system components...
+2025-12-18 18:27:23,863 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-18 18:27:24,306 - INFO - Vosk model loaded.
+2025-12-18 18:27:24,344 - INFO - Phone system pre-initialized.
+2025-12-18 18:27:24,344 - INFO - ==================================================
+2025-12-18 18:27:24,344 - INFO - STEP 2: Playing intro video...
+2025-12-18 18:27:24,344 - INFO - ==================================================
+2025-12-18 18:27:24,344 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffe881121d0] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe58008c90] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-18 18:27:39,629 - INFO - Video playback finished
+2025-12-18 18:27:39,629 - INFO - Playing second intro video...
+2025-12-18 18:27:39,629 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-18 18:27:39,629 - INFO - ==================================================
+2025-12-18 18:27:39,629 - INFO - STEP 3: Starting camera recording (30s)...
+2025-12-18 18:27:39,629 - INFO - Recording will stop automatically after 30 seconds.
+2025-12-18 18:27:39,629 - INFO - ==================================================
+2025-12-18 18:27:39,629 - INFO - Starting recording to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766100459.avi
+2025-12-18 18:27:39,629 - INFO - Opening camera...
+2025-12-18 18:27:39,629 - INFO - Attempting camera index 0...
+2025-12-18 18:27:39,748 - INFO - Camera opened successfully on index 0!
+2025-12-18 18:27:39,760 - INFO - Requested 1920x1080 @ 30fps MJPEG. Got: 1920.0x1080.0 @ 30.0fps
+2025-12-18 18:27:39,761 - INFO - Recording Video: 1920x1080 @ 30.0fps
+2025-12-18 18:27:39,761 - INFO - Recording started! 30 seconds countdown...
+2025-12-18 18:28:09,777 - INFO - Timer finished!
+2025-12-18 18:28:09,777 - INFO - Stopping recording... (436 frames captured)
+2025-12-18 18:28:10,062 - INFO - Camera released, returned to black screen
+2025-12-18 18:28:10,064 - INFO - ==================================================
+2025-12-18 18:28:10,064 - INFO - STEP 4: Asking for phone number...
+2025-12-18 18:28:10,064 - INFO - ==================================================
+2025-12-18 18:28:10,065 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe6012c970] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe7c001140] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-18 18:28:18,541 - INFO - Video playback finished
+2025-12-18 18:28:19,042 - INFO - ==================================================
+2025-12-18 18:28:19,042 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-18 18:28:19,042 - INFO - ==================================================
+2025-12-18 18:28:19,042 - INFO - ==================================================
+2025-12-18 18:28:19,042 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-18 18:28:19,042 - INFO - ==================================================
+2025-12-18 18:28:19,042 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-18 18:28:19,042 - INFO - Audio worker started (Vosk)
+2025-12-18 18:28:19,042 - INFO - PhoneDisplay started on main thread
+2025-12-18 18:28:19,042 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-18 18:28:19,068 - INFO - PhoneInputSystem: Listening...
+2025-12-18 18:28:19,093 - INFO - Starting PhoneDisplay render loop
+2025-12-18 18:28:19,102 - INFO - Key pressed: 32
+2025-12-18 18:28:19,129 - INFO - Key pressed: 32
+2025-12-18 18:28:19,164 - INFO - Key pressed: 32
+2025-12-18 18:28:19,205 - INFO - Key pressed: 32
+2025-12-18 18:28:19,246 - INFO - Key pressed: 32
+2025-12-18 18:28:19,286 - INFO - Key pressed: 32
+2025-12-18 18:28:19,325 - INFO - Key pressed: 32
+2025-12-18 18:28:19,366 - INFO - Key pressed: 32
+2025-12-18 18:28:19,406 - INFO - Key pressed: 32
+2025-12-18 18:28:19,446 - INFO - Key pressed: 32
+2025-12-18 18:28:19,487 - INFO - Key pressed: 32
+2025-12-18 18:28:19,527 - INFO - Key pressed: 32
+2025-12-18 18:28:19,567 - INFO - Key pressed: 32
+2025-12-18 18:28:19,608 - INFO - Key pressed: 32
+2025-12-18 18:28:19,647 - INFO - Key pressed: 32
+2025-12-18 18:28:19,689 - INFO - Key pressed: 32
+2025-12-18 18:28:19,728 - INFO - Key pressed: 32
+2025-12-18 18:28:19,768 - INFO - Key pressed: 32
+2025-12-18 18:28:19,808 - INFO - Key pressed: 32
+2025-12-18 18:28:19,849 - INFO - Key pressed: 32
+2025-12-18 18:28:19,889 - INFO - Key pressed: 32
+2025-12-18 18:28:19,929 - INFO - Key pressed: 32
+2025-12-18 18:28:19,969 - INFO - Key pressed: 32
+2025-12-18 18:28:20,009 - INFO - Key pressed: 32
+2025-12-18 18:28:20,050 - INFO - Key pressed: 32
+2025-12-18 18:28:20,090 - INFO - Key pressed: 32
+2025-12-18 18:28:20,129 - INFO - Key pressed: 32
+2025-12-18 18:28:20,170 - INFO - Key pressed: 32
+2025-12-18 18:28:20,210 - INFO - Key pressed: 32
+2025-12-18 18:28:20,250 - INFO - Key pressed: 32
+2025-12-18 18:28:20,290 - INFO - Key pressed: 32
+2025-12-18 18:28:20,330 - INFO - Key pressed: 32
+2025-12-18 18:28:20,370 - INFO - Key pressed: 32
+2025-12-18 18:28:20,410 - INFO - Key pressed: 32
+2025-12-18 18:28:20,451 - INFO - Key pressed: 32
+2025-12-18 18:28:20,491 - INFO - Key pressed: 32
+2025-12-18 18:28:20,531 - INFO - Key pressed: 32
+2025-12-18 18:28:20,572 - INFO - Key pressed: 32
+2025-12-18 18:28:20,612 - INFO - Key pressed: 32
+2025-12-18 18:28:20,651 - INFO - Key pressed: 32
+2025-12-18 18:28:20,692 - INFO - Key pressed: 32
+2025-12-18 18:28:20,731 - INFO - Key pressed: 32
+2025-12-18 18:28:20,771 - INFO - Key pressed: 32
+2025-12-18 18:28:20,812 - INFO - Key pressed: 32
+2025-12-18 18:28:20,851 - INFO - Key pressed: 32
+2025-12-18 18:28:20,892 - INFO - Key pressed: 32
+2025-12-18 18:28:20,931 - INFO - Key pressed: 32
+2025-12-18 18:28:20,973 - INFO - Key pressed: 32
+2025-12-18 18:28:21,013 - INFO - Key pressed: 32
+2025-12-18 18:28:21,053 - INFO - Key pressed: 32
+2025-12-18 18:28:21,093 - INFO - Key pressed: 32
+2025-12-18 18:28:21,132 - INFO - Key pressed: 32
+2025-12-18 18:28:21,173 - INFO - Key pressed: 32
+2025-12-18 18:28:21,213 - INFO - Key pressed: 32
+2025-12-18 18:28:21,253 - INFO - Key pressed: 32
+2025-12-18 18:28:21,293 - INFO - Key pressed: 32
+2025-12-18 18:28:21,333 - INFO - Key pressed: 32
+2025-12-18 18:28:21,374 - INFO - Key pressed: 32
+2025-12-18 18:28:21,413 - INFO - Key pressed: 32
+2025-12-18 18:28:21,455 - INFO - Key pressed: 32
+2025-12-18 18:28:21,495 - INFO - Key pressed: 32
+2025-12-18 18:28:21,535 - INFO - Key pressed: 32
+2025-12-18 18:28:21,575 - INFO - Key pressed: 32
+2025-12-18 18:28:21,615 - INFO - Key pressed: 32
+2025-12-18 18:28:21,656 - INFO - Key pressed: 32
+2025-12-18 18:28:21,696 - INFO - Key pressed: 32
+2025-12-18 18:28:21,737 - INFO - Key pressed: 32
+2025-12-18 18:28:21,777 - INFO - Key pressed: 32
+2025-12-18 18:28:21,817 - INFO - Key pressed: 32
+2025-12-18 18:28:21,857 - INFO - Key pressed: 32
+2025-12-18 18:28:21,897 - INFO - Key pressed: 32
+2025-12-18 18:28:21,937 - INFO - Key pressed: 32
+2025-12-18 18:28:21,978 - INFO - Key pressed: 32
+2025-12-18 18:28:22,019 - INFO - Key pressed: 32
+2025-12-18 18:28:22,060 - INFO - Key pressed: 32
+2025-12-18 18:28:22,100 - INFO - Key pressed: 32
+2025-12-18 18:28:22,140 - INFO - Key pressed: 32
+2025-12-18 18:28:22,179 - INFO - Key pressed: 32
+2025-12-18 18:28:22,219 - INFO - Key pressed: 32
+2025-12-18 18:28:22,259 - INFO - Key pressed: 32
+2025-12-18 18:28:22,300 - INFO - Key pressed: 32
+2025-12-18 18:28:22,339 - INFO - Key pressed: 32
+2025-12-18 18:28:22,380 - INFO - Key pressed: 32
+2025-12-18 18:28:22,423 - INFO - Key pressed: 32
+2025-12-18 18:28:22,463 - INFO - Key pressed: 32
+2025-12-18 18:28:22,503 - INFO - Key pressed: 32
+2025-12-18 18:28:22,544 - INFO - Key pressed: 32
+2025-12-18 18:28:22,584 - INFO - Key pressed: 32
+2025-12-18 18:28:22,624 - INFO - Key pressed: 32
+2025-12-18 18:28:22,664 - INFO - Key pressed: 32
+2025-12-18 18:28:22,703 - INFO - Key pressed: 32
+2025-12-18 18:28:22,744 - INFO - Key pressed: 32
+2025-12-18 18:28:22,784 - INFO - Key pressed: 32
+2025-12-18 18:28:22,825 - INFO - Key pressed: 32
+2025-12-18 18:28:22,865 - INFO - Key pressed: 32
+2025-12-18 18:28:22,904 - INFO - Key pressed: 32
+2025-12-18 18:28:22,945 - INFO - Key pressed: 32
+2025-12-18 18:28:22,984 - INFO - Key pressed: 32
+2025-12-18 18:28:23,025 - INFO - Key pressed: 32
+2025-12-18 18:28:23,065 - INFO - Key pressed: 32
+2025-12-18 18:28:23,106 - INFO - Key pressed: 32
+2025-12-18 18:28:23,145 - INFO - Key pressed: 32
+2025-12-18 18:28:23,186 - INFO - Key pressed: 32
+2025-12-18 18:28:23,227 - INFO - Key pressed: 32
+2025-12-18 18:28:23,267 - INFO - Key pressed: 32
+2025-12-18 18:28:23,307 - INFO - Key pressed: 32
+2025-12-18 18:28:23,347 - INFO - Key pressed: 32
+2025-12-18 18:28:23,388 - INFO - Key pressed: 32
+2025-12-18 18:28:23,427 - INFO - Key pressed: 32
+2025-12-18 18:28:23,467 - INFO - Key pressed: 32
+2025-12-18 18:28:23,508 - INFO - Key pressed: 32
+2025-12-18 18:28:23,549 - INFO - Key pressed: 32
+2025-12-18 18:28:23,591 - INFO - Key pressed: 32
+2025-12-18 18:28:23,629 - INFO - Key pressed: 32
+2025-12-18 18:28:23,668 - INFO - Key pressed: 32
+2025-12-18 18:28:23,709 - INFO - Key pressed: 32
+2025-12-18 18:28:23,748 - INFO - Key pressed: 32
+2025-12-18 18:28:23,789 - INFO - Key pressed: 32
+2025-12-18 18:28:23,829 - INFO - Key pressed: 32
+2025-12-18 18:28:23,869 - INFO - Key pressed: 32
+2025-12-18 18:28:23,910 - INFO - Key pressed: 32
+2025-12-18 18:28:23,951 - INFO - Key pressed: 32
+2025-12-18 18:28:23,990 - INFO - Key pressed: 32
+2025-12-18 18:28:24,030 - INFO - Key pressed: 32
+2025-12-18 18:28:24,071 - INFO - Key pressed: 32
+2025-12-18 18:28:24,097 - INFO - Heard: por favor dicta tu numero de telefono hereje
+2025-12-18 18:28:24,111 - INFO - Key pressed: 32
+2025-12-18 18:28:24,152 - INFO - Key pressed: 32
+2025-12-18 18:28:24,191 - INFO - Key pressed: 32
+2025-12-18 18:28:24,232 - INFO - Key pressed: 32
+2025-12-18 18:28:24,272 - INFO - Key pressed: 32
+2025-12-18 18:28:24,312 - INFO - Key pressed: 32
+2025-12-18 18:28:24,352 - INFO - Key pressed: 32
+2025-12-18 18:28:24,392 - INFO - Key pressed: 32
+2025-12-18 18:28:24,432 - INFO - Key pressed: 32
+2025-12-18 18:28:24,473 - INFO - Key pressed: 32
+2025-12-18 18:28:24,512 - INFO - Key pressed: 32
+2025-12-18 18:28:24,551 - INFO - Key pressed: 32
+2025-12-18 18:28:24,591 - INFO - Key pressed: 32
+2025-12-18 18:28:24,631 - INFO - Key pressed: 32
+2025-12-18 18:28:24,673 - INFO - Key pressed: 32
+2025-12-18 18:28:24,711 - INFO - Key pressed: 32
+2025-12-18 18:28:24,752 - INFO - Key pressed: 32
+2025-12-18 18:28:24,791 - INFO - Key pressed: 32
+2025-12-18 18:28:24,831 - INFO - Key pressed: 32
+2025-12-18 18:28:24,872 - INFO - Key pressed: 32
+2025-12-18 18:28:24,912 - INFO - Key pressed: 32
+2025-12-18 18:28:24,952 - INFO - Key pressed: 32
+2025-12-18 18:28:24,992 - INFO - Key pressed: 32
+2025-12-18 18:28:25,032 - INFO - Key pressed: 32
+2025-12-18 18:28:25,073 - INFO - Key pressed: 32
+2025-12-18 18:28:25,113 - INFO - Key pressed: 32
+2025-12-18 18:28:25,153 - INFO - Key pressed: 32
+2025-12-18 18:28:25,194 - INFO - Key pressed: 32
+2025-12-18 18:28:25,236 - INFO - Key pressed: 32
+2025-12-18 18:28:25,275 - INFO - Key pressed: 32
+2025-12-18 18:28:25,315 - INFO - Key pressed: 32
+2025-12-18 18:28:25,355 - INFO - Key pressed: 32
+2025-12-18 18:28:25,396 - INFO - Key pressed: 32
+2025-12-18 18:28:25,435 - INFO - Key pressed: 32
+2025-12-18 18:28:25,476 - INFO - Key pressed: 32
+2025-12-18 18:28:25,515 - INFO - Key pressed: 32
+2025-12-18 18:28:25,556 - INFO - Key pressed: 32
+2025-12-18 18:28:25,595 - INFO - Key pressed: 32
+2025-12-18 18:28:25,636 - INFO - Key pressed: 32
+2025-12-18 18:28:25,676 - INFO - Key pressed: 32
+2025-12-18 18:28:25,716 - INFO - Key pressed: 32
+2025-12-18 18:28:25,757 - INFO - Key pressed: 32
+2025-12-18 18:28:25,796 - INFO - Key pressed: 32
+2025-12-18 18:28:25,837 - INFO - Key pressed: 32
+2025-12-18 18:28:25,876 - INFO - Key pressed: 32
+2025-12-18 18:28:25,917 - INFO - Key pressed: 32
+2025-12-18 18:28:25,957 - INFO - Key pressed: 32
+2025-12-18 18:28:25,997 - INFO - Key pressed: 32
+2025-12-18 18:28:26,037 - INFO - Key pressed: 32
+2025-12-18 18:28:26,076 - INFO - Key pressed: 32
+2025-12-18 18:28:26,117 - INFO - Key pressed: 32
+2025-12-18 18:28:26,157 - INFO - Key pressed: 32
+2025-12-18 18:28:26,197 - INFO - Key pressed: 32
+2025-12-18 18:28:26,238 - INFO - Key pressed: 32
+2025-12-18 18:28:26,278 - INFO - Key pressed: 32
+2025-12-18 18:28:26,319 - INFO - Key pressed: 32
+2025-12-18 18:28:26,359 - INFO - Key pressed: 32
+2025-12-18 18:28:26,398 - INFO - Key pressed: 32
+2025-12-18 18:28:26,438 - INFO - Key pressed: 32
+2025-12-18 18:28:26,479 - INFO - Key pressed: 32
+2025-12-18 18:28:26,518 - INFO - Key pressed: 32
+2025-12-18 18:28:26,558 - INFO - Key pressed: 32
+2025-12-18 18:28:26,598 - INFO - Key pressed: 32
+2025-12-18 18:28:26,638 - INFO - Key pressed: 32
+2025-12-18 18:28:26,679 - INFO - Key pressed: 32
+2025-12-18 18:28:26,718 - INFO - Key pressed: 32
+2025-12-18 18:28:26,758 - INFO - Key pressed: 32
+2025-12-18 18:28:26,798 - INFO - Key pressed: 32
+2025-12-18 18:28:26,839 - INFO - Key pressed: 32
+2025-12-18 18:28:26,879 - INFO - Key pressed: 32
+2025-12-18 18:28:26,918 - INFO - Key pressed: 32
+2025-12-18 18:28:26,958 - INFO - Key pressed: 32
+2025-12-18 18:28:26,999 - INFO - Key pressed: 32
+2025-12-18 18:28:27,038 - INFO - Key pressed: 32
+2025-12-18 18:28:27,079 - INFO - Key pressed: 32
+2025-12-18 18:28:27,119 - INFO - Key pressed: 32
+2025-12-18 18:28:27,158 - INFO - Key pressed: 32
+2025-12-18 18:28:27,199 - INFO - Key pressed: 32
+2025-12-18 18:28:27,239 - INFO - Key pressed: 32
+2025-12-18 18:28:27,278 - INFO - Key pressed: 32
+2025-12-18 18:28:27,319 - INFO - Key pressed: 32
+2025-12-18 18:28:27,358 - INFO - Key pressed: 32
+2025-12-18 18:28:27,398 - INFO - Key pressed: 32
+2025-12-18 18:28:27,438 - INFO - Key pressed: 32
+2025-12-18 18:28:27,479 - INFO - Key pressed: 32
+2025-12-18 18:28:27,519 - INFO - Key pressed: 32
+2025-12-18 18:28:27,561 - INFO - Key pressed: 32
+2025-12-18 18:28:27,601 - INFO - Key pressed: 32
+2025-12-18 18:28:27,641 - INFO - Key pressed: 32
+2025-12-18 18:28:27,682 - INFO - Key pressed: 32
+2025-12-18 18:28:27,721 - INFO - Key pressed: 32
+2025-12-18 18:28:27,761 - INFO - Key pressed: 32
+2025-12-18 18:28:27,802 - INFO - Key pressed: 32
+2025-12-18 18:28:27,841 - INFO - Key pressed: 32
+2025-12-18 18:28:27,882 - INFO - Key pressed: 32
+2025-12-18 18:28:27,922 - INFO - Key pressed: 32
+2025-12-18 18:28:27,962 - INFO - Key pressed: 32
+2025-12-18 18:28:28,001 - INFO - Key pressed: 32
+2025-12-18 18:28:28,041 - INFO - Key pressed: 32
+2025-12-18 18:28:28,081 - INFO - Key pressed: 32
+2025-12-18 18:28:28,122 - INFO - Key pressed: 32
+2025-12-18 18:28:28,162 - INFO - Key pressed: 32
+2025-12-18 18:28:28,202 - INFO - Key pressed: 32
+2025-12-18 18:28:28,243 - INFO - Key pressed: 32
+2025-12-18 18:28:28,284 - INFO - Key pressed: 32
+2025-12-18 18:28:28,324 - INFO - Key pressed: 32
+2025-12-18 18:28:28,363 - INFO - Key pressed: 32
+2025-12-18 18:28:28,403 - INFO - Key pressed: 32
+2025-12-18 18:28:28,443 - INFO - Key pressed: 32
+2025-12-18 18:28:28,484 - INFO - Key pressed: 32
+2025-12-18 18:28:28,524 - INFO - Key pressed: 32
+2025-12-18 18:28:28,563 - INFO - Key pressed: 32
+2025-12-18 18:28:28,607 - INFO - Key pressed: 32
+2025-12-18 18:28:28,656 - INFO - Key pressed: 32
+2025-12-18 18:28:28,701 - INFO - Key pressed: 32
+2025-12-18 18:28:28,741 - INFO - Key pressed: 32
+2025-12-18 18:28:28,787 - INFO - Key pressed: 32
+2025-12-18 18:28:28,828 - INFO - Key pressed: 32
+2025-12-18 18:28:28,868 - INFO - Key pressed: 32
+2025-12-18 18:28:28,905 - INFO - Heard: uno uno uno uno uno uno
+2025-12-18 18:28:28,908 - INFO - Key pressed: 32
+2025-12-18 18:28:28,948 - INFO - Key pressed: 32
+2025-12-18 18:28:28,990 - INFO - Key pressed: 32
+2025-12-18 18:28:29,030 - INFO - Key pressed: 32
+2025-12-18 18:28:29,070 - INFO - Key pressed: 32
+2025-12-18 18:28:29,110 - INFO - Key pressed: 32
+2025-12-18 18:28:29,150 - INFO - Key pressed: 32
+2025-12-18 18:28:29,190 - INFO - Key pressed: 32
+2025-12-18 18:28:29,230 - INFO - Key pressed: 32
+2025-12-18 18:28:29,270 - INFO - Key pressed: 32
+2025-12-18 18:28:29,311 - INFO - Key pressed: 32
+2025-12-18 18:28:29,350 - INFO - Key pressed: 32
+2025-12-18 18:28:29,390 - INFO - Key pressed: 32
+2025-12-18 18:28:29,431 - INFO - Key pressed: 32
+2025-12-18 18:28:29,471 - INFO - Key pressed: 32
+2025-12-18 18:28:29,511 - INFO - Key pressed: 32
+2025-12-18 18:28:29,551 - INFO - Key pressed: 32
+2025-12-18 18:28:29,591 - INFO - Key pressed: 32
+2025-12-18 18:28:29,631 - INFO - Key pressed: 32
+2025-12-18 18:28:29,670 - INFO - Key pressed: 32
+2025-12-18 18:28:29,711 - INFO - Key pressed: 32
+2025-12-18 18:28:29,751 - INFO - Key pressed: 32
+2025-12-18 18:28:29,792 - INFO - Key pressed: 32
+2025-12-18 18:28:29,831 - INFO - Key pressed: 32
+2025-12-18 18:28:29,872 - INFO - Key pressed: 32
+2025-12-18 18:28:29,912 - INFO - Key pressed: 32
+2025-12-18 18:28:29,951 - INFO - Key pressed: 32
+2025-12-18 18:28:29,992 - INFO - Key pressed: 32
+2025-12-18 18:28:30,032 - INFO - Key pressed: 32
+2025-12-18 18:28:30,072 - INFO - Key pressed: 32
+2025-12-18 18:28:30,111 - INFO - Key pressed: 32
+2025-12-18 18:28:30,151 - INFO - Key pressed: 32
+2025-12-18 18:28:30,192 - INFO - Key pressed: 32
+2025-12-18 18:28:30,233 - INFO - Key pressed: 32
+2025-12-18 18:28:30,273 - INFO - Key pressed: 32
+2025-12-18 18:28:30,313 - INFO - Key pressed: 32
+2025-12-18 18:28:30,353 - INFO - Key pressed: 32
+2025-12-18 18:28:30,393 - INFO - Key pressed: 32
+2025-12-18 18:28:30,433 - INFO - Key pressed: 32
+2025-12-18 18:28:30,473 - INFO - Key pressed: 32
+2025-12-18 18:28:30,513 - INFO - Key pressed: 32
+2025-12-18 18:28:30,553 - INFO - Key pressed: 32
+2025-12-18 18:28:30,593 - INFO - Key pressed: 32
+2025-12-18 18:28:30,632 - INFO - Key pressed: 32
+2025-12-18 18:28:30,673 - INFO - Key pressed: 32
+2025-12-18 18:28:30,713 - INFO - Key pressed: 32
+2025-12-18 18:28:30,753 - INFO - Key pressed: 32
+2025-12-18 18:28:30,793 - INFO - Key pressed: 32
+2025-12-18 18:28:30,834 - INFO - Key pressed: 32
+2025-12-18 18:28:30,873 - INFO - Key pressed: 32
+2025-12-18 18:28:30,913 - INFO - Key pressed: 32
+2025-12-18 18:28:30,953 - INFO - Key pressed: 32
+2025-12-18 18:28:30,994 - INFO - Key pressed: 32
+2025-12-18 18:28:31,034 - INFO - Key pressed: 32
+2025-12-18 18:28:31,074 - INFO - Key pressed: 32
+2025-12-18 18:28:31,114 - INFO - Key pressed: 32
+2025-12-18 18:28:31,153 - INFO - Key pressed: 32
+2025-12-18 18:28:31,193 - INFO - Key pressed: 32
+2025-12-18 18:28:31,234 - INFO - Key pressed: 32
+2025-12-18 18:28:31,273 - INFO - Key pressed: 32
+2025-12-18 18:28:31,314 - INFO - Key pressed: 32
+2025-12-18 18:28:31,354 - INFO - Key pressed: 32
+2025-12-18 18:28:31,393 - INFO - Key pressed: 32
+2025-12-18 18:28:31,433 - INFO - Key pressed: 32
+2025-12-18 18:28:31,474 - INFO - Key pressed: 32
+2025-12-18 18:28:31,514 - INFO - Key pressed: 32
+2025-12-18 18:28:31,553 - INFO - Key pressed: 32
+2025-12-18 18:28:31,594 - INFO - Key pressed: 32
+2025-12-18 18:28:31,634 - INFO - Key pressed: 32
+2025-12-18 18:28:31,674 - INFO - Key pressed: 32
+2025-12-18 18:28:31,713 - INFO - Key pressed: 32
+2025-12-18 18:28:31,753 - INFO - Key pressed: 32
+2025-12-18 18:28:31,793 - INFO - Key pressed: 32
+2025-12-18 18:28:31,833 - INFO - Key pressed: 32
+2025-12-18 18:28:31,873 - INFO - Key pressed: 32
+2025-12-18 18:28:31,914 - INFO - Key pressed: 32
+2025-12-18 18:28:31,954 - INFO - Key pressed: 32
+2025-12-18 18:28:31,995 - INFO - Key pressed: 32
+2025-12-18 18:28:32,034 - INFO - Key pressed: 32
+2025-12-18 18:28:32,075 - INFO - Key pressed: 32
+2025-12-18 18:28:32,115 - INFO - Key pressed: 32
+2025-12-18 18:28:32,154 - INFO - Key pressed: 32
+2025-12-18 18:28:32,195 - INFO - Key pressed: 32
+2025-12-18 18:28:32,234 - INFO - Key pressed: 32
+2025-12-18 18:28:32,274 - INFO - Key pressed: 32
+2025-12-18 18:28:32,315 - INFO - Key pressed: 32
+2025-12-18 18:28:32,355 - INFO - Key pressed: 32
+2025-12-18 18:28:32,396 - INFO - Key pressed: 32
+2025-12-18 18:28:32,435 - INFO - Key pressed: 32
+2025-12-18 18:28:32,476 - INFO - Key pressed: 32
+2025-12-18 18:28:32,516 - INFO - Key pressed: 32
+2025-12-18 18:28:32,555 - INFO - Key pressed: 32
+2025-12-18 18:28:32,595 - INFO - Key pressed: 32
+2025-12-18 18:28:32,636 - INFO - Key pressed: 32
+2025-12-18 18:28:32,675 - INFO - Key pressed: 32
+2025-12-18 18:28:32,716 - INFO - Key pressed: 32
+2025-12-18 18:28:32,756 - INFO - Key pressed: 32
+2025-12-18 18:28:32,796 - INFO - Key pressed: 32
+2025-12-18 18:28:32,835 - INFO - Key pressed: 32
+2025-12-18 18:28:32,875 - INFO - Key pressed: 32
+2025-12-18 18:28:32,917 - INFO - Key pressed: 32
+2025-12-18 18:28:32,957 - INFO - Key pressed: 32
+2025-12-18 18:28:32,996 - INFO - Key pressed: 32
+2025-12-18 18:28:33,037 - INFO - Key pressed: 32
+2025-12-18 18:28:33,077 - INFO - Key pressed: 32
+2025-12-18 18:28:33,117 - INFO - Key pressed: 32
+2025-12-18 18:28:33,157 - INFO - Key pressed: 32
+2025-12-18 18:28:33,198 - INFO - Key pressed: 32
+2025-12-18 18:28:33,237 - INFO - Key pressed: 32
+2025-12-18 18:28:33,278 - INFO - Key pressed: 32
+2025-12-18 18:28:33,318 - INFO - Key pressed: 32
+2025-12-18 18:28:33,357 - INFO - Key pressed: 32
+2025-12-18 18:28:33,398 - INFO - Key pressed: 32
+2025-12-18 18:28:33,438 - INFO - Key pressed: 32
+2025-12-18 18:28:33,478 - INFO - Key pressed: 32
+2025-12-18 18:28:33,518 - INFO - Key pressed: 32
+2025-12-18 18:28:33,558 - INFO - Key pressed: 32
+2025-12-18 18:28:33,597 - INFO - Key pressed: 32
+2025-12-18 18:28:33,638 - INFO - Key pressed: 32
+2025-12-18 18:28:33,678 - INFO - Key pressed: 32
+2025-12-18 18:28:33,711 - INFO - Heard: oro uno uno uno uno uno
+2025-12-18 18:28:33,711 - INFO - 10 digits reached: 1111111111. Verifying...
+2025-12-18 18:28:33,719 - INFO - Key pressed: 32
+2025-12-18 18:28:33,758 - INFO - Key pressed: 32
+2025-12-18 18:28:33,798 - INFO - Key pressed: 32
+2025-12-18 18:28:33,838 - INFO - Key pressed: 32
+2025-12-18 18:28:33,879 - INFO - Key pressed: 32
+2025-12-18 18:28:33,920 - INFO - Key pressed: 32
+2025-12-18 18:28:33,960 - INFO - Key pressed: 32
+2025-12-18 18:28:34,000 - INFO - Key pressed: 32
+2025-12-18 18:28:34,041 - INFO - Key pressed: 32
+2025-12-18 18:28:34,082 - INFO - Key pressed: 32
+2025-12-18 18:28:34,121 - INFO - Key pressed: 32
+2025-12-18 18:28:34,161 - INFO - Key pressed: 32
+2025-12-18 18:28:34,201 - INFO - Key pressed: 32
+2025-12-18 18:28:34,242 - INFO - Key pressed: 32
+2025-12-18 18:28:34,282 - INFO - Key pressed: 32
+2025-12-18 18:28:34,323 - INFO - Key pressed: 32
+2025-12-18 18:28:34,363 - INFO - Key pressed: 32
+2025-12-18 18:28:34,403 - INFO - Key pressed: 32
+2025-12-18 18:28:34,443 - INFO - Key pressed: 32
+2025-12-18 18:28:34,484 - INFO - Key pressed: 32
+2025-12-18 18:28:34,524 - INFO - Key pressed: 32
+2025-12-18 18:28:34,564 - INFO - Key pressed: 32
+2025-12-18 18:28:34,604 - INFO - Key pressed: 32
+2025-12-18 18:28:34,645 - INFO - Key pressed: 32
+2025-12-18 18:28:34,684 - INFO - Key pressed: 32
+2025-12-18 18:28:34,724 - INFO - Key pressed: 32
+2025-12-18 18:28:34,766 - INFO - Key pressed: 32
+2025-12-18 18:28:34,804 - INFO - Key pressed: 32
+2025-12-18 18:28:34,849 - INFO - Key pressed: 32
+2025-12-18 18:28:34,892 - INFO - Key pressed: 32
+2025-12-18 18:28:34,931 - INFO - Key pressed: 32
+2025-12-18 18:28:34,984 - INFO - Key pressed: 32
+2025-12-18 18:28:35,024 - INFO - Key pressed: 32
+2025-12-18 18:28:35,065 - INFO - Key pressed: 32
+2025-12-18 18:28:35,104 - INFO - Key pressed: 32
+2025-12-18 18:28:35,144 - INFO - Key pressed: 32
+2025-12-18 18:28:35,184 - INFO - Key pressed: 32
+2025-12-18 18:28:35,224 - INFO - Key pressed: 32
+2025-12-18 18:28:35,265 - INFO - Key pressed: 32
+2025-12-18 18:28:35,305 - INFO - Key pressed: 32
+2025-12-18 18:28:35,345 - INFO - Key pressed: 32
+2025-12-18 18:28:35,385 - INFO - Key pressed: 32
+2025-12-18 18:28:35,425 - INFO - Key pressed: 32
+2025-12-18 18:28:35,466 - INFO - Key pressed: 32
+2025-12-18 18:28:35,507 - INFO - Key pressed: 32
+2025-12-18 18:28:35,546 - INFO - Key pressed: 32
+2025-12-18 18:28:35,587 - INFO - Key pressed: 32
+2025-12-18 18:28:35,628 - INFO - Key pressed: 32
+2025-12-18 18:28:35,668 - INFO - Key pressed: 32
+2025-12-18 18:28:35,709 - INFO - Key pressed: 32
+2025-12-18 18:28:35,748 - INFO - Key pressed: 32
+2025-12-18 18:28:35,788 - INFO - Key pressed: 32
+2025-12-18 18:28:35,828 - INFO - Key pressed: 32
+2025-12-18 18:28:35,869 - INFO - Key pressed: 32
+2025-12-18 18:28:35,909 - INFO - Key pressed: 32
+2025-12-18 18:28:35,949 - INFO - Key pressed: 32
+2025-12-18 18:28:35,989 - INFO - Key pressed: 32
+2025-12-18 18:28:36,028 - INFO - Key pressed: 32
+2025-12-18 18:28:36,069 - INFO - Key pressed: 32
+2025-12-18 18:28:36,110 - INFO - Key pressed: 32
+2025-12-18 18:28:36,150 - INFO - Key pressed: 32
+2025-12-18 18:28:36,189 - INFO - Key pressed: 32
+2025-12-18 18:28:36,230 - INFO - Key pressed: 32
+2025-12-18 18:28:36,269 - INFO - Key pressed: 32
+2025-12-18 18:28:36,309 - INFO - Key pressed: 32
+2025-12-18 18:28:36,350 - INFO - Key pressed: 32
+2025-12-18 18:28:36,391 - INFO - Key pressed: 32
+2025-12-18 18:28:36,430 - INFO - Key pressed: 32
+2025-12-18 18:28:36,470 - INFO - Key pressed: 32
+2025-12-18 18:28:36,509 - INFO - Key pressed: 32
+2025-12-18 18:28:36,550 - INFO - Key pressed: 32
+2025-12-18 18:28:36,579 - INFO - Heard: confirmar
+2025-12-18 18:28:36,579 - INFO - CONFIRMED!
+2025-12-18 18:28:36,589 - INFO - Key pressed: 32
+2025-12-18 18:28:36,630 - INFO - Key pressed: 32
+2025-12-18 18:28:36,669 - INFO - Key pressed: 32
+2025-12-18 18:28:36,710 - INFO - Key pressed: 32
+2025-12-18 18:28:36,752 - INFO - Audio worker finished. Result: 1111111111
+2025-12-18 18:28:36,752 - INFO - Key pressed: 32
+2025-12-18 18:28:36,753 - INFO - PhoneDisplay loop ended
+2025-12-18 18:28:36,775 - INFO - Number captured and confirmed: 1111111111
+2025-12-18 18:28:36,775 - INFO - Background music stopped.
+2025-12-18 18:28:36,776 - INFO - Preparing to send welcome message to 1111111111 via Local Server...
+2025-12-18 18:28:36,776 - INFO - Target Phone Number: 571111111111
+2025-12-18 18:28:36,788 - ERROR - Server Error 500: {"success":false,"error":"Evaluation failed: TypeError: Cannot read properties of undefined (reading 'WidFactory')\n    at pptr://__puppeteer_evaluation_script__:2:38"}
+2025-12-18 18:28:36,789 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766100459.json
+2025-12-18 18:28:36,789 - INFO - STEP 8: Playing goodbye video...
+2025-12-18 18:28:36,789 - INFO - Goodbye video not found, skipping.
+2025-12-18 18:28:36,791 - INFO - 
+============================================================
+2025-12-18 18:28:36,791 - INFO - EXPERIENCIA COMPLETADA
+2025-12-18 18:28:36,791 - INFO - ============================================================
+2025-12-18 18:28:36,791 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-18 18:28:38,818 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-18 18:28:38,819 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-18 18:28:38,819 - INFO - Background music stopped.
+2025-12-18 18:28:38,819 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-18 18:28:38,820 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffe38128910] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe30022440] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-18 18:28:47,111 - INFO - Video playback finished
+2025-12-18 18:28:47,201 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-18 18:28:47,201 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...

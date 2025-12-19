@@ -1,6 +1,7 @@
 const express = require('express');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const OpenAI = require('openai');
+const QRCode = require('qrcode');
 const qrcode = require('qrcode-terminal');
 const path = require('path');
 const cors = require('cors');
@@ -11,6 +12,8 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(cors());
+// Serve static files to easily view QR if needed (optional)
+app.use(express.static(path.join(__dirname, 'public')));
 
 // --- Configuration ---
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -50,20 +53,30 @@ if (process.platform === 'linux') {
 const client = new Client({
     authStrategy: new LocalAuth({ clientId: 'encantado_v3' }),
     puppeteer: puppeteerConfig,
-    webVersionCache: {
-        type: 'remote',
-        remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2407.3.html',
-    }
+    // webVersionCache: {
+    //     type: 'remote',
+    //     remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2407.3.html',
+    // }
 });
+
+let isClientReady = false;
 
 // --- WhatsApp Events ---
 client.on('qr', (qr) => {
     console.log('\nPlease scan the QR code to log in:');
     qrcode.generate(qr, { small: true });
+
+    // Save QR to file as well
+    const qrPath = path.join(__dirname, 'qr_code.png');
+    QRCode.toFile(qrPath, qr, (err) => {
+        if (err) console.error('Error saving QR code image:', err);
+        else console.log(`QR Code image saved to: ${qrPath}`);
+    });
 });
 
 client.on('ready', () => {
     console.log('WhatsApp Client is READY!');
+    isClientReady = true;
 });
 
 client.on('authenticated', () => {
@@ -121,6 +134,11 @@ client.on('message', async msg => {
 app.post('/send-welcome', async (req, res) => {
     const { phoneNumber } = req.body;
 
+    if (!isClientReady) {
+        console.warn("API Request blocked: Client not ready yet.");
+        return res.status(503).json({ success: false, error: "WhatsApp Client is not ready yet. Please wait a moment." });
+    }
+
     if (!phoneNumber) {
         return res.status(400).json({ success: false, error: "phoneNumber is required" });
     }
@@ -133,18 +151,48 @@ app.post('/send-welcome', async (req, res) => {
         let chatId = phoneNumber.replace(/\D/g, "") + "@c.us";
 
         // Check if number is registered (optional validation)
-        const isRegistered = await client.isRegisteredUser(chatId);
-        if (!isRegistered) {
-            console.warn(`Number ${chatId} not registered on WhatsApp.`);
-            // Try fallback for Mexico/Argentina widely known issue? 
-            // For now, proceed or return error. Let's try to proceed as sometimes isRegistered is flaky.
+        let finalId = chatId;
+        try {
+            // Attempt to verify registration to avoid invalid ID errors
+            const isRegistered = await client.isRegisteredUser(chatId);
+            if (!isRegistered) {
+                console.warn(`Number ${chatId} not registered on WhatsApp.`);
+                // Still try to send, sometimes verification fails but sending works
+            }
+        } catch (verErr) {
+            console.warn("Could not verify user registration, trying sending anyway...", verErr);
         }
 
         const messageText = "¡Hola! Aquí tienes tu video del Árbol Encantado. ¡Feliz Navidad!";
 
         // Send
-        await client.sendMessage(chatId, messageText);
-        console.log(`Welcome message sent to ${chatId}`);
+        const sentMsg = await client.sendMessage(finalId, messageText);
+        console.log(`Welcome message sent to ${finalId}. Waiting for server acknowledgement...`);
+
+        // Wait for ACK to ensure delivery to server
+        await new Promise((resolve) => {
+            const timeout = setTimeout(() => {
+                console.warn('Timeout waiting for ACK, but message request was sent to browser.');
+                resolve();
+            }, 10000); // Wait up to 10 seconds
+
+            const ackListener = (msg, ack) => {
+                if (msg.id._serialized === sentMsg.id._serialized) {
+                    console.log(`ACK received: ${ack}`);
+                    // ack 1 = sent to server, 2 = delivered, 3 = read
+                    if (ack >= 1) {
+                        clearTimeout(timeout);
+                        client.removeListener('message_ack', ackListener); // Cleanup
+                        console.log('Message successfully reached WhatsApp server.');
+                        resolve();
+                    }
+                }
+            };
+
+            client.on('message_ack', ackListener);
+        });
+
+        console.log(`Verified processing for ${finalId} completed.`);
 
         res.json({ success: true, message: "Message sent successfully" });
 
