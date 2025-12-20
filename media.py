@@ -198,11 +198,11 @@ class MediaManager:
         # Ensure window properties
         cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
-        logging.info("Recording started! 30 seconds countdown...")
+        logging.info("Recording started! 20 seconds countdown...")
         frame_count = 0
         
         start_time = time.time()
-        duration = 30
+        duration = 20
         
         while True:
             # Check if external stop was requested (optional now)

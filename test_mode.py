@@ -151,10 +151,10 @@ def main():
                 logging.info("Simulando reproducción (3 segundos)...")
                 time.sleep(3)
 
-            # 3. Record User (30 seconds fixed)
+            # 3. Record User (20 seconds fixed)
             logging.info("=" * 50)
-            logging.info("STEP 3: Starting camera recording (30s)...")
-            logging.info("Recording will stop automatically after 30 seconds.")
+            logging.info("STEP 3: Starting camera recording (20s)...")
+            logging.info("Recording will stop automatically after 20 seconds.")
             logging.info("=" * 50)
             
             timestamp = int(time.time())
