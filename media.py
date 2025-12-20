@@ -4,8 +4,7 @@ import logging
 import os
 import threading
 import numpy as np
-import pyaudio
-import wave
+import subprocess
 try:
     import vlc
     VLC_AVAILABLE = True
@@ -146,53 +145,6 @@ class MediaManager:
         except Exception as e:
             logging.error(f"Error showing image: {e}")
 
-    def record_audio(self, filename, stop_event):
-        """Records audio to a WAV file in a separate thread."""
-        chunk = 1024
-        format = pyaudio.paInt16
-        channels = 1
-        rate = 44100
-        p = pyaudio.PyAudio()
-        stream = None
-        
-        try:
-            logging.info(f"Opening audio stream for {filename}")
-            stream = p.open(format=format,
-                            channels=channels,
-                            rate=rate,
-                            input=True,
-                            frames_per_buffer=chunk)
-
-            frames = []
-            while not stop_event.is_set():
-                try:
-                    data = stream.read(chunk, exception_on_overflow=False)
-                    frames.append(data)
-                except Exception as e:
-                    logging.error(f"Audio read error: {e}")
-                    break
-            
-            logging.info("Saving audio file...")
-            wf = wave.open(filename, 'wb')
-            wf.setnchannels(channels)
-            wf.setsampwidth(p.get_sample_size(format))
-            wf.setframerate(rate)
-            wf.writeframes(b''.join(frames))
-            wf.close()
-            logging.info(f"Audio saved to {filename}")
-
-        except Exception as e:
-            logging.error(f"Audio recording failed: {e}")
-        finally:
-            if stream:
-                try:
-                    stream.stop_stream()
-                    stream.close()
-                except: pass
-            try:
-                p.terminate()
-            except: pass
-
     def record_user(self, output_path, stop_event=None):
         logging.info(f"Starting recording to {output_path}")
         logging.info("Opening camera...")
@@ -207,16 +159,19 @@ class MediaManager:
                 # Attempt to set MJPEG first (crucial for high FPS at high res on USB)
                 self.camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
                 
-                # Attempt to set 1080p resolution
-                self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-                self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+                # Low latency buffer
+                self.camera.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+
+                # Attempt to set 720p resolution for better FPS and sync
+                self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+                self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                 self.camera.set(cv2.CAP_PROP_FPS, 30)
 
                 # Verify what we actually got
                 actual_w = self.camera.get(cv2.CAP_PROP_FRAME_WIDTH)
                 actual_h = self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT)
                 actual_fps = self.camera.get(cv2.CAP_PROP_FPS)
-                logging.info(f"Requested 1920x1080 @ 30fps MJPEG. Got: {actual_w}x{actual_h} @ {actual_fps}fps")
+                logging.info(f"Requested 1280x720 @ 30fps MJPEG. Got: {actual_w}x{actual_h} @ {actual_fps}fps")
                 break
             cap.release()
         
@@ -240,16 +195,44 @@ class MediaManager:
 
         logging.info(f"Recording Video: {out_w}x{out_h} @ {fps}fps")
         # Ensure window properties
+        
+        # --- FLUSH CAMERA BUFFER ---
+        # Read a few frames to clear any old buffered content so we start "fresh"
+        logging.info("Flushing camera buffer...")
+        for _ in range(5):
+            self.camera.read()
+            
         cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
+
+        # --- START AUDIO RECORDING SUBPROCESS ---
+        audio_path = output_path.replace(".avi", ".wav")
+        logging.info(f"Starting external audio recording to {audio_path}")
+        
+        # Using ffmpeg with PulseAudio (default) or ALSA
+        # Note: 'default' usually works if Pulse is running.
+        # We record for slightly longer than needed, we will kill it.
+        audio_cmd = [
+            'ffmpeg',
+            '-y',
+            '-f', 'pulse', '-i', 'default', # Try PulseAudio first
+            # '-f', 'alsa', '-i', 'default', # Fallback if Pulse fails (requires retry logic, sticking to pulse for desktop)
+            '-ac', '1', # Mono is fine/safer
+            '-ar', '44100',
+            '-loglevel', 'quiet',
+            audio_path
+        ]
+        
+        audio_process = None
+        try:
+           audio_process = subprocess.Popen(audio_cmd)
+           logging.info(f"Audio process started (PID: {audio_process.pid})")
+        except Exception as e:
+            logging.error(f"Failed to start audio process: {e}")
+
+        
         logging.info("Recording started! 20 seconds countdown...")
         frame_count = 0
-
-        # Start Audio Recording
-        audio_path = output_path.replace(".avi", ".wav")
-        audio_stop_event = threading.Event()
-        audio_thread = threading.Thread(target=self.record_audio, args=(audio_path, audio_stop_event))
-        audio_thread.start()
         
         start_time = time.time()
         duration = 20
@@ -329,9 +312,14 @@ class MediaManager:
                     logging.warning("Failed to read frame from camera")
                     break
         finally:
-            # Stop audio recording
-            audio_stop_event.set()
-            audio_thread.join()
+            # KILL AUDIO PROCESS
+            if audio_process:
+                logging.info("Terminating audio recording process...")
+                audio_process.terminate()
+                try:
+                    audio_process.wait(timeout=2)
+                except subprocess.TimeoutExpired:
+                    audio_process.kill()
             
             logging.info(f"Stopping recording... ({frame_count} frames captured)")
             self.camera.release()
@@ -356,8 +344,6 @@ class MediaManager:
             
             # 1. Check if input exists and is valid
             if os.path.exists(output_path) and os.path.getsize(output_path) > 1000:
-                import subprocess
-                
                 cmd = [
                     'ffmpeg', 
                     '-y', 
@@ -367,9 +353,10 @@ class MediaManager:
                 
                 # Check if audio file exists
                 if os.path.exists(audio_path):
-                     # Add 0.5s delay to audio to sync with video (audio was ahead/early)
-                     # -itsoffset 0.5 delays the stream following it
-                     cmd.extend(['-itsoffset', '0.5', '-i', audio_path]) 
+                     # No manual offset needed if we started them together and buffer is low
+                     # UPDATE: Buffer flush added + 720p. Reducing offset to 0.2s.
+                     # -itsoffset 0.2 delays the audio by 0.2s
+                     cmd.extend(['-itsoffset', '0.2', '-i', audio_path]) 
                      cmd.extend(['-c:v', 'libx264', '-crf', '28', '-preset', 'fast'])
                      cmd.extend(['-c:a', 'aac', '-b:a', '128k'])
                      # Map video from 0:v and audio from 1:a

@@ -4,13 +4,7 @@ Using system Chromium: /usr/bin/chromium
 >>> Initializing WhatsApp Client...
 WhatsApp Authenticated successfully.
 WhatsApp Client is READY!
-Message received from 120363421005625047@g.us: Buenas noches para un servicio
-Replying: ¡Buenas noches! 🌟 Aquí, en el Árbol Encantado del Centro Comercial Avenida, te deseo una mágica y feliz Navidad. Que esta temporada esté llena de alegría y momentos especiales. ¡Te invito a compartir tu alegría! Sube tu video a las redes sociales y etiqueta a @avenidacentrocomercialfusa. ¡Que la magia te acompañe siempre! 🎄✨
-Message received from 120363421005625047@g.us: 
-API Request: Send welcome to 573502678360 with video: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766194924.mp4
-Replying: ¡Ho, ho, ho! 🎄✨ Soy el espíritu del Árbol Encantado del Centro Comercial Avenida y estoy aquí para desearte una ¡Feliz Navidad! Que esta temporada esté llena de alegría, amor y magia. 
-
-Te invito a capturar esos momentos especiales y compartir tu alegría con el mundo. ¡Sube tu video a tus redes sociales y no olvides etiquetar a @avenidacentrocomercialfusa! ¡Juntos haremos que esta Navidad brille aún más! 🌟❤️
+API Request: Send welcome to 573502678360 with video: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766197305.mp4
 Video message sent to 573502678360@c.us
 Welcome message processing for 573502678360@c.us. Waiting for server acknowledgement...
 ACK received: 3
