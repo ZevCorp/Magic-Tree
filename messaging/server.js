@@ -168,7 +168,15 @@ app.post('/send-welcome', async (req, res) => {
         let sentMsg;
         if (videoPath && require('fs').existsSync(videoPath)) {
             try {
+                // Check file size first? 
+                // For now, let's just try sending directly as requested.
+                // If it fails (like the t:t error), it's likely size/encoding related.
+
                 const media = MessageMedia.fromFilePath(videoPath);
+
+                // Optional: Send as document if too large? 
+                // client.sendMessage(finalId, media, { sendMediaAsDocument: true, caption: messageText });
+
                 sentMsg = await client.sendMessage(finalId, media, { caption: messageText });
                 console.log(`Video message sent to ${finalId}`);
             } catch (mediaErr) {

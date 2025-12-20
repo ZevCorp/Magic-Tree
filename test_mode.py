@@ -223,11 +223,18 @@ def main():
                 audio.stop_background_music()
                 
                 # 7. Send Message & Save Metadata
-                messaging.send_welcome_message(final_phone_number, user_video_path)
+                # Prefer compressed MP4 if available
+                final_video_path = user_video_path
+                compressed_mp4 = user_video_path.replace(".avi", ".mp4")
+                if os.path.exists(compressed_mp4):
+                    logging.info("Using compressed MP4 for sending.")
+                    final_video_path = compressed_mp4
+                
+                messaging.send_welcome_message(final_phone_number, final_video_path)
                 
                 # Save Metadata JSON
                 metadata = {
-                    "video_path": user_video_path,
+                    "video_path": final_video_path,
                     "phone_number": final_phone_number,
                     "timestamp": timestamp,
                     "full_transcript": "Vosk Dictation" 
