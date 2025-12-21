@@ -4,6 +4,7 @@ import logging
 import os
 import threading
 import numpy as np
+import subprocess
 try:
     import vlc
     VLC_AVAILABLE = True
@@ -97,7 +98,17 @@ class MediaManager:
                 if state == vlc.State.Ended:
                     break
                 if state == vlc.State.Error:
-                    logging.error("VLC Error")
+                    logging.error("VLC Error detected!")
+                    try:
+                        # Attempt to stop player first
+                        self.player.stop()
+                    except:
+                        pass
+                    
+                    logging.critical("CRITICAL: Video playback failed due to hardware/codec state.")
+                    logging.critical("Initiating SYSTEM REBOOT in 5 seconds to recover...")
+                    time.sleep(5)
+                    os.system("sudo reboot")
                     break
                 
                 # Check interruption
@@ -145,203 +156,101 @@ class MediaManager:
             logging.error(f"Error showing image: {e}")
 
     def record_user(self, output_path, stop_event=None):
-        logging.info(f"Starting recording to {output_path}")
-        logging.info("Opening camera...")
-        self.camera = None
-        # Try multiple indices to find the camera
-        for index in range(4):
-            logging.info(f"Attempting camera index {index}...")
-            cap = cv2.VideoCapture(index)
-            if cap.isOpened():
-                self.camera = cap
-                logging.info(f"Camera opened successfully on index {index}!")
-                # Attempt to set MJPEG first (crucial for high FPS at high res on USB)
-                self.camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
-                
-                # Attempt to set 1080p resolution
-                # Attempt to set 1080p resolution
-                self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-                self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
-                self.camera.set(cv2.CAP_PROP_FPS, 30)
-
-                # --- CAMERA ADJUSTMENTS REMOVED (NATURAL LOOK) ---
-                
-                # Verify what we actually got
-                actual_w = self.camera.get(cv2.CAP_PROP_FRAME_WIDTH)
-                actual_h = self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT)
-                actual_fps = self.camera.get(cv2.CAP_PROP_FPS)
-                logging.info(f"Requested 1920x1080 @ 30fps MJPEG. Got: {actual_w}x{actual_h} @ {actual_fps}fps")
+        """
+        Records video using FFmpeg direct capture from camera.
+        Simple and reliable - no preview to avoid issues.
+        """
+        logging.info(f"Starting DIRECT FFMPEG recording to {output_path}")
+        
+        # Find camera device
+        video_device = None
+        for i in range(4):
+            dev = f"/dev/video{i}"
+            if os.path.exists(dev):
+                video_device = dev
                 break
-            cap.release()
         
-        if self.camera is None or not self.camera.isOpened():
-            logging.error("Could not open camera on any index (0-3)")
+        if not video_device:
+            logging.error("Could not find video device")
             return
-
-        # Define codec and create VideoWriter object
-        # XVID is usually safe, or H264 if available
-        # Define codec and create VideoWriter object
-        # Use 'mp4v' for MP4 container, 'MJPG' for AVI. MJPG is safer for simple writing.
-        fourcc = cv2.VideoWriter_fourcc(*'MJPG')
+            
+        logging.info(f"Using video device: {video_device}")
         
-        # Natural Input Dimensions (Landscape)
-        cam_w = int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH))
-        cam_h = int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        duration = 20
+        final_output = output_path.replace(".avi", ".mp4")
         
-        # We rotate 90 degrees, so Output Dimensions must be Swapped
-        out_w, out_h = cam_h, cam_w
+        # Simple FFmpeg command - single output, no pipes
+        cmd = [
+            'ffmpeg',
+            '-y',
+            '-f', 'v4l2',
+            '-video_size', '1280x720',
+            '-framerate', '30',
+            '-input_format', 'mjpeg',
+            '-i', video_device,
+            '-f', 'pulse',
+            '-ac', '1',
+            '-i', 'default',
+            '-t', str(duration),
+            '-c:v', 'libx264',
+            '-preset', 'ultrafast',
+            '-crf', '25',
+            '-vf', 'transpose=1',
+            '-c:a', 'aac',
+            '-b:a', '128k',
+            '-pix_fmt', 'yuv420p',
+            '-movflags', '+faststart',
+            final_output
+        ]
         
-        fps = 30.0 # Target 30 FPS
-        out = cv2.VideoWriter(output_path, fourcc, fps, (out_w, out_h))
-
-        logging.info(f"Recording Video: {out_w}x{out_h} @ {fps}fps")
-        # Ensure window properties
-        cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-
-        logging.info("Recording started! 20 seconds countdown...")
-        frame_count = 0
+        logging.info(f"FFmpeg Command: {' '.join(cmd)}")
+        
+        # Start FFmpeg
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         
         start_time = time.time()
-        duration = 20
         
-        while True:
-            # Check if external stop was requested (optional now)
-            if stop_event and stop_event.is_set():
-                break
-
-            elapsed = time.time() - start_time
-            remaining = max(0, duration - int(elapsed))
-            
-            if remaining == 0:
-                logging.info("Timer finished!")
-                break
-
-            ret, frame = self.camera.read()
-            if ret:
-                # Rotate Frame 90 Degrees
-                frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
-
-                # --- 1. WRITE TO FILE (Raw Vertical Video) ---
-                # We save the full resolution vertical video
-                
-                # Add timer to the raw frame (adjusted for vertical layout)
-                # Frame is now Height x Width (e.g. 1920x1080 -> 1080x1920)
-                f_h, f_w = frame.shape[:2]
-                
-                text = str(remaining)
-                font = cv2.FONT_HERSHEY_SIMPLEX
-                font_scale = 4
-                thickness = 8
-                color = (255, 255, 255)
-                
-                text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
-                text_x = f_w - text_size[0] - 50
-                text_y = f_h - 50
-                
-                cv2.putText(frame, text, (text_x, text_y), font, font_scale, (0, 0, 0), thickness + 4)
-                cv2.putText(frame, text, (text_x, text_y), font, font_scale, color, thickness)
-                
-                out.write(frame)
-
-                # --- 2. PREPARE FOR DISPLAY (Pillarbox/Letterbox) ---
-                # Screen is 1920x1080 (Landscape)
-                # Image is Vertical (e.g. 1080x1920)
-                # We need to scale image to fit Height 1080.
-                
-                screen_w = 1920
-                screen_h = 1080
-                
-                # Scale factor to fit height
-                scale = screen_h / f_h
-                new_w = int(f_w * scale)
-                new_h = int(f_h * scale) # Should be 1080
-                
-                resized_frame = cv2.resize(frame, (new_w, new_h))
-                
-                # Create Black Background
-                display_img = np.zeros((screen_h, screen_w, 3), dtype=np.uint8)
-                
-                # Center offset
-                x_offset = (screen_w - new_w) // 2
-                
-                # Copy into center
-                # Ensure bounds
-                if x_offset >= 0:
-                     display_img[:, x_offset:x_offset+new_w] = resized_frame
-                
-                cv2.imshow(WINDOW_NAME, display_img)
-                frame_count += 1
-                
-                # Check for 'q' key as manual fallback
-                if cv2.waitKey(1) & 0xFF == ord('q'):
-                    logging.info("'q' key pressed, stopping recording")
-                    break
-            else:
-                logging.warning("Failed to read frame from camera")
-                break
-
-        logging.info(f"Stopping recording... ({frame_count} frames captured)")
-        self.camera.release()
-        out.release()
-        
-        # Do NOT destroy window, just show black
-        self.show_black_screen()
-        
-        logging.info("Camera released, returned to black screen")
-
-        # --- COMPRESSION STEP ---
-        # Convert the AVI (MJPEG, large) to MP4 (H.264, compressed)
-        # This is CRITICAL for WhatsApp to accept the file and for fast sending.
+        # Show countdown while recording
         try:
-            logging.info("Compressing video for WhatsApp...")
-            compressed_path = output_path.replace(".avi", ".mp4")
-            
-            # 1. Check if input exists and is valid
-            if os.path.getsize(output_path) < 1000:
-                logging.warning("Recorded video is empty or too small, skipping compression.")
-                return
-
-            import subprocess
-            # ffmpeg -i input.avi -vcodec libx264 -crf 28 -preset fast -y output.mp4
-            # -crf 28: Good balance of quality/size (lower = better quality)
-            # -preset fast: Faster encoding
-            cmd = [
-                'ffmpeg', 
-                '-y', # Overwrite valid 
-                '-i', output_path, 
-                '-vcodec', 'libx264',
-                '-crf', '28', 
-                '-preset', 'fast',
-                '-pix_fmt', 'yuv420p', # Ensure compatibility
-                compressed_path
-            ]
-            
-            # Hide output unless error
-            result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            
-            if result.returncode == 0 and os.path.exists(compressed_path):
-                logging.info(f"Compression successful: {compressed_path}")
-                # Replace original path with compressed one for the rest of the flow to use
-                # We can hack this by renaming or just letting the caller know.
-                # Actually, the caller (test_mode.py) expects 'output_path' to be the file.
-                # Let's overwrite? No, better to return the new path or update variable?
-                # Since 'record_user' doesn't return anything, user_video_path in main is fixed.
-                # FIX: We should execute this compression IN test_mode.py or make this function return the new path.
-                # BUT, to match existing flow, we can just MOVE the mp4 to the .avi name? 
-                # No, .avi extension with .mp4 content is messy.
-                # Better: Let's rename the original to _raw.avi and the new to .mp4
-                # Wait, the main script defines the path with .avi extension.
+            while proc.poll() is None:
+                elapsed = time.time() - start_time
+                remaining = max(0, int(duration - elapsed))
                 
-                # SIMPLEST: Just overwrite the .avi file with the compressed content but use valid container?
-                # No, extension matters.
+                # Create countdown display
+                screen = np.zeros((1080, 1920, 3), dtype=np.uint8)
                 
-                # Let's logging info that it is available at .mp4
-                pass
-            else:
-                logging.error(f"FFmpeg compression failed: {result.stderr.decode()}")
-
+                # Recording indicator (red circle)
+                cv2.circle(screen, (960, 350), 30, (0, 0, 255), -1)
+                
+                # "GRABANDO" text
+                cv2.putText(screen, "GRABANDO", (720, 450), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255, 255, 255), 4)
+                
+                # Countdown
+                cv2.putText(screen, str(remaining), (880, 650), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 7, (255, 255, 255), 10)
+                
+                cv2.imshow(WINDOW_NAME, screen)
+                cv2.waitKey(500)  # Update every 500ms
+                
+                if remaining <= 0:
+                    break
+                    
         except Exception as e:
-            logging.error(f"Compression error: {e}")
+            logging.error(f"Countdown display error: {e}")
+        
+        # Wait for FFmpeg to finish
+        try:
+            stdout, stderr = proc.communicate(timeout=10)
+            if proc.returncode != 0:
+                logging.warning(f"FFmpeg exit code: {proc.returncode}")
+        except subprocess.TimeoutExpired:
+            proc.terminate()
+            proc.wait()
+            logging.warning("FFmpeg terminated due to timeout")
+            
+        self.show_black_screen()
+        logging.info("Recording finished.")
 
     def cleanup(self):
         """Call this only when shutting down the app"""

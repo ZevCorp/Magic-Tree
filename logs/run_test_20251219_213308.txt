@@ -1,0 +1,221 @@
+--- Run Started at 20251219_213308 ---
+/home/magicctree/Desktop/Magic-Tree/venv/lib/python3.13/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.5)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+2025-12-19 21:33:11,074 - INFO - ============================================================
+2025-12-19 21:33:11,075 - INFO - MODO DE PRUEBA - Árbol Encantado
+2025-12-19 21:33:11,075 - INFO - Experiencia completa SIN sensor de puerta
+2025-12-19 21:33:11,075 - INFO - ============================================================
+2025-12-19 21:33:11,075 - INFO - Running in MOCK MODE - GPIO disabled
+2025-12-19 21:33:11,115 - INFO - Initializing persistent window: EnchantedTree
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.front.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_a52.c:1036:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=6,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 CARD 0}
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_direct.c:1257:(snd1_pcm_direct_initialize_slave) requested or auto-format is not available
+ALSA lib pcm_dmix.c:1012:(snd_pcm_dmix_open) unable to initialize slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+2025-12-19 21:33:11,936 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-19 21:33:12,654 - INFO - Vosk model loaded successfully.
+2025-12-19 21:33:12,654 - INFO - Sistema listo.
+2025-12-19 21:33:12,654 - INFO - 
+En este modo:
+2025-12-19 21:33:12,654 - INFO - ✓ La cámara se activará normalmente
+2025-12-19 21:33:12,654 - INFO - ✓ El audio y detección de voz funcionan
+2025-12-19 21:33:12,654 - INFO - ✓ Los videos se reproducen
+2025-12-19 21:33:12,654 - INFO - ✗ El sensor de puerta está deshabilitado (presiona Enter)
+2025-12-19 21:33:12,654 - INFO - 
+2025-12-19 21:33:12,654 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-19 21:33:12,654 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-19 21:33:12,654 - INFO - Background music stopped.
+2025-12-19 21:33:12,654 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-19 21:33:12,654 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[h264_v4l2m2m @ 0x7fff30062af0] Could not find a valid device
+[h264_v4l2m2m @ 0x7fff30062af0] can't configure decoder
+[00007fff30060a40] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[00007fff000f4540] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007fff5c001080] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 21:33:21,016 - INFO - Video playback finished
+2025-12-19 21:33:21,154 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-19 21:33:21,154 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-19 21:33:23,891 - INFO - Keyword 'feliz navidad' detected!
+2025-12-19 21:33:23,894 - INFO - Keyword listener stopped.
+2025-12-19 21:33:24,137 - INFO - Standby interrupted by user action!
+2025-12-19 21:33:24,137 - INFO - Iniciando experiencia...
+2025-12-19 21:33:24,137 - INFO - Pre-initializing phone system components...
+2025-12-19 21:33:24,152 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-19 21:33:24,732 - INFO - Vosk model loaded.
+2025-12-19 21:33:24,732 - INFO - Phone system pre-initialized.
+2025-12-19 21:33:24,732 - INFO - ==================================================
+2025-12-19 21:33:24,732 - INFO - STEP 2: Playing intro video...
+2025-12-19 21:33:24,732 - INFO - ==================================================
+2025-12-19 21:33:24,732 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007fff18103e70] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007fff60000ba0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 21:33:40,142 - INFO - Video playback finished
+2025-12-19 21:33:40,142 - INFO - Playing second intro video...
+2025-12-19 21:33:40,142 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-19 21:33:40,142 - INFO - ==================================================
+2025-12-19 21:33:40,142 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-19 21:33:40,142 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-19 21:33:40,142 - INFO - ==================================================
+2025-12-19 21:33:40,142 - INFO - Starting recording to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766198020.avi
+2025-12-19 21:33:40,142 - INFO - Opening camera...
+2025-12-19 21:33:40,142 - INFO - Attempting camera index 0...
+2025-12-19 21:33:40,263 - INFO - Camera opened successfully on index 0!
+2025-12-19 21:33:40,275 - INFO - Requested 1280x720 @ 30fps MJPEG. Got: 1280.0x720.0 @ 30.0fps
+2025-12-19 21:33:40,276 - INFO - Recording Video: 1280x720 @ 30.0fps
+2025-12-19 21:33:40,276 - INFO - Flushing camera buffer...
+2025-12-19 21:33:41,027 - INFO - Starting external audio recording to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766198020.wav
+2025-12-19 21:33:41,027 - INFO - Audio process started (PID: 24491)
+2025-12-19 21:33:41,027 - INFO - Recording started! 20 seconds countdown...
+2025-12-19 21:34:01,039 - INFO - Timer finished!
+2025-12-19 21:34:01,040 - INFO - Terminating audio recording process...
+2025-12-19 21:34:01,554 - INFO - Stopping recording... (267 frames captured)
+2025-12-19 21:34:01,807 - INFO - Camera released, returned to black screen
+2025-12-19 21:34:01,808 - INFO - Actual Duration: 20.78s, Effective FPS: 12.85
+2025-12-19 21:34:01,808 - INFO - Compressing video and merging audio for WhatsApp...
+2025-12-19 21:34:01,808 - INFO - FFmpeg command: ffmpeg -y -r 12.848866943256896 -i /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766198020.avi -itsoffset 0.0 -i /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766198020.wav -c:v libx264 -crf 28 -preset fast -vf transpose=1 -c:a aac -b:a 128k -map 0:v -map 1:a -shortest -pix_fmt yuv420p /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766198020.mp4
+2025-12-19 21:34:07,948 - INFO - Compression successful: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766198020.mp4
+2025-12-19 21:34:07,948 - INFO - ==================================================
+2025-12-19 21:34:07,948 - INFO - STEP 4: Asking for phone number...
+2025-12-19 21:34:07,948 - INFO - ==================================================
+2025-12-19 21:34:07,948 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007fff5c10ae90] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffef808d130] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 21:34:16,318 - INFO - Video playback finished
+2025-12-19 21:34:16,819 - INFO - ==================================================
+2025-12-19 21:34:16,819 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-19 21:34:16,819 - INFO - ==================================================
+2025-12-19 21:34:16,819 - INFO - ==================================================
+2025-12-19 21:34:16,819 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-19 21:34:16,819 - INFO - ==================================================
+2025-12-19 21:34:16,819 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-19 21:34:16,819 - INFO - Audio worker started (Vosk)
+2025-12-19 21:34:16,820 - INFO - PhoneDisplay started on main thread
+2025-12-19 21:34:16,820 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-19 21:34:16,868 - INFO - PhoneInputSystem: Listening...
+2025-12-19 21:34:16,896 - INFO - Starting PhoneDisplay render loop
+2025-12-19 21:34:24,888 - INFO - Heard: por favor mi pepo numero de telefono tres cincuenta y dos seis siete ocho tres deseen
+2025-12-19 21:34:28,693 - INFO - Heard: sesenta
+2025-12-19 21:34:28,693 - INFO - 10 digits reached: 3502678360. Verifying...
+2025-12-19 21:34:31,781 - INFO - Heard: confirmar
+2025-12-19 21:34:31,781 - INFO - CONFIRMED!
+2025-12-19 21:34:32,034 - INFO - Audio worker finished. Result: 3502678360
+2025-12-19 21:34:32,044 - INFO - PhoneDisplay loop ended
+2025-12-19 21:34:32,084 - INFO - Number captured and confirmed: 3502678360
+2025-12-19 21:34:32,085 - INFO - Background music stopped.
+2025-12-19 21:34:32,085 - INFO - Using compressed MP4 for sending.
+2025-12-19 21:34:32,086 - INFO - Preparing to send welcome message to 3502678360 via Local Server...
+2025-12-19 21:34:32,086 - INFO - Target Phone Number: 573502678360
+2025-12-19 21:34:37,102 - ERROR - Error sending message request: HTTPConnectionPool(host='localhost', port=3000): Read timed out. (read timeout=5)
+2025-12-19 21:34:37,104 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766198020.json
+2025-12-19 21:34:37,104 - INFO - STEP 8: Playing goodbye video...
+2025-12-19 21:34:37,104 - INFO - Goodbye video not found, skipping.
+2025-12-19 21:34:37,116 - INFO - 
+============================================================
+2025-12-19 21:34:37,117 - INFO - EXPERIENCIA COMPLETADA
+2025-12-19 21:34:37,117 - INFO - ============================================================
+2025-12-19 21:34:37,117 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-19 21:34:39,150 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-19 21:34:39,150 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-19 21:34:39,150 - INFO - Background music stopped.
+2025-12-19 21:34:39,150 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-19 21:34:39,150 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffed0169c50] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007fff20015c00] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-19 21:34:47,438 - INFO - Video playback finished
+2025-12-19 21:34:47,533 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-19 21:34:47,533 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...

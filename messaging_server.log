@@ -4,17 +4,11 @@ Using system Chromium: /usr/bin/chromium
 >>> Initializing WhatsApp Client...
 WhatsApp Authenticated successfully.
 WhatsApp Client is READY!
-Message received from 573123531652@c.us: Cómo estás
-Replying: ¡Estoy lleno de magia y alegría, listo para compartir el espíritu navideño! Que la luz de esta temporada ilumine tu corazón. ✨🎄
-Message received from 573123531652@c.us: 
-Replying: ¡Feliz Navidad! Que la magia de esta temporada ilumine tu corazón y llene tu hogar de alegría.
-Message received from 573123531652@c.us: En dónde estás
-Replying: Soy el guardián de la Navidad y resido en el corazón del Árbol Encantado, donde la magia florece en cada hoja. ¡Te deseo una Feliz Navidad llena de alegría y luz!
-Message received from 573123531652@c.us: 
-Replying: ¡Feliz Navidad! Que la magia de esta temporada llene tu corazón de alegría y amor. 🎄✨
-Message received from 573123531652@c.us: 
-Replying: ¡Feliz Navidad! Que la magia de esta temporada ilumine tu corazón y llene tu hogar de alegría. ✨🎄
-Message received from 573123531652@c.us: Igual para ti
-Replying: ¡Gracias, querido amigo! Que la magia de la Navidad ilumine tu camino y llene tu corazón de alegría y amor. 🎄✨
-Message received from 573123531652@c.us: 
-Replying: ¡Feliz Navidad! Que la magia de esta temporada llene tu corazón de alegría y amor.
+API Request: Send welcome to 573502678360 with video: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766278027.mp4
+Video message sent to 573502678360@c.us
+Welcome message processing for 573502678360@c.us. Waiting for server acknowledgement...
+ACK received: 3
+Message successfully reached WhatsApp server.
+Verified processing for 573502678360@c.us completed.
+Message received from 573115746166@c.us: 
+Replying: ¡Feliz Navidad! Que esta temporada esté llena de alegría y magia para ti y tus seres queridos. No olvides compartir tu momento mágico en Instagram etiquetando a @centrocomercialavenidafusa. 🎄✨

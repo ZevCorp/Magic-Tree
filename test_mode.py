@@ -158,9 +158,9 @@ def main():
             logging.info("=" * 50)
             
             timestamp = int(time.time())
-            user_video_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.avi")
+            user_video_path = os.path.join(RECORDINGS_DIR, f"user_video_{timestamp}.mp4")
             
-            # Start recording (blocks for 30 seconds)
+            # Start recording (blocks for 20 seconds)
             media.record_user(user_video_path)
 
             # 4. Ask for Phone Number
@@ -223,12 +223,12 @@ def main():
                 audio.stop_background_music()
                 
                 # 7. Send Message & Save Metadata
-                # Prefer compressed MP4 if available
                 final_video_path = user_video_path
-                compressed_mp4 = user_video_path.replace(".avi", ".mp4")
-                if os.path.exists(compressed_mp4):
-                    logging.info("Using compressed MP4 for sending.")
-                    final_video_path = compressed_mp4
+                
+                if not os.path.exists(final_video_path):
+                     logging.warning(f"Expected video path {final_video_path} not found.")
+                
+                logging.info(f"Using video for sending: {final_video_path}")
                 
                 messaging.send_welcome_message(final_phone_number, final_video_path)
                 

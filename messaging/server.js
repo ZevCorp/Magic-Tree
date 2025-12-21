@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // --- Configuration ---
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const SYSTEM_PROMPT = "Eres el espíritu del Árbol Encantado. Tu misión es desear Feliz Navidad y traer magia a quienes te hablan. Responde de forma amable, mágica y concisa (máximo 2 frases). Si te preguntan quién eres, di que eres el guardián de la Navidad.";
+const SYSTEM_PROMPT = "Eres el espíritu del Árbol Encantado del Centro Comercial Avenida Fusa. Tu misión es desear Feliz Navidad y traer magia a quienes te hablan. Responde de forma amable, mágica y concisa (máximo 2-3 frases). Si te preguntan quién eres, di que eres el guardián mágico de la Navidad. IMPORTANTE: Siempre invita a las personas a compartir su video en Instagram etiquetando a @centrocomercialavenidafusa para que más gente conozca la magia navideña.";
 
 if (!OPENAI_API_KEY) {
     console.warn("WARNING: OPENAI_API_KEY is missing via .env. Chatbot features will not work.");
@@ -28,6 +28,7 @@ const openai = OPENAI_API_KEY ? new OpenAI({ apiKey: OPENAI_API_KEY }) : null;
 // --- WhatsApp Client Init ---
 const puppeteerConfig = {
     headless: true,
+    protocolTimeout: 120000, // 120 seconds for large media uploads
     args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',

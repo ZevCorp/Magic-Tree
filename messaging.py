@@ -30,7 +30,7 @@ class MessagingService:
                 "http://localhost:3000/send-welcome", 
                 data=json.dumps(payload), 
                 headers=headers,
-                timeout=5 # Fast timeout, don't block UI
+                timeout=60  # Allow time for video upload
             )
             
             if response.status_code == 200:
