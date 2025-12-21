@@ -33,6 +33,11 @@ if [ -f ".env" ]; then
     set +o allexport
 fi
 
+# Setup v4l2loopback for live preview during recording
+echo ""
+echo "--- Setting up Live Preview ---"
+./setup_preview.sh
+
 # --- START MESSAGING SERVER ---
 echo "--- Initializing Messaging Server ---"
 cd messaging

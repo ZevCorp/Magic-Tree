@@ -24,6 +24,11 @@ if [ -d "venv" ]; then
     source venv/bin/activate
 fi
 
+# Setup v4l2loopback for live preview during recording
+echo "Setting up live preview..."
+./setup_preview.sh
+echo ""
+
 # Load .env variables if file exists
 if [ -f ".env" ]; then
     echo "Loading environment variables from .env..."

@@ -4,11 +4,9 @@ Using system Chromium: /usr/bin/chromium
 >>> Initializing WhatsApp Client...
 WhatsApp Authenticated successfully.
 WhatsApp Client is READY!
-API Request: Send welcome to 573502678360 with video: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766278027.mp4
+API Request: Send welcome to 573502678360 with video: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766283880.mp4
 Video message sent to 573502678360@c.us
 Welcome message processing for 573502678360@c.us. Waiting for server acknowledgement...
 ACK received: 3
 Message successfully reached WhatsApp server.
 Verified processing for 573502678360@c.us completed.
-Message received from 573115746166@c.us: 
-Replying: ¡Feliz Navidad! Que esta temporada esté llena de alegría y magia para ti y tus seres queridos. No olvides compartir tu momento mágico en Instagram etiquetando a @centrocomercialavenidafusa. 🎄✨

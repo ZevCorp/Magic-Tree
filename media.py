@@ -157,10 +157,11 @@ class MediaManager:
 
     def record_user(self, output_path, stop_event=None):
         """
-        Records video using FFmpeg direct capture from camera.
-        Simple and reliable - no preview to avoid issues.
+        Records video using FFmpeg with LIVE PREVIEW via v4l2loopback.
+        FFmpeg sends video to both file and virtual camera /dev/video10.
+        OpenCV reads from virtual camera to show real-time preview.
         """
-        logging.info(f"Starting DIRECT FFMPEG recording to {output_path}")
+        logging.info(f"Starting FFMPEG recording with LIVE PREVIEW to {output_path}")
         
         # Find camera device
         video_device = None
@@ -176,32 +177,73 @@ class MediaManager:
             
         logging.info(f"Using video device: {video_device}")
         
+        # Virtual camera for preview
+        preview_device = "/dev/video10"
+        preview_available = os.path.exists(preview_device)
+        
+        if not preview_available:
+            logging.warning(f"Preview device {preview_device} not found. Recording without preview.")
+        
         duration = 20
         final_output = output_path.replace(".avi", ".mp4")
         
-        # Simple FFmpeg command - single output, no pipes
-        cmd = [
-            'ffmpeg',
-            '-y',
-            '-f', 'v4l2',
-            '-video_size', '1280x720',
-            '-framerate', '30',
-            '-input_format', 'mjpeg',
-            '-i', video_device,
-            '-f', 'pulse',
-            '-ac', '1',
-            '-i', 'default',
-            '-t', str(duration),
-            '-c:v', 'libx264',
-            '-preset', 'ultrafast',
-            '-crf', '25',
-            '-vf', 'transpose=1',
-            '-c:a', 'aac',
-            '-b:a', '128k',
-            '-pix_fmt', 'yuv420p',
-            '-movflags', '+faststart',
-            final_output
-        ]
+        if preview_available:
+            # FFmpeg with split: one to file, one to virtual camera for preview
+            # Using filter_complex to split video after transpose
+            cmd = [
+                'ffmpeg',
+                '-y',
+                '-f', 'v4l2',
+                '-video_size', '1280x720',
+                '-framerate', '30',
+                '-input_format', 'mjpeg',
+                '-i', video_device,
+                '-f', 'pulse',
+                '-ac', '1',
+                '-i', 'default',
+                '-t', str(duration),
+                '-filter_complex', '[0:v]transpose=1,split=2[rec][prev]',
+                # Output 1: Recording to file
+                '-map', '[rec]',
+                '-map', '1:a',
+                '-c:v', 'libx264',
+                '-preset', 'ultrafast',
+                '-crf', '25',
+                '-c:a', 'aac',
+                '-b:a', '128k',
+                '-pix_fmt', 'yuv420p',
+                '-movflags', '+faststart',
+                final_output,
+                # Output 2: Preview to virtual camera
+                '-map', '[prev]',
+                '-f', 'v4l2',
+                '-pix_fmt', 'yuv420p',
+                preview_device
+            ]
+        else:
+            # Fallback: original command without preview
+            cmd = [
+                'ffmpeg',
+                '-y',
+                '-f', 'v4l2',
+                '-video_size', '1280x720',
+                '-framerate', '30',
+                '-input_format', 'mjpeg',
+                '-i', video_device,
+                '-f', 'pulse',
+                '-ac', '1',
+                '-i', 'default',
+                '-t', str(duration),
+                '-c:v', 'libx264',
+                '-preset', 'ultrafast',
+                '-crf', '25',
+                '-vf', 'transpose=1',
+                '-c:a', 'aac',
+                '-b:a', '128k',
+                '-pix_fmt', 'yuv420p',
+                '-movflags', '+faststart',
+                final_output
+            ]
         
         logging.info(f"FFmpeg Command: {' '.join(cmd)}")
         
@@ -210,40 +252,104 @@ class MediaManager:
         
         start_time = time.time()
         
-        # Show countdown while recording
+        # Open virtual camera for preview if available (with retries)
+        preview_cap = None
+        if preview_available:
+            # Give FFmpeg more time to initialize and start writing to virtual cam
+            time.sleep(1.5)
+            
+            # Try multiple times to open the preview device
+            for attempt in range(5):
+                logging.info(f"Attempting to open preview device (attempt {attempt + 1}/5)...")
+                preview_cap = cv2.VideoCapture(preview_device)
+                if preview_cap.isOpened():
+                    # Try to read a test frame
+                    ret, test_frame = preview_cap.read()
+                    if ret and test_frame is not None:
+                        logging.info(f"Preview device opened successfully! Frame shape: {test_frame.shape}")
+                        break
+                    else:
+                        preview_cap.release()
+                        preview_cap = None
+                else:
+                    preview_cap = None
+                
+                if preview_cap is None:
+                    time.sleep(0.5)  # Wait before retry
+            
+            if preview_cap is None:
+                logging.warning("Could not open preview device after 5 attempts, falling back to countdown only")
+        
+        # Show preview with overlay while recording
         try:
             while proc.poll() is None:
                 elapsed = time.time() - start_time
                 remaining = max(0, int(duration - elapsed))
                 
-                # Create countdown display
-                screen = np.zeros((1080, 1920, 3), dtype=np.uint8)
+                # Try to get preview frame
+                preview_frame = None
+                if preview_cap:
+                    ret, preview_frame = preview_cap.read()
+                    if not ret or preview_frame is None:
+                        preview_frame = None
                 
-                # Recording indicator (red circle)
-                cv2.circle(screen, (960, 350), 30, (0, 0, 255), -1)
+                # Create base frame (black background at screen resolution)
+                frame = np.zeros((1080, 1920, 3), dtype=np.uint8)
                 
-                # "GRABANDO" text
-                cv2.putText(screen, "GRABANDO", (720, 450), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255, 255, 255), 4)
+                if preview_frame is not None:
+                    # Maintain aspect ratio: fit vertical video (720x1280) into 1920x1080 screen
+                    # Video is 720w x 1280h (9:16 vertical)
+                    # Screen is 1920w x 1080h (16:9 horizontal)
+                    # Scale video to fit height (1080), width will be 720 * (1080/1280) = 607.5
+                    src_h, src_w = preview_frame.shape[:2]
+                    
+                    # Calculate scaling to fit within screen while maintaining aspect ratio
+                    scale = min(1920 / src_w, 1080 / src_h)
+                    new_w = int(src_w * scale)
+                    new_h = int(src_h * scale)
+                    
+                    # Resize video maintaining aspect ratio
+                    resized = cv2.resize(preview_frame, (new_w, new_h))
+                    
+                    # Center the video on the black background
+                    x_offset = (1920 - new_w) // 2
+                    y_offset = (1080 - new_h) // 2
+                    
+                    # Place the resized video on the black frame
+                    frame[y_offset:y_offset+new_h, x_offset:x_offset+new_w] = resized
                 
-                # Countdown
-                cv2.putText(screen, str(remaining), (880, 650), 
-                           cv2.FONT_HERSHEY_SIMPLEX, 7, (255, 255, 255), 10)
+                # Add overlay: Recording indicator (red circle with pulse effect)
+                pulse = int(15 * abs(np.sin(time.time() * 3)))  # Pulsing effect
+                cv2.circle(frame, (100, 80), 25 + pulse, (0, 0, 255), -1)
                 
-                cv2.imshow(WINDOW_NAME, screen)
-                cv2.waitKey(500)  # Update every 500ms
+                # "REC" text
+                cv2.putText(frame, "REC", (140, 95), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 255), 3)
+                
+                # Countdown in bottom right
+                countdown_text = str(remaining)
+                cv2.putText(frame, countdown_text, (1750, 1030), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 255, 255), 6)
+                
+                cv2.imshow(WINDOW_NAME, frame)
+                cv2.waitKey(33)  # ~30fps preview
                 
                 if remaining <= 0:
                     break
                     
         except Exception as e:
-            logging.error(f"Countdown display error: {e}")
+            logging.error(f"Preview display error: {e}")
+        
+        # Cleanup preview
+        if preview_cap:
+            preview_cap.release()
         
         # Wait for FFmpeg to finish
         try:
             stdout, stderr = proc.communicate(timeout=10)
             if proc.returncode != 0:
                 logging.warning(f"FFmpeg exit code: {proc.returncode}")
+                logging.debug(f"FFmpeg stderr: {stderr.decode() if stderr else 'none'}")
         except subprocess.TimeoutExpired:
             proc.terminate()
             proc.wait()
