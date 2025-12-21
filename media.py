@@ -340,22 +340,29 @@ class MediaManager:
         except Exception as e:
             logging.error(f"Preview display error: {e}")
         
+        # Immediately show black screen to avoid frozen frame
+        self.show_black_screen()
+        
         # Cleanup preview
         if preview_cap:
             preview_cap.release()
         
-        # Wait for FFmpeg to finish
+        # Wait for FFmpeg to finish (reduced timeout, non-blocking feel)
         try:
-            stdout, stderr = proc.communicate(timeout=10)
+            # Give FFmpeg just 2 seconds to finish gracefully
+            stdout, stderr = proc.communicate(timeout=2)
             if proc.returncode != 0:
                 logging.warning(f"FFmpeg exit code: {proc.returncode}")
                 logging.debug(f"FFmpeg stderr: {stderr.decode() if stderr else 'none'}")
         except subprocess.TimeoutExpired:
+            # FFmpeg still running, terminate it
             proc.terminate()
-            proc.wait()
-            logging.warning("FFmpeg terminated due to timeout")
+            try:
+                proc.wait(timeout=1)
+            except:
+                proc.kill()
+            logging.info("FFmpeg terminated")
             
-        self.show_black_screen()
         logging.info("Recording finished.")
 
     def cleanup(self):

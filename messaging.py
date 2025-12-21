@@ -30,11 +30,14 @@ class MessagingService:
                 "http://localhost:3000/send-welcome", 
                 data=json.dumps(payload), 
                 headers=headers,
-                timeout=60  # Allow time for video upload
+                timeout=120  # Increased to 120s for large video uploads
             )
             
             if response.status_code == 200:
-                logging.info(f"Success! Server responded: {response.json()}")
+                result = response.json()
+                video_sent = result.get('videoSent', 'unknown')
+                logging.info(f"Success! Server responded: {result}")
+                logging.info(f"Video attached: {video_sent}")
                 return True
             else:
                 logging.error(f"Server Error {response.status_code}: {response.text}")
@@ -42,6 +45,9 @@ class MessagingService:
                 
         except requests.exceptions.ConnectionError:
             logging.error("Could not connect to Messaging Server at http://localhost:3000. Is 'node messaging/server.js' running?")
+            return False
+        except requests.exceptions.Timeout:
+            logging.warning("Request timed out, but message may still be sending in background")
             return False
         except Exception as e:
             logging.error(f"Error sending message request: {e}")

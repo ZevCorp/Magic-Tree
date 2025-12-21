@@ -204,10 +204,19 @@ def main():
                 
                 audio.stop_background_music()
                 
-                # 7. Send Message & Save Metadata
-                messaging.send_welcome_message(final_phone_number)
+                # 7. Send Message & Save Metadata (in background to not block)
+                # Send message in background thread to avoid blocking
+                def send_in_background():
+                    try:
+                        messaging.send_welcome_message(final_phone_number)
+                    except Exception as e:
+                        logging.error(f"Background send failed: {e}")
                 
-                # Save Metadata JSON
+                send_thread = threading.Thread(target=send_in_background, daemon=True)
+                send_thread.start()
+                logging.info("Message sending started in background...")
+                
+                # Save Metadata JSON (fast, won't block)
                 metadata = {
                     "video_path": user_video_path,
                     "phone_number": final_phone_number,
@@ -220,7 +229,7 @@ def main():
                     json.dump(metadata, f, indent=4)
                 logging.info(f"Metadata saved to {json_path}")
                 
-                # 8. Goodbye Video
+                # 8. Goodbye Video - IMMEDIATE, don't wait for message
                 logging.info("STEP 8: Playing goodbye video...")
                 if os.path.exists(GOODBYE_VIDEO_PATH):
                     media.play_video(GOODBYE_VIDEO_PATH)

@@ -167,21 +167,47 @@ app.post('/send-welcome', async (req, res) => {
         const messageText = "¡Hola! Aquí tienes tu video del Árbol Encantado. ¡Feliz Navidad!";
 
         let sentMsg;
+        let videoSent = false;
+
         if (videoPath && require('fs').existsSync(videoPath)) {
-            try {
-                // Check file size first? 
-                // For now, let's just try sending directly as requested.
-                // If it fails (like the t:t error), it's likely size/encoding related.
+            const fileStats = require('fs').statSync(videoPath);
+            const fileSizeMB = fileStats.size / (1024 * 1024);
+            console.log(`Video file size: ${fileSizeMB.toFixed(2)} MB`);
 
-                const media = MessageMedia.fromFilePath(videoPath);
+            // Retry logic for large videos
+            const maxRetries = 2;
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                try {
+                    console.log(`Sending video attempt ${attempt}/${maxRetries}...`);
+                    const media = MessageMedia.fromFilePath(videoPath);
 
-                // Optional: Send as document if too large? 
-                // client.sendMessage(finalId, media, { sendMediaAsDocument: true, caption: messageText });
+                    // For larger files, send as document to improve reliability
+                    if (fileSizeMB > 10) {
+                        console.log("Large file detected, sending as document...");
+                        sentMsg = await client.sendMessage(finalId, media, {
+                            sendMediaAsDocument: true,
+                            caption: messageText
+                        });
+                    } else {
+                        sentMsg = await client.sendMessage(finalId, media, { caption: messageText });
+                    }
 
-                sentMsg = await client.sendMessage(finalId, media, { caption: messageText });
-                console.log(`Video message sent to ${finalId}`);
-            } catch (mediaErr) {
-                console.error("Error attaching media, sending text only:", mediaErr);
+                    console.log(`Video message sent to ${finalId} on attempt ${attempt}`);
+                    videoSent = true;
+                    break; // Success, exit retry loop
+
+                } catch (mediaErr) {
+                    console.error(`Attempt ${attempt} failed:`, mediaErr.message);
+                    if (attempt < maxRetries) {
+                        console.log("Waiting 3 seconds before retry...");
+                        await new Promise(r => setTimeout(r, 3000));
+                    }
+                }
+            }
+
+            // Only send fallback text if ALL retries failed
+            if (!videoSent) {
+                console.error("All video send attempts failed, sending text only");
                 sentMsg = await client.sendMessage(finalId, messageText + "\n(No pudimos adjuntar el video, lo sentimos)");
             }
         } else {
@@ -191,12 +217,12 @@ app.post('/send-welcome', async (req, res) => {
 
         console.log(`Welcome message processing for ${finalId}. Waiting for server acknowledgement...`);
 
-        // Wait for ACK to ensure delivery to server
+        // Wait for ACK to ensure delivery to server (shorter timeout since video already sent)
         await new Promise((resolve) => {
             const timeout = setTimeout(() => {
-                console.warn('Timeout waiting for ACK, but message request was sent to browser.');
+                console.warn('Timeout waiting for ACK, but message was sent to browser.');
                 resolve();
-            }, 10000); // Wait up to 10 seconds
+            }, 5000); // Reduced to 5 seconds since message is already sent
 
             const ackListener = (msg, ack) => {
                 if (msg.id._serialized === sentMsg.id._serialized) {
@@ -216,7 +242,7 @@ app.post('/send-welcome', async (req, res) => {
 
         console.log(`Verified processing for ${finalId} completed.`);
 
-        res.json({ success: true, message: "Message sent successfully" });
+        res.json({ success: true, message: "Message sent successfully", videoSent: videoSent });
 
     } catch (error) {
         console.error("Failed to send welcome message via API:", error);
