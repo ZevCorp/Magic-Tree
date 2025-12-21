@@ -174,23 +174,15 @@ app.post('/send-welcome', async (req, res) => {
             const fileSizeMB = fileStats.size / (1024 * 1024);
             console.log(`Video file size: ${fileSizeMB.toFixed(2)} MB`);
 
-            // Retry logic for large videos
+            // Retry logic for videos
             const maxRetries = 2;
             for (let attempt = 1; attempt <= maxRetries; attempt++) {
                 try {
                     console.log(`Sending video attempt ${attempt}/${maxRetries}...`);
                     const media = MessageMedia.fromFilePath(videoPath);
 
-                    // For larger files, send as document to improve reliability
-                    if (fileSizeMB > 10) {
-                        console.log("Large file detected, sending as document...");
-                        sentMsg = await client.sendMessage(finalId, media, {
-                            sendMediaAsDocument: true,
-                            caption: messageText
-                        });
-                    } else {
-                        sentMsg = await client.sendMessage(finalId, media, { caption: messageText });
-                    }
+                    // Always send as video (not document)
+                    sentMsg = await client.sendMessage(finalId, media, { caption: messageText });
 
                     console.log(`Video message sent to ${finalId} on attempt ${attempt}`);
                     videoSent = true;
