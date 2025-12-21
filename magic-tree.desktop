@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Magic Tree Experience
+Comment=Start Magic Tree Interactive Experience
+Exec=/home/magicctree/Desktop/Magic-Tree/run_test.sh
+Path=/home/magicctree/Desktop/Magic-Tree
+Terminal=false
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=5

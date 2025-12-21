@@ -1,0 +1,21 @@
+[Unit]
+Description=Magic Tree Interactive Experience
+After=graphical-session.target pulseaudio.service pipewire.service
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/magicctree/Desktop/Magic-Tree
+
+# Run the main script
+ExecStart=/bin/bash /home/magicctree/Desktop/Magic-Tree/run_test.sh
+
+# Restart policy - always restart if it crashes
+Restart=always
+RestartSec=10
+
+# Give time for graceful shutdown
+TimeoutStopSec=30
+
+[Install]
+WantedBy=graphical-session.target

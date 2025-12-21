@@ -1,0 +1,32 @@
+[Unit]
+Description=Magic Tree Interactive Experience
+After=graphical.target network.target
+Wants=graphical.target
+
+[Service]
+Type=simple
+User=magicctree
+Group=magicctree
+WorkingDirectory=/home/magicctree/Desktop/Magic-Tree
+
+# Environment for X11 display
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/magicctree/.Xauthority
+Environment=HOME=/home/magicctree
+
+# Run the main script
+ExecStart=/bin/bash /home/magicctree/Desktop/Magic-Tree/run_test.sh
+
+# Restart policy - always restart if it crashes
+Restart=always
+RestartSec=10
+
+# Give time for graceful shutdown
+TimeoutStopSec=30
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical.target
