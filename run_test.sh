@@ -7,11 +7,25 @@ export GDK_BACKEND=x11
 export QT_QPA_PLATFORM=xcb
 export SDL_VIDEODRIVER=x11
 
-# Disable Wayland for VLC
+# Disable Wayland for VLC - FORCE X11 backend
 export VLC_PLUGIN_PATH=/usr/lib/aarch64-linux-gnu/vlc/plugins
+# VLC vout module preference: xcb (X11) primero, luego el resto
+export VLC_VOUT_PLUGIN=xcb_x11
+# Deshabilitar completamente Wayland para VLC
+export QT_QPA_PLATFORM=xcb
+export WAYLAND_DISPLAY=
+export XDG_SESSION_TYPE=x11
+
+# === FIX: Deshabilitar h264_v4l2m2m (no existe en RPi 5) ===
+# Esto previene el error "Could not find a valid device" que cierra la ventana
+export VLC_AVCODEC_HW=none
+export LIBVA_DRIVER_NAME=dummy
 
 # Force OpenCV to use X11
 export OPENCV_VIDEOIO_PRIORITY_MSMF=0
+
+# Limpiar procesos V4L2 huérfanos que bloquean dispositivos
+fuser -k /dev/video19 /dev/video20 2>/dev/null || true
 
 echo "Starting Magic Tree Test Mode with X11 backend..."
 echo "Environment configured:"

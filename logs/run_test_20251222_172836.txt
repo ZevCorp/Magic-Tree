@@ -1,0 +1,85 @@
+--- Run Started at 20251222_172836 ---
+/home/magicctree/Desktop/Magic-Tree/venv/lib/python3.13/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.5)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+2025-12-22 17:28:38,876 - INFO - ============================================================
+2025-12-22 17:28:38,876 - INFO - MODO DE PRUEBA - Árbol Encantado
+2025-12-22 17:28:38,876 - INFO - Experiencia completa SIN sensor de puerta
+2025-12-22 17:28:38,876 - INFO - ============================================================
+2025-12-22 17:28:38,877 - INFO - Running in MOCK MODE - GPIO disabled
+2025-12-22 17:28:38,915 - INFO - Initializing persistent window: EnchantedTree
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib ../pipewire-alsa/alsa-plugins/pcm_pipewire.c:1504:(_snd_pcm_pipewire_open) Unknown field device
+ALSA lib ../pipewire-alsa/alsa-plugins/pcm_pipewire.c:1504:(_snd_pcm_pipewire_open) Unknown field device
+ALSA lib pcm_a52.c:1036:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib conf.c:5512:(parse_args) Unknown parameter AES0
+ALSA lib conf.c:5712:(snd_config_expand) Parse arguments error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 CARD 0}
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_direct.c:1257:(snd1_pcm_direct_initialize_slave) requested or auto-format is not available
+ALSA lib pcm_dmix.c:1012:(snd_pcm_dmix_open) unable to initialize slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+2025-12-22 17:28:39,351 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-22 17:28:39,879 - INFO - Vosk model loaded successfully.
+2025-12-22 17:28:39,879 - INFO - Sistema listo.
+2025-12-22 17:28:39,880 - INFO - 
+En este modo:
+2025-12-22 17:28:39,880 - INFO - ✓ La cámara se activará normalmente
+2025-12-22 17:28:39,880 - INFO - ✓ El audio y detección de voz funcionan
+2025-12-22 17:28:39,880 - INFO - ✓ Los videos se reproducen
+2025-12-22 17:28:39,880 - INFO - ✗ El sensor de puerta está deshabilitado (presiona Enter)
+2025-12-22 17:28:39,880 - INFO - 
+2025-12-22 17:28:39,880 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-22 17:28:39,880 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-22 17:28:39,880 - INFO - Background music stopped.
+2025-12-22 17:28:39,881 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-22 17:28:39,881 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[h264_v4l2m2m @ 0x7fff040292f0] Could not find a valid device
+[h264_v4l2m2m @ 0x7fff040292f0] can't configure decoder
+[00007fff04026610] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[00007ffeb40095a0] mmal_xsplitter vout display: Try drm
+[00007ffeb40d5de0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffeb40d5de0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffeb40d5de0] drm_vout generic error: Failed to get xlease
+[00007ffeb40d5de0] drm_vout generic error: Failed to set atomic cap
+[00007ffeb40d5de0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffeb40d5de0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffeb40d5de0] drm_vout generic error: Failed to get xlease
+[00007ffeb40d5de0] drm_vout generic error: Failed to set atomic cap
+[00007ffeb40095a0] mmal_xsplitter vout display: Drm no go
+2025-12-22 17:28:48,370 - INFO - Video playback finished
+2025-12-22 17:28:48,458 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-22 17:28:48,459 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...

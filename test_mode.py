@@ -263,19 +263,23 @@ def main():
                     merged_path = user_video_path.replace(".mp4", "_merged.mp4")
                     try:
                         import subprocess
-                        # FFmpeg concat: intro first, then user video
+                        # FFmpeg concat: scale intro to 1:1 (720x720) centered in 720x1280 frame, then concat
+                        # [0:v] = merge video: scale to 720x720 max, pad to 720x1280 with black bars
+                        # [1:v] = user video: already 720x1280, pass through
                         merge_cmd = [
                             'ffmpeg', '-y',
                             '-i', MERGE_VIDEO_PATH,
                             '-i', final_video_path,
-                            '-filter_complex', '[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]',
+                            '-filter_complex',
+                            '[0:v]scale=720:720:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:black,setsar=1[v0];'
+                            '[v0][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]',
                             '-map', '[outv]', '-map', '[outa]',
                             '-c:v', 'libx264', '-preset', 'fast', '-crf', '23',
                             '-c:a', 'aac', '-b:a', '128k',
                             '-movflags', '+faststart',
                             merged_path
                         ]
-                        result = subprocess.run(merge_cmd, capture_output=True, timeout=60)
+                        result = subprocess.run(merge_cmd, capture_output=True, timeout=120)
                         if result.returncode == 0 and os.path.exists(merged_path):
                             logging.info(f"Video merge successful: {merged_path}")
                             final_video_path = merged_path

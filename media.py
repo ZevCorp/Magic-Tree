@@ -542,6 +542,24 @@ class PhoneDisplay:
                 text_y_i = (img.shape[0]) - 120
                 cv2.putText(img, instr_text, (text_x_i, text_y_i), font, font_scale_i, (200, 200, 200), thickness_i)
 
+                # 5. Top Instruction (Centered)
+                top_text = "Dicta 1 numero a la vez"
+                font_scale_top = 2.0
+                thickness_top = 4
+                text_size_top = cv2.getTextSize(top_text, font, font_scale_top, thickness_top)[0]
+                text_x_top = (img.shape[1] - text_size_top[0]) // 2
+                text_y_top = 120
+                cv2.putText(img, top_text, (text_x_top, text_y_top), font, font_scale_top, (255, 255, 255), thickness_top)
+                
+                # Subtext
+                sub_text = "(para facilitar el dictado)"
+                font_scale_sub = 1.2
+                thickness_sub = 2
+                text_size_sub = cv2.getTextSize(sub_text, font, font_scale_sub, thickness_sub)[0]
+                text_x_sub = (img.shape[1] - text_size_sub[0]) // 2
+                text_y_sub = 170
+                cv2.putText(img, sub_text, (text_x_sub, text_y_sub), font, font_scale_sub, (200, 200, 200), thickness_sub)
+
                 cv2.imshow(self.window_name, img)
                 
                 # Make sure it stays fullscreen (sometimes OS tries to shrink it)
