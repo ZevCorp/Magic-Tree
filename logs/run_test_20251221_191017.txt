@@ -1,0 +1,573 @@
+--- Run Started at 20251221_191017 ---
+/home/magicctree/Desktop/Magic-Tree/venv/lib/python3.13/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.5)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+2025-12-21 19:10:19,978 - INFO - ============================================================
+2025-12-21 19:10:19,980 - INFO - MODO DE PRUEBA - Árbol Encantado
+2025-12-21 19:10:19,980 - INFO - Experiencia completa SIN sensor de puerta
+2025-12-21 19:10:19,981 - INFO - ============================================================
+2025-12-21 19:10:19,981 - INFO - Running in MOCK MODE - GPIO disabled
+2025-12-21 19:10:20,013 - INFO - Initializing persistent window: EnchantedTree
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.front.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_a52.c:1036:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=6,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 CARD 0}
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_direct.c:1257:(snd1_pcm_direct_initialize_slave) requested or auto-format is not available
+ALSA lib pcm_dmix.c:1012:(snd_pcm_dmix_open) unable to initialize slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+2025-12-21 19:10:20,457 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-21 19:10:20,941 - INFO - Vosk model loaded successfully.
+2025-12-21 19:10:20,941 - INFO - Sistema listo.
+2025-12-21 19:10:20,941 - INFO - 
+En este modo:
+2025-12-21 19:10:20,941 - INFO - ✓ La cámara se activará normalmente
+2025-12-21 19:10:20,941 - INFO - ✓ El audio y detección de voz funcionan
+2025-12-21 19:10:20,941 - INFO - ✓ Los videos se reproducen
+2025-12-21 19:10:20,941 - INFO - ✗ El sensor de puerta está deshabilitado (presiona Enter)
+2025-12-21 19:10:20,941 - INFO - 
+2025-12-21 19:10:20,941 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-21 19:10:20,941 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-21 19:10:20,941 - INFO - Background music stopped.
+2025-12-21 19:10:20,941 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-21 19:10:20,942 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[h264_v4l2m2m @ 0x7ffe3005f710] Could not find a valid device
+[h264_v4l2m2m @ 0x7ffe3005f710] can't configure decoder
+[00007ffe3005d840] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[00007ffe7c0fa560] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffeac005830] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:10:29,312 - INFO - Video playback finished
+2025-12-21 19:10:29,404 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-21 19:10:29,405 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-21 19:10:40,788 - INFO - Keyword 'feliz navidad' detected!
+2025-12-21 19:10:40,798 - INFO - Keyword listener stopped.
+2025-12-21 19:10:41,125 - INFO - Standby interrupted by user action!
+2025-12-21 19:10:41,125 - INFO - Iniciando experiencia...
+2025-12-21 19:10:41,125 - INFO - Pre-initializing phone system components...
+2025-12-21 19:10:41,144 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-21 19:10:41,594 - INFO - Vosk model loaded.
+2025-12-21 19:10:41,594 - INFO - Phone system pre-initialized.
+2025-12-21 19:10:41,594 - INFO - ==================================================
+2025-12-21 19:10:41,594 - INFO - STEP 2: Playing intro video...
+2025-12-21 19:10:41,594 - INFO - ==================================================
+2025-12-21 19:10:41,594 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffe24103c90] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffea0000ba0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:10:56,902 - INFO - Video playback finished
+2025-12-21 19:10:56,902 - INFO - Playing second intro video...
+2025-12-21 19:10:56,902 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-21 19:10:56,902 - INFO - ==================================================
+2025-12-21 19:10:56,902 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-21 19:10:56,902 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-21 19:10:56,902 - INFO - ==================================================
+2025-12-21 19:10:56,902 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362256.mp4
+2025-12-21 19:10:56,902 - INFO - Using video device: /dev/video0
+2025-12-21 19:10:56,902 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362256.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-21 19:10:58,403 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-21 19:10:58,571 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-21 19:11:18,444 - INFO - FFmpeg terminated
+2025-12-21 19:11:18,444 - INFO - Recording finished.
+2025-12-21 19:11:18,445 - INFO - ==================================================
+2025-12-21 19:11:18,445 - INFO - STEP 4: Asking for phone number...
+2025-12-21 19:11:18,445 - INFO - ==================================================
+2025-12-21 19:11:18,445 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe34100a50] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe3c068550] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:11:26,819 - INFO - Video playback finished
+2025-12-21 19:11:27,319 - INFO - ==================================================
+2025-12-21 19:11:27,320 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-21 19:11:27,320 - INFO - ==================================================
+2025-12-21 19:11:27,320 - INFO - ==================================================
+2025-12-21 19:11:27,320 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-21 19:11:27,320 - INFO - ==================================================
+2025-12-21 19:11:27,320 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-21 19:11:27,320 - INFO - Audio worker started (Vosk)
+2025-12-21 19:11:27,320 - INFO - PhoneDisplay started on main thread
+2025-12-21 19:11:27,320 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-21 19:11:27,346 - INFO - PhoneInputSystem: Listening...
+2025-12-21 19:11:27,380 - INFO - Starting PhoneDisplay render loop
+2025-12-21 19:11:35,638 - INFO - Heard: por favor ni tu numero de telefono tres cincuenta y seis siete ocho tres sesenta
+2025-12-21 19:11:44,091 - INFO - Heard: seco
+2025-12-21 19:11:47,669 - INFO - Heard: cinco
+2025-12-21 19:11:47,670 - INFO - 10 digits reached: 3506783605. Verifying...
+2025-12-21 19:11:50,244 - INFO - Heard: confirmar
+2025-12-21 19:11:50,244 - INFO - CONFIRMED!
+2025-12-21 19:11:50,479 - INFO - Audio worker finished. Result: 3506783605
+2025-12-21 19:11:50,522 - INFO - PhoneDisplay loop ended
+2025-12-21 19:11:50,532 - INFO - Number captured and confirmed: 3506783605
+2025-12-21 19:11:50,532 - INFO - Background music stopped.
+2025-12-21 19:11:50,532 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362256.mp4
+2025-12-21 19:11:50,533 - INFO - Preparing to send welcome message to 3506783605 via Local Server...
+2025-12-21 19:11:50,533 - INFO - Message sending started in background...
+2025-12-21 19:11:50,533 - INFO - Target Phone Number: 573506783605
+2025-12-21 19:11:50,534 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362256.json
+2025-12-21 19:11:50,535 - INFO - STEP 8: Playing goodbye video...
+2025-12-21 19:11:50,535 - INFO - Goodbye video not found, skipping.
+2025-12-21 19:11:50,547 - INFO - 
+============================================================
+2025-12-21 19:11:50,547 - INFO - EXPERIENCIA COMPLETADA
+2025-12-21 19:11:50,547 - INFO - ============================================================
+2025-12-21 19:11:50,547 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-21 19:11:52,582 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-21 19:11:52,582 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-21 19:11:52,582 - INFO - Background music stopped.
+2025-12-21 19:11:52,582 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-21 19:11:52,582 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffea8104270] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe2400f7e0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:11:55,792 - ERROR - Server Error 500: {"success":false,"error":"No LID for user\nnew Error (<anonymous>:6:31)"}
+2025-12-21 19:12:00,921 - INFO - Video playback finished
+2025-12-21 19:12:01,014 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-21 19:12:01,014 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-21 19:17:33,220 - INFO - Keyword 'feliz navidad' detected!
+2025-12-21 19:17:33,224 - INFO - Keyword listener stopped.
+2025-12-21 19:17:33,525 - INFO - Standby interrupted by user action!
+2025-12-21 19:17:33,525 - INFO - Iniciando experiencia...
+2025-12-21 19:17:33,525 - INFO - Pre-initializing phone system components...
+2025-12-21 19:17:33,541 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-21 19:17:33,992 - INFO - Vosk model loaded.
+2025-12-21 19:17:34,043 - INFO - Phone system pre-initialized.
+2025-12-21 19:17:34,043 - INFO - ==================================================
+2025-12-21 19:17:34,043 - INFO - STEP 2: Playing intro video...
+2025-12-21 19:17:34,043 - INFO - ==================================================
+2025-12-21 19:17:34,043 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffeac103d30] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe7c07c3e0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:17:49,336 - INFO - Video playback finished
+2025-12-21 19:17:49,336 - INFO - Playing second intro video...
+2025-12-21 19:17:49,336 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-21 19:17:49,336 - INFO - ==================================================
+2025-12-21 19:17:49,336 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-21 19:17:49,336 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-21 19:17:49,336 - INFO - ==================================================
+2025-12-21 19:17:49,336 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362669.mp4
+2025-12-21 19:17:49,336 - INFO - Using video device: /dev/video0
+2025-12-21 19:17:49,336 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362669.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-21 19:17:50,837 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-21 19:17:51,190 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-21 19:18:11,275 - INFO - FFmpeg terminated
+2025-12-21 19:18:11,275 - INFO - Recording finished.
+2025-12-21 19:18:11,275 - INFO - ==================================================
+2025-12-21 19:18:11,275 - INFO - STEP 4: Asking for phone number...
+2025-12-21 19:18:11,275 - INFO - ==================================================
+2025-12-21 19:18:11,275 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe48129090] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffea0022db0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:18:19,654 - INFO - Video playback finished
+2025-12-21 19:18:20,154 - INFO - ==================================================
+2025-12-21 19:18:20,155 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-21 19:18:20,155 - INFO - ==================================================
+2025-12-21 19:18:20,155 - INFO - ==================================================
+2025-12-21 19:18:20,155 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-21 19:18:20,155 - INFO - ==================================================
+2025-12-21 19:18:20,155 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-21 19:18:20,155 - INFO - Audio worker started (Vosk)
+2025-12-21 19:18:20,155 - INFO - PhoneDisplay started on main thread
+2025-12-21 19:18:20,155 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-21 19:18:20,193 - INFO - PhoneInputSystem: Listening...
+2025-12-21 19:18:20,235 - INFO - Starting PhoneDisplay render loop
+2025-12-21 19:18:25,115 - INFO - Heard: mi papa numero de telefono
+2025-12-21 19:18:50,494 - INFO - Heard: video
+2025-12-21 19:19:36,064 - INFO - Heard: parece
+2025-12-21 19:19:46,043 - INFO - Heard: si
+2025-12-21 19:20:16,036 - INFO - Heard: yo creo
+2025-12-21 19:20:20,844 - INFO - Heard: el diciendo
+2025-12-21 19:20:36,162 - INFO - Heard: bueno
+2025-12-21 19:20:56,159 - INFO - Heard: voy
+2025-12-21 19:21:09,513 - INFO - Heard: pero
+2025-12-21 19:21:29,967 - INFO - Heard: me digas
+2025-12-21 19:21:39,945 - INFO - Heard: muy bueno
+2025-12-21 19:21:54,111 - INFO - Heard: pero
+2025-12-21 19:22:04,315 - INFO - Heard: formato
+2025-12-21 19:22:09,184 - INFO - Heard: el mismo
+2025-12-21 19:22:10,639 - INFO - Heard: parece
+2025-12-21 19:22:22,950 - INFO - Heard: tres once cuatro
+2025-12-21 19:22:28,868 - INFO - Heard: se puede decir dentro
+2025-12-21 19:22:31,165 - INFO - Heard: le pregunto
+2025-12-21 19:22:42,905 - INFO - Heard: yo que mi mama y papa mis hermanos
+2025-12-21 19:22:47,937 - INFO - Heard: si
+2025-12-21 19:22:49,021 - INFO - Heard: igual
+2025-12-21 19:22:54,461 - INFO - Heard: de
+2025-12-21 19:22:56,892 - INFO - Heard: lo ibamos a
+2025-12-21 19:23:01,772 - INFO - Heard: de aceite
+2025-12-21 19:23:06,269 - INFO - Heard: de parte de
+2025-12-21 19:23:18,653 - INFO - Heard: digame yo
+2025-12-21 19:23:21,611 - INFO - Heard: okay
+2025-12-21 19:23:25,021 - INFO - Heard: el vida siempre el mismo
+2025-12-21 19:23:30,258 - INFO - Heard: bien
+2025-12-21 19:23:32,691 - INFO - Heard: si quiere decir
+2025-12-21 19:23:51,663 - INFO - Heard: y
+2025-12-21 19:23:54,940 - INFO - Heard: sera mas facil
+2025-12-21 19:24:05,300 - INFO - Heard: dia hecha
+2025-12-21 19:24:08,548 - INFO - Heard: cuenta que
+2025-12-21 19:24:13,397 - INFO - Heard: tambien
+2025-12-21 19:24:23,809 - INFO - Heard: es
+2025-12-21 19:24:27,851 - INFO - Heard: dentro de diez
+2025-12-21 19:24:33,752 - INFO - Heard: ay
+2025-12-21 19:24:38,911 - INFO - Heard: bendiga
+2025-12-21 19:25:08,886 - INFO - Heard: hijo
+2025-12-21 19:25:18,323 - INFO - Heard: si se puede
+2025-12-21 19:25:33,460 - INFO - Heard: igual
+2025-12-21 19:25:38,363 - INFO - Heard: el vida
+2025-12-21 19:25:48,927 - INFO - Heard: si
+2025-12-21 19:26:03,924 - INFO - Heard: persona
+2025-12-21 19:26:05,411 - INFO - Heard: les
+2025-12-21 19:26:10,841 - INFO - Heard: de prensa
+2025-12-21 19:26:15,793 - INFO - Heard: entonces
+2025-12-21 19:26:17,486 - INFO - Heard: la experiencia
+2025-12-21 19:26:21,911 - INFO - Heard: pero fijate que
+2025-12-21 19:35:12,540 - INFO - Key pressed: 20
+2025-12-21 19:35:17,639 - INFO - Heard: como
+2025-12-21 19:44:23,520 - INFO - Heard: mierda
+2025-12-21 19:44:54,008 - INFO - Heard: eso
+2025-12-21 19:45:09,419 - INFO - Heard: hola
+2025-12-21 19:45:14,305 - INFO - Heard: nota
+2025-12-21 19:45:44,381 - INFO - Heard: la
+2025-12-21 19:46:45,345 - INFO - Heard: la guapisima
+2025-12-21 19:46:56,077 - INFO - Heard: de una
+2025-12-21 19:47:41,222 - INFO - Heard: y idea
+2025-12-21 19:48:00,538 - INFO - Heard: cuando
+2025-12-21 19:48:10,778 - INFO - Heard: y
+2025-12-21 19:48:15,913 - INFO - Heard: tiempo
+2025-12-21 19:52:44,595 - INFO - Heard: cinco cinco cinco
+2025-12-21 19:52:44,595 - INFO - 10 digits reached: 3114101555. Verifying...
+2025-12-21 19:52:47,703 - INFO - Heard: confirmar
+2025-12-21 19:52:47,703 - INFO - CONFIRMED!
+2025-12-21 19:52:47,874 - INFO - Audio worker finished. Result: 3114101555
+2025-12-21 19:52:47,879 - INFO - PhoneDisplay loop ended
+2025-12-21 19:52:47,891 - INFO - Number captured and confirmed: 3114101555
+2025-12-21 19:52:47,891 - INFO - Background music stopped.
+2025-12-21 19:52:47,892 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362669.mp4
+2025-12-21 19:52:47,892 - INFO - Preparing to send welcome message to 3114101555 via Local Server...
+2025-12-21 19:52:47,893 - INFO - Message sending started in background...
+2025-12-21 19:52:47,893 - INFO - Target Phone Number: 573114101555
+2025-12-21 19:52:47,895 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766362669.json
+2025-12-21 19:52:47,896 - INFO - STEP 8: Playing goodbye video...
+2025-12-21 19:52:47,896 - INFO - Goodbye video not found, skipping.
+2025-12-21 19:52:47,908 - INFO - 
+============================================================
+2025-12-21 19:52:47,909 - INFO - EXPERIENCIA COMPLETADA
+2025-12-21 19:52:47,909 - INFO - ============================================================
+2025-12-21 19:52:47,909 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-21 19:52:49,945 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-21 19:52:49,945 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-21 19:52:49,945 - INFO - Background music stopped.
+2025-12-21 19:52:49,946 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-21 19:52:49,946 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffe30111c70] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffeac0049a0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:52:52,141 - ERROR - Server Error 500: {"success":false,"error":"No LID for user\nnew Error (<anonymous>:6:31)"}
+2025-12-21 19:52:58,266 - INFO - Video playback finished
+2025-12-21 19:52:58,353 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-21 19:52:58,354 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-21 19:54:10,909 - INFO - Standby interrupted by user action!
+2025-12-21 19:54:10,909 - INFO - Iniciando experiencia...
+2025-12-21 19:54:10,909 - INFO - Pre-initializing phone system components...
+2025-12-21 19:54:10,925 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+2025-12-21 19:54:10,982 - INFO - Keyword listener stopped.
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-21 19:54:11,409 - INFO - Vosk model loaded.
+2025-12-21 19:54:11,623 - INFO - Phone system pre-initialized.
+2025-12-21 19:54:11,623 - INFO - ==================================================
+2025-12-21 19:54:11,623 - INFO - STEP 2: Playing intro video...
+2025-12-21 19:54:11,623 - INFO - ==================================================
+2025-12-21 19:54:11,623 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffe240fd970] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffea80e6650] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:54:26,899 - INFO - Video playback finished
+2025-12-21 19:54:26,899 - INFO - Playing second intro video...
+2025-12-21 19:54:26,899 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-21 19:54:26,899 - INFO - ==================================================
+2025-12-21 19:54:26,899 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-21 19:54:26,899 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-21 19:54:26,899 - INFO - ==================================================
+2025-12-21 19:54:26,899 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766364866.mp4
+2025-12-21 19:54:26,899 - INFO - Using video device: /dev/video0
+2025-12-21 19:54:26,899 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766364866.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-21 19:54:28,400 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-21 19:54:28,543 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-21 19:54:48,336 - INFO - FFmpeg terminated
+2025-12-21 19:54:48,336 - INFO - Recording finished.
+2025-12-21 19:54:48,336 - INFO - ==================================================
+2025-12-21 19:54:48,336 - INFO - STEP 4: Asking for phone number...
+2025-12-21 19:54:48,336 - INFO - ==================================================
+2025-12-21 19:54:48,336 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe4012f7b0] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffea00ac180] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:54:56,616 - INFO - Video playback finished
+2025-12-21 19:54:57,116 - INFO - ==================================================
+2025-12-21 19:54:57,116 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-21 19:54:57,116 - INFO - ==================================================
+2025-12-21 19:54:57,117 - INFO - ==================================================
+2025-12-21 19:54:57,117 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-21 19:54:57,117 - INFO - ==================================================
+2025-12-21 19:54:57,117 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-21 19:54:57,117 - INFO - Audio worker started (Vosk)
+2025-12-21 19:54:57,117 - INFO - PhoneDisplay started on main thread
+2025-12-21 19:54:57,117 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-21 19:54:57,150 - INFO - PhoneInputSystem: Listening...
+2025-12-21 19:54:57,190 - INFO - Starting PhoneDisplay render loop
+2025-12-21 19:55:04,656 - INFO - Heard: tres cero cero siete nueve uno ocho seis ocho tres
+2025-12-21 19:55:04,656 - INFO - 10 digits reached: 3007918683. Verifying...
+2025-12-21 19:55:10,533 - INFO - Heard: confirmar
+2025-12-21 19:55:10,533 - INFO - CONFIRMED!
+2025-12-21 19:55:10,774 - INFO - Audio worker finished. Result: 3007918683
+2025-12-21 19:55:10,826 - INFO - PhoneDisplay loop ended
+2025-12-21 19:55:10,834 - INFO - Number captured and confirmed: 3007918683
+2025-12-21 19:55:10,834 - INFO - Background music stopped.
+2025-12-21 19:55:10,835 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766364866.mp4
+2025-12-21 19:55:10,835 - INFO - Preparing to send welcome message to 3007918683 via Local Server...
+2025-12-21 19:55:10,835 - INFO - Target Phone Number: 573007918683
+2025-12-21 19:55:10,836 - INFO - Message sending started in background...
+2025-12-21 19:55:10,838 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766364866.json
+2025-12-21 19:55:10,838 - INFO - STEP 8: Playing goodbye video...
+2025-12-21 19:55:10,838 - INFO - Goodbye video not found, skipping.
+2025-12-21 19:55:10,850 - INFO - 
+============================================================
+2025-12-21 19:55:10,850 - INFO - EXPERIENCIA COMPLETADA
+2025-12-21 19:55:10,850 - INFO - ============================================================
+2025-12-21 19:55:10,850 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-21 19:55:12,890 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-21 19:55:12,890 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-21 19:55:12,890 - INFO - Background music stopped.
+2025-12-21 19:55:12,890 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-21 19:55:12,891 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffe140fd8f0] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe2400f7e0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:55:21,220 - INFO - Video playback finished
+2025-12-21 19:55:21,309 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-21 19:55:21,310 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-21 19:55:28,267 - INFO - Success! Server responded: {'success': True, 'message': 'Message sent successfully', 'videoSent': True}
+2025-12-21 19:55:28,267 - INFO - Video attached: True
+2025-12-21 19:56:31,118 - INFO - Keyword 'feliz navidad' detected!
+2025-12-21 19:56:31,123 - INFO - Keyword listener stopped.
+2025-12-21 19:56:31,402 - INFO - Standby interrupted by user action!
+2025-12-21 19:56:31,402 - INFO - Iniciando experiencia...
+2025-12-21 19:56:31,402 - INFO - Pre-initializing phone system components...
+2025-12-21 19:56:31,417 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-21 19:56:31,881 - INFO - Vosk model loaded.
+2025-12-21 19:56:31,922 - INFO - Phone system pre-initialized.
+2025-12-21 19:56:31,922 - INFO - ==================================================
+2025-12-21 19:56:31,922 - INFO - STEP 2: Playing intro video...
+2025-12-21 19:56:31,922 - INFO - ==================================================
+2025-12-21 19:56:31,923 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffe6412e170] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe2c070ec0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:56:47,229 - INFO - Video playback finished
+2025-12-21 19:56:47,229 - INFO - Playing second intro video...
+2025-12-21 19:56:47,229 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-21 19:56:47,229 - INFO - ==================================================
+2025-12-21 19:56:47,229 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-21 19:56:47,229 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-21 19:56:47,229 - INFO - ==================================================
+2025-12-21 19:56:47,229 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766365007.mp4
+2025-12-21 19:56:47,229 - INFO - Using video device: /dev/video0
+2025-12-21 19:56:47,229 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766365007.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-21 19:56:48,730 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-21 19:56:48,892 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-21 19:57:08,685 - INFO - FFmpeg terminated
+2025-12-21 19:57:08,685 - INFO - Recording finished.
+2025-12-21 19:57:08,686 - INFO - ==================================================
+2025-12-21 19:57:08,686 - INFO - STEP 4: Asking for phone number...
+2025-12-21 19:57:08,686 - INFO - ==================================================
+2025-12-21 19:57:08,686 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe5c0e9c90] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe1400bc80] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 19:57:17,079 - INFO - Video playback finished
+2025-12-21 19:57:17,579 - INFO - ==================================================
+2025-12-21 19:57:17,579 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-21 19:57:17,579 - INFO - ==================================================
+2025-12-21 19:57:17,579 - INFO - ==================================================
+2025-12-21 19:57:17,579 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-21 19:57:17,579 - INFO - ==================================================
+2025-12-21 19:57:17,579 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-21 19:57:17,580 - INFO - Audio worker started (Vosk)
+2025-12-21 19:57:17,580 - INFO - PhoneDisplay started on main thread
+2025-12-21 19:57:17,580 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-21 19:57:17,609 - INFO - PhoneInputSystem: Listening...
+2025-12-21 19:57:17,657 - INFO - Starting PhoneDisplay render loop
+2025-12-21 19:58:08,964 - INFO - Heard: y tambien
+2025-12-21 19:58:44,040 - INFO - Heard: bueno
+2025-12-21 19:59:00,487 - INFO - Heard: precio de compra
+2025-12-21 20:00:30,318 - INFO - Heard: numero trescientos siete noventa y uno ochenta y seis ochenta y tres
+2025-12-21 20:00:30,318 - INFO - 10 digits reached: 7901806803. Verifying...
+2025-12-21 20:00:37,281 - INFO - Heard: no borrar todo vuelven intentarlo
+2025-12-21 20:00:37,281 - INFO - Removed 3
+2025-12-21 20:00:37,281 - INFO - Removed 0
+2025-12-21 20:00:37,281 - INFO - Command: 'Borrar todo' detected
+2025-12-21 20:00:40,876 - INFO - Heard: ya o rato
+2025-12-21 20:00:48,510 - INFO - Heard: trescientos siete noventa y uno ochenta y seis ochenta y tres
+2025-12-21 20:00:48,511 - INFO - 10 digits reached: 7901806803. Verifying...
+2025-12-21 20:00:56,387 - INFO - Heard: borrar todo ello pero de lo hace bien lo que pone primera entre te lo ponemos tener nada
+2025-12-21 20:00:56,387 - INFO - Removed 3
+2025-12-21 20:00:56,387 - INFO - Command: 'Borrar todo' detected
+2025-12-21 20:00:58,509 - INFO - Heard: porque tienen una espana
+2025-12-21 20:01:01,053 - INFO - Heard: tres cero cero
+2025-12-21 20:01:04,888 - INFO - Heard: borrar todo
+2025-12-21 20:01:04,889 - INFO - Removed 0
+2025-12-21 20:01:04,889 - INFO - Command: 'Borrar todo' detected
+2025-12-21 20:01:08,539 - INFO - Heard: claro que combate entienda
+2025-12-21 20:01:14,129 - INFO - Heard: tres cero cero siete nueve uno ocho seis ocho tres
+2025-12-21 20:01:14,129 - INFO - 10 digits reached: 3007918683. Verifying...
+2025-12-21 20:01:19,025 - INFO - Heard: borrar
+2025-12-21 20:01:19,026 - INFO - Removed 3
+2025-12-21 20:01:23,398 - INFO - Heard: borrar todo
+2025-12-21 20:01:23,398 - INFO - Removed 8
+2025-12-21 20:01:23,398 - INFO - Command: 'Borrar todo' detected
+2025-12-21 20:01:29,184 - INFO - Heard: senores
+2025-12-21 20:05:16,510 - INFO - Heard: alo
+2025-12-21 20:06:52,520 - INFO - Heard: quiero
+2025-12-21 20:07:17,776 - INFO - Heard: alemania
+2025-12-21 20:07:24,758 - INFO - Heard: tres diez cinco setenta y dos ochenta
+2025-12-21 20:07:29,896 - INFO - Heard: borrar todo
+2025-12-21 20:07:29,896 - INFO - Removed 0
+2025-12-21 20:07:29,896 - INFO - Command: 'Borrar todo' detected
+2025-12-21 20:07:37,055 - INFO - Heard: tres uno cero cinco siete dos ocho uno cinco nueve
+2025-12-21 20:07:37,055 - INFO - 10 digits reached: 3105728159. Verifying...
+2025-12-21 20:07:40,402 - INFO - Heard: confirmar
+2025-12-21 20:07:40,402 - INFO - CONFIRMED!
+2025-12-21 20:07:40,634 - INFO - Audio worker finished. Result: 3105728159
+2025-12-21 20:07:40,653 - INFO - PhoneDisplay loop ended
+2025-12-21 20:07:40,664 - INFO - Number captured and confirmed: 3105728159
+2025-12-21 20:07:40,665 - INFO - Background music stopped.
+2025-12-21 20:07:40,665 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766365007.mp4
+2025-12-21 20:07:40,665 - INFO - Preparing to send welcome message to 3105728159 via Local Server...
+2025-12-21 20:07:40,666 - INFO - Target Phone Number: 573105728159
+2025-12-21 20:07:40,667 - INFO - Message sending started in background...
+2025-12-21 20:07:40,668 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766365007.json
+2025-12-21 20:07:40,668 - INFO - STEP 8: Playing goodbye video...
+2025-12-21 20:07:40,668 - INFO - Goodbye video not found, skipping.
+2025-12-21 20:07:40,680 - INFO - 
+============================================================
+2025-12-21 20:07:40,681 - INFO - EXPERIENCIA COMPLETADA
+2025-12-21 20:07:40,681 - INFO - ============================================================
+2025-12-21 20:07:40,681 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-21 20:07:42,718 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-21 20:07:42,718 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-21 20:07:42,718 - INFO - Background music stopped.
+2025-12-21 20:07:42,718 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-21 20:07:42,718 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffead72b120] wl_xdg_shell window: <<< WL XDG: 1280x720 fs 1 standalone 0
+[00007ffe6400c5d0] wl_dmabuf vout display: <<< Open: I420 1280x738(1280x720 @ 0,0 0/0), cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1), scale=0/0
+2025-12-21 20:07:51,011 - INFO - Video playback finished
+2025-12-21 20:07:51,098 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-21 20:07:51,099 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-21 20:07:59,835 - INFO - Success! Server responded: {'success': True, 'message': 'Message sent successfully', 'videoSent': True}
+2025-12-21 20:07:59,835 - INFO - Video attached: True

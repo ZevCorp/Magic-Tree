@@ -1,0 +1,66 @@
+[2025-12-21 18:41:47] ==========================================
+[2025-12-21 18:41:47] Magic Tree AutoStart Iniciando...
+[2025-12-21 18:41:47] ==========================================
+[2025-12-21 18:41:47] Esperando 10 segundos para que el sistema se estabilice...
+[2025-12-21 18:41:57] FASE 1: Esperando Display...
+[2025-12-21 18:41:57] ✓ Display disponible: DISPLAY=:0, WAYLAND=wayland-0
+[2025-12-21 18:41:57] FASE 2: Esperando Audio...
+[2025-12-21 18:41:57] ✓ PulseAudio disponible
+[2025-12-21 18:41:57] FASE 3: Iniciando experiencia con ventana de log...
+[2025-12-21 18:41:58] ==========================================
+[2025-12-21 18:41:58] Ejecutando run_test.sh...
+[2025-12-21 18:41:58] ==========================================
+Starting Magic Tree Test Mode with X11 backend...
+Environment configured:
+GDK_BACKEND=x11
+QT_QPA_PLATFORM=xcb
+SDL_VIDEODRIVER=x11
+
+Loading environment variables from .env...
+
+--- Setting up Live Preview ---
+========================================
+Setting up v4l2loopback for live preview
+========================================
+Loading v4l2loopback module...
+✓ Preview device /dev/video10 exists
+Setting permissions...
+✓ Permissions set (read/write for all users)
+
+========================================
+✓ Live preview setup complete!
+Camera: /dev/video0 (physical)
+Preview: /dev/video10 (virtual)
+========================================
+--- Initializing Messaging Server ---
+Installing Node.js dependencies...
+
+up to date in 2s
+
+31 packages are looking for funding
+run `npm fund` for details
+Freeing port 3000 if in use...
+Starting WhatsApp Server (Background)...
+Messaging Server PID: 1934
+Waiting 10 seconds for server to initialize...
+ERROR: Messaging Server died immediately!
+--- Server Log (Last 20 lines) ---
+Using system Chromium: /usr/bin/chromium
+
+>>> Messaging Server running on http://localhost:3000
+>>> Initializing WhatsApp Client...
+/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:184
+? new Error(`${response.errorText} at ${url}`)
+^
+
+Error: net::ERR_CONNECTION_CLOSED at https://web.whatsapp.com/
+at navigate (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:184:27)
+at async Deferred.race (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/util/Deferred.js:36:20)
+at async CdpFrame.goto (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:150:25)
+at async CdpPage.goto (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/api/Page.js:572:20)
+at async Client.initialize (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/whatsapp-web.js/src/Client.js:367:9)
+
+Node.js v18.20.8
+----------------------------------
+Please check messaging_server.log for details.
+[2025-12-21 18:42:11] Script finalizado.

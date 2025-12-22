@@ -9,6 +9,28 @@ import logging
 import threading
 import time
 import os
+
+# ============================================================
+# VISUAL LOG WINDOW - Shows logs during startup for debugging
+# ============================================================
+try:
+    from visual_log import create_startup_log_window, LogWindowHandler
+    VISUAL_LOG_ENABLED = True
+except ImportError:
+    VISUAL_LOG_ENABLED = False
+    print("Warning: visual_log module not found, using console only")
+
+# Create visual log window BEFORE anything else
+visual_log_window = None
+if VISUAL_LOG_ENABLED:
+    try:
+        visual_log_window = create_startup_log_window()
+        visual_log_window.log("🎄 Magic Tree iniciando...")
+        visual_log_window.log("Ventana de logs activa - se cerrará automáticamente")
+    except Exception as e:
+        print(f"Could not create visual log window: {e}")
+        VISUAL_LOG_ENABLED = False
+
 from config import *
 from hardware import HardwareManager
 from media import MediaManager
@@ -17,6 +39,12 @@ from messaging import MessagingService
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Add visual log handler if available
+if visual_log_window:
+    visual_handler = LogWindowHandler(visual_log_window)
+    visual_handler.setFormatter(logging.Formatter('%(levelname)s - %(message)s'))
+    logging.getLogger().addHandler(visual_handler)
 
 def main():
     logging.info("=" * 60)
