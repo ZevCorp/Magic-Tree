@@ -256,6 +256,37 @@ def main():
                 if not os.path.exists(final_video_path):
                      logging.warning(f"Expected video path {final_video_path} not found.")
                 
+                # Merge with intro video if exists
+                from config import MERGE_VIDEO_PATH
+                if os.path.exists(MERGE_VIDEO_PATH) and os.path.exists(final_video_path):
+                    logging.info(f"Merging intro video with user recording...")
+                    merged_path = user_video_path.replace(".mp4", "_merged.mp4")
+                    try:
+                        import subprocess
+                        # FFmpeg concat: intro first, then user video
+                        merge_cmd = [
+                            'ffmpeg', '-y',
+                            '-i', MERGE_VIDEO_PATH,
+                            '-i', final_video_path,
+                            '-filter_complex', '[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]',
+                            '-map', '[outv]', '-map', '[outa]',
+                            '-c:v', 'libx264', '-preset', 'fast', '-crf', '23',
+                            '-c:a', 'aac', '-b:a', '128k',
+                            '-movflags', '+faststart',
+                            merged_path
+                        ]
+                        result = subprocess.run(merge_cmd, capture_output=True, timeout=60)
+                        if result.returncode == 0 and os.path.exists(merged_path):
+                            logging.info(f"Video merge successful: {merged_path}")
+                            final_video_path = merged_path
+                        else:
+                            logging.warning(f"Video merge failed, using original. Error: {result.stderr.decode()[:200]}")
+                    except Exception as e:
+                        logging.warning(f"Video merge error: {e}, using original video")
+                else:
+                    if not os.path.exists(MERGE_VIDEO_PATH):
+                        logging.info(f"No merge video found at {MERGE_VIDEO_PATH}, sending original")
+                
                 logging.info(f"Using video for sending: {final_video_path}")
                 
                 # Send message in background thread to avoid blocking

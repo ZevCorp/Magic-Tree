@@ -37,6 +37,7 @@ CHRISTMAS_BG_PATH = os.path.join(ASSETS_DIR, "christmas_bg.png")
 BACKGROUND_MUSIC_PATH = os.path.join(ASSETS_DIR, "background_music.mp3")
 STANDBY_VIDEO_PATH = os.path.join(ASSETS_DIR, "standby.mp4")
 STANDBY_IMAGE_PATH = os.path.join(ASSETS_DIR, "standby.png")
+MERGE_VIDEO_PATH = os.path.join(ASSETS_DIR, "merge_video.mp4")  # Video to concatenate before sending
 
 # Audio Configuration
 SAMPLE_RATE = 16000
