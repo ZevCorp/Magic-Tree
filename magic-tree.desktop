@@ -6,5 +6,5 @@ Exec=/home/magicctree/Desktop/Magic-Tree/autostart_magic_tree.sh
 Path=/home/magicctree/Desktop/Magic-Tree
 Terminal=false
 StartupNotify=true
-X-GNOME-Autostart-enabled=true
-X-GNOME-Autostart-Delay=3
+X-GNOME-Autostart-enabled=false
+X-GNOME-Autostart-Delay=15

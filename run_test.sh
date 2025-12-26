@@ -2,6 +2,12 @@
 # Script to run test_mode.py with X11 backend (avoiding Wayland issues)
 # AND start the WhatsApp Messaging Server
 
+# === IMPORTANTE: Cambiar al directorio del script ===
+# Esto asegura que el script funcione desde cualquier ubicación (ej: acceso directo)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+echo "Working directory: $(pwd)"
+
 # Force X11 backend for all applications
 export GDK_BACKEND=x11
 export QT_QPA_PLATFORM=xcb

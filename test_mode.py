@@ -257,28 +257,57 @@ def main():
                      logging.warning(f"Expected video path {final_video_path} not found.")
                 
                 # Merge with intro video if exists
-                from config import MERGE_VIDEO_PATH
+                from config import MERGE_VIDEO_PATH, ASSETS_DIR
+                LOGO_PATH = os.path.join(ASSETS_DIR, "logo.png")
                 if os.path.exists(MERGE_VIDEO_PATH) and os.path.exists(final_video_path):
                     logging.info(f"Merging intro video with user recording...")
                     merged_path = user_video_path.replace(".mp4", "_merged.mp4")
                     try:
                         import subprocess
-                        # FFmpeg concat: scale intro to 1:1 (720x720) centered in 720x1280 frame, then concat
-                        # [0:v] = merge video: scale to 720x720 max, pad to 720x1280 with black bars
+                        # FFmpeg concat: scale intro to 1:1 (720x720) centered in 720x1280 frame with WHITE bars
+                        # Logo is placed centered in the bottom bar (280px tall)
+                        # [0:v] = merge video: scale to 720x720 max, pad to 720x1280 with white bars
+                        # [2:v] = logo: scale to fit in bottom bar (max 280px height, 720px width), overlay centered
                         # [1:v] = user video: already 720x1280, pass through
-                        merge_cmd = [
-                            'ffmpeg', '-y',
-                            '-i', MERGE_VIDEO_PATH,
-                            '-i', final_video_path,
-                            '-filter_complex',
-                            '[0:v]scale=720:720:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:black,setsar=1[v0];'
-                            '[v0][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]',
-                            '-map', '[outv]', '-map', '[outa]',
-                            '-c:v', 'libx264', '-preset', 'fast', '-crf', '23',
-                            '-c:a', 'aac', '-b:a', '128k',
-                            '-movflags', '+faststart',
-                            merged_path
-                        ]
+                        
+                        # Build filter based on whether logo exists
+                        if os.path.exists(LOGO_PATH):
+                            # Logo exists: add it to bottom bar
+                            # Video is padded: video at center (y=280), bottom bar starts at y=1000 (280+720=1000)
+                            # Bottom bar is 280px tall. Center logo in it.
+                            filter_complex = (
+                                '[0:v]scale=720:720:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:white,setsar=1[v0];'
+                                '[2:v]scale=280:-1:force_original_aspect_ratio=decrease[logo];'
+                                '[v0][logo]overlay=(W-w)/2:1000+(280-h)/2[v0_logo];'
+                                '[v0_logo][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]'
+                            )
+                            merge_cmd = [
+                                'ffmpeg', '-y',
+                                '-i', MERGE_VIDEO_PATH,
+                                '-i', final_video_path,
+                                '-i', LOGO_PATH,
+                                '-filter_complex', filter_complex,
+                                '-map', '[outv]', '-map', '[outa]',
+                                '-c:v', 'libx264', '-preset', 'fast', '-crf', '23',
+                                '-c:a', 'aac', '-b:a', '128k',
+                                '-movflags', '+faststart',
+                                merged_path
+                            ]
+                        else:
+                            # No logo: just white bars
+                            merge_cmd = [
+                                'ffmpeg', '-y',
+                                '-i', MERGE_VIDEO_PATH,
+                                '-i', final_video_path,
+                                '-filter_complex',
+                                '[0:v]scale=720:720:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:white,setsar=1[v0];'
+                                '[v0][0:a][1:v][1:a]concat=n=2:v=1:a=1[outv][outa]',
+                                '-map', '[outv]', '-map', '[outa]',
+                                '-c:v', 'libx264', '-preset', 'fast', '-crf', '23',
+                                '-c:a', 'aac', '-b:a', '128k',
+                                '-movflags', '+faststart',
+                                merged_path
+                            ]
                         result = subprocess.run(merge_cmd, capture_output=True, timeout=120)
                         if result.returncode == 0 and os.path.exists(merged_path):
                             logging.info(f"Video merge successful: {merged_path}")

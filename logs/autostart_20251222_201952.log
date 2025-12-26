@@ -1,0 +1,70 @@
+[2025-12-22 20:19:52] ==========================================
+[2025-12-22 20:19:52] Magic Tree AutoStart Iniciando...
+[2025-12-22 20:19:52] ==========================================
+[2025-12-22 20:19:52] Esperando 20 segundos para que el sistema se estabilice...
+[2025-12-22 20:20:12] FASE 1: Esperando Display...
+[2025-12-22 20:20:12] ✓ Display disponible: DISPLAY=:0, WAYLAND=wayland-0
+[2025-12-22 20:20:12] FASE 1.5: Esperando conectividad de red...
+[2025-12-22 20:20:12] ✓ Red disponible
+[2025-12-22 20:20:12] FASE 2: Esperando Audio...
+[2025-12-22 20:20:12] ✓ PulseAudio disponible
+[2025-12-22 20:20:12] FASE 3: Iniciando experiencia con ventana de log...
+[2025-12-22 20:20:13] ==========================================
+[2025-12-22 20:20:13] Ejecutando run_test.sh...
+[2025-12-22 20:20:13] ==========================================
+Working directory: /home/magicctree/Desktop/Magic-Tree
+Starting Magic Tree Test Mode with X11 backend...
+Environment configured:
+GDK_BACKEND=x11
+QT_QPA_PLATFORM=xcb
+SDL_VIDEODRIVER=x11
+
+Loading environment variables from .env...
+
+--- Setting up Live Preview ---
+========================================
+Setting up v4l2loopback for live preview
+========================================
+✓ v4l2loopback module already loaded
+✓ Preview device /dev/video10 exists
+Setting permissions...
+✓ Permissions set (read/write for all users)
+
+========================================
+✓ Live preview setup complete!
+Camera: /dev/video0 (physical)
+Preview: /dev/video10 (virtual)
+========================================
+--- Initializing Messaging Server ---
+Installing Node.js dependencies...
+
+up to date, audited 303 packages in 18h
+
+31 packages are looking for funding
+run `npm fund` for details
+
+found 0 vulnerabilities
+Freeing port 3000 if in use...
+3000/tcp:             1889
+Starting WhatsApp Server (Background)...
+Messaging Server PID: 2201
+Waiting 10 seconds for server to initialize...
+ERROR: Messaging Server died immediately!
+--- Server Log (Last 20 lines) ---
+Using system Chromium: /usr/bin/chromium
+
+>>> Messaging Server running on http://localhost:3000
+>>> Initializing WhatsApp Client...
+/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/node/BrowserLauncher.js:174
+throw new Error(`The browser is already running for ${launchArgs.userDataDir}. Use a different `userDataDir` or stop the running browser first.`);
+^
+
+Error: The browser is already running for /home/magicctree/Desktop/Magic-Tree/messaging/.wwebjs_auth/session-encantado_v3. Use a different `userDataDir` or stop the running browser first.
+at ChromeLauncher.launch (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/node/BrowserLauncher.js:174:23)
+at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+at async Client.initialize (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/whatsapp-web.js/src/Client.js:331:23)
+
+Node.js v18.20.8
+----------------------------------
+Please check messaging_server.log for details.
+[2025-12-23 14:50:18] Script finalizado.

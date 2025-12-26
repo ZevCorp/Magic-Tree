@@ -1,0 +1,100 @@
+[2025-12-25 18:12:21] ==========================================
+[2025-12-25 18:12:21] Magic Tree AutoStart Iniciando...
+[2025-12-25 18:12:21] ==========================================
+[2025-12-25 18:12:21] Esperando 20 segundos para que el sistema se estabilice...
+[2025-12-25 18:12:41] FASE 1: Esperando Display...
+[2025-12-25 18:12:41] ✓ Display disponible: DISPLAY=:0, WAYLAND=wayland-0
+[2025-12-25 18:12:41] FASE 1.5: Esperando conectividad de red...
+[2025-12-25 18:12:41]   Esperando red... (1/30)
+[2025-12-25 18:12:42]   Esperando red... (2/30)
+[2025-12-25 18:12:43]   Esperando red... (3/30)
+[2025-12-25 18:12:44]   Esperando red... (4/30)
+[2025-12-25 18:12:45]   Esperando red... (5/30)
+[2025-12-25 18:12:46]   Esperando red... (6/30)
+[2025-12-25 18:12:47]   Esperando red... (7/30)
+[2025-12-25 18:12:48]   Esperando red... (8/30)
+[2025-12-25 18:12:49]   Esperando red... (9/30)
+[2025-12-25 18:12:50]   Esperando red... (10/30)
+[2025-12-25 18:12:51]   Esperando red... (11/30)
+[2025-12-25 18:12:52]   Esperando red... (12/30)
+[2025-12-25 18:12:53]   Esperando red... (13/30)
+[2025-12-25 18:12:54]   Esperando red... (14/30)
+[2025-12-25 18:12:55]   Esperando red... (15/30)
+[2025-12-25 18:12:56]   Esperando red... (16/30)
+[2025-12-25 18:12:57]   Esperando red... (17/30)
+[2025-12-25 18:12:58]   Esperando red... (18/30)
+[2025-12-25 18:12:59]   Esperando red... (19/30)
+[2025-12-25 18:13:00]   Esperando red... (20/30)
+[2025-12-25 18:13:01]   Esperando red... (21/30)
+[2025-12-25 18:13:02]   Esperando red... (22/30)
+[2025-12-25 18:13:03]   Esperando red... (23/30)
+[2025-12-25 18:13:04]   Esperando red... (24/30)
+[2025-12-25 18:13:05]   Esperando red... (25/30)
+[2025-12-25 18:13:06]   Esperando red... (26/30)
+[2025-12-25 18:13:07]   Esperando red... (27/30)
+[2025-12-25 18:13:08]   Esperando red... (28/30)
+[2025-12-25 18:13:09]   Esperando red... (29/30)
+[2025-12-25 18:13:10]   Esperando red... (30/30)
+[2025-12-25 18:13:11] ⚠ ADVERTENCIA: Red puede no estar disponible (continuando de todos modos)
+[2025-12-25 18:13:11] FASE 2: Esperando Audio...
+[2025-12-25 18:13:11] ✓ PulseAudio disponible
+[2025-12-25 18:13:11] FASE 3: Iniciando experiencia con ventana de log...
+[2025-12-25 18:13:12] ==========================================
+[2025-12-25 18:13:12] Ejecutando run_test.sh...
+[2025-12-25 18:13:12] ==========================================
+Working directory: /home/magicctree/Desktop/Magic-Tree
+Starting Magic Tree Test Mode with X11 backend...
+Environment configured:
+GDK_BACKEND=x11
+QT_QPA_PLATFORM=xcb
+SDL_VIDEODRIVER=x11
+
+Loading environment variables from .env...
+
+--- Setting up Live Preview ---
+========================================
+Setting up v4l2loopback for live preview
+========================================
+Loading v4l2loopback module...
+✓ Preview device /dev/video10 exists
+Setting permissions...
+✓ Permissions set (read/write for all users)
+
+========================================
+✓ Live preview setup complete!
+Camera: /dev/video0 (physical)
+Preview: /dev/video10 (virtual)
+========================================
+--- Initializing Messaging Server ---
+Installing Node.js dependencies...
+
+up to date in 2s
+
+31 packages are looking for funding
+run `npm fund` for details
+Freeing port 3000 if in use...
+3000/tcp:             1961
+Starting WhatsApp Server (Background)...
+Messaging Server PID: 2242
+Waiting 10 seconds for server to initialize...
+ERROR: Messaging Server died immediately!
+--- Server Log (Last 20 lines) ---
+Using system Chromium: /usr/bin/chromium
+
+>>> Messaging Server running on http://localhost:3000
+>>> Initializing WhatsApp Client...
+/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:184
+? new Error(`${response.errorText} at ${url}`)
+^
+
+Error: net::ERR_ADDRESS_UNREACHABLE at https://web.whatsapp.com/
+at navigate (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:184:27)
+at async Deferred.race (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/util/Deferred.js:36:20)
+at async CdpFrame.goto (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:150:25)
+at async CdpPage.goto (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/api/Page.js:572:20)
+at async Client.initialize (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/whatsapp-web.js/src/Client.js:367:9)
+
+Node.js v18.20.8
+----------------------------------
+Please check messaging_server.log for details.
+[2025-12-25 18:13:25] Script finalizado.

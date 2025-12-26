@@ -8,9 +8,9 @@
 # Configuration
 SCRIPT_DIR="/home/magicctree/Desktop/Magic-Tree"
 LOG_FILE="$SCRIPT_DIR/logs/autostart_$(date +%Y%m%d_%H%M%S).log"
-MAX_WAIT_DISPLAY=60    # Max seconds to wait for display
-MAX_WAIT_AUDIO=30      # Max seconds to wait for audio
-STARTUP_DELAY=10       # Initial delay after login
+MAX_WAIT_DISPLAY=90    # Max seconds to wait for display
+MAX_WAIT_AUDIO=45      # Max seconds to wait for audio
+STARTUP_DELAY=20       # Initial delay after login (wait for services)
 
 # Create logs directory
 mkdir -p "$SCRIPT_DIR/logs"
@@ -54,6 +54,26 @@ done
 if [ $wait_count -ge $MAX_WAIT_DISPLAY ]; then
     log "✗ ERROR: No se pudo conectar al display después de ${MAX_WAIT_DISPLAY}s"
     exit 1
+fi
+
+# ============================================================
+# PHASE 1.5: Wait for Network (needed for WhatsApp server)
+# ============================================================
+log "FASE 1.5: Esperando conectividad de red..."
+
+wait_count=0
+while [ $wait_count -lt 30 ]; do
+    if ping -c 1 8.8.8.8 &>/dev/null; then
+        log "✓ Red disponible"
+        break
+    fi
+    wait_count=$((wait_count + 1))
+    log "  Esperando red... ($wait_count/30)"
+    sleep 1
+done
+
+if [ $wait_count -ge 30 ]; then
+    log "⚠ ADVERTENCIA: Red puede no estar disponible (continuando de todos modos)"
 fi
 
 # ============================================================
@@ -107,10 +127,7 @@ mkfifo "$LOG_FIFO" 2>/dev/null || true
         --font="monospace 10" \
         --filename="$LOG_FIFO" \
         2>/dev/null &
-    ZENITY_PID=$!
-    
-    # Auto-close after 30 seconds if still showing
-    sleep 30 && kill $ZENITY_PID 2>/dev/null &
+    # La ventana permanece abierta - el usuario puede cerrarla manualmente con el botón X
 ) &
 
 # Give zenity time to start

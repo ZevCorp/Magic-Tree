@@ -2,13 +2,21 @@ Using system Chromium: /usr/bin/chromium
 
 >>> Messaging Server running on http://localhost:3000
 >>> Initializing WhatsApp Client...
-WhatsApp Authenticated successfully.
-WhatsApp Client is READY!
-API Request: Send welcome to 573502678360 with video: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766446753_merged.mp4
-Video file size: 4.38 MB
-Sending video attempt 1/2...
-Video message sent to 573502678360@c.us on attempt 1
-Welcome message processing for 573502678360@c.us. Waiting for server acknowledgement...
-ACK received: 3
-Message successfully reached WhatsApp server.
-Verified processing for 573502678360@c.us completed.
+API Request blocked: Client not ready yet.
+/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/common/CallbackRegistry.js:103
+    #error = new Errors_js_1.ProtocolError();
+             ^
+
+ProtocolError: Page.navigate timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.
+    at <instance_members_initializer> (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/common/CallbackRegistry.js:103:14)
+    at new Callback (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/common/CallbackRegistry.js:107:16)
+    at CallbackRegistry.create (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/common/CallbackRegistry.js:25:26)
+    at Connection._rawSend (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Connection.js:108:26)
+    at CdpCDPSession.send (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/CdpSession.js:74:33)
+    at navigate (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:173:51)
+    at CdpFrame.goto (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/cdp/Frame.js:151:17)
+    at CdpFrame.<anonymous> (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/util/decorators.js:109:27)
+    at CdpPage.goto (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/puppeteer-core/lib/cjs/puppeteer/api/Page.js:572:43)
+    at Client.initialize (/home/magicctree/Desktop/Magic-Tree/messaging/node_modules/whatsapp-web.js/src/Client.js:367:20)
+
+Node.js v18.20.8

@@ -1,0 +1,615 @@
+--- Run Started at 20251222_192804 ---
+/home/magicctree/Desktop/Magic-Tree/venv/lib/python3.13/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+pygame 2.6.1 (SDL 2.28.4, Python 3.13.5)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+2025-12-22 19:28:05,739 - INFO - ============================================================
+2025-12-22 19:28:05,741 - INFO - MODO DE PRUEBA - Árbol Encantado
+2025-12-22 19:28:05,741 - INFO - Experiencia completa SIN sensor de puerta
+2025-12-22 19:28:05,741 - INFO - ============================================================
+2025-12-22 19:28:05,741 - INFO - Running in MOCK MODE - GPIO disabled
+2025-12-22 19:28:05,773 - INFO - Initializing persistent window: EnchantedTree
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.front.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:404:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_a52.c:1036:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib confmisc.c:1377:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=6,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 CARD 0}
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:481:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_direct.c:1257:(snd1_pcm_direct_initialize_slave) requested or auto-format is not available
+ALSA lib pcm_dmix.c:1012:(snd_pcm_dmix_open) unable to initialize slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+2025-12-22 19:28:06,112 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-22 19:28:06,494 - INFO - Vosk model loaded successfully.
+2025-12-22 19:28:06,494 - INFO - Sistema listo.
+2025-12-22 19:28:06,494 - INFO - 
+En este modo:
+2025-12-22 19:28:06,494 - INFO - ✓ La cámara se activará normalmente
+2025-12-22 19:28:06,494 - INFO - ✓ El audio y detección de voz funcionan
+2025-12-22 19:28:06,494 - INFO - ✓ Los videos se reproducen
+2025-12-22 19:28:06,494 - INFO - ✗ El sensor de puerta está deshabilitado (presiona Enter)
+2025-12-22 19:28:06,494 - INFO - 
+2025-12-22 19:28:06,494 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-22 19:28:06,494 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-22 19:28:06,494 - INFO - Background music stopped.
+2025-12-22 19:28:06,494 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-22 19:28:06,494 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[h264_v4l2m2m @ 0x7ffeac05f6f0] Could not find a valid device
+[h264_v4l2m2m @ 0x7ffeac05f6f0] can't configure decoder
+[00007ffeac05d820] avcodec decoder error: cannot start codec (h264_v4l2m2m)
+[00007ffef40013a0] mmal_xsplitter vout display: Try drm
+[00007ffef4b0b940] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffef4b0b940] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffef4b0b940] drm_vout generic error: Failed to get xlease
+[00007ffef4b0b940] drm_vout generic error: Failed to set atomic cap
+[00007ffef4b0b940] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffef4b0b940] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffef4b0b940] drm_vout generic error: Failed to get xlease
+[00007ffef4b0b940] drm_vout generic error: Failed to set atomic cap
+[00007ffef40013a0] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:28:14,966 - INFO - Video playback finished
+2025-12-22 19:28:15,059 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-22 19:28:15,060 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-22 19:28:26,163 - INFO - Keyword 'feliz navidad' detected!
+2025-12-22 19:28:26,167 - INFO - Keyword listener stopped.
+2025-12-22 19:28:26,469 - INFO - Standby interrupted by user action!
+2025-12-22 19:28:26,469 - INFO - Iniciando experiencia...
+2025-12-22 19:28:26,469 - INFO - Pre-initializing phone system components...
+2025-12-22 19:28:26,485 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-22 19:28:26,922 - INFO - Vosk model loaded.
+2025-12-22 19:28:26,922 - INFO - Phone system pre-initialized.
+2025-12-22 19:28:26,922 - INFO - ==================================================
+2025-12-22 19:28:26,922 - INFO - STEP 2: Playing intro video...
+2025-12-22 19:28:26,923 - INFO - ==================================================
+2025-12-22 19:28:26,923 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffebc009600] mmal_xsplitter vout display: Try drm
+[00007ffebc3a6300] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffebc3a6300] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffebc3a6300] drm_vout generic error: Failed to get xlease
+[00007ffebc3a6300] drm_vout generic error: Failed to set atomic cap
+[00007ffebc3a6300] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffebc3a6300] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffebc3a6300] drm_vout generic error: Failed to get xlease
+[00007ffebc3a6300] drm_vout generic error: Failed to set atomic cap
+[00007ffebc009600] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:28:35,391 - INFO - Video playback finished
+2025-12-22 19:28:35,391 - INFO - Playing second intro video...
+2025-12-22 19:28:35,391 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-22 19:28:35,391 - INFO - ==================================================
+2025-12-22 19:28:35,391 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-22 19:28:35,391 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-22 19:28:35,391 - INFO - ==================================================
+2025-12-22 19:28:35,391 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449715.mp4
+2025-12-22 19:28:35,391 - INFO - Using video device: /dev/video0
+2025-12-22 19:28:35,391 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449715.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-22 19:28:36,892 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-22 19:28:37,103 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-22 19:28:57,175 - INFO - FFmpeg terminated
+2025-12-22 19:28:57,175 - INFO - Recording finished.
+2025-12-22 19:28:57,176 - INFO - ==================================================
+2025-12-22 19:28:57,176 - INFO - STEP 4: Asking for phone number...
+2025-12-22 19:28:57,176 - INFO - ==================================================
+2025-12-22 19:28:57,176 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007fff18000ef0] mmal_xsplitter vout display: Try drm
+[00007fff18a9d620] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007fff18a9d620] drm_vout generic error: create_lease failed: Xerror 2
+[00007fff18a9d620] drm_vout generic error: Failed to get xlease
+[00007fff18a9d620] drm_vout generic error: Failed to set atomic cap
+[00007fff18a9d620] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007fff18a9d620] drm_vout generic error: create_lease failed: Xerror 2
+[00007fff18a9d620] drm_vout generic error: Failed to get xlease
+[00007fff18a9d620] drm_vout generic error: Failed to set atomic cap
+[00007fff18000ef0] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:29:05,677 - INFO - Video playback finished
+2025-12-22 19:29:06,177 - INFO - ==================================================
+2025-12-22 19:29:06,177 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-22 19:29:06,177 - INFO - ==================================================
+2025-12-22 19:29:06,177 - INFO - ==================================================
+2025-12-22 19:29:06,177 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-22 19:29:06,177 - INFO - ==================================================
+2025-12-22 19:29:06,178 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-22 19:29:06,178 - INFO - Audio worker started (Vosk)
+2025-12-22 19:29:06,178 - INFO - PhoneDisplay started on main thread
+2025-12-22 19:29:06,178 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-22 19:29:06,198 - INFO - PhoneInputSystem: Listening...
+2025-12-22 19:29:06,231 - INFO - Starting PhoneDisplay render loop
+2025-12-22 19:29:10,861 - INFO - Heard: por favor dicta tu numero de telefono
+2025-12-22 19:29:12,903 - INFO - Heard: cincuenta
+2025-12-22 19:29:16,242 - INFO - Heard: borrar todo
+2025-12-22 19:29:16,243 - INFO - Removed 0
+2025-12-22 19:29:16,243 - INFO - Command: 'Borrar todo' detected
+2025-12-22 19:29:20,595 - INFO - Heard: borrado tres cincuenta
+2025-12-22 19:29:23,656 - INFO - Heard: dos seis siete
+2025-12-22 19:29:27,533 - INFO - Heard: ocho tres sesenta
+2025-12-22 19:29:27,540 - INFO - 10 digits reached: 3502678360. Verifying...
+2025-12-22 19:29:30,566 - INFO - Heard: confirmar
+2025-12-22 19:29:30,567 - INFO - CONFIRMED!
+2025-12-22 19:29:30,814 - INFO - Audio worker finished. Result: 3502678360
+2025-12-22 19:29:30,822 - INFO - PhoneDisplay loop ended
+2025-12-22 19:29:30,831 - INFO - Number captured and confirmed: 3502678360
+2025-12-22 19:29:30,831 - INFO - Background music stopped.
+2025-12-22 19:29:30,832 - INFO - Merging intro video with user recording...
+2025-12-22 19:29:40,154 - INFO - Video merge successful: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449715_merged.mp4
+2025-12-22 19:29:40,154 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449715_merged.mp4
+2025-12-22 19:29:40,155 - INFO - Preparing to send welcome message to 3502678360 via Local Server...
+2025-12-22 19:29:40,155 - INFO - Target Phone Number: 573502678360
+2025-12-22 19:29:40,155 - INFO - Message sending started in background...
+2025-12-22 19:29:40,157 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449715.json
+2025-12-22 19:29:40,157 - INFO - STEP 8: Playing goodbye video...
+2025-12-22 19:29:40,157 - INFO - Goodbye video not found, skipping.
+2025-12-22 19:29:40,169 - INFO - 
+============================================================
+2025-12-22 19:29:40,169 - INFO - EXPERIENCIA COMPLETADA
+2025-12-22 19:29:40,169 - INFO - ============================================================
+2025-12-22 19:29:40,169 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-22 19:29:42,208 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-22 19:29:42,208 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-22 19:29:42,209 - INFO - Background music stopped.
+2025-12-22 19:29:42,209 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-22 19:29:42,209 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffea80061b0] mmal_xsplitter vout display: Try drm
+[00007ffea8acc3a0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffea8acc3a0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffea8acc3a0] drm_vout generic error: Failed to get xlease
+[00007ffea8acc3a0] drm_vout generic error: Failed to set atomic cap
+[00007ffea8acc3a0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffea8acc3a0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffea8acc3a0] drm_vout generic error: Failed to get xlease
+[00007ffea8acc3a0] drm_vout generic error: Failed to set atomic cap
+[00007ffea80061b0] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:29:47,597 - INFO - Success! Server responded: {'success': True, 'message': 'Message sent successfully', 'videoSent': True}
+2025-12-22 19:29:47,597 - INFO - Video attached: True
+2025-12-22 19:29:50,700 - INFO - Video playback finished
+2025-12-22 19:29:50,792 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-22 19:29:50,792 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-22 19:30:30,678 - INFO - Keyword 'feliz navidad' detected!
+2025-12-22 19:30:30,686 - INFO - Keyword listener stopped.
+2025-12-22 19:30:30,978 - INFO - Standby interrupted by user action!
+2025-12-22 19:30:30,978 - INFO - Iniciando experiencia...
+2025-12-22 19:30:30,978 - INFO - Pre-initializing phone system components...
+2025-12-22 19:30:30,994 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-22 19:30:31,430 - INFO - Vosk model loaded.
+2025-12-22 19:30:31,467 - INFO - Phone system pre-initialized.
+2025-12-22 19:30:31,467 - INFO - ==================================================
+2025-12-22 19:30:31,467 - INFO - STEP 2: Playing intro video...
+2025-12-22 19:30:31,467 - INFO - ==================================================
+2025-12-22 19:30:31,467 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffedc001360] mmal_xsplitter vout display: Try drm
+[00007ffedcacf520] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffedcacf520] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffedcacf520] drm_vout generic error: Failed to get xlease
+[00007ffedcacf520] drm_vout generic error: Failed to set atomic cap
+[00007ffedcacf520] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffedcacf520] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffedcacf520] drm_vout generic error: Failed to get xlease
+[00007ffedcacf520] drm_vout generic error: Failed to set atomic cap
+[00007ffedc001360] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:30:39,956 - INFO - Video playback finished
+2025-12-22 19:30:39,957 - INFO - Playing second intro video...
+2025-12-22 19:30:39,957 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-22 19:30:39,957 - INFO - ==================================================
+2025-12-22 19:30:39,957 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-22 19:30:39,957 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-22 19:30:39,957 - INFO - ==================================================
+2025-12-22 19:30:39,957 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449839.mp4
+2025-12-22 19:30:39,957 - INFO - Using video device: /dev/video0
+2025-12-22 19:30:39,957 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449839.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-22 19:30:41,458 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-22 19:30:41,700 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-22 19:31:01,770 - INFO - FFmpeg terminated
+2025-12-22 19:31:01,770 - INFO - Recording finished.
+2025-12-22 19:31:01,771 - INFO - ==================================================
+2025-12-22 19:31:01,771 - INFO - STEP 4: Asking for phone number...
+2025-12-22 19:31:01,771 - INFO - ==================================================
+2025-12-22 19:31:01,771 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffeb4100900] mmal_xsplitter vout display: Try drm
+[00007ffeb4adbca0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffeb4adbca0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffeb4adbca0] drm_vout generic error: Failed to get xlease
+[00007ffeb4adbca0] drm_vout generic error: Failed to set atomic cap
+[00007ffeb4adbca0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffeb4adbca0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffeb4adbca0] drm_vout generic error: Failed to get xlease
+[00007ffeb4adbca0] drm_vout generic error: Failed to set atomic cap
+[00007ffeb4100900] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:31:10,268 - INFO - Video playback finished
+2025-12-22 19:31:10,768 - INFO - ==================================================
+2025-12-22 19:31:10,768 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-22 19:31:10,768 - INFO - ==================================================
+2025-12-22 19:31:10,768 - INFO - ==================================================
+2025-12-22 19:31:10,768 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-22 19:31:10,768 - INFO - ==================================================
+2025-12-22 19:31:10,768 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-22 19:31:10,769 - INFO - Audio worker started (Vosk)
+2025-12-22 19:31:10,769 - INFO - PhoneDisplay started on main thread
+2025-12-22 19:31:10,770 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-22 19:31:10,800 - INFO - PhoneInputSystem: Listening...
+2025-12-22 19:31:10,848 - INFO - Starting PhoneDisplay render loop
+2025-12-22 19:31:17,512 - INFO - Heard: por favor dicta tu numero de telefono tres veintiuno
+2025-12-22 19:31:21,104 - INFO - Heard: cuatro veintiseis
+2025-12-22 19:31:24,681 - INFO - Heard: noventa y tres diecinueve
+2025-12-22 19:31:24,681 - INFO - 10 digits reached: 3214269031. Verifying...
+2025-12-22 19:31:33,898 - INFO - Heard: borrar
+2025-12-22 19:31:33,898 - INFO - Removed 1
+2025-12-22 19:31:37,993 - INFO - Heard: borrado borrar
+2025-12-22 19:31:37,993 - INFO - Removed 3
+2025-12-22 19:31:41,584 - INFO - Heard: borrado borrar
+2025-12-22 19:31:41,584 - INFO - Removed 0
+2025-12-22 19:31:44,665 - INFO - Heard: borrado
+2025-12-22 19:31:46,470 - INFO - Heard: tres
+2025-12-22 19:31:50,561 - INFO - Heard: uno nueve
+2025-12-22 19:31:50,561 - INFO - 10 digits reached: 3214269319. Verifying...
+2025-12-22 19:31:54,139 - INFO - Heard: confirmar
+2025-12-22 19:31:54,139 - INFO - CONFIRMED!
+2025-12-22 19:31:54,392 - INFO - Audio worker finished. Result: 3214269319
+2025-12-22 19:31:54,429 - INFO - PhoneDisplay loop ended
+2025-12-22 19:31:54,440 - INFO - Number captured and confirmed: 3214269319
+2025-12-22 19:31:54,440 - INFO - Background music stopped.
+2025-12-22 19:31:54,440 - INFO - Merging intro video with user recording...
+2025-12-22 19:32:04,596 - INFO - Video merge successful: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449839_merged.mp4
+2025-12-22 19:32:04,596 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449839_merged.mp4
+2025-12-22 19:32:04,596 - INFO - Preparing to send welcome message to 3214269319 via Local Server...
+2025-12-22 19:32:04,596 - INFO - Message sending started in background...
+2025-12-22 19:32:04,596 - INFO - Target Phone Number: 573214269319
+2025-12-22 19:32:04,597 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766449839.json
+2025-12-22 19:32:04,597 - INFO - STEP 8: Playing goodbye video...
+2025-12-22 19:32:04,598 - INFO - Goodbye video not found, skipping.
+2025-12-22 19:32:04,611 - INFO - 
+============================================================
+2025-12-22 19:32:04,611 - INFO - EXPERIENCIA COMPLETADA
+2025-12-22 19:32:04,611 - INFO - ============================================================
+2025-12-22 19:32:04,611 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-22 19:32:06,650 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-22 19:32:06,650 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-22 19:32:06,650 - INFO - Background music stopped.
+2025-12-22 19:32:06,651 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-22 19:32:06,651 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffee000f870] mmal_xsplitter vout display: Try drm
+[00007ffee0ad2760] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffee0ad2760] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffee0ad2760] drm_vout generic error: Failed to get xlease
+[00007ffee0ad2760] drm_vout generic error: Failed to set atomic cap
+[00007ffee0ad2760] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffee0ad2760] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffee0ad2760] drm_vout generic error: Failed to get xlease
+[00007ffee0ad2760] drm_vout generic error: Failed to set atomic cap
+[00007ffee000f870] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:32:14,995 - INFO - Video playback finished
+2025-12-22 19:32:15,105 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-22 19:32:15,106 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-22 19:32:15,739 - INFO - Success! Server responded: {'success': True, 'message': 'Message sent successfully', 'videoSent': True}
+2025-12-22 19:32:15,739 - INFO - Video attached: True
+2025-12-22 19:33:52,267 - INFO - Keyword 'feliz navidad' detected!
+2025-12-22 19:33:52,272 - INFO - Keyword listener stopped.
+2025-12-22 19:33:52,565 - INFO - Standby interrupted by user action!
+2025-12-22 19:33:52,565 - INFO - Iniciando experiencia...
+2025-12-22 19:33:52,565 - INFO - Pre-initializing phone system components...
+2025-12-22 19:33:52,580 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-22 19:33:53,008 - INFO - Vosk model loaded.
+2025-12-22 19:33:53,047 - INFO - Phone system pre-initialized.
+2025-12-22 19:33:53,047 - INFO - ==================================================
+2025-12-22 19:33:53,047 - INFO - STEP 2: Playing intro video...
+2025-12-22 19:33:53,047 - INFO - ==================================================
+2025-12-22 19:33:53,047 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffecc00c5d0] mmal_xsplitter vout display: Try drm
+[00007ffeccacf5e0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffeccacf5e0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffeccacf5e0] drm_vout generic error: Failed to get xlease
+[00007ffeccacf5e0] drm_vout generic error: Failed to set atomic cap
+[00007ffeccacf5e0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffeccacf5e0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffeccacf5e0] drm_vout generic error: Failed to get xlease
+[00007ffeccacf5e0] drm_vout generic error: Failed to set atomic cap
+[00007ffecc00c5d0] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:34:01,631 - INFO - Video playback finished
+2025-12-22 19:34:01,631 - INFO - Playing second intro video...
+2025-12-22 19:34:01,631 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-22 19:34:01,631 - INFO - ==================================================
+2025-12-22 19:34:01,631 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-22 19:34:01,631 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-22 19:34:01,631 - INFO - ==================================================
+2025-12-22 19:34:01,631 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450041.mp4
+2025-12-22 19:34:01,631 - INFO - Using video device: /dev/video0
+2025-12-22 19:34:01,631 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450041.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-22 19:34:03,132 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-22 19:34:03,371 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-22 19:34:23,418 - INFO - FFmpeg terminated
+2025-12-22 19:34:23,418 - INFO - Recording finished.
+2025-12-22 19:34:23,418 - INFO - ==================================================
+2025-12-22 19:34:23,418 - INFO - STEP 4: Asking for phone number...
+2025-12-22 19:34:23,418 - INFO - ==================================================
+2025-12-22 19:34:23,418 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe9404dfc0] mmal_xsplitter vout display: Try drm
+[00007ffe94acca60] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffe94acca60] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffe94acca60] drm_vout generic error: Failed to get xlease
+[00007ffe94acca60] drm_vout generic error: Failed to set atomic cap
+[00007ffe94acca60] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffe94acca60] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffe94acca60] drm_vout generic error: Failed to get xlease
+[00007ffe94acca60] drm_vout generic error: Failed to set atomic cap
+[00007ffe9404dfc0] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:34:31,906 - INFO - Video playback finished
+2025-12-22 19:34:32,407 - INFO - ==================================================
+2025-12-22 19:34:32,407 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-22 19:34:32,407 - INFO - ==================================================
+2025-12-22 19:34:32,407 - INFO - ==================================================
+2025-12-22 19:34:32,407 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-22 19:34:32,407 - INFO - ==================================================
+2025-12-22 19:34:32,407 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-22 19:34:32,407 - INFO - Audio worker started (Vosk)
+2025-12-22 19:34:32,407 - INFO - PhoneDisplay started on main thread
+2025-12-22 19:34:32,408 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-22 19:34:32,443 - INFO - PhoneInputSystem: Listening...
+2025-12-22 19:34:32,486 - INFO - Starting PhoneDisplay render loop
+2025-12-22 19:34:39,659 - INFO - Heard: por favor dicta tu numero de telefono tres cero uno
+2025-12-22 19:34:42,986 - INFO - Heard: tres seis uno
+2025-12-22 19:34:46,060 - INFO - Heard: nueve uno
+2025-12-22 19:34:48,658 - INFO - Heard: cero ocho
+2025-12-22 19:34:48,658 - INFO - 10 digits reached: 3013619108. Verifying...
+2025-12-22 19:34:52,207 - INFO - Heard: confirmar
+2025-12-22 19:34:52,207 - INFO - CONFIRMED!
+2025-12-22 19:34:52,468 - INFO - Audio worker finished. Result: 3013619108
+2025-12-22 19:34:52,516 - INFO - PhoneDisplay loop ended
+2025-12-22 19:34:52,527 - INFO - Number captured and confirmed: 3013619108
+2025-12-22 19:34:52,527 - INFO - Background music stopped.
+2025-12-22 19:34:52,527 - INFO - Merging intro video with user recording...
+2025-12-22 19:35:02,380 - INFO - Video merge successful: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450041_merged.mp4
+2025-12-22 19:35:02,380 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450041_merged.mp4
+2025-12-22 19:35:02,380 - INFO - Preparing to send welcome message to 3013619108 via Local Server...
+2025-12-22 19:35:02,380 - INFO - Target Phone Number: 573013619108
+2025-12-22 19:35:02,381 - INFO - Message sending started in background...
+2025-12-22 19:35:02,381 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450041.json
+2025-12-22 19:35:02,382 - INFO - STEP 8: Playing goodbye video...
+2025-12-22 19:35:02,382 - INFO - Goodbye video not found, skipping.
+2025-12-22 19:35:02,394 - INFO - 
+============================================================
+2025-12-22 19:35:02,394 - INFO - EXPERIENCIA COMPLETADA
+2025-12-22 19:35:02,394 - INFO - ============================================================
+2025-12-22 19:35:02,394 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-22 19:35:04,434 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-22 19:35:04,434 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-22 19:35:04,434 - INFO - Background music stopped.
+2025-12-22 19:35:04,435 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-22 19:35:04,435 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffec00093c0] mmal_xsplitter vout display: Try drm
+[00007ffec0acf560] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffec0acf560] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffec0acf560] drm_vout generic error: Failed to get xlease
+[00007ffec0acf560] drm_vout generic error: Failed to set atomic cap
+[00007ffec0acf560] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffec0acf560] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffec0acf560] drm_vout generic error: Failed to get xlease
+[00007ffec0acf560] drm_vout generic error: Failed to set atomic cap
+[00007ffec00093c0] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:35:10,947 - INFO - Success! Server responded: {'success': True, 'message': 'Message sent successfully', 'videoSent': True}
+2025-12-22 19:35:10,947 - INFO - Video attached: True
+2025-12-22 19:35:12,928 - INFO - Video playback finished
+2025-12-22 19:35:13,017 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-22 19:35:13,017 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...
+2025-12-22 19:36:39,460 - INFO - Keyword 'feliz navidad' detected!
+2025-12-22 19:36:39,465 - INFO - Keyword listener stopped.
+2025-12-22 19:36:39,744 - INFO - Standby interrupted by user action!
+2025-12-22 19:36:39,744 - INFO - Iniciando experiencia...
+2025-12-22 19:36:39,744 - INFO - Pre-initializing phone system components...
+2025-12-22 19:36:39,759 - INFO - Loading Vosk model from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42...
+LOG (VoskAPI:ReadDataFiles():model.cc:213) Decoding params beam=11 max-active=4000 lattice-beam=4
+LOG (VoskAPI:ReadDataFiles():model.cc:216) Silence phones 1:2:3:4:5:6:7:8:9:10
+LOG (VoskAPI:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 0 orphan nodes.
+LOG (VoskAPI:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 0 orphan components.
+LOG (VoskAPI:ReadDataFiles():model.cc:248) Loading i-vector extractor from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/ivector/final.ie
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:183) Computing derived variables for iVector extractor
+LOG (VoskAPI:ComputeDerivedVars():ivector-extractor.cc:204) Done.
+LOG (VoskAPI:ReadDataFiles():model.cc:282) Loading HCL and G from /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/HCLr.fst /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/Gr.fst
+LOG (VoskAPI:ReadDataFiles():model.cc:308) Loading winfo /home/magicctree/Desktop/Magic-Tree/model/vosk-model-small-es-0.42/graph/phones/word_boundary.int
+2025-12-22 19:36:40,190 - INFO - Vosk model loaded.
+2025-12-22 19:36:40,225 - INFO - Phone system pre-initialized.
+2025-12-22 19:36:40,225 - INFO - ==================================================
+2025-12-22 19:36:40,225 - INFO - STEP 2: Playing intro video...
+2025-12-22 19:36:40,225 - INFO - ==================================================
+2025-12-22 19:36:40,225 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/intro.mp4
+[00007ffedc001d90] mmal_xsplitter vout display: Try drm
+[00007ffedcbe67e0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffedcbe67e0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffedcbe67e0] drm_vout generic error: Failed to get xlease
+[00007ffedcbe67e0] drm_vout generic error: Failed to set atomic cap
+[00007ffedcbe67e0] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffedcbe67e0] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffedcbe67e0] drm_vout generic error: Failed to get xlease
+[00007ffedcbe67e0] drm_vout generic error: Failed to set atomic cap
+[00007ffedc001d90] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:36:48,713 - INFO - Video playback finished
+2025-12-22 19:36:48,714 - INFO - Playing second intro video...
+2025-12-22 19:36:48,714 - INFO - Video no encontrado (skipping): /home/magicctree/Desktop/Magic-Tree/assets/intro_2.mp4
+2025-12-22 19:36:48,714 - INFO - ==================================================
+2025-12-22 19:36:48,714 - INFO - STEP 3: Starting camera recording (20s)...
+2025-12-22 19:36:48,714 - INFO - Recording will stop automatically after 20 seconds.
+2025-12-22 19:36:48,714 - INFO - ==================================================
+2025-12-22 19:36:48,714 - INFO - Starting FFMPEG recording with LIVE PREVIEW to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450208.mp4
+2025-12-22 19:36:48,714 - INFO - Using video device: /dev/video0
+2025-12-22 19:36:48,714 - INFO - FFmpeg Command: ffmpeg -y -f v4l2 -video_size 1280x720 -framerate 30 -input_format mjpeg -i /dev/video0 -f pulse -ac 1 -i default -t 20 -filter_complex [0:v]transpose=1,split=2[rec][prev] -map [rec] -map 1:a -c:v libx264 -preset ultrafast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450208.mp4 -map [prev] -f v4l2 -pix_fmt yuv420p /dev/video10
+2025-12-22 19:36:50,215 - INFO - Attempting to open preview device (attempt 1/5)...
+2025-12-22 19:36:50,385 - INFO - Preview device opened successfully! Frame shape: (1280, 720, 3)
+2025-12-22 19:37:10,450 - INFO - FFmpeg terminated
+2025-12-22 19:37:10,451 - INFO - Recording finished.
+2025-12-22 19:37:10,451 - INFO - ==================================================
+2025-12-22 19:37:10,451 - INFO - STEP 4: Asking for phone number...
+2025-12-22 19:37:10,451 - INFO - ==================================================
+2025-12-22 19:37:10,451 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/ask_phone.mp4
+[00007ffe90006990] mmal_xsplitter vout display: Try drm
+[00007ffe90aab600] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffe90aab600] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffe90aab600] drm_vout generic error: Failed to get xlease
+[00007ffe90aab600] drm_vout generic error: Failed to set atomic cap
+[00007ffe90aab600] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffe90aab600] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffe90aab600] drm_vout generic error: Failed to get xlease
+[00007ffe90aab600] drm_vout generic error: Failed to set atomic cap
+[00007ffe90006990] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:37:18,939 - INFO - Video playback finished
+2025-12-22 19:37:19,439 - INFO - ==================================================
+2025-12-22 19:37:19,439 - INFO - STEP 5: Starting continuous phone dictation...
+2025-12-22 19:37:19,439 - INFO - ==================================================
+2025-12-22 19:37:19,439 - INFO - ==================================================
+2025-12-22 19:37:19,439 - INFO - STEP 5: Starting continuous phone dictation (Vosk)...
+2025-12-22 19:37:19,439 - INFO - ==================================================
+2025-12-22 19:37:19,440 - WARNING - Music file not found: /home/magicctree/Desktop/Magic-Tree/assets/background_music.mp3
+2025-12-22 19:37:19,440 - INFO - Audio worker started (Vosk)
+2025-12-22 19:37:19,440 - INFO - PhoneDisplay started on main thread
+2025-12-22 19:37:19,441 - INFO - Loading Christmas background from /home/magicctree/Desktop/Magic-Tree/assets/christmas_bg.png
+2025-12-22 19:37:19,474 - INFO - PhoneInputSystem: Listening...
+2025-12-22 19:37:19,517 - INFO - Starting PhoneDisplay render loop
+2025-12-22 19:37:26,485 - INFO - Heard: por favor dicta tu numero de telefono tres por o no
+2025-12-22 19:37:26,485 - INFO - Removed 3
+2025-12-22 19:37:29,774 - INFO - Heard: borrado
+2025-12-22 19:37:32,842 - INFO - Heard: tres uno uno
+2025-12-22 19:37:36,428 - INFO - Heard: cuatro seis seis
+2025-12-22 19:37:39,492 - INFO - Heard: cero uno
+2025-12-22 19:37:42,056 - INFO - Heard: nueve dos
+2025-12-22 19:37:42,056 - INFO - 10 digits reached: 3114660192. Verifying...
+2025-12-22 19:37:45,392 - INFO - Heard: confirmar
+2025-12-22 19:37:45,392 - INFO - CONFIRMED!
+2025-12-22 19:37:45,644 - INFO - Audio worker finished. Result: 3114660192
+2025-12-22 19:37:45,682 - INFO - PhoneDisplay loop ended
+2025-12-22 19:37:45,692 - INFO - Number captured and confirmed: 3114660192
+2025-12-22 19:37:45,693 - INFO - Background music stopped.
+2025-12-22 19:37:45,693 - INFO - Merging intro video with user recording...
+2025-12-22 19:37:55,455 - INFO - Video merge successful: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450208_merged.mp4
+2025-12-22 19:37:55,455 - INFO - Using video for sending: /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450208_merged.mp4
+2025-12-22 19:37:55,456 - INFO - Preparing to send welcome message to 3114660192 via Local Server...
+2025-12-22 19:37:55,456 - INFO - Message sending started in background...
+2025-12-22 19:37:55,456 - INFO - Target Phone Number: 573114660192
+2025-12-22 19:37:55,457 - INFO - Metadata saved to /home/magicctree/Desktop/Magic-Tree/recordings/user_video_1766450208.json
+2025-12-22 19:37:55,457 - INFO - STEP 8: Playing goodbye video...
+2025-12-22 19:37:55,457 - INFO - Goodbye video not found, skipping.
+2025-12-22 19:37:55,469 - INFO - 
+============================================================
+2025-12-22 19:37:55,469 - INFO - EXPERIENCIA COMPLETADA
+2025-12-22 19:37:55,469 - INFO - ============================================================
+2025-12-22 19:37:55,469 - INFO - Presiona Ctrl+C para salir o Enter para repetir (ESC para salir en ventana)...
+2025-12-22 19:37:57,511 - INFO - Waiting for activation (Enter on Keypad/Window, 'Feliz Navidad', or Door Sensor)...
+2025-12-22 19:37:57,511 - INFO - Entering Standby Mode (Video/Image Loop)...
+2025-12-22 19:37:57,511 - INFO - Background music stopped.
+2025-12-22 19:37:57,511 - INFO - Listening for keyword 'feliz navidad' (Local Vosk)...
+2025-12-22 19:37:57,511 - INFO - Playing video: /home/magicctree/Desktop/Magic-Tree/assets/standby.mp4
+[00007ffec80093c0] mmal_xsplitter vout display: Try drm
+[00007ffec89fef70] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffec89fef70] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffec89fef70] drm_vout generic error: Failed to get xlease
+[00007ffec89fef70] drm_vout generic error: Failed to set atomic cap
+[00007ffec89fef70] drm_vout generic: <<< OpenDrmVout: I420 1280x738(1280x720 @ 0,0 0/0) or 0, cfg.display: 1280x720, source: 1280x738(1280x720 @ 0,0 1/1) or 0
+[00007ffec89fef70] drm_vout generic error: create_lease failed: Xerror 2
+[00007ffec89fef70] drm_vout generic error: Failed to get xlease
+[00007ffec89fef70] drm_vout generic error: Failed to set atomic cap
+[00007ffec80093c0] mmal_xsplitter vout display: Drm no go
+2025-12-22 19:38:01,651 - INFO - Success! Server responded: {'success': True, 'message': 'Message sent successfully', 'videoSent': True}
+2025-12-22 19:38:01,651 - INFO - Video attached: True
+2025-12-22 19:38:05,974 - INFO - Video playback finished
+2025-12-22 19:38:06,064 - INFO - Standby: Showing image, monitoring for 480s (Trigger/Face)...
+2025-12-22 19:38:06,064 - INFO - Monitoring standby for 480 seconds (Face Detection Active)...

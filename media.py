@@ -23,6 +23,7 @@ class MediaManager:
             '--fullscreen', 
             '--no-video-title-show', 
             '--mouse-hide-timeout=0',
+            '--video-wallpaper',  # Force fullscreen always
             # This is the magic bullet: specifically blacklist the crashing v4l2m2m codec
             '--codec=avcodec,all', 
             '--avcodec-skip-frame=0', 
